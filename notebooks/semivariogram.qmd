@@ -1,0 +1,39 @@
+---
+title: "Semivariograms"
+author: "Alex Koiter"
+html-table-processing: none
+---
+## Load libraries
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(gt)
+})
+```
+
+## Data
+```{r}
+geochem_vario <- tribble(
+  ~Property, ~Model, ~`Nugget (Co)`, ~`Sill (Co)`, ~`Range (m)`, ~`C/(C + Co) (%)`, ~Class, ~R2, ~RMSE, ~site,
+  "Ca",      "Exp",  0.00,         1.49,          72.52,     0.00,          "S",    0.27, 1.8, "Agriculture", 
+  "Ca",      "Exp",  0.00,         1.49,          72.52,     0.00,          "S",    0.27, 1.8, "Forest")
+```
+
+```{r}
+#| label: tbl-geochem-semivariogram
+#| tbl-cap: Geostatistical parameters of the fitted semivariogram models for six examples of geochemical and colour fingerprint properties for each site.
+
+geochem_vario |>
+  group_by(site) |>
+  gt() |>
+  tab_footnote(
+    footnote = "Models are all isotropic.",
+    locations = cells_column_labels(columns = Model))  |>
+  tab_footnote(
+    footnote = "S = strong spatial dependency (C/(C + Co) % >75); M = moderate spatial dependency (C/(C + Co) % between
+75 and 25).",
+    locations = cells_column_labels(columns = Class))  |>
+  tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
+  tab_options(column_labels.font.weight = "bold")
+```
+

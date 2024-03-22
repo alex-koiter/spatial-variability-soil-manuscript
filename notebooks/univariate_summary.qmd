@@ -1,0 +1,332 @@
+---
+title: "Univariate summary"
+author: "Alex Koiter"
+html-table-processing: none
+---
+
+## Load libraries
+```{r}
+library(tidyverse)
+library(gt)
+library(sf)
+library(terra)
+```
+
+# load in data
+```{r}
+data <- read_csv(here::here("./notebooks/soil_data.csv"))
+```
+## Summarize
+```{r}
+data_summary <- data %>%
+  group_by(element) %>%
+  group_by(element, site, group) %>%
+  summarise(mean = mean(value, na.rm = T),
+            sd = sd(value, na.rm = T),
+            max = max(value, na.rm = T),
+            min = min(value, na.rm = T),
+            se = sd(value)/ sqrt(length(value)),
+            skewness = moments::skewness(value),
+            cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE) * 100, .groups = "drop") 
+```
+
+
+### Max-min scaling
+```{r}
+data2 <- data %>%
+  group_by(element) %>%
+  mutate(value2 = (value - min(value, na.rm = T)) / (max(value, na.rm = T) - min(value, na.rm = T))) %>%
+  group_by(element, site, group) %>%
+  summarise(mean = mean(value2, na.rm = T),
+            sd = sd(value2, na.rm = T),
+            max = max(value2, na.rm = T),
+            min = min(value2, na.rm = T),
+            se = sd(value2)/ sqrt(length(value2)),
+            skewness = moments::skewness(value2),
+            cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE) * 100, .groups = "drop") %>%
+  mutate(spacer = case_when(site == "Forest" ~ 1.1,
+                            site == "Agriculture"~ 1.2))
+```
+## Geochemistry
+### plot prep
+```{r}
+geo <- data2 %>%
+  filter(group == "geochem") %>%
+  mutate(facet = case_when(element %in% c("Ag", "Al", "As","B","Ba","Be","Bi","Ca","Cd","Ce","Co", "Cr", "Cs", "Cu", "Fe", "Ga", "Hf", "Hg", "In", "K", "La", "Li") ~ "Geomchemistry A-L",
+                          element %in% c("Mg", "Mn", "Mo", "Nb", "Ni", "P", "Pb", "Rb", "S", "Sb", "Sc", "Se", "Sn", "Sr", "Te", "Th", "Tl", "U", "V", "Y", "Zn", "Zr") ~ "Geomchemistry M-Z",
+                          TRUE~ NA)) %>%
+  mutate(bar = rep(c(rep(Inf, 2), rep(0, 2)), n()/4)) %>%
+  pivot_longer(cols = c(mean, max, min), names_to = "variable") 
+
+geo2 <- data2 %>%
+  filter(group == "geochem") %>%
+    mutate(facet = case_when(element %in% c("Ag", "Al", "As","B","Ba","Be","Bi","Ca","Cd","Ce","Co", "Cr", "Cs", "Cu", "Fe", "Ga", "Hf", "Hg", "In", "K", "La", "Li") ~ "Geomchemistry A-L",
+                          element %in% c("Mg", "Mn", "Mo", "Nb", "Ni", "P", "Pb", "Rb", "S", "Sb", "Sc", "Se", "Sn", "Sr", "Te", "Th", "Tl", "U", "V", "Y", "Zn", "Zr") ~ "Geomchemistry M-Z",
+                          TRUE~ NA)) %>%
+  mutate(bar = rep(c(rep(Inf, 2), rep(0, 2)), n()/4))
+
+geo3 <- data2 %>%
+  filter(group == "geochem") %>%
+    mutate(facet = case_when(element %in% c("Ag", "Al", "As","B","Ba","Be","Bi","Ca","Cd","Ce","Co", "Cr", "Cs", "Cu", "Fe", "Ga", "Hf", "Hg", "In", "K", "La", "Li") ~ "Geomchemistry A-L",
+                          element %in% c("Mg", "Mn", "Mo", "Nb", "Ni", "P", "Pb", "Rb", "S", "Sb", "Sc", "Se", "Sn", "Sr", "Te", "Th", "Tl", "U", "V", "Y", "Zn", "Zr") ~ "Geomchemistry M-Z",
+                          TRUE~ NA)) %>%
+  mutate(bar = rep(c(rep(-Inf, 2), rep(0, 2)), n()/4))
+
+```  
+
+### plot
+```{r}
+#| label: suppfig-geo_summary
+#| fig-cap: Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values inidicate the CV.
+ 
+p1 <- ggplot() +
+  theme_bw(base_size = 12) +
+  geom_bar(data = geo2, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_bar(data = geo3, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_errorbar(data = geo2, aes(x = element, ymin = mean - sd, ymax = mean + sd, colour = site), width = .1, position = position_dodge(width = 0.5)) +
+  geom_point(data = filter(geo, variable == "mean"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 1.5) +
+  geom_point(data = filter(geo, variable == "max"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 1.5) +
+  geom_point(data = filter(geo, variable == "min"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 1.5) +
+  geom_text(data = geo3, aes(x = element, y = spacer, colour = site, label = formatC(cv, digits = 1, format = "f")), show.legend = FALSE, size = 3) +
+  guides(color=guide_legend(override.aes=list(shape=NA))) +
+  scale_shape_manual(values=c(3, 19, 4)) +
+  scale_color_viridis_d(begin = 0.2, end = 0.7) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank()) +
+  labs(y = "Scaled Concentration", x = "Element") +
+  facet_wrap(~facet, ncol = 1, scales = "free_x")
+
+#ggsave(plot = p1, filename = here::here("./images/geo_summary.png"))
+```
+
+
+## Plot2
+```{r}
+ggplot(data = filter(data, group == "geochem"), aes(x = site, y = value, fill = site))+
+  geom_boxplot() +
+  theme_bw(base_size = 12) +
+  scale_fill_viridis_d(begin = 0.2, end = 0.7) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  labs(x = "Site", y = "Concentration") +
+  facet_wrap(~element, scales = "free_y")
+```
+
+### Table
+```{r}
+geo_tab <- data_summary %>%
+  filter(group == "geochem") %>%
+  select(-group) 
+
+knitr::kable(geo_tab, digits = 3)
+```
+## Colour
+### plot prep
+```{r}
+colour <- data2 %>%
+  filter(group == "colour") %>%
+  mutate(element = str_extract(element, ("[:alpha:](?=_)"))) %>% # remove _col
+  mutate(bar = c(rep(c(rep(Inf, 2), rep(0, 2)), 7), Inf, Inf)) %>%
+  pivot_longer(cols = c(mean, max, min), names_to = "variable") 
+
+colour2 <- data2 %>%
+  filter(group == "colour") %>%
+  mutate(element = str_extract(element, ("[:alpha:](?=_)"))) %>% # remove _col
+  mutate(bar = c(rep(c(rep(Inf, 2), rep(0, 2)), 7), Inf, Inf))
+
+colour3 <- data2 %>%
+  filter(group == "colour") %>%
+  mutate(element = str_extract(element, ("[:alpha:](?=_)"))) %>% # remove _col
+  mutate(bar = c(rep(c(rep(-Inf, 2), rep(0, 2)), 7), -Inf, -Inf))
+
+```  
+
+### plot
+```{r}
+#| label: suppfig-colour_summary
+#| fig-cap: Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values inidicate the CV.
+
+p2 <- ggplot() +
+  theme_bw(base_size = 12) +
+  geom_bar(data = colour2, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_bar(data = colour3, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_errorbar(data = colour2, aes(x = element, ymin = mean - sd, ymax = mean + sd, colour = site), width = .1, position = position_dodge(width = 0.5)) +
+  geom_point(data = filter(colour, variable == "mean"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_point(data = filter(colour, variable == "max"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_point(data = filter(colour, variable == "min"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_text(data = colour3, aes(x = element, y = spacer, colour = site, label = formatC(cv, digits = 1, format = "f")), show.legend = FALSE, size = 4) +
+  guides(color=guide_legend(override.aes=list(shape=NA))) +
+  scale_shape_manual(values=c(3, 19, 4)) +
+  scale_color_viridis_d(begin = 0.2, end = 0.7) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank()) +
+  labs(y = "Scaled value", x = "Colour coefficient") 
+
+#ggsave(plot = p2, filename = here::here("./images/colour_summary.png"))
+```
+
+## Plot2
+```{r}
+ggplot(data = filter(data, group == "colour"), aes(x = site, y = value, fill = site))+
+  geom_boxplot() +
+  theme_bw(base_size = 12) +
+  scale_fill_viridis_d(begin = 0.2, end = 0.7) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  labs(x = "Site", y = "Value") +
+  facet_wrap(~element, scales = "free_y")
+```
+
+### Table
+```{r}
+colour_tab <- data_summary %>%
+  filter(group == "colour") %>%
+  mutate(element = str_extract(element, ("[:alpha:](?=_)"))) %>% # remove _col
+  select(-group) 
+
+knitr::kable(colour_tab, digits = 3)
+```
+
+## PSA and organic matter
+### plot prep
+```{r}
+psa <- data2 %>%
+  filter(group %in% c("psa", "organic")) %>%
+  mutate(bar = c(rep(c(rep(Inf, 2), rep(0, 2)), 1), Inf, Inf)) %>%
+  pivot_longer(cols = c(mean, max, min), names_to = "variable") 
+
+psa2 <- data2 %>%
+  filter(group %in% c("psa", "organic")) %>%
+  mutate(bar = c(rep(c(rep(Inf, 2), rep(0, 2)), 1), Inf, Inf)) 
+
+psa3 <- data2 %>%
+  filter(group %in% c("psa", "organic")) %>%
+  mutate(bar = c(rep(c(rep(-Inf, 2), rep(0, 2)), 1), -Inf, -Inf))
+
+```  
+
+### plot
+```{r}
+ggplot() +
+  theme_bw(base_size = 12) +
+  geom_bar(data = psa2, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_bar(data = psa3, aes(x=element, y = bar), fill ="grey20", position="identity", stat = "identity", alpha = 0.1) +
+  geom_errorbar(data = psa2, aes(x = element, ymin = mean - sd, ymax = mean + sd, colour = site), width = .2, position = position_dodge(width = 0.5)) +
+  geom_point(data = filter(psa, variable == "mean"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_point(data = filter(psa, variable == "max"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_point(data = filter(psa, variable == "min"), aes(x = element, y = value, colour = site, shape = variable), position = position_dodge(width = 0.5), show.legend = TRUE, size = 2) +
+  geom_text(data = psa3, aes(x = element, y = spacer, colour = site, label = formatC(cv, digits = 1, format = "f")), show.legend = FALSE, size = 5) +
+  guides(color=guide_legend(override.aes=list(shape=NA))) +
+  scale_shape_manual(values=c(3, 19, 4)) +
+  scale_color_viridis_d(begin = 0.2, end = 0.7) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank()) +
+  labs(y = "Scaled value", x = "Soil property") 
+```
+
+
+## Plot2
+```{r}
+ggplot(data = filter(data, group %in% c("psa", "organic")), aes(x = site, y = value, fill = site))+
+  geom_boxplot() +
+  theme_bw(base_size = 12) +
+  scale_fill_viridis_d(begin = 0.2, end = 0.7) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  labs(x = "Site", y = "Value") +
+  facet_wrap(~element, scales = "free_y")
+```
+
+### Table
+```{r}
+psa_tab <- data_summary %>%
+  filter(group %in% c("psa", "organic")) %>%
+  select(-group) 
+
+knitr::kable(psa_tab, digits = 3)
+```
+
+```{r}
+summary_tab <- data_summary %>%
+  filter(site == "Forest"& element %in% c("h_col", "L_col", "v_col", "Li", "Nb", "Zn", "ssa", "organic") | site == "Agriculture" & element %in% c("a_col", "c_col", "h_col", "Ca", "Mo", "U", "ssa", "organic")) %>%
+  mutate(element = fct_relevel(element, c("Li", "Nb", "Zn","Ca", "Mo", "U", "a_col", "c_col","h_col", "L_col", "v_col", "ssa", "organic"))) %>%
+  arrange(element) %>%
+  mutate(element = as.character(fct_recode(element, "*h**" = "h_col", "*a**" = "a_col", "*c**" = "c_col", "*L*" = "L_col", "*v**" = "v_col", "SSA" = "ssa", "Org" = "organic"))) %>%
+  rename("Element" = "element", "Mean" = "mean", "SD" = "sd", "Max" = "max", "Min" = "min", "Skewness" = "skewness", "CV" = "cv")
+```
+
+```{r}
+#| label: tbl-univariate-summary
+#| tbl-cap: Summary statistics for for six examples of for six examples of geochemical and colour soil properties, specific surface area, and organic matter content for each site.
+
+summary_tab |>
+  group_by(site) |>
+  select(-group, -se) |>
+  gt() |>
+  fmt_markdown(columns = Element)|>
+  fmt_number(decimals = 2) |>
+  #cols_align(align = "left") |>
+  tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
+  tab_options(column_labels.font.weight = "bold")
+```
+
+```{r}
+forest_data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) %>%
+  as.data.frame(resample(rast(data), rast(extent = ext(rast(data)), resolution = 10))) %>% ##Resolution from 1m by 1m to 10m by 10m
+  pivot_longer(cols = elevation:vertical_distance_channel_network, names_to = "property", values_to = "value") %>%
+  group_by(property) %>%
+  summarise(Mean = mean(value, na.rm = T),
+            SD = sd(value, na.rm = T),
+            Max = max(value, na.rm = T),
+            Min = min(value, na.rm = T),
+            #Se = sd(value)/ sqrt(length(value)),
+            Skewness = moments::skewness(value, na.rm = TRUE),
+            CV = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE) * 100, .groups = "drop") %>%
+  mutate(site = "Forest")
+
+ag_data <- read_csv(here::here("./notebooks/ag_terrain_data.csv"), show_col_types = FALSE) %>%
+  as.data.frame(resample(rast(data), rast(extent = ext(rast(data)), resolution = 10))) %>% ##Resolution from 1m by 1m to 10m by 10m
+  pivot_longer(cols = elevation:vertical_distance_channel_network, names_to = "property", values_to = "value") %>%
+  group_by(property) %>%
+  summarise(Mean = mean(value, na.rm = T),
+            SD = sd(value, na.rm = T),
+            Max = max(value, na.rm = T),
+            Min = min(value, na.rm = T),
+            #Se = sd(value)/ sqrt(length(value)),
+            Skewness = moments::skewness(value, na.rm = TRUE),
+            CV = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE) * 100, .groups = "drop") %>%
+  mutate(site = "Agriculture")
+
+terrain_summary <- forest_data %>%
+  bind_rows(ag_data) %>%
+  mutate(property = fct_relevel(property, c("li", "nb", "zn","ca", "mo", "u", "a_col", "c_col","h_col", "l_col", "v_col", "ssa", "organic", "elevation", "relative_slope_position", "vertical_distance_channel_network", "saga_wetness_index", "catchment_area", "profile_curvature", "plan_curvature"))) %>%
+  arrange(property) %>%
+  mutate(property = as.character(fct_recode(property, "*h**" = "h_col", "*a**" = "a_col", "*c**" = "c_col", "*L*" = "l_col", "*v**" = "v_col", "SSA" = "ssa", "Org" = "organic", "Li" = "li", "Nb" = "nb", "Zn" = "zn", "Ca" = "ca", "Mo" = "mo", "U" = "u", "Elevation" = "elevation", "Catchment Area" = "catchment_area", "Plan Curvature" = "plan_curvature", "Profile Curvature" = "profile_curvature", "Rel. Slope Position" = "relative_slope_position", "SAGA Wetness Index" = "saga_wetness_index", "Vert. Dist. Channel" = "vertical_distance_channel_network")))
+  
+```
+
+```{r}
+#| label: tbl-univariate2-summary
+#| tbl-cap: Summary statistics for the interpoloated values (10m resolution) for six examples of geochemical and colour soil properties, specific surface area, organic matter content, and seven terrain attributes for each site.
+
+terrain_summary |>
+  rename("Property" = "property") |>
+  group_by(site) |>
+  select(-site) |>
+  gt() |>
+  fmt_markdown(columns = Property)|>
+  fmt_number(decimals = 2) |>
+  #cols_align(align = "left") |>
+  tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
+  tab_options(column_labels.font.weight = "bold")
+```
+
+```{r}
+temp <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) %>%
+  as.data.frame(resample(rast(data), rast(extent = ext(rast(data)), resolution = 10)))
+summary(temp)
+```
+
