@@ -2,16 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.24">
+<meta name="generator" content="quarto-1.5.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Steve Purves">
-<meta name="author" content="Rowan Cockett">
-<meta name="dcterms.date" content="2024-03-14">
-<meta name="keywords" content="La Palma, Earthquakes">
+<meta name="author" content="Maria Luna">
+<meta name="author" content="Alexander J Koiter">
+<meta name="author" content="Taras E Lychuk">
+<meta name="author" content="Arnie Waddel">
+<meta name="author" content="Alan Moulin">
+<meta name="keywords" content="Soil geochemistry, Soil colour, Spatial analysis">
 
-<title>La Palma Earthquakes</title>
+<title>Investigating the Spatial Variability in Soil Geochemical and Colour Properties Across Two Contrasting Land Uses</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -28,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,55 +61,19 @@ div.csl-indent {
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    document.body.classList.add('hypothesis-enabled');
-  });
-</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta name="citation_title" content="La Palma Earthquakes">
-<meta name="citation_abstract" content="In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). ...
+<meta name="citation_title" content="Investigating the Spatial Variability in Soil Geochemical and Colour Properties Across Two Contrasting Land Uses">
+<meta name="citation_abstract" content="Quantification and accurate assessment of the spatial variability and distribution of soil physical and biogeochemical properties (fingerprints) are vital components of agri-environmental research and modeling, including sediment source fingerprinting. Understanding the distribution of soil properties at a range of spatial scales is crucial in the development of appropriate, reliable, and efficient sampling campaigns. This study was aimed to investigate the spatial variability in soil geochemical and colour (i.e., spectral reflectance) fingerprints across two contrasting land uses. The main objectives of this study are to: 1) quantify the spatial variability of geochemical and colour fingerprint properties at a field-scale (~ 40 ha) across agricultural and forested sites; 2) evaluate the spatial variability and distribution of soil fingerprint properties and its relation to a range of terrain attributes (e.g., slope); and 3) identify the possible sources of variation in each land use, primarily environmental factors. A combination of univariate analysis and geostatistical methods were applied to analyze the soil geochemistry and colour properties. This information was used to both quantify and assess the variability in commonly used fingerprints. Terrain attributes derived from digital elevation model (DEM) were used to investigate spatial variation of soil geochemical and colour fingerprint properties. The ability of terrain attributes to explain the observed variability in soil fingerprints played an important role across all properties. The present study suggest that kriging interpolation can directly reveal the spatial distribution of soil fingerprint properties and quantify the variability at a field-scale.
 ">
-<meta name="citation_keywords" content="La Palma,Earthquakes">
-<meta name="citation_author" content="Steve Purves">
-<meta name="citation_author" content="Rowan Cockett">
-<meta name="citation_publication_date" content="2024-03-14">
-<meta name="citation_cover_date" content="2024-03-14">
-<meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-03-14">
+<meta name="citation_keywords" content="Soil geochemistry,Soil colour,Spatial analysis">
+<meta name="citation_author" content="Maria Luna">
+<meta name="citation_author" content="Alexander J Koiter">
+<meta name="citation_author" content="Taras E Lychuk">
+<meta name="citation_author" content="Arnie Waddel">
+<meta name="citation_author" content="Alan Moulin">
 <meta name="citation_language" content="en">
-<meta name="citation_journal_title" content="Earth and Space Science">
+<meta name="citation_journal_title" content="TBD">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
 </head>
 
@@ -117,7 +82,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">La Palma Earthquakes</h1>
+      <h1 class="title">Investigating the Spatial Variability in Soil Geochemical and Colour Properties Across Two Contrasting Land Uses</h1>
           </div>
 
     
@@ -125,22 +90,46 @@ window.Quarto = {
       <div class="quarto-title-meta-column-start">
             <div class="quarto-title-meta-author">
           <div class="quarto-title-meta-heading">Authors</div>
-          <div class="quarto-title-meta-heading">Affiliation</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
           
                 <div class="quarto-title-meta-contents">
-            <p class="author">Steve Purves <a href="mailto:steve@curvenote.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0760-5497" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            <p class="author">Maria Luna <a href="mailto:LUNAMIMA56@brandonu.ca" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0004-3739-5103" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
                 <div class="quarto-title-meta-contents">
                     <p class="affiliation">
-                        Curvenote
+                        Brandon University, Masters in Environmental and Life Sciences
                       </p>
                   </div>
                       <div class="quarto-title-meta-contents">
-            <p class="author">Rowan Cockett <a href="https://orcid.org/0000-0002-7859-8394" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            <p class="author">Alexander J Koiter <a href="mailto:koitera@brandonu.ca" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-9355-9561" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
                 <div class="quarto-title-meta-contents">
                     <p class="affiliation">
-                        Curvenote
+                        Brandon University, Department of Geography and Environment
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Taras E Lychuk <a href="mailto:taras.lychuk@AGR.GC.CA" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Agriculture and Agri-Food Canada, Brandon Research and Development Centre
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Arnie Waddel <a href="mailto:arnie.waddell@AGR.GC.CA" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Agriculture and Agri-Food Canada, Brandon Research and Development Centre
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Alan Moulin <a href="mailto:apmaafc7788@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Agriculture and Agri-Food Canada, Brandon Research and Development Centre
                       </p>
                   </div>
                     </div>
@@ -148,31 +137,31 @@ window.Quarto = {
         <div class="quarto-title-meta">
 
                       
+          
                 <div>
-            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-heading">Modified</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">March 14, 2024</p>
+              <p class="date-modified">Friday, March 22, 2024</p>
             </div>
           </div>
-          
                 
               </div>
       </div>
       <div class="quarto-title-meta-column-end quarto-other-formats-target">
-      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (agu)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (elsevier)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
     </div>
 
     <div>
       <div class="abstract">
         <div class="block-title">Abstract</div>
-        <p>In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). …</p>
+        <p>Quantification and accurate assessment of the spatial variability and distribution of soil physical and biogeochemical properties (fingerprints) are vital components of agri-environmental research and modeling, including sediment source fingerprinting. Understanding the distribution of soil properties at a range of spatial scales is crucial in the development of appropriate, reliable, and efficient sampling campaigns. This study was aimed to investigate the spatial variability in soil geochemical and colour (i.e., spectral reflectance) fingerprints across two contrasting land uses. The main objectives of this study are to: 1) quantify the spatial variability of geochemical and colour fingerprint properties at a field-scale (~ 40 ha) across agricultural and forested sites; 2) evaluate the spatial variability and distribution of soil fingerprint properties and its relation to a range of terrain attributes (e.g., slope); and 3) identify the possible sources of variation in each land use, primarily environmental factors. A combination of univariate analysis and geostatistical methods were applied to analyze the soil geochemistry and colour properties. This information was used to both quantify and assess the variability in commonly used fingerprints. Terrain attributes derived from digital elevation model (DEM) were used to investigate spatial variation of soil geochemical and colour fingerprint properties. The ability of terrain attributes to explain the observed variability in soil fingerprints played an important role across all properties. The present study suggest that kriging interpolation can directly reveal the spatial distribution of soil fingerprint properties and quantify the variability at a field-scale.</p>
       </div>
     </div>
 
     <div>
       <div class="keywords">
         <div class="block-title">Keywords</div>
-        <p>La Palma, Earthquakes</p>
+        <p>Soil geochemistry, Soil colour, Spatial analysis</p>
       </div>
     </div>
 
@@ -185,11 +174,19 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">2</span> Methods</a>
+  <ul class="collapse">
+  <li><a href="#site-description" id="toc-site-description" class="nav-link" data-scroll-target="#site-description"><span class="header-section-number">2.1</span> Site description</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">3</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#univariate-summary" id="toc-univariate-summary" class="nav-link" data-scroll-target="#univariate-summary"><span class="header-section-number">3.1</span> Univariate summary</a></li>
+  <li><a href="#spatial-analysis" id="toc-spatial-analysis" class="nav-link" data-scroll-target="#spatial-analysis"><span class="header-section-number">3.2</span> Spatial analysis</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#supplemental-materials" id="toc-supplemental-materials" class="nav-link" data-scroll-target="#supplemental-materials">Supplemental materials</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="notebooks/explore-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/a_col_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>a* (opponent red–green scales) Ag site RF_Regression</a></li><li><a href="notebooks/c_col_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>c* (CIE hue) Ag site RF_Regression</a></li><li><a href="notebooks/Ca_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Calcium Ag site RF_Regression</a></li><li><a href="notebooks/h_col_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>h* (CIE chroma) Ag site RF_Regression</a></li><li><a href="notebooks/h_col_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>h* (CIE chroma) Forest site RF_Regression</a></li><li><a href="notebooks/l_col_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>L (CIE metric lightness) Forest site RF_Regression</a></li><li><a href="notebooks/Li_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Lithium Forest site RF_Regression</a></li><li><a href="notebooks/Mo_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Molybdenum Ag site RF_Regression</a></li><li><a href="notebooks/Nb_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Niobium Forest site RF_Regression</a></li><li><a href="notebooks/RF_results.embed-preview.html"><i class="bi bi-journal-code"></i>Random Forest results</a></li><li><a href="notebooks/location_map.embed-preview.html"><i class="bi bi-journal-code"></i>Research Site Locations</a></li><li><a href="notebooks/semivariogram.embed-preview.html"><i class="bi bi-journal-code"></i>Semivariograms</a></li><li><a href="notebooks/soil_property_maps.embed-preview.html"><i class="bi bi-journal-code"></i>Soil property mapping</a></li><li><a href="notebooks/univariate_summary.embed-preview.html"><i class="bi bi-journal-code"></i>Univariate summary</a></li><li><a href="notebooks/U_Ag_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Uranium Ag site RF_Regression</a></li><li><a href="notebooks/v_col_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>v* (opponent blue–yellow scales) Forest site RF_Regression</a></li><li><a href="notebooks/Zn_Forest_RF_regression-preview.html"><i class="bi bi-journal-code"></i>Zinc Forest site RF_Regression</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -202,139 +199,2175 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<div id="cell-fig-timeline" class="cell" data-warning.hidden="true" data-message.hidden="true">
-<div class="cell-output-display">
-<div id="fig-timeline" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An event plot of the years of the last 8 eruptions on La Palma.">
+</section>
+<section id="methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
+<section id="site-description" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="site-description"><span class="header-section-number">2.1</span> Site description</h3>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-location_map" class="cell">
+<div class="cell-output cell-output-display">
+<div id="fig-location_map" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Timeline of recent earthquakes on La Palma"><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." width="576"></a>
+<div aria-describedby="fig-location_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-location_map-fig-location_map-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Map showing the location of the study sites within Canada, and the regional land use and topography."><img src="index_files/figure-html/notebooks-location_map-fig-location_map-output-2.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Timeline of recent earthquakes on La Palma
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-location_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Map showing the location of the study sites within Canada, and the regional land use and topography.
 </figcaption>
 </figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#cell-fig-timeline">Source: Article Notebook</a></div>
-<p>Based on data up to and including 1971, eruptions on La Palma happen every 79.8 years on average.</p>
-<p>Studies of the magma systems feeding the volcano, such as <span class="citation" data-cites="marrero2019">Marrero et al. (<a href="#ref-marrero2019" role="doc-biblioref">2019</a>)</span>, have proposed that there are two main magma reservoirs feeding the Cumbre Vieja volcano; one in the mantle (30-40km depth) which charges and in turn feeds a shallower crustal reservoir (10-20km depth).</p>
-<p>Eight eruptions have been recorded since the late 1400s (<a href="#fig-timeline" class="quarto-xref">Figure&nbsp;1</a>).</p>
-<p>Data and methods are discussed in <a href="#sec-data-methods" class="quarto-xref">Section&nbsp;2</a>.</p>
-<p>Let <span class="math inline">\(x\)</span> denote the number of eruptions in a year. Then, <span class="math inline">\(x\)</span> can be modeled by a Poisson distribution</p>
-<p><span id="eq-poisson"><span class="math display">\[
-p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
-\tag{1}\]</span></span></p>
-<p>where <span class="math inline">\(\lambda\)</span> is the rate of eruptions per year. Using <a href="#eq-poisson" class="quarto-xref">Equation&nbsp;1</a>, the probability of an eruption in the next <span class="math inline">\(t\)</span> years can be calculated.</p>
-<div id="tbl-history" class="quarto-float anchored">
+</div>
+</div>
+</section>
+</section>
+<section id="results" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="results"><span class="header-section-number">3</span> Results</h2>
+<section id="univariate-summary" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="univariate-summary"><span class="header-section-number">3.1</span> Univariate summary</h3>
+<div class="quarto-embed-nb-cell">
+<div class="cell">
+<div id="tbl-univariate-summary" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Recent historic eruptions on La Palma
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-univariate-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary statistics for for six examples of for six examples of geochemical and colour soil properties, specific surface area, and organic matter content for each site.
 </figcaption>
-<div aria-describedby="tbl-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<div aria-describedby="tbl-univariate-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<div>
+<div id="qcthiomcmo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qcthiomcmo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qcthiomcmo thead, #qcthiomcmo tbody, #qcthiomcmo tfoot, #qcthiomcmo tr, #qcthiomcmo td, #qcthiomcmo th {
+  border-style: none;
+}
+
+#qcthiomcmo p {
+  margin: 0;
+  padding: 0;
+}
+
+#qcthiomcmo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qcthiomcmo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qcthiomcmo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qcthiomcmo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qcthiomcmo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qcthiomcmo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qcthiomcmo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qcthiomcmo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qcthiomcmo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qcthiomcmo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qcthiomcmo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qcthiomcmo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qcthiomcmo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qcthiomcmo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qcthiomcmo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcthiomcmo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qcthiomcmo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qcthiomcmo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qcthiomcmo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcthiomcmo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qcthiomcmo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcthiomcmo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qcthiomcmo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcthiomcmo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qcthiomcmo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qcthiomcmo .gt_left {
+  text-align: left;
+}
+
+#qcthiomcmo .gt_center {
+  text-align: center;
+}
+
+#qcthiomcmo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qcthiomcmo .gt_font_normal {
+  font-weight: normal;
+}
+
+#qcthiomcmo .gt_font_bold {
+  font-weight: bold;
+}
+
+#qcthiomcmo .gt_font_italic {
+  font-style: italic;
+}
+
+#qcthiomcmo .gt_super {
+  font-size: 65%;
+}
+
+#qcthiomcmo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qcthiomcmo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qcthiomcmo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qcthiomcmo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qcthiomcmo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qcthiomcmo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qcthiomcmo .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
 <thead>
-<tr class="header">
-<th>Name</th>
-<th>Year</th>
+<tr class="header gt_col_headings">
+<th id="Element" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Element</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="SD" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">SD</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Skewness" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Skewness</th>
+<th id="CV" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">CV</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td>Current</td>
-<td>2021</td>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="7" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even">
-<td>Teneguía</td>
-<td>1971</td>
-</tr>
-<tr class="odd">
-<td>Nambroque</td>
-<td>1949</td>
-</tr>
-<tr class="even">
-<td>El Charco</td>
-<td>1712</td>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p>Li</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">6.47</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.90</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">8.60</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">4.30</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.02</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">13.89</td>
 </tr>
 <tr class="odd">
-<td>Volcán San Antonio</td>
-<td>1677</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p>Nb</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.06</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">0.56</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">0.17</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.68</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">17.10</td>
 </tr>
 <tr class="even">
-<td>Volcán San Martin</td>
-<td>1646</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p>Zn</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">109.55</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">53.27</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">318.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">42.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">1.43</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">48.62</td>
 </tr>
 <tr class="odd">
-<td>Tajuya near El Paso</td>
-<td>1585</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p><em>h</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">1.13</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.05</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">1.23</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">1.06</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">4.13</td>
 </tr>
 <tr class="even">
-<td>Montaña Quemada</td>
-<td>1492</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p><em>L</em></p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">47.45</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">6.35</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">59.48</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">34.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.02</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">13.37</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p><em>v</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">4.79</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">1.04</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">6.62</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">2.77</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.31</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">21.74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p>SSA</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">763.48</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">133.48</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">1,032.61</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">492.59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.08</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">17.48</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Element"><div class="gt_from_md">
+<p>Org</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">11.55</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">5.99</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">26.99</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">1.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">51.89</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="7" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p>Ca</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">4.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">2.19</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">8.78</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.95</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.28</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">54.66</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p>Mo</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.93</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.41</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">2.35</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.47</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">1.18</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">43.95</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p>U</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.48</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.19</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">1.94</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.20</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">12.64</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p><em>a</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">3.38</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.32</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">4.15</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">2.59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.03</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">9.53</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p><em>c</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">9.47</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.02</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">11.32</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">7.17</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.19</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">10.74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p><em>h</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.20</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.01</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">1.23</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.18</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.19</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">1.12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p>SSA</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1,853.02</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">187.32</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">2,195.72</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1,458.53</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">10.11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Element"><div class="gt_from_md">
+<p>Org</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">8.51</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">11.36</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">5.86</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.07</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">16.13</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
 </div>
 </figure>
 </div>
-<p><a href="#tbl-history" class="quarto-xref">Table&nbsp;1</a> summarises the eruptions recorded since the colonization of the islands by Europeans in the late 1400s.</p>
-<div id="fig-map" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/la-palma-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Map of La Palma"><img src="images/la-palma-map.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Map of La Palma
-</figcaption>
-</figure>
 </div>
-<p>La Palma is one of the west most islands in the Volcanic Archipelago of the Canary Islands (<a href="#fig-map" class="quarto-xref">Figure&nbsp;2</a>).</p>
 <div class="quarto-embed-nb-cell">
-<div id="cell-fig-spatial-plot" class="cell" data-message.hidden="true" data-warning.hidden="true">
+<div class="cell">
+<div id="tbl-univariate2-summary" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-univariate2-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) for six examples of geochemical and colour soil properties, specific surface area, organic matter content, and seven terrain attributes for each site.
+</figcaption>
+<div aria-describedby="tbl-univariate2-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Locations of earthquakes on La Palma since 2017"><img src="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
+<div>
+<div id="vjkgnozpaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vjkgnozpaa table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vjkgnozpaa thead, #vjkgnozpaa tbody, #vjkgnozpaa tfoot, #vjkgnozpaa tr, #vjkgnozpaa td, #vjkgnozpaa th {
+  border-style: none;
+}
+
+#vjkgnozpaa p {
+  margin: 0;
+  padding: 0;
+}
+
+#vjkgnozpaa .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vjkgnozpaa .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vjkgnozpaa .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vjkgnozpaa .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vjkgnozpaa .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vjkgnozpaa .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vjkgnozpaa .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vjkgnozpaa .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vjkgnozpaa .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vjkgnozpaa .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vjkgnozpaa .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vjkgnozpaa .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vjkgnozpaa .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vjkgnozpaa .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vjkgnozpaa .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjkgnozpaa .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vjkgnozpaa .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vjkgnozpaa .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vjkgnozpaa .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjkgnozpaa .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vjkgnozpaa .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjkgnozpaa .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vjkgnozpaa .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjkgnozpaa .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vjkgnozpaa .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vjkgnozpaa .gt_left {
+  text-align: left;
+}
+
+#vjkgnozpaa .gt_center {
+  text-align: center;
+}
+
+#vjkgnozpaa .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vjkgnozpaa .gt_font_normal {
+  font-weight: normal;
+}
+
+#vjkgnozpaa .gt_font_bold {
+  font-weight: bold;
+}
+
+#vjkgnozpaa .gt_font_italic {
+  font-style: italic;
+}
+
+#vjkgnozpaa .gt_super {
+  font-size: 65%;
+}
+
+#vjkgnozpaa .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vjkgnozpaa .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vjkgnozpaa .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vjkgnozpaa .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vjkgnozpaa .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vjkgnozpaa .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vjkgnozpaa .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="SD" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">SD</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Skewness" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Skewness</th>
+<th id="CV" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">CV</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="7" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Li</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">6.44</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.63</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">8.57</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">4.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.16</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">9.73</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Nb</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.03</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">0.43</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">0.29</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.32</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">8.32</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Zn</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">111.46</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">43.21</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">317.76</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">42.15</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">1.11</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">38.76</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p><em>h</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">1.13</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.04</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">1.23</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">1.06</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.30</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">3.38</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p><em>L</em></p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">47.25</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">4.72</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">59.48</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">34.38</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.10</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">9.98</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p><em>v</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">4.78</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.73</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">6.62</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">2.77</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.28</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">15.28</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>SSA</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">760.40</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">120.58</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">1,102.95</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">483.70</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.12</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">15.86</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Org</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">11.53</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">1.97</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">16.13</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">7.37</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.12</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">17.10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Elevation</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">369.28</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">3.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">377.24</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">358.29</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.21</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">0.90</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Rel. Slope Position</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.22</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.26</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">1.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−0.12</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">1.55</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">116.75</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Vert. Dist. Channel</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.47</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.57</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">4.90</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−0.67</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">2.75</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">122.69</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>SAGA Wetness Index</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">6.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">1.26</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">9.96</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">0.09</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.86</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">20.92</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Catchment Area</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">565.06</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">5,109.73</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">209,263.22</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">0.67</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">17.83</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">904.28</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Profile Curvature</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.03</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">0.45</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−0.47</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−0.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">−15,245.25</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><div class="gt_from_md">
+<p>Plan Curvature</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.01</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">0.30</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−0.26</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">0.56</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">3,382.34</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="7" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Ca</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">4.10</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">2.09</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">9.11</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.03</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.09</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">51.01</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Mo</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.89</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.31</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">1.96</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.51</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.76</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">35.03</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>U</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.46</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.14</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">1.81</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.24</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.25</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">9.24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p><em>a</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">3.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.22</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">3.93</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">2.77</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.03</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">6.60</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p><em>c</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">9.35</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.76</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">11.08</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">7.39</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.16</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">8.17</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p><em>h</em>*</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.20</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.01</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">1.23</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.18</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.13</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">0.72</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>SSA</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1,867.79</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">129.71</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">2,056.35</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1,579.16</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.43</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">6.94</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Org</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">8.62</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.68</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">10.30</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">7.08</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">7.89</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Elevation</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">309.92</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">311.82</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">309.01</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.62</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">0.19</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Rel. Slope Position</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.72</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.34</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">28.79</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">−33.19</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−3.62</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">47.84</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Vert. Dist. Channel</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.06</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.04</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">0.33</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">1.07</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">73.73</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>SAGA Wetness Index</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">9.64</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.72</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">11.27</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">7.63</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.11</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">7.43</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Catchment Area</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">475.21</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1,884.43</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">41,848.99</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">1.05</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">10.24</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">396.55</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Profile Curvature</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">−0.15</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">−5,332.23</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><div class="gt_from_md">
+<p>Plan Curvature</p>
+</div></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">0.00</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.23</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">27,643.82</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="spatial-analysis" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="spatial-analysis"><span class="header-section-number">3.2</span> Spatial analysis</h3>
+<div class="quarto-embed-nb-cell">
+<div class="cell">
+<div id="tbl-geochem-semivariogram" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-geochem-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models for six examples of geochemical and colour fingerprint properties for each site.
+</figcaption>
+<div aria-describedby="tbl-geochem-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<div>
+<div id="tuiscelksv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tuiscelksv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tuiscelksv thead, #tuiscelksv tbody, #tuiscelksv tfoot, #tuiscelksv tr, #tuiscelksv td, #tuiscelksv th {
+  border-style: none;
+}
+
+#tuiscelksv p {
+  margin: 0;
+  padding: 0;
+}
+
+#tuiscelksv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tuiscelksv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tuiscelksv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tuiscelksv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tuiscelksv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tuiscelksv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tuiscelksv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tuiscelksv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tuiscelksv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tuiscelksv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tuiscelksv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tuiscelksv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tuiscelksv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tuiscelksv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tuiscelksv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tuiscelksv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tuiscelksv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tuiscelksv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tuiscelksv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tuiscelksv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tuiscelksv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tuiscelksv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tuiscelksv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tuiscelksv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tuiscelksv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tuiscelksv .gt_left {
+  text-align: left;
+}
+
+#tuiscelksv .gt_center {
+  text-align: center;
+}
+
+#tuiscelksv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tuiscelksv .gt_font_normal {
+  font-weight: normal;
+}
+
+#tuiscelksv .gt_font_bold {
+  font-weight: bold;
+}
+
+#tuiscelksv .gt_font_italic {
+  font-style: italic;
+}
+
+#tuiscelksv .gt_super {
+  font-size: 65%;
+}
+
+#tuiscelksv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tuiscelksv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tuiscelksv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tuiscelksv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tuiscelksv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tuiscelksv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tuiscelksv .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
+<th id="Model<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Model<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="Nugget (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
+<th id="Sill (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co)</th>
+<th id="Range (m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
+<th id="C/(C + Co) (%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
+<th id="Class<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">R2</th>
+<th id="RMSE" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">RMSE</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="9" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Ca</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Model">Exp</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co)">1.49</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">72.52</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">0</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Class">S</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  R2">0.27</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  RMSE">1.8</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="9" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Ca</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Model">Exp</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co)">1.49</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">72.52</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">0</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Class">S</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  R2">0.27</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  RMSE">1.8</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="odd">
+<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Models are all isotropic.</td>
+</tr>
+<tr class="even">
+<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> S = strong spatial dependency (C/(C + Co) % &gt;75); M = moderate spatial dependency (C/(C + Co) % between 75 and 25).</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-ag_map" class="cell" data-fig-width="12" data-fig-asp="0.8">
+<div class="cell-output cell-output-display">
+<div id="fig-ag_map" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ag_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-soil_property_maps-fig-ag_map-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Kriged map of select colour (a*, c*, h*) and geochemical (Ca, Mo, U) properties across the agricultural site."><img src="index_files/figure-html/notebooks-soil_property_maps-fig-ag_map-output-1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ag_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Kriged map of select colour (<em>a*</em>, <em>c*</em>, <em>h*</em>) and geochemical (Ca, Mo, U) properties across the agricultural site.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<p><a href="#fig-spatial-plot" class="quarto-xref">Figure&nbsp;3</a> shows the location of recent Earthquakes on La Palma.</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-ag_map2" class="cell" data-fig-width="12" data-fig-asp="0.6">
+<div class="cell-output cell-output-display">
+<div id="fig-ag_map2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ag_map2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-soil_property_maps-fig-ag_map2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Kriged map of organic matter content (%), specific surface area (m2 kg-1), and elevation (m) across the agricultural site."><img src="index_files/figure-html/notebooks-soil_property_maps-fig-ag_map2-output-1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ag_map2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Kriged map of organic matter content (%), specific surface area (m<sup>2</sup> kg<sup>-1</sup>), and elevation (m) across the agricultural site.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-forest_map" class="cell" data-fig-width="12" data-fig-asp="0.8">
+<div class="cell-output cell-output-display">
+<div id="fig-forest_map" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-soil_property_maps-fig-forest_map-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Kriged map of select colour (h*, c*, v*) and geochemical (Li, Nb, Zn) properties across the forested site."><img src="index_files/figure-html/notebooks-soil_property_maps-fig-forest_map-output-1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Kriged map of select colour (<em>h*</em>, <em>c*</em>, <em>v*</em>) and geochemical (Li, Nb, Zn) properties across the forested site.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-forest_map2" class="cell" data-fig-width="12" data-fig-asp="0.6">
+<div class="cell-output cell-output-display">
+<div id="fig-forest_map2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest_map2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-soil_property_maps-fig-forest_map2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Kriged map of organic matter content (%), specific surface area (m2 kg-1), and elevation (m) across the forested site."><img src="index_files/figure-html/notebooks-soil_property_maps-fig-forest_map2-output-1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest_map2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Kriged map of organic matter content (%), specific surface area (m<sup>2</sup> kg<sup>-1</sup>), and elevation (m) across the forested site.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-RF-results" class="cell">
+<div class="cell-output cell-output-display">
+<div id="fig-rf-results" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rf-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-RF_results-fig-rf-results-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites."><img src="index_files/figure-html/notebooks-RF_results-fig-rf-results-output-1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rf-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="sec-data-methods" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</h2>
-</section>
-<section id="conclusion" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3</span> Conclusion</h2>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-marrero2019" class="csl-entry" role="listitem">
-Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares, Antonio Rodríguez-Losada, and R. Ortiz. 2019. <span>“Strategies for the Development of Volcanic Hazard Maps in Monogenetic Volcanic Fields: The Example of <span>La</span> <span>Palma</span> (<span>Canary</span> <span>Islands</span>).”</span> <em>Journal of Applied Volcanology</em> 8 (July). <a href="https://doi.org/10.1186/s13617-019-0085-5">https://doi.org/10.1186/s13617-019-0085-5</a>.
+<div id="refs" role="list">
+
 </div>
+</section>
+<section id="supplemental-materials" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="supplemental-materials">Supplemental materials</h2>
+<div id="ssuppfig-geo_summary">
+<p><a href="images/geo_summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/geo_summary.png" class="img-fluid"></a></p>
+<p>Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.</p>
+</div>
+<div id="ssuppfig-colour_summary">
+<p><a href="images/colour_summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/colour_summary.png" class="img-fluid"></a></p>
+<p>Summary statistics of all measured colour soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.</p>
 </div>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{purves2024,
-  author = {Purves, Steve and Cockett, Rowan},
-  title = {La {Palma} {Earthquakes}},
-  date = {2024-03-14},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{luna,
+  author = {Luna, Maria and J Koiter, Alexander and E Lychuk, Taras and
+    Waddel, Arnie and Moulin, Alan},
+  title = {Investigating the {Spatial} {Variability} in {Soil}
+    {Geochemical} and {Colour} {Properties} {Across} {Two} {Contrasting}
+    {Land} {Uses}},
   langid = {en},
-  abstract = {In September 2021, a significant jump in seismic activity
-    on the island of La Palma (Canary Islands, Spain) signaled the start
-    of a volcanic crisis that still continues at the time of writing.
-    Earthquake data is continually collected and published by the
-    Instituto Geográphico Nacional (IGN). ...}
+  abstract = {Quantification and accurate assessment of the spatial
+    variability and distribution of soil physical and biogeochemical
+    properties (fingerprints) are vital components of agri-environmental
+    research and modeling, including sediment source fingerprinting.
+    Understanding the distribution of soil properties at a range of
+    spatial scales is crucial in the development of appropriate,
+    reliable, and efficient sampling campaigns. This study was aimed to
+    investigate the spatial variability in soil geochemical and colour
+    (i.e., spectral reflectance) fingerprints across two contrasting
+    land uses. The main objectives of this study are to: 1) quantify the
+    spatial variability of geochemical and colour fingerprint properties
+    at a field-scale (\textasciitilde{} 40 ha) across agricultural and
+    forested sites; 2) evaluate the spatial variability and distribution
+    of soil fingerprint properties and its relation to a range of
+    terrain attributes (e.g., slope); and 3) identify the possible
+    sources of variation in each land use, primarily environmental
+    factors. A combination of univariate analysis and geostatistical
+    methods were applied to analyze the soil geochemistry and colour
+    properties. This information was used to both quantify and assess
+    the variability in commonly used fingerprints. Terrain attributes
+    derived from digital elevation model (DEM) were used to investigate
+    spatial variation of soil geochemical and colour fingerprint
+    properties. The ability of terrain attributes to explain the
+    observed variability in soil fingerprints played an important role
+    across all properties. The present study suggest that kriging
+    interpolation can directly reveal the spatial distribution of soil
+    fingerprint properties and quantify the variability at a
+    field-scale.}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-purves2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Purves, Steve, and Rowan Cockett. 2024. <span>“La Palma
-Earthquakes.”</span> Earth and Space Science. March 14, 2024.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-luna" class="csl-entry quarto-appendix-citeas" role="listitem">
+Luna, M., J Koiter, A., E Lychuk, T., Waddel, A., Moulin, A., n.d.
+Investigating the Spatial Variability in Soil Geochemical and Colour
+Properties Across Two Contrasting Land Uses [WWW Document]. TBD.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -372,18 +2405,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -415,7 +2437,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -747,7 +2791,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
