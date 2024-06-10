@@ -1,0 +1,111 @@
+---
+title: "Random Forest summary"
+author: "Alex Koiter"
+html-table-processing: none
+---
+
+## Load libraries
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(patchwork)
+  library(gt)
+})
+```
+
+```{r}
+imp_data <- read_csv(here::here("./notebooks/importance_data.csv")) %>%
+  rename("Terrain Attribute" = "Var.Names") %>%
+  mutate(`Terrain Attribute` = fct_recode(`Terrain Attribute`, "Elevation" = "elevation", 
+                                          "Catchment Area" = "catchment_area",
+                                          "Plan Curvature" = "plan_curvature",
+                                          "Profile Curvature" = "profile_curvature",
+                                          "Rel. Slope Position" = "relative_slope_position",
+                                          "SAGA Wetness Index" = "saga_wetness_index",
+                                          "Vert. Dist. Channel" = "channel_network_distance")) %>%
+  mutate(`Terrain Attribute` = fct_relevel(`Terrain Attribute`, "Elevation", "SAGA Wetness Index", "Rel. Slope Position", "Vert. Dist. Channel","Catchment Area", "Profile Curvature", "Plan Curvature")) %>%
+  mutate(property = fct_recode(property, "italic(`a*`)" = "a_col", "italic(`b*`)" = "b_col", "italic(`c*`)" = "c_col", "italic(`h*`)" = "h_col", "italic(`x`)" = "x_col")) %>%
+  mutate(property = fct_relevel(property, "Ca", "Co", "Cs", "Fe", "Li", "La", "Nb", "Ni", "Rb", "Sr", "italic(`a*`)", "italic(`b*`)", "italic(`c*`)", "italic(`h*`)", "italic(`x`)"))
+
+avg <- imp_data %>%
+  group_by(`Terrain Attribute`) %>%
+  summarise(total = mean(MSE_rank)) %>%
+  arrange(total) |>
+  mutate(MSE_rank = 1:n(),
+         property = "Overall")
+
+avg_site<- imp_data %>%
+  group_by(`Terrain Attribute`, site) %>%
+  summarise(total = mean(MSE_rank)) %>%
+  group_by(site) %>%
+  arrange(total) |>
+  mutate(MSE_rank = 1:n(),
+         property = site)
+
+overall <- avg_site %>%
+  bind_rows(avg) %>%
+  mutate(facet = "Average")
+
+g1 <- ggplot(data = imp_data, aes(x = as.factor(MSE_rank), y = property, fill = `Terrain Attribute`)) + 
+  geom_tile() +
+  theme_bw() +
+  viridis::scale_fill_viridis(discrete = TRUE) +
+  theme(axis.title.y = element_blank()) +
+  labs(x = "Importance Ranking \n(% Increase in Mean Squared Error)") +
+  scale_y_discrete(labels = scales::label_parse(), limits=rev, expand = c(0,0)) +
+  scale_x_discrete(expand = c(0,0)) +
+  facet_wrap(~site, ncol = 1, scales = "free_y", strip.position = "right")
+
+g2 <- ggplot(data = overall, aes(x = as.factor(MSE_rank), y = property, fill = `Terrain Attribute`)) + 
+  geom_tile() +
+  theme_bw() +
+  scale_y_discrete(expand = c(0,0)) +
+  scale_x_discrete(expand = c(0,0)) +
+  viridis::scale_fill_viridis(discrete = TRUE) +
+  theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(),
+        axis.title.y = element_blank())  +
+  facet_wrap(~facet, ncol = 1, scales = "free_y", strip.position = "right")
+```
+
+```{r}
+#| label: fig-RF-results
+#| fig-cap: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites.
+
+g2 + g1 + plot_layout(ncol = 1, heights = c(2, 10), guides = "collect") & theme(legend.position = 'right')
+
+```
+
+```{r}
+
+#| label: tbl-RF-summary
+#| tbl-cap: Model summary and performance statistics for the random forest regression using the training, validation, and test data sets.
+
+read_csv(here::here("./notebooks/model_performance_data.csv")) |>
+  mutate(property = fct_recode(property, "a*" = "a_col", "b*" = "b_col", "c*" = "c_col", "h*" = "h_col", "x" = "x_col")) |>
+  mutate(property = fct_relevel(property, "Ca", "Co", "Cs", "Fe", "Li", "La", "Nb", "Ni", "Rb", "Sr", "a*", "b*", "c*", "h*", "x")) |>
+  mutate(Var_exp = Var_exp *100,
+         Var_exp_test = Var_exp_test *100) |>
+  arrange(property) |>
+  group_by(site) |>
+  gt() |>
+  cols_move_to_start(columns = property) |>
+  tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |>
+  tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |>
+  tab_spanner(label = "Testing", columns = "R2") |>
+  fmt_number(columns = c("MSE_test", "MSE"), decimal = 3) |>
+  fmt_number(columns = c("Var_exp_test", "Var_exp"), decimal = 1) |>
+  fmt_number(columns = c("R2"), decimal = 2) |>
+  tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
+  tab_style(style =  cell_text(align = "left"), locations =  cells_body()) |>
+  tab_style(style =  cell_text(weight = "bold", align = "left"), locations =  cells_column_labels()) |>
+  cols_label(Var_exp = md("% Var<br>explained"), Var_exp_test = md("% Var<br>explained"), MSE_test = "MSE", R2 = "{{R^2}}", property = "Property") |>
+  row_group_order(groups = c("Agriculture", "Forest"))  |>
+  tab_style(
+    style = list(cell_text(style = "italic")),
+    locations = cells_body(
+      columns = property,
+      rows = property %in% c("a*", "b*", "c*", "h*", "x")))
+
+```
+
+

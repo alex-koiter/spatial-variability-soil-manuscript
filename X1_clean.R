@@ -1,6 +1,7 @@
 library(tidyverse)
 #library(readxl)
 library(janitor)
+library(terra)
 
 ## geochemistry data
 geo_data <- read_csv("../Data/Raw data/Geochemistry analysis - Copy 2.csv") %>%
@@ -43,39 +44,40 @@ all_data <- geo_data %>%
 # write_csv(x = all_data, file = "./notebooks/soil_data.csv")
 
 ## Terrain data
+## Uses fingerprints from https://doi.org/10.1007/s11368-024-03805-x
+## `_c` are colour properties, the rest our geochem conc.
 
-attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "vertical_distance_channel_network", "vertical_distance_to_channel_network")
+attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "channel_network_distance", "elevation")
 
-ag_data <- read_csv("../Data/Raw data/Terrain/terrain_geochem_particle_colour_ag.csv") %>%
+
+ag_prints <- c("li", "a_c", "fe", "co", "x_c", "cs", "la", "ni", "nb", "h_c", "b_c", "rb", "ca", "sr", "c_c")
+ag_data <- read_csv("../Data/Raw data/agric_soil_prop_pnts_terrain_values_new.csv") %>%
   clean_names() %>%
-  select("x", "y", 
-         "elevation" = "maria_dtm_uav_ag_cl_no_sinks", 
-         "ca" = "geochem_a_f_kriging_ca",
-         "mo" = "geochem_m_r_kriging_mo",
-         "u" = "geochem_s_z_kriging_u",
-         "a_col" = "kriging_col_a",
-         "h_col" = "kriging_col_h",
-         "c_col" = "kriging_col_c", 
-         "organic" = "particle_om_kriging_om",
-         "ssa" = "particle_om_kriging_ps_specific_s",
-         any_of(attribute))
+  rename("elevation" = "dem") %>%
+  select("x", "y",
+         any_of(ag_prints),
+         any_of(attribute)) %>%
+  drop_na(x, y)
+
+# resample form 1m to 10 m res
+ag_data <- as.data.frame(resample(rast(ag_data), rast(extent = ext(rast(ag_data)), resolution = 10)), xy = TRUE)
 
 # write_csv(x = ag_data, file = "./notebooks/ag_terrain_data.csv")
 
-forest_data <- read_csv("../Data/Raw data/Terrain/terrain_geochem_particle_colour_forest.csv") %>%
+## Two catchment areas. selecting the first 1
+forest_prints <- c("li", "co", "x_c", "cs", "la", "ni", "nb", "h_c", "ca", "sr")
+forest_data <- read_csv("../Data/Raw data/forest_soil_prop_pnts_terrain_values_new.csv") %>%
   clean_names() %>%
+  rename("catchment_area" = "catchment_area_29",
+         "x_c" = "x_2",
+         "h_c" = "h",
+         "elevation" = "dem") %>%
   select("x", "y",
-         "elevation" = "dem_forest_map_prj_no_sinks", 
-         "li" = "geochem_g_l_kriging_li",
-         "nb" = "geochem_m_r_kriging_nb",
-         "zn" = "geochem_s_z_kriging_zn",
-         "v_col" = "kriging_col_v",
-         "l_col" = "kriging_col_l",
-         "h_col" = "kriging_col_h", 
-         "organic" = "particle_om_kriging_om",
-         "ssa" = "particle_om_kriging_ps_specific_s",
-         any_of(attribute)) %>%
-  rename("vertical_distance_channel_network" = "vertical_distance_to_channel_network")
+         any_of(forest_prints),
+         any_of(attribute))
+
+forest_data <- as.data.frame(resample(rast(forest_data), rast(extent = ext(rast(forest_data)), resolution = 10)), xy = TRUE)
+
 
 # write_csv(x = forest_data, file = "./notebooks/forest_terrain_data.csv")
 

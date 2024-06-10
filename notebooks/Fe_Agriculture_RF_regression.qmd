@@ -1,0 +1,260 @@
+---
+title: "Iron (Fe) Agriculture site RF_Regression"
+author: "Alex Koiter"
+---
+
+## Load libraries
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(randomForest)
+  library(terra)
+  library(caret)
+  library(patchwork)
+  library(sf)
+})
+```
+
+## Load data
+```{r}
+ attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "channel_network_distance", "elevation")
+
+data <- read_csv(here::here("./notebooks/ag_terrain_data.csv"), show_col_types = FALSE) %>%
+  select("x", "y", "fe", any_of(attribute))
+```
+
+## Map soil property
+```{r}
+
+temp_rast <- rast(data)
+crs(x = temp_rast, warn=FALSE) <- "epsg:26914"
+
+coords <- read_csv(here::here("./notebooks/coords.csv"), show_col_types = FALSE) %>% 
+  st_as_sf(coords = c("long", "lat"),  crs = 4326) %>%
+  st_transform(crs = 26914)
+
+p1<- ggplot() +
+  tidyterra::geom_spatraster(data = temp_rast, aes(fill = fe)) +
+  scale_fill_viridis_c(name = "Fe", breaks = seq(4, 9, 1)) +
+  geom_sf(data = filter(coords, site == "Agriculture")) +
+  theme_bw(base_size = 12) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = "bottom") +
+  scale_y_continuous(expand = c(0,0)) +
+  scale_x_continuous(expand = c(0,0)) +
+  ggspatial::annotation_scale(location = "bl") +
+  ggspatial::annotation_north_arrow(location = "br")
+
+p2 <- ggplot() +
+  tidyterra::geom_spatraster(data = temp_rast, aes(fill = elevation)) +
+  scale_fill_viridis_c(name = "Elevation (m)", option = "inferno") +
+  geom_sf(data = filter(coords, site == "Agriculture")) +
+  theme_bw(base_size = 12) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = "bottom") +
+  scale_y_continuous(expand = c(0,0)) +
+  scale_x_continuous(expand = c(0,0)) +
+  ggspatial::annotation_scale(location = "bl") +
+  ggspatial::annotation_north_arrow(location = "br")
+```
+
+```{r}
+#| fig-width: 12
+#| fig-asp: 0.5
+p1+p2  
+```
+
+## Create training, validation and testing datasets
+
+60 % of the data in the training data set 20 % of the data in the validation data set 20 % of the data in the testing data set
+
+```{r}
+set.seed(123) # makes it reproducible
+
+temp2 <- data %>%
+  mutate(dataset = sample(c("train", "validation", "test"), size = nrow(.), replace = TRUE, prob = c(0.6, 0.2, 0.2)))
+
+train <- temp2 %>% 
+  filter(dataset == "train" | dataset == "validation") 
+
+validation <- temp2 %>% 
+  filter(dataset == "validation") %>%
+  select(-dataset)
+
+test <- temp2 %>% 
+  filter(dataset == "test") %>%
+  select(-dataset)
+```
+
+## Feature selection
+vifstep() calculates VIF for all variables, excludes the one with the highest VIF (if it is greater than the threshold), repeat the procedure until no variables with a VIF greater than th remains.
+```{r}
+features <- usdm::vifstep(rast(select(filter(train, dataset == "train"), -dataset, -fe)), th = 8)
+features
+```
+
+### Remove correlated features from the data sets
+```{r}
+train <- temp2 %>% 
+  filter(dataset == "train" | dataset == "validation") %>%
+  usdm::exclude(features) %>%
+  select(-x, -y)
+
+validation <- temp2 %>% 
+  filter(dataset == "validation") %>%
+  select(-dataset) %>%
+  usdm::exclude(features) %>%
+  select(-x, -y)
+
+test <- temp2 %>% 
+  filter(dataset == "test") %>%
+  select(-dataset) %>%
+  usdm::exclude(features) %>%
+  select(-x, -y)
+```
+
+## Tune the training RF model using the validation dataset
+
+Instructions (https://stackoverflow.com/questions/18155482/how-to-specify-a-validation-holdout-set-to-caret) 
+This uses the caret package and I included the validation set inside my training set and just define the resampling measures to only use the validation data. This step is to optimize the mtry parameter
+
+```{r}
+tc <- trainControl(method = "cv", number = 1, index = list(Fold1 = which(train$dataset == "train")), savePredictions = T)
+
+set.seed(456)
+validate.rf <- train(fe ~ ., data = select(train, -dataset), method = "rf", trControl = tc)
+plot(validate.rf)
+
+my_mtry <- validate.rf$finalModel$mtry
+my_mtry
+```
+
+## Validation back test
+
+Uses the validation dataset as the test
+```{r}
+set.seed(789)
+
+rf.fit <- randomForest(fe ~ ., data = select(filter(train, dataset == "train"), -dataset), 
+                       ntree = 500, keep.forest = TRUE, importance = TRUE, mtry = my_mtry,
+                       ytest = select(filter(train, dataset == "validation"), -dataset)$fe,
+                       xtest = dplyr::select(select(filter(train, dataset == "validation"), -dataset), -fe))
+rf.fit
+
+```
+
+```{r}
+oob_val <- sqrt(rf.fit$mse)
+test_val <- sqrt(rf.fit$test$mse)
+
+val_plot <- tibble(`Out of Bag Error` = oob_val,
+                   Validation = test_val,
+                   ntrees = 1:rf.fit$ntree) %>%
+  pivot_longer(cols = -ntrees, names_to = "Metric", values_to = "RMSE" )
+
+ggplot(data = val_plot, aes(ntrees, RMSE, color = Metric)) +
+  geom_line() +
+  theme_bw() +
+  xlab("Number of trees")
+```
+
+## Testing the RF model
+
+Uses the RF model to predict the test dataset. We compare predicted against actual
+```{r}
+prediction <- predict(rf.fit, newdata = test)
+test_plot <- data.frame(pred = prediction, obs = test$fe)
+
+r_sq <- summary(lm(pred~obs, data = test_plot))
+r_sq
+
+ggplot(data = test_plot, aes(y = pred, x = obs)) +
+  geom_point() +
+  ggpmisc::stat_poly_line() +
+  ggpmisc::stat_poly_eq() +
+  theme_bw() +
+  geom_abline(slope = 1, intercept = 0) +
+  coord_fixed(ratio = 1)
+```
+
+## Importance
+```{r}
+ImpData <- as.data.frame(importance(rf.fit)) %>%
+  mutate(Var.Names = row.names(.)) %>%
+ `row.names<-`(as.character(1:nrow(importance(rf.fit))))
+```
+### Top based on IncNodePurity
+```{r}
+slice_max(ImpData,order_by = IncNodePurity, n = 10)
+```
+
+```{r}
+p1 <- ggplot(slice_max(ImpData,order_by = IncNodePurity, n = 10), aes(x = fct_reorder(Var.Names, IncNodePurity), y = IncNodePurity)) +
+  geom_segment(aes(x = fct_reorder(Var.Names, IncNodePurity), xend = fct_reorder(Var.Names, IncNodePurity), y = 0, yend = IncNodePurity), color="skyblue") +
+  geom_point(aes(size = `%IncMSE`), color = "blue", alpha = 0.6) +
+  theme_bw() +
+  coord_flip() +
+  labs(x = "Terrain Attribute") +
+  theme(legend.position="bottom")
+```
+
+### Top 10 based on %IncMSE
+```{r}
+slice_max(ImpData,order_by = `%IncMSE`, n = 10)
+```
+
+```{r}
+p2<- ggplot(slice_max(ImpData,order_by = `%IncMSE`, n = 10), aes(x = fct_reorder(Var.Names, `%IncMSE`), y = `%IncMSE`)) +
+  geom_segment(aes(x = fct_reorder(Var.Names, `%IncMSE`), xend = fct_reorder(Var.Names, `%IncMSE`), y = 0, yend = `%IncMSE`), color="skyblue") +
+  geom_point(aes(size = IncNodePurity), color = "blue", alpha = 0.6) +
+  theme_bw() +
+  coord_flip() +
+  labs(x = "Terrain Attribute") +
+  theme(legend.position="bottom")
+```
+
+### Combined
+
+```{r}
+p1+p2
+```
+
+### Write data
+
+```{r}
+
+importance_data <- ImpData %>%
+  mutate(MSE_rank = rank(-`%IncMSE`)) %>%
+  mutate(Purity_rank = rank(-IncNodePurity)) %>%
+  mutate(site = "Agriculture",
+        property = "Fe")
+
+if(file.exists(here::here("./notebooks/importance_data.csv"))) {
+  importance_data_final <- read_csv(here::here("./notebooks/importance_data.csv")) |>
+    rows_upsert(importance_data, by = c("MSE_rank", "site", "property")) 
+} else importance_data_final <- importance_data
+
+write_csv(importance_data_final, here::here("./notebooks/importance_data.csv"))
+
+
+model_performance <- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
+       Var_exp = rf.fit$rsq[length(rf.fit$rsq)],
+       MSE_test = rf.fit$test$mse[length(rf.fit$test$mse)],
+       Var_exp_test = rf.fit$test$rsq[length(rf.fit$test$rsq)],
+       R2 = r_sq$r.squared, 
+       site = "Agriculture",
+       property = "Fe")
+
+if(file.exists(here::here("./notebooks/model_performance_data.csv"))) {
+  model_performance_final <- read_csv(here::here("./notebooks/model_performance_data.csv")) |>
+    rows_upsert(model_performance, by = c("site", "property")) 
+} else model_performance_final <- model_performance
+
+
+write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
+
+```

@@ -1,5 +1,5 @@
 ---
-title: "Lithium Forest site RF_Regression"
+title: "Lithium (Li) Forest site RF_Regression"
 author: "Alex Koiter"
 ---
 
@@ -17,7 +17,7 @@ suppressPackageStartupMessages({
 
 ## Load data
 ```{r}
- attribute <- c("elevation", "plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "vertical_distance_channel_network")
+ attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "channel_network_distance", "elevation")
 
 data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) %>%
   select("x", "y", "li", any_of(attribute))
@@ -68,13 +68,6 @@ p2 <- ggplot() +
 p1+p2  
 ```
 
-## Resampling data
-
-Resolution from 1m by 1m to 10m by 10m
-```{r}
-data <- as.data.frame(resample(rast(data), rast(extent = ext(rast(data)), resolution = 10)))
-```
-
 ## Create training, validation and testing datasets
 
 60 % of the data in the training data set 20 % of the data in the validation data set 20 % of the data in the testing data set
@@ -100,7 +93,7 @@ test <- temp2 %>%
 ## Feature selection
 vifstep() calculates VIF for all variables, excludes the one with the highest VIF (if it is greater than the threshold), repeat the procedure until no variables with a VIF greater than th remains.
 ```{r}
-features <- usdm::vifstep(select(filter(train, dataset == "train"), -dataset, -li), th = 8)
+features <- usdm::vifstep(rast(select(filter(train, dataset == "train"), -dataset, -li)), th = 8)
 features
 ```
 
@@ -108,17 +101,20 @@ features
 ```{r}
 train <- temp2 %>% 
   filter(dataset == "train" | dataset == "validation") %>%
-  usdm::exclude(features)
+  usdm::exclude(features) %>%
+  select(-x, -y)
 
 validation <- temp2 %>% 
   filter(dataset == "validation") %>%
   select(-dataset) %>%
-  usdm::exclude(features)
+  usdm::exclude(features) %>%
+  select(-x, -y)
 
 test <- temp2 %>% 
   filter(dataset == "test") %>%
   select(-dataset) %>%
-  usdm::exclude(features)
+  usdm::exclude(features) %>%
+  select(-x, -y)
 ```
 
 ## Tune the training RF model using the validation dataset
@@ -148,6 +144,7 @@ rf.fit <- randomForest(li ~ ., data = select(filter(train, dataset == "train"), 
                        ytest = select(filter(train, dataset == "validation"), -dataset)$li,
                        xtest = dplyr::select(select(filter(train, dataset == "validation"), -dataset), -li))
 rf.fit
+
 ```
 
 ```{r}
@@ -172,7 +169,8 @@ Uses the RF model to predict the test dataset. We compare predicted against actu
 prediction <- predict(rf.fit, newdata = test)
 test_plot <- data.frame(pred = prediction, obs = test$li)
 
-summary(lm(pred~obs, data = test_plot))
+r_sq <- summary(lm(pred~obs, data = test_plot))
+r_sq
 
 ggplot(data = test_plot, aes(y = pred, x = obs)) +
   geom_point() +
@@ -241,4 +239,22 @@ if(file.exists(here::here("./notebooks/importance_data.csv"))) {
 } else importance_data_final <- importance_data
 
 write_csv(importance_data_final, here::here("./notebooks/importance_data.csv"))
+
+
+model_performance <- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
+       Var_exp = rf.fit$rsq[length(rf.fit$rsq)],
+       MSE_test = rf.fit$test$mse[length(rf.fit$test$mse)],
+       Var_exp_test = rf.fit$test$rsq[length(rf.fit$test$rsq)],
+       R2 = r_sq$r.squared, 
+       site = "Forest",
+       property = "Li")
+
+if(file.exists(here::here("./notebooks/model_performance_data.csv"))) {
+  model_performance_final <- read_csv(here::here("./notebooks/model_performance_data.csv")) |>
+        rows_upsert(model_performance, by = c("site", "property"))  
+} else model_performance_final <- model_performance
+
+
+write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
+
 ```
