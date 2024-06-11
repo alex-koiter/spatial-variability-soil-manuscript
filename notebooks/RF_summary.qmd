@@ -75,36 +75,47 @@ g2 + g1 + plot_layout(ncol = 1, heights = c(2, 10), guides = "collect") & theme(
 
 ```
 
+
+```{r}
+m_performance <- read_csv(here::here("./notebooks/model_performance_data.csv")) |>
+  mutate(property = fct_recode(property, "a*" = "a_col", "b*" = "b_col", "c*" = "c_col", "h*" = "h_col", "x" = "x_col")) |>
+  mutate(property = fct_relevel(property, "Ca", "Co", "Cs", "Fe", "Li", "La", "Nb", "Ni", "Rb", "Sr", "a*", "b*", "c*", "h*", "x")) |>
+  mutate(Var_exp = Var_exp *100,
+         Var_exp_test = Var_exp_test *100) |>
+  arrange(property) 
+```
+
 ```{r}
 
 #| label: tbl-RF-summary
 #| tbl-cap: Model summary and performance statistics for the random forest regression using the training, validation, and test data sets.
 
-read_csv(here::here("./notebooks/model_performance_data.csv")) |>
-  mutate(property = fct_recode(property, "a*" = "a_col", "b*" = "b_col", "c*" = "c_col", "h*" = "h_col", "x" = "x_col")) |>
-  mutate(property = fct_relevel(property, "Ca", "Co", "Cs", "Fe", "Li", "La", "Nb", "Ni", "Rb", "Sr", "a*", "b*", "c*", "h*", "x")) |>
-  mutate(Var_exp = Var_exp *100,
-         Var_exp_test = Var_exp_test *100) |>
-  arrange(property) |>
+m_performance |>
   group_by(site) |>
   gt() |>
   cols_move_to_start(columns = property) |>
-  tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |>
-  tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |>
-  tab_spanner(label = "Testing", columns = "R2") |>
+  # tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |>
+  # tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |>
+  # tab_spanner(label = "Testing", columns = "R2") |>
   fmt_number(columns = c("MSE_test", "MSE"), decimal = 3) |>
   fmt_number(columns = c("Var_exp_test", "Var_exp"), decimal = 1) |>
   fmt_number(columns = c("R2"), decimal = 2) |>
   tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
   tab_style(style =  cell_text(align = "left"), locations =  cells_body()) |>
   tab_style(style =  cell_text(weight = "bold", align = "left"), locations =  cells_column_labels()) |>
-  cols_label(Var_exp = md("% Var<br>explained"), Var_exp_test = md("% Var<br>explained"), MSE_test = "MSE", R2 = "{{R^2}}", property = "Property") |>
+  cols_label(Var_exp = md("% Var<br/>Training"), Var_exp_test = md("% Var<br/>Validation"), MSE_test = md("MSE<br/>Testing"), MSE = md("MSE<br/>Training"), R2 = md("{{R^2}}<br/>Testing"), property = "Property") |>
   row_group_order(groups = c("Agriculture", "Forest"))  |>
   tab_style(
     style = list(cell_text(style = "italic")),
     locations = cells_body(
       columns = property,
-      rows = property %in% c("a*", "b*", "c*", "h*", "x")))
+      rows = property %in% c("a*", "b*", "c*", "h*", "x"))) |>
+    tab_footnote(
+    footnote = "Mean square error",
+    locations = cells_column_labels(columns = c("MSE_test", "MSE"))) |>
+  tab_footnote(
+    footnote = "Percent variance explained",
+    locations = cells_column_labels(columns = c("Var_exp", "Var_exp_test")))
 
 ```
 

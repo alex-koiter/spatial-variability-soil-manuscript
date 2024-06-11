@@ -123,10 +123,10 @@ Geostatistical analyses allow to quantify the spatial distribution and variabili
 
 {{< embed notebooks/semivariogram.qmd#tbl-geocol-semivariogram >}}
 
-{{< embed notebooks/soil_property_maps.qmd#fig-ag_map >}}
+{{< embed notebooks/property_maps.qmd#fig-ag_map >}}
 
 
-{{< embed notebooks/soil_property_maps.qmd#fig-forest_map >}}
+{{< embed notebooks/property_maps.qmd#fig-forest_map >}}
 
 
 {{< embed notebooks/RF_summary.qmd#fig-RF-results >}}
@@ -144,13 +144,13 @@ Geostatistical analyses allow to quantify the spatial distribution and variabili
 ## Supplemental materials {.unnumbered}
 
 ::: {#ssuppfig-geo_summary}
-![](images/geo_summary.png){width=50%}
+![](images/geo_summary.png){width=100%}
 
 Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.
 :::
 
 ::: {#ssuppfig-colour_summary}
-![](images/colour_summary.png){width=50%}
+![](images/colour_summary.png){width=100%}
 
 Summary statistics of all measured colour soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.
 :::
