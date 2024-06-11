@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.26">
+    <meta name="generator" content="quarto-1.5.43">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,7 +32,7 @@
       }
       @media print {
       pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
       }
       pre.numberSource code
         { counter-reset: source-line 0; }
@@ -213,59 +213,67 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cd7a2ca6-a4c9-423a-b0ed-3c50cd1f24a3" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="b0f27e03-3893-4c6d-bbac-4ab84ca36f70" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(gt)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(readODS)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  library(gt)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="82f8935d-f372-4920-ac82-7593bac8e195" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>geochem_vario <span class="op">&lt;-</span> tribble(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">~</span>Property, <span class="op">~</span>Model, <span class="op">~</span>`Nugget (Co)`, <span class="op">~</span>`Sill (Co)`, <span class="op">~</span>`Range (m)`, <span class="op">~</span>`C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)`, <span class="op">~</span>Class, <span class="op">~</span>R2, <span class="op">~</span>RMSE, <span class="op">~</span>site,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Ca"</span>,      <span class="st">"Exp"</span>,  <span class="fl">0.00</span>,         <span class="fl">1.49</span>,          <span class="fl">72.52</span>,     <span class="fl">0.00</span>,          <span class="st">"S"</span>,    <span class="fl">0.27</span>, <span class="fl">1.8</span>, <span class="st">"Agriculture"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Ca"</span>,      <span class="st">"Exp"</span>,  <span class="fl">0.00</span>,         <span class="fl">1.49</span>,          <span class="fl">72.52</span>,     <span class="fl">0.00</span>,          <span class="st">"S"</span>,    <span class="fl">0.27</span>, <span class="fl">1.8</span>, <span class="st">"Forest"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="a6e7cf02-4a2c-4a3c-82eb-c76670e746d7" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vario <span class="op">&lt;-</span> read_ods(here::here(<span class="st">"./notebooks/semivariogram.ods"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  mutate(sill <span class="op">=</span> p_sill <span class="op">+</span> nugget, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         `C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)` <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> p_sill<span class="op">/</span>sill,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         `Spatial Class` <span class="op">=</span> case_when(`C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)` <span class="op">&gt;</span> <span class="dv">75</span> <span class="op">~</span> <span class="st">"Strong"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                           `C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)`<span class="op">&lt;=</span><span class="dv">75</span> <span class="op">&amp;</span> `C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)` <span class="op">&gt;</span><span class="dv">25</span> <span class="op">~</span> <span class="st">"Moderate"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           `C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)` <span class="op">&lt;</span> <span class="fl">0.25</span> <span class="op">~</span> <span class="st">"Low"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  select(<span class="st">"Property"</span> <span class="op">=</span> <span class="st">"property"</span>, <span class="st">"Kriging Type"</span> <span class="op">=</span> <span class="st">"model"</span>, <span class="st">"Nugget (Co)"</span> <span class="op">=</span> <span class="st">"nugget"</span>, <span class="st">"Sill (Co + C)"</span> <span class="op">=</span> <span class="st">"sill"</span>, <span class="st">"C/(C + Co) (%)"</span>, <span class="st">"Range (m)"</span> <span class="op">=</span> <span class="st">"range"</span>, <span class="st">"site"</span>, <span class="st">"r2"</span>, <span class="st">"Spatial Class"</span>) <span class="op">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#select(-p_sill) %&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  mutate(Property <span class="op">=</span> fct_relevel(Property, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  arrange(Property)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
 
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>geochem_vario <span class="op">|&gt;</span></span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vario <span class="op">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  group_by(site) <span class="op">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  gt() <span class="op">|&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Models are all isotropic."</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> Model))  <span class="op">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  fmt_number(decimal <span class="op">=</span> <span class="dv">1</span>) <span class="op">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"Range (m)"</span>, <span class="st">"C/(C + Co) (%)"</span>), decimal <span class="op">=</span> <span class="dv">0</span>) <span class="op">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  cols_label(r2 <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">r^2</span><span class="sc">}}</span><span class="st">"</span>) <span class="op">|&gt;</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"S = strong spatial dependency (C/(C + Co) % &gt;75); M = moderate spatial dependency (C/(C + Co) % between</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="er">75 and 25</span>).<span class="st">",</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="er">    locations = cells_column_labels</span>(columns <span class="op">=</span> Class))  <span class="op">|&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  tab_options(column_labels.font.weight <span class="op">=</span> <span class="st">"bold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-geochem-semivariogram" class="cell quarto-float anchored">
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Models are all isotropic."</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> <span class="st">"Kriging Type"</span>))  <span class="op">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25)."</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> `Spatial Class`))  <span class="op">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  tab_options(column_labels.font.weight <span class="op">=</span> <span class="st">"bold"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-geocol-semivariogram" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-geochem-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for six examples of geochemical and colour fingerprint properties for each site.
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-geocol-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of selected colour and geochemical properties within the agricultural and forested sites.
 </figcaption>
-<div aria-describedby="tbl-geochem-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-geocol-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div>
-<div id="tuiscelksv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tuiscelksv table {
+<div id="jroevxgjfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jroevxgjfw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tuiscelksv thead, #tuiscelksv tbody, #tuiscelksv tfoot, #tuiscelksv tr, #tuiscelksv td, #tuiscelksv th {
+#jroevxgjfw thead, #jroevxgjfw tbody, #jroevxgjfw tfoot, #jroevxgjfw tr, #jroevxgjfw td, #jroevxgjfw th {
   border-style: none;
 }
 
-#tuiscelksv p {
+#jroevxgjfw p {
   margin: 0;
   padding: 0;
 }
 
-#tuiscelksv .gt_table {
+#jroevxgjfw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -291,12 +299,12 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-left-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_caption {
+#jroevxgjfw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tuiscelksv .gt_title {
+#jroevxgjfw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -308,7 +316,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-bottom-width: 0;
 }
 
-#tuiscelksv .gt_subtitle {
+#jroevxgjfw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -320,7 +328,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-top-width: 0;
 }
 
-#tuiscelksv .gt_heading {
+#jroevxgjfw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -332,13 +340,13 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-right-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_bottom_border {
+#jroevxgjfw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_col_headings {
+#jroevxgjfw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -353,7 +361,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-right-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_col_heading {
+#jroevxgjfw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -373,7 +381,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   overflow-x: hidden;
 }
 
-#tuiscelksv .gt_column_spanner_outer {
+#jroevxgjfw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,15 +393,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 4px;
 }
 
-#tuiscelksv .gt_column_spanner_outer:first-child {
+#jroevxgjfw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tuiscelksv .gt_column_spanner_outer:last-child {
+#jroevxgjfw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tuiscelksv .gt_column_spanner {
+#jroevxgjfw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -405,11 +413,11 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   width: 100%;
 }
 
-#tuiscelksv .gt_spanner_row {
+#jroevxgjfw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tuiscelksv .gt_group_heading {
+#jroevxgjfw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -435,7 +443,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   text-align: left;
 }
 
-#tuiscelksv .gt_empty_group_heading {
+#jroevxgjfw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -450,15 +458,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   vertical-align: middle;
 }
 
-#tuiscelksv .gt_from_md > :first-child {
+#jroevxgjfw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tuiscelksv .gt_from_md > :last-child {
+#jroevxgjfw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tuiscelksv .gt_row {
+#jroevxgjfw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -477,7 +485,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   overflow-x: hidden;
 }
 
-#tuiscelksv .gt_stub {
+#jroevxgjfw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,7 +498,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 5px;
 }
 
-#tuiscelksv .gt_stub_row_group {
+#jroevxgjfw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -504,15 +512,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   vertical-align: top;
 }
 
-#tuiscelksv .gt_row_group_first td {
+#jroevxgjfw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tuiscelksv .gt_row_group_first th {
+#jroevxgjfw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tuiscelksv .gt_summary_row {
+#jroevxgjfw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -522,16 +530,16 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 5px;
 }
 
-#tuiscelksv .gt_first_summary_row {
+#jroevxgjfw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_first_summary_row.thick {
+#jroevxgjfw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tuiscelksv .gt_last_summary_row {
+#jroevxgjfw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -541,7 +549,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-bottom-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_grand_summary_row {
+#jroevxgjfw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -551,7 +559,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 5px;
 }
 
-#tuiscelksv .gt_first_grand_summary_row {
+#jroevxgjfw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -561,7 +569,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-top-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_last_grand_summary_row_top {
+#jroevxgjfw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,11 +579,11 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-bottom-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_striped {
+#jroevxgjfw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tuiscelksv .gt_table_body {
+#jroevxgjfw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -584,7 +592,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-bottom-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_footnotes {
+#jroevxgjfw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -598,7 +606,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-right-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_footnote {
+#jroevxgjfw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -607,7 +615,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 5px;
 }
 
-#tuiscelksv .gt_sourcenotes {
+#jroevxgjfw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -621,7 +629,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   border-right-color: #D3D3D3;
 }
 
-#tuiscelksv .gt_sourcenote {
+#jroevxgjfw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -629,122 +637,348 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models for s
   padding-right: 5px;
 }
 
-#tuiscelksv .gt_left {
+#jroevxgjfw .gt_left {
   text-align: left;
 }
 
-#tuiscelksv .gt_center {
+#jroevxgjfw .gt_center {
   text-align: center;
 }
 
-#tuiscelksv .gt_right {
+#jroevxgjfw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tuiscelksv .gt_font_normal {
+#jroevxgjfw .gt_font_normal {
   font-weight: normal;
 }
 
-#tuiscelksv .gt_font_bold {
+#jroevxgjfw .gt_font_bold {
   font-weight: bold;
 }
 
-#tuiscelksv .gt_font_italic {
+#jroevxgjfw .gt_font_italic {
   font-style: italic;
 }
 
-#tuiscelksv .gt_super {
+#jroevxgjfw .gt_super {
   font-size: 65%;
 }
 
-#tuiscelksv .gt_footnote_marks {
+#jroevxgjfw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tuiscelksv .gt_asterisk {
+#jroevxgjfw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tuiscelksv .gt_indent_1 {
+#jroevxgjfw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tuiscelksv .gt_indent_2 {
+#jroevxgjfw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tuiscelksv .gt_indent_3 {
+#jroevxgjfw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tuiscelksv .gt_indent_4 {
+#jroevxgjfw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tuiscelksv .gt_indent_5 {
+#jroevxgjfw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings">
-<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
-<th id="Model<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Model<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
+<th id="Kriging Type<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Kriging Type<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
 <th id="Nugget (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
-<th id="Sill (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co)</th>
-<th id="Range (m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
+<th id="Sill (Co + C)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co + C)</th>
 <th id="C/(C + Co) (%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
-<th id="Class<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">R2</th>
-<th id="RMSE" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">RMSE</th>
+<th id="Range (m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
+<th id="r<span style=&quot;white-space:nowrap;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">r<span style="white-space:nowrap;"><sup>2</sup></span></th>
+<th id="Spatial Class<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Spatial Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd gt_group_heading_row">
-<td colspan="9" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
+<td colspan="8" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
 <tr class="even gt_row_group_first">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Ca</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Model">Exp</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co)">1.49</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">72.52</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">0</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Class">S</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  R2">0.27</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  RMSE">1.8</td>
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ca</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">7.2</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">580</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.9</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
 </tr>
-<tr class="odd gt_group_heading_row">
-<td colspan="9" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
-</tr>
-<tr class="even gt_row_group_first">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Ca</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Model">Exp</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co)">1.49</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">72.52</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">0</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Class">S</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  R2">0.27</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  RMSE">1.8</td>
-</tr>
-</tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Models are all isotropic.</td>
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Co</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.7</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">208</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.4</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
 </tr>
 <tr class="even">
-<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> S = strong spatial dependency (C/(C + Co) % &gt;75); M = moderate spatial dependency (C/(C + Co) % between 75 and 25).</td>
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Cs</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">210</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.5</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Fe</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">185</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Li</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.3</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">1.5</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">81</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">185</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.6</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">La</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">1.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">56</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">308</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.5</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Moderate</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Nb</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">2.7</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">2.7</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">210</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.7</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Low</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ni</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">1.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">8.9</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">84</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">352</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.6</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Rb</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">1.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">27.6</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">95</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">551</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.9</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Sr</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.9</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">900.2</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">220</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">1.0</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">a*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">1.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">288</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.3</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Moderate</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">b*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.2</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.9</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">83</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">199</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.3</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">c*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.1</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.9</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">87</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">199</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.3</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">h*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">1.1</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">185</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">x</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">1.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">58</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">220</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.1</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Moderate</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="8" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Ca</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">1.6</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">2.7</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">41</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">269</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Moderate</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Co</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">2.1</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">298</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.1</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Cs</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">83</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">237</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Li</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">0.8</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">222</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.3</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">La</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">3.1</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">7.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">59</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">176</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.1</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Moderate</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Nb</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">51</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">224</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Moderate</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Ni</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Universal</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">6.7</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">15.8</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">57</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">187</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Moderate</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Sr</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Simple</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.4</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">1.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">65</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">229</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.4</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Moderate</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">h*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Universal</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">230</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.3</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">x</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Sill (Co + C)">39.2</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  C/(C + Co) (%)">100</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Range (m)">312</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  r2">0.2</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="even">
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Models are all isotropic.</td>
+</tr>
+<tr class="odd">
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25).</td>
 </tr>
 </tfoot>
 
 </table>
 
-</div>
 </div>
 </div>
 </div>
