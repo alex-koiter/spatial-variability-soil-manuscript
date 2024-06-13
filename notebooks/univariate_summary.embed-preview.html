@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.43">
+    <meta name="generator" content="quarto-1.5.45">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -251,7 +251,7 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="32426762-ad47-4e6a-926f-c6dfa3b4819e" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="90b0d1f4-174f-456d-9d9e-9120f5b12af2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -275,7 +275,7 @@ The following object is masked from 'package:tidyr':
 </section>
 <section id="load-in-data" class="level1">
 <h1>load in data</h1>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="b2c819cc-1c67-4caf-b299-9b7ceda75e62" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="51533c7b-9b97-415c-9ae0-aa0766a2c3a5" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/soil_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 6078 Columns: 5
@@ -290,7 +290,7 @@ dbl (2): sample_number, value
 </div></div>
 <section id="summarize" class="level2">
 <h2 class="anchored" data-anchor-id="summarize">Summarize</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="29c8851c-7d1f-4eff-bb7b-f73ada6fe2cc" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="c5aee738-ba96-4be8-93fb-44376ed2aa29" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_summary <span class="op">&lt;-</span> data <span class="op">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  group_by(element) <span class="op">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  group_by(element, site, group) <span class="op">%&gt;%</span></span>
@@ -304,7 +304,7 @@ dbl (2): sample_number, value
 </div></div>
 <section id="max-min-scaling" class="level3">
 <h3 class="anchored" data-anchor-id="max-min-scaling">Max-min scaling</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="ea44c51a-4a1c-4d63-b8a7-bf58ec22fae2" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="9d02bbb7-fe5a-4bea-ab02-a0d3f0712463" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">&lt;-</span> data <span class="op">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  group_by(element) <span class="op">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  mutate(value2 <span class="op">=</span> (value <span class="op">-</span> <span class="bu">min</span>(value, na.rm <span class="op">=</span> T)) <span class="op">/</span> (<span class="bu">max</span>(value, na.rm <span class="op">=</span> T) <span class="op">-</span> <span class="bu">min</span>(value, na.rm <span class="op">=</span> T))) <span class="op">%&gt;%</span></span>
@@ -325,7 +325,7 @@ dbl (2): sample_number, value
 <h2 class="anchored" data-anchor-id="geochemistry">Geochemistry</h2>
 <section id="plot-prep" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="f27dd719-477a-40b1-b0f2-4af76167842d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="162373e2-ad3d-445d-b1fa-c518032eefa0" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>geo <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"geochem"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  mutate(facet <span class="op">=</span> case_when(element <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"Ag"</span>, <span class="st">"Al"</span>, <span class="st">"As"</span>,<span class="st">"B"</span>,<span class="st">"Ba"</span>,<span class="st">"Be"</span>,<span class="st">"Bi"</span>,<span class="st">"Ca"</span>,<span class="st">"Cd"</span>,<span class="st">"Ce"</span>,<span class="st">"Co"</span>, <span class="st">"Cr"</span>, <span class="st">"Cs"</span>, <span class="st">"Cu"</span>, <span class="st">"Fe"</span>, <span class="st">"Ga"</span>, <span class="st">"Hf"</span>, <span class="st">"Hg"</span>, <span class="st">"In"</span>, <span class="st">"K"</span>, <span class="st">"La"</span>, <span class="st">"Li"</span>) <span class="op">~</span> <span class="st">"Geomchemistry A-L"</span>,</span>
@@ -387,7 +387,7 @@ Figure S1
 </section>
 <section id="plot2" class="level2">
 <h2 class="anchored" data-anchor-id="plot2">Plot2</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="3530a82a-7d61-4d55-8aa2-c1d1958aa714" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="c0125ce1-b5fd-4b16-a4fc-7d55bbd5cc42" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">==</span> <span class="st">"geochem"</span>), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -406,7 +406,7 @@ Figure S1
 </div></div>
 <section id="table" class="level3">
 <h3 class="anchored" data-anchor-id="table">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="690bf196-fc55-49aa-a974-4ad01fa6ce1f" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="5fec9d20-9a94-4097-a47f-244a681e1426" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>geo_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"geochem"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>group) </span>
@@ -1417,7 +1417,7 @@ Figure S1
 <h2 class="anchored" data-anchor-id="colour">Colour</h2>
 <section id="plot-prep-1" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep-1">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="d3cd97d2-3025-40d6-b4d6-c36436990cad" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="e3ac627a-b861-491a-b4f4-9d1a310c99f8" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>colour <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"colour"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  mutate(element <span class="op">=</span> str_extract(element, (<span class="st">"[:alpha:](?=_)"</span>))) <span class="op">%&gt;%</span> <span class="co"># remove _col</span></span>
@@ -1471,7 +1471,7 @@ Figure S2
 </section>
 <section id="plot2-1" class="level3">
 <h3 class="anchored" data-anchor-id="plot2-1">Plot2</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="86291e29-4d31-46b3-abda-37c73019829d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="4ceb9aa2-c7bf-47e3-b517-e4b81d90e4fd" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">==</span> <span class="st">"colour"</span>), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -1491,7 +1491,7 @@ Figure S2
 </section>
 <section id="table-1" class="level3">
 <h3 class="anchored" data-anchor-id="table-1">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="91268b3b-72a7-4d0c-a3bc-bde324b55c4d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="2a3d5047-9aef-457b-b6e2-e341d3ef86f6" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>colour_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"colour"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  mutate(element <span class="op">=</span> str_extract(element, (<span class="st">"[:alpha:](?=_)"</span>))) <span class="op">%&gt;%</span> <span class="co"># remove _col</span></span>
@@ -1865,7 +1865,7 @@ Figure S2
 <h2 class="anchored" data-anchor-id="psa-and-organic-matter">PSA and organic matter</h2>
 <section id="plot-prep-2" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep-2">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="12a16bbc-a5e0-47f6-b977-81f9bd23c8b0" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="1c7b0aa7-35ed-460a-be6a-747d75efeeea" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>psa <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  mutate(bar <span class="op">=</span> c(rep(c(rep(Inf, <span class="dv">2</span>), rep(<span class="dv">0</span>, <span class="dv">2</span>)), <span class="dv">1</span>), Inf, Inf)) <span class="op">%&gt;%</span></span>
@@ -1882,7 +1882,7 @@ Figure S2
 </section>
 <section id="plot-2" class="level3">
 <h3 class="anchored" data-anchor-id="plot-2">plot</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="30e3ad9e-e6bb-44a0-b73e-50eb1858985d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="132ed7c7-7ddf-40ee-89aa-3d8e54cf65e6" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ggplot() <span class="op">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  geom_bar(data <span class="op">=</span> psa2, aes(x<span class="op">=</span>element, y <span class="op">=</span> bar), fill <span class="op">=</span><span class="st">"grey20"</span>, position<span class="op">=</span><span class="st">"identity"</span>, stat <span class="op">=</span> <span class="st">"identity"</span>, alpha <span class="op">=</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
@@ -1911,7 +1911,7 @@ Figure S2
 </section>
 <section id="plot2-2" class="level2">
 <h2 class="anchored" data-anchor-id="plot2-2">Plot2</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="a2cfb17a-3b0c-42e9-94d0-93efd0e2b243" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="a9f825f8-488f-41e5-9996-db5bb79d943c" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -1930,7 +1930,7 @@ Figure S2
 </div></div>
 <section id="table-2" class="level3">
 <h3 class="anchored" data-anchor-id="table-2">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="7ad69dbf-0ada-4490-957f-28555ab89c7d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="3ff64031-a38f-4956-97ad-af924400b3b9" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>psa_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>group) </span>
@@ -2033,7 +2033,7 @@ Figure S2
 </table>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="2777fb8e-5b5f-4f21-9278-73b0e9799dca" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="82fe5587-c701-4cac-9606-3fb47c2ca27f" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>summary_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(element <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"Li"</span>, <span class="st">"a_col"</span>, <span class="st">"Fe"</span>, <span class="st">"Co"</span>, <span class="st">"x_col"</span>, <span class="st">"Cs"</span>, <span class="st">"La"</span>, <span class="st">"Ni"</span>, <span class="st">"Nb"</span>, <span class="st">"h_col"</span>, <span class="st">"b_col"</span>, <span class="st">"Rb"</span>, <span class="st">"Ca"</span>, <span class="st">"Sr"</span>, <span class="st">"c_col"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   mutate(element <span class="op">=</span> <span class="im">as</span>.character(fct_recode(element, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>))) <span class="op">%&gt;%</span></span>
@@ -2064,23 +2064,23 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </figcaption>
 <div aria-describedby="tbl-univariate-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="voasotdbrd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#voasotdbrd table {
+<div id="qtxieswfto" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qtxieswfto table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#voasotdbrd thead, #voasotdbrd tbody, #voasotdbrd tfoot, #voasotdbrd tr, #voasotdbrd td, #voasotdbrd th {
+#qtxieswfto thead, #qtxieswfto tbody, #qtxieswfto tfoot, #qtxieswfto tr, #qtxieswfto td, #qtxieswfto th {
   border-style: none;
 }
 
-#voasotdbrd p {
+#qtxieswfto p {
   margin: 0;
   padding: 0;
 }
 
-#voasotdbrd .gt_table {
+#qtxieswfto .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2106,12 +2106,12 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-left-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_caption {
+#qtxieswfto .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#voasotdbrd .gt_title {
+#qtxieswfto .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2123,7 +2123,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-width: 0;
 }
 
-#voasotdbrd .gt_subtitle {
+#qtxieswfto .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2135,7 +2135,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-top-width: 0;
 }
 
-#voasotdbrd .gt_heading {
+#qtxieswfto .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2147,13 +2147,13 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_bottom_border {
+#qtxieswfto .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_col_headings {
+#qtxieswfto .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2168,7 +2168,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_col_heading {
+#qtxieswfto .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2188,7 +2188,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   overflow-x: hidden;
 }
 
-#voasotdbrd .gt_column_spanner_outer {
+#qtxieswfto .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2200,15 +2200,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 4px;
 }
 
-#voasotdbrd .gt_column_spanner_outer:first-child {
+#qtxieswfto .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#voasotdbrd .gt_column_spanner_outer:last-child {
+#qtxieswfto .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#voasotdbrd .gt_column_spanner {
+#qtxieswfto .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2220,11 +2220,11 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   width: 100%;
 }
 
-#voasotdbrd .gt_spanner_row {
+#qtxieswfto .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#voasotdbrd .gt_group_heading {
+#qtxieswfto .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2250,7 +2250,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   text-align: left;
 }
 
-#voasotdbrd .gt_empty_group_heading {
+#qtxieswfto .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2265,15 +2265,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   vertical-align: middle;
 }
 
-#voasotdbrd .gt_from_md > :first-child {
+#qtxieswfto .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#voasotdbrd .gt_from_md > :last-child {
+#qtxieswfto .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#voasotdbrd .gt_row {
+#qtxieswfto .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2292,7 +2292,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   overflow-x: hidden;
 }
 
-#voasotdbrd .gt_stub {
+#qtxieswfto .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2305,7 +2305,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#voasotdbrd .gt_stub_row_group {
+#qtxieswfto .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2319,15 +2319,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   vertical-align: top;
 }
 
-#voasotdbrd .gt_row_group_first td {
+#qtxieswfto .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#voasotdbrd .gt_row_group_first th {
+#qtxieswfto .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#voasotdbrd .gt_summary_row {
+#qtxieswfto .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2337,16 +2337,16 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#voasotdbrd .gt_first_summary_row {
+#qtxieswfto .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_first_summary_row.thick {
+#qtxieswfto .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#voasotdbrd .gt_last_summary_row {
+#qtxieswfto .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2356,7 +2356,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_grand_summary_row {
+#qtxieswfto .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2366,7 +2366,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#voasotdbrd .gt_first_grand_summary_row {
+#qtxieswfto .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2376,7 +2376,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-top-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_last_grand_summary_row_top {
+#qtxieswfto .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2386,11 +2386,11 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_striped {
+#qtxieswfto .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#voasotdbrd .gt_table_body {
+#qtxieswfto .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2399,7 +2399,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_footnotes {
+#qtxieswfto .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2413,7 +2413,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_footnote {
+#qtxieswfto .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2422,7 +2422,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#voasotdbrd .gt_sourcenotes {
+#qtxieswfto .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2436,7 +2436,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#voasotdbrd .gt_sourcenote {
+#qtxieswfto .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2444,63 +2444,63 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#voasotdbrd .gt_left {
+#qtxieswfto .gt_left {
   text-align: left;
 }
 
-#voasotdbrd .gt_center {
+#qtxieswfto .gt_center {
   text-align: center;
 }
 
-#voasotdbrd .gt_right {
+#qtxieswfto .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#voasotdbrd .gt_font_normal {
+#qtxieswfto .gt_font_normal {
   font-weight: normal;
 }
 
-#voasotdbrd .gt_font_bold {
+#qtxieswfto .gt_font_bold {
   font-weight: bold;
 }
 
-#voasotdbrd .gt_font_italic {
+#qtxieswfto .gt_font_italic {
   font-style: italic;
 }
 
-#voasotdbrd .gt_super {
+#qtxieswfto .gt_super {
   font-size: 65%;
 }
 
-#voasotdbrd .gt_footnote_marks {
+#qtxieswfto .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#voasotdbrd .gt_asterisk {
+#qtxieswfto .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#voasotdbrd .gt_indent_1 {
+#qtxieswfto .gt_indent_1 {
   text-indent: 5px;
 }
 
-#voasotdbrd .gt_indent_2 {
+#qtxieswfto .gt_indent_2 {
   text-indent: 10px;
 }
 
-#voasotdbrd .gt_indent_3 {
+#qtxieswfto .gt_indent_3 {
   text-indent: 15px;
 }
 
-#voasotdbrd .gt_indent_4 {
+#qtxieswfto .gt_indent_4 {
   text-indent: 20px;
 }
 
-#voasotdbrd .gt_indent_5 {
+#qtxieswfto .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2803,7 +2803,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </figure>
 </div></div></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="1d3099d9-6158-460f-b8e8-e291a5d66942" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="9f258d3a-21c4-4219-a45f-73b543fa5ec2" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>forest_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) <span class="op">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  pivot_longer(cols <span class="op">=</span> li:elevation, names_to <span class="op">=</span> <span class="st">"property"</span>, values_to <span class="op">=</span> <span class="st">"value"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  group_by(<span class="bu">property</span>) <span class="op">%&gt;%</span></span>
@@ -2858,23 +2858,23 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </figcaption>
 <div aria-describedby="tbl-univariate2-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="nojgugjvjc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nojgugjvjc table {
+<div id="oodiyzqxnc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oodiyzqxnc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nojgugjvjc thead, #nojgugjvjc tbody, #nojgugjvjc tfoot, #nojgugjvjc tr, #nojgugjvjc td, #nojgugjvjc th {
+#oodiyzqxnc thead, #oodiyzqxnc tbody, #oodiyzqxnc tfoot, #oodiyzqxnc tr, #oodiyzqxnc td, #oodiyzqxnc th {
   border-style: none;
 }
 
-#nojgugjvjc p {
+#oodiyzqxnc p {
   margin: 0;
   padding: 0;
 }
 
-#nojgugjvjc .gt_table {
+#oodiyzqxnc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2900,12 +2900,12 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-left-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_caption {
+#oodiyzqxnc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nojgugjvjc .gt_title {
+#oodiyzqxnc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2917,7 +2917,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-width: 0;
 }
 
-#nojgugjvjc .gt_subtitle {
+#oodiyzqxnc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2929,7 +2929,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-top-width: 0;
 }
 
-#nojgugjvjc .gt_heading {
+#oodiyzqxnc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2941,13 +2941,13 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_bottom_border {
+#oodiyzqxnc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_col_headings {
+#oodiyzqxnc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2962,7 +2962,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_col_heading {
+#oodiyzqxnc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2982,7 +2982,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   overflow-x: hidden;
 }
 
-#nojgugjvjc .gt_column_spanner_outer {
+#oodiyzqxnc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2994,15 +2994,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 4px;
 }
 
-#nojgugjvjc .gt_column_spanner_outer:first-child {
+#oodiyzqxnc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nojgugjvjc .gt_column_spanner_outer:last-child {
+#oodiyzqxnc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nojgugjvjc .gt_column_spanner {
+#oodiyzqxnc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3014,11 +3014,11 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   width: 100%;
 }
 
-#nojgugjvjc .gt_spanner_row {
+#oodiyzqxnc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nojgugjvjc .gt_group_heading {
+#oodiyzqxnc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3044,7 +3044,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   text-align: left;
 }
 
-#nojgugjvjc .gt_empty_group_heading {
+#oodiyzqxnc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3059,15 +3059,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   vertical-align: middle;
 }
 
-#nojgugjvjc .gt_from_md > :first-child {
+#oodiyzqxnc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nojgugjvjc .gt_from_md > :last-child {
+#oodiyzqxnc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nojgugjvjc .gt_row {
+#oodiyzqxnc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3086,7 +3086,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   overflow-x: hidden;
 }
 
-#nojgugjvjc .gt_stub {
+#oodiyzqxnc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3099,7 +3099,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#nojgugjvjc .gt_stub_row_group {
+#oodiyzqxnc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3113,15 +3113,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   vertical-align: top;
 }
 
-#nojgugjvjc .gt_row_group_first td {
+#oodiyzqxnc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nojgugjvjc .gt_row_group_first th {
+#oodiyzqxnc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nojgugjvjc .gt_summary_row {
+#oodiyzqxnc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3131,16 +3131,16 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#nojgugjvjc .gt_first_summary_row {
+#oodiyzqxnc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_first_summary_row.thick {
+#oodiyzqxnc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nojgugjvjc .gt_last_summary_row {
+#oodiyzqxnc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3150,7 +3150,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_grand_summary_row {
+#oodiyzqxnc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3160,7 +3160,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#nojgugjvjc .gt_first_grand_summary_row {
+#oodiyzqxnc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3170,7 +3170,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-top-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_last_grand_summary_row_top {
+#oodiyzqxnc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3180,11 +3180,11 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_striped {
+#oodiyzqxnc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nojgugjvjc .gt_table_body {
+#oodiyzqxnc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3193,7 +3193,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_footnotes {
+#oodiyzqxnc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3207,7 +3207,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_footnote {
+#oodiyzqxnc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3216,7 +3216,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#nojgugjvjc .gt_sourcenotes {
+#oodiyzqxnc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3230,7 +3230,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#nojgugjvjc .gt_sourcenote {
+#oodiyzqxnc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3238,63 +3238,63 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#nojgugjvjc .gt_left {
+#oodiyzqxnc .gt_left {
   text-align: left;
 }
 
-#nojgugjvjc .gt_center {
+#oodiyzqxnc .gt_center {
   text-align: center;
 }
 
-#nojgugjvjc .gt_right {
+#oodiyzqxnc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nojgugjvjc .gt_font_normal {
+#oodiyzqxnc .gt_font_normal {
   font-weight: normal;
 }
 
-#nojgugjvjc .gt_font_bold {
+#oodiyzqxnc .gt_font_bold {
   font-weight: bold;
 }
 
-#nojgugjvjc .gt_font_italic {
+#oodiyzqxnc .gt_font_italic {
   font-style: italic;
 }
 
-#nojgugjvjc .gt_super {
+#oodiyzqxnc .gt_super {
   font-size: 65%;
 }
 
-#nojgugjvjc .gt_footnote_marks {
+#oodiyzqxnc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nojgugjvjc .gt_asterisk {
+#oodiyzqxnc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nojgugjvjc .gt_indent_1 {
+#oodiyzqxnc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nojgugjvjc .gt_indent_2 {
+#oodiyzqxnc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nojgugjvjc .gt_indent_3 {
+#oodiyzqxnc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nojgugjvjc .gt_indent_4 {
+#oodiyzqxnc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nojgugjvjc .gt_indent_5 {
+#oodiyzqxnc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3685,7 +3685,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 <section id="forest" class="level3">
 <h3 class="anchored" data-anchor-id="forest">Forest</h3>
 <p>not used</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="66f3e2ab-2978-4bff-b6c4-d99782464f98" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="f6bddbbd-33f7-497f-b36e-13f66c3fc205" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>forest_corr_tab <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) <span class="op">%&gt;%</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>x, <span class="op">-</span>y)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3730,23 +3730,23 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
 </figcaption>
 <div aria-describedby="tbl-correlation-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="ovqirixrin" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ovqirixrin table {
+<div id="azrgjplopo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#azrgjplopo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ovqirixrin thead, #ovqirixrin tbody, #ovqirixrin tfoot, #ovqirixrin tr, #ovqirixrin td, #ovqirixrin th {
+#azrgjplopo thead, #azrgjplopo tbody, #azrgjplopo tfoot, #azrgjplopo tr, #azrgjplopo td, #azrgjplopo th {
   border-style: none;
 }
 
-#ovqirixrin p {
+#azrgjplopo p {
   margin: 0;
   padding: 0;
 }
 
-#ovqirixrin .gt_table {
+#azrgjplopo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3772,12 +3772,12 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-left-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_caption {
+#azrgjplopo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ovqirixrin .gt_title {
+#azrgjplopo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3789,7 +3789,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-bottom-width: 0;
 }
 
-#ovqirixrin .gt_subtitle {
+#azrgjplopo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3801,7 +3801,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-top-width: 0;
 }
 
-#ovqirixrin .gt_heading {
+#azrgjplopo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3813,13 +3813,13 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-right-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_bottom_border {
+#azrgjplopo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_col_headings {
+#azrgjplopo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3834,7 +3834,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-right-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_col_heading {
+#azrgjplopo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3854,7 +3854,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   overflow-x: hidden;
 }
 
-#ovqirixrin .gt_column_spanner_outer {
+#azrgjplopo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3866,15 +3866,15 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 4px;
 }
 
-#ovqirixrin .gt_column_spanner_outer:first-child {
+#azrgjplopo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ovqirixrin .gt_column_spanner_outer:last-child {
+#azrgjplopo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ovqirixrin .gt_column_spanner {
+#azrgjplopo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3886,11 +3886,11 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   width: 100%;
 }
 
-#ovqirixrin .gt_spanner_row {
+#azrgjplopo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ovqirixrin .gt_group_heading {
+#azrgjplopo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3916,7 +3916,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   text-align: left;
 }
 
-#ovqirixrin .gt_empty_group_heading {
+#azrgjplopo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3931,15 +3931,15 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   vertical-align: middle;
 }
 
-#ovqirixrin .gt_from_md > :first-child {
+#azrgjplopo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ovqirixrin .gt_from_md > :last-child {
+#azrgjplopo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ovqirixrin .gt_row {
+#azrgjplopo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3958,7 +3958,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   overflow-x: hidden;
 }
 
-#ovqirixrin .gt_stub {
+#azrgjplopo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3971,7 +3971,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 5px;
 }
 
-#ovqirixrin .gt_stub_row_group {
+#azrgjplopo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3985,15 +3985,15 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   vertical-align: top;
 }
 
-#ovqirixrin .gt_row_group_first td {
+#azrgjplopo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ovqirixrin .gt_row_group_first th {
+#azrgjplopo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ovqirixrin .gt_summary_row {
+#azrgjplopo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4003,16 +4003,16 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 5px;
 }
 
-#ovqirixrin .gt_first_summary_row {
+#azrgjplopo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_first_summary_row.thick {
+#azrgjplopo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ovqirixrin .gt_last_summary_row {
+#azrgjplopo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4022,7 +4022,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-bottom-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_grand_summary_row {
+#azrgjplopo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4032,7 +4032,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 5px;
 }
 
-#ovqirixrin .gt_first_grand_summary_row {
+#azrgjplopo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4042,7 +4042,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-top-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_last_grand_summary_row_top {
+#azrgjplopo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4052,11 +4052,11 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-bottom-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_striped {
+#azrgjplopo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ovqirixrin .gt_table_body {
+#azrgjplopo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4065,7 +4065,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-bottom-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_footnotes {
+#azrgjplopo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4079,7 +4079,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-right-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_footnote {
+#azrgjplopo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4088,7 +4088,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 5px;
 }
 
-#ovqirixrin .gt_sourcenotes {
+#azrgjplopo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4102,7 +4102,7 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   border-right-color: #D3D3D3;
 }
 
-#ovqirixrin .gt_sourcenote {
+#azrgjplopo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4110,63 +4110,63 @@ Table&nbsp;3: Pearson’s correlation coefficients for soil properties and terra
   padding-right: 5px;
 }
 
-#ovqirixrin .gt_left {
+#azrgjplopo .gt_left {
   text-align: left;
 }
 
-#ovqirixrin .gt_center {
+#azrgjplopo .gt_center {
   text-align: center;
 }
 
-#ovqirixrin .gt_right {
+#azrgjplopo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ovqirixrin .gt_font_normal {
+#azrgjplopo .gt_font_normal {
   font-weight: normal;
 }
 
-#ovqirixrin .gt_font_bold {
+#azrgjplopo .gt_font_bold {
   font-weight: bold;
 }
 
-#ovqirixrin .gt_font_italic {
+#azrgjplopo .gt_font_italic {
   font-style: italic;
 }
 
-#ovqirixrin .gt_super {
+#azrgjplopo .gt_super {
   font-size: 65%;
 }
 
-#ovqirixrin .gt_footnote_marks {
+#azrgjplopo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ovqirixrin .gt_asterisk {
+#azrgjplopo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ovqirixrin .gt_indent_1 {
+#azrgjplopo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ovqirixrin .gt_indent_2 {
+#azrgjplopo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ovqirixrin .gt_indent_3 {
+#azrgjplopo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ovqirixrin .gt_indent_4 {
+#azrgjplopo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ovqirixrin .gt_indent_5 {
+#azrgjplopo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4883,7 +4883,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

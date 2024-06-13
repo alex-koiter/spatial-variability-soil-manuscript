@@ -38,10 +38,10 @@ and Colour Properties Across Two Contrasting Land Uses</article-title>
 
 <email>LUNAMIMA56@brandonu.ca</email>
 <role>MSc Thesis</role>
-<role>Initial draft of manuscript</role>
-<role>Initial data analysis</role>
 <role>Sample collection</role>
 <role>Lab analysis</role>
+<role>Initial data analysis</role>
+<role>Initial draft of manuscript</role>
 <xref ref-type="aff" rid="aff-1">a</xref>
 </contrib>
 <contrib contrib-type="author" corresp="yes">
@@ -154,31 +154,32 @@ Development Centre</institution>
 
 <abstract>
 <p>Quantification and accurate assessment of the spatial variability and
-distribution of soil physical and biogeochemical properties
-(fingerprints) are vital components of agri-environmental research and
-modeling, including sediment source fingerprinting. Understanding the
-distribution of soil properties at a range of spatial scales is crucial
-in the development of appropriate, reliable, and efficient sampling
-campaigns. This study was aimed to investigate the spatial variability
-in soil geochemical and colour (i.e., spectral reflectance) fingerprints
-across two contrasting land uses. The main objectives of this study are
-to: 1) quantify the spatial variability of geochemical and colour
-fingerprint properties at a field-scale (~ 40 ha) across agricultural
-and forested sites; 2) evaluate the spatial variability and distribution
-of soil fingerprint properties and its relation to a range of terrain
-attributes (e.g., slope); and 3) identify the possible sources of
-variation in each land use, primarily environmental factors. A
+distribution of soil physical and biogeochemical properties are vital
+components of agri-environmental research and modeling, including
+sediment source fingerprinting. Understanding the distribution of soil
+properties is crucial in the development of appropriate, reliable, and
+efficient sampling campaigns. This study was aimed to investigate the
+spatial variability in soil geochemical and colour (i.e., spectral
+reflectance) soil properties (&lt;63um) across two contrasting land
+uses. The main objectives of this study are to: 1) quantify the spatial
+variability of geochemical and colour properties at a field-scale (~ 40
+ha) across agricultural and forested sites; 2) evaluate the spatial
+variability and distribution of soil properties and its relation to
+seven terrain attributes (e.g., catchment area, elevation). A
 combination of univariate analysis and geostatistical methods were
-applied to analyze the soil geochemistry and colour properties. This
-information was used to both quantify and assess the variability in
-commonly used fingerprints. Terrain attributes derived from digital
-elevation model (DEM) were used to investigate spatial variation of soil
-geochemical and colour fingerprint properties. The ability of terrain
-attributes to explain the observed variability in soil fingerprints
-played an important role across all properties. The present study
-suggest that kriging interpolation can directly reveal the spatial
-distribution of soil fingerprint properties and quantify the variability
-at a field-scale.</p>
+applied to characterize the soil geochemistry and colour properties.
+This information was used to both quantify and assess the variability in
+soil properties. The variability and spatial autocorrelation were
+generally both site and soil property specific. For a selection of soil
+properties exhibiting some spatial autocorrelation, random forest
+regression was used to indentify the relative importance of terrain
+attributes on observed patterns of soil geochemical and colour
+properties. Elevation was found to explain the greatest amount of the
+variation in soil properties followed by the SAGA wetness index and
+relative slope position. These types of information can be used to help
+create efficient soil sampling designs by providing information that can
+inform sampling locations and number of samples collected in order to
+meet research needs and objectives.</p>
 </abstract>
 <kwd-group kwd-group-type="author">
 <kwd>Soil geochemistry</kwd>
@@ -4427,31 +4428,8 @@ all geometries</preformat>
   <sec specific-use="notebook-content">
   <code language="r script">canada &lt;- ne_states(country = &quot;Canada&quot;, returnclass = &quot;sf&quot;) %&gt;%
   st_transform(crs = 3348)
-  </code>
-  <boxed-text>
-    <preformat>The rnaturalearthhires package needs to be installed.</preformat>
-  </boxed-text>
-  <boxed-text>
-    <preformat>Installing the rnaturalearthhires package.</preformat>
-  </boxed-text>
-  <boxed-text>
-    <preformat>Downloading GitHub repo ropensci/rnaturalearthhires@HEAD</preformat>
-  </boxed-text>
-  <boxed-text>
-    <preformat>
-── R CMD build ─────────────────────────────────────────────────────────────────
-* checking for file ‘/tmp/RtmpzOWY8S/remotes44e82431ab09/ropensci-rnaturalearthhires-dd1e210/DESCRIPTION’ ... OK
-* preparing ‘rnaturalearthhires’:
-* checking DESCRIPTION meta-information ... OK
-* checking for LF line-endings in source and make files and shell scripts
-* checking for empty or unneeded directories
-* building ‘rnaturalearthhires_1.0.0.9000.tar.gz’</preformat>
-  </boxed-text>
-  <boxed-text>
-    <preformat>Installing package into '/home/alex/R/x86_64-pc-linux-gnu-library/4.4'
-(as 'lib' is unspecified)</preformat>
-  </boxed-text>
-  <code language="r script">locations2 &lt;- data.frame(name = c(&quot;Center&quot;), long = c(-99.989671), lat = c(50.742554)) %&gt;%
+
+locations2 &lt;- data.frame(name = c(&quot;Center&quot;), long = c(-99.989671), lat = c(50.742554)) %&gt;%
   st_as_sf(coords = c(&quot;long&quot;, &quot;lat&quot;),  crs = 4326) %&gt;%
   st_transform(crs = st_crs(land))
   </code>
