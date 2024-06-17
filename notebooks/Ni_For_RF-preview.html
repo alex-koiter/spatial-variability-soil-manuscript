@@ -580,52 +580,37 @@ F-statistic:  1064 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="write-data" class="level3">
 <h3 class="anchored" data-anchor-id="write-data">Write data</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>importance_data <span class="ot">&lt;-</span> ImpData <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MSE_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Purity_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IncNodePurity)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="st">"Forest"</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">property =</span> <span class="st">"Ni"</span>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))) {</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  importance_data_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(importance_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"MSE_rank"</span>, <span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> importance_data_final <span class="ot">&lt;-</span> importance_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 175 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): Var.Names, site, property
-dbl (4): %IncMSE, IncNodePurity, MSE_rank, Purity_rank
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(importance_data_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>model_performance <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">MSE =</span> rf.fit<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>mse)],</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp =</span> rf.fit<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>rsq)],</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">MSE_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)],</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq)],</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">R2 =</span> r_sq<span class="sc">$</span>r.squared, </span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">site =</span> <span class="st">"Forest"</span>,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">property =</span> <span class="st">"Ni"</span>)</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))) {</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  model_performance_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rows_upsert</span>(model_performance, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>))  </span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final <span class="ot">&lt;-</span> model_performance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 25 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (2): site, property
-dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>importance_data <span class="ot">&lt;-</span> ImpData <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MSE_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Purity_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IncNodePurity)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="st">"Forest"</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">property =</span> <span class="st">"Ni"</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))) {</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  importance_data_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(importance_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"MSE_rank"</span>, <span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> importance_data_final <span class="ot">&lt;-</span> importance_data</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(importance_data_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>model_performance <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">MSE =</span> rf.fit<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>mse)],</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp =</span> rf.fit<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>rsq)],</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">MSE_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)],</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq)],</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">R2 =</span> r_sq<span class="sc">$</span>r.squared, </span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">site =</span> <span class="st">"Forest"</span>,</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">property =</span> <span class="st">"Ni"</span>)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))) {</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  model_performance_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rows_upsert</span>(model_performance, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>))  </span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final <span class="ot">&lt;-</span> model_performance</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 </section>
@@ -1049,7 +1034,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

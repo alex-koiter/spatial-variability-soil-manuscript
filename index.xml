@@ -2863,7 +2863,8 @@ F-statistic:  1064 on 1 and 882 DF,  p-value: &lt; 2.2e-16</preformat>
   <sec id="write-data-nb-3">
     <title>Write data</title>
     <sec specific-use="notebook-content">
-    <code language="r script">importance_data &lt;- ImpData %&gt;%
+    <code language="r script">#|
+importance_data &lt;- ImpData %&gt;%
   mutate(MSE_rank = rank(-`%IncMSE`)) %&gt;%
   mutate(Purity_rank = rank(-IncNodePurity)) %&gt;%
   mutate(site = &quot;Forest&quot;,
@@ -2873,18 +2874,8 @@ if(file.exists(here::here(&quot;./notebooks/importance_data.csv&quot;))) {
   importance_data_final &lt;- read_csv(here::here(&quot;./notebooks/importance_data.csv&quot;)) |&gt;
     rows_upsert(importance_data, by = c(&quot;MSE_rank&quot;, &quot;site&quot;, &quot;property&quot;)) 
 } else importance_data_final &lt;- importance_data
-    </code>
-    <boxed-text>
-      <preformat>Rows: 175 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (3): Var.Names, site, property
-dbl (4): %IncMSE, IncNodePurity, MSE_rank, Purity_rank
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
-    </boxed-text>
-    <code language="r script">write_csv(importance_data_final, here::here(&quot;./notebooks/importance_data.csv&quot;))
+write_csv(importance_data_final, here::here(&quot;./notebooks/importance_data.csv&quot;))
 
 
 model_performance &lt;- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
@@ -2899,18 +2890,9 @@ if(file.exists(here::here(&quot;./notebooks/model_performance_data.csv&quot;))) 
   model_performance_final &lt;- read_csv(here::here(&quot;./notebooks/model_performance_data.csv&quot;)) |&gt;
         rows_upsert(model_performance, by = c(&quot;site&quot;, &quot;property&quot;))  
 } else model_performance_final &lt;- model_performance
-    </code>
-    <boxed-text>
-      <preformat>Rows: 25 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (2): site, property
-dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
-    </boxed-text>
-    <code language="r script">write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
+
+write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
     </code>
     </sec>
   </sec>
@@ -6205,7 +6187,8 @@ F-statistic:  1513 on 1 and 882 DF,  p-value: &lt; 2.2e-16</preformat>
   <sec id="write-data-nb-12">
     <title>Write data</title>
     <sec specific-use="notebook-content">
-    <code language="r script">importance_data &lt;- ImpData %&gt;%
+    <code language="r script">#|
+importance_data &lt;- ImpData %&gt;%
   mutate(MSE_rank = rank(-`%IncMSE`)) %&gt;%
   mutate(Purity_rank = rank(-IncNodePurity)) %&gt;%
   mutate(site = &quot;Forest&quot;,
@@ -6215,18 +6198,8 @@ if(file.exists(here::here(&quot;./notebooks/importance_data.csv&quot;))) {
   importance_data_final &lt;- read_csv(here::here(&quot;./notebooks/importance_data.csv&quot;)) |&gt;
     rows_upsert(importance_data, by = c(&quot;MSE_rank&quot;, &quot;site&quot;, &quot;property&quot;)) 
 } else importance_data_final &lt;- importance_data
-    </code>
-    <boxed-text>
-      <preformat>Rows: 175 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (3): Var.Names, site, property
-dbl (4): %IncMSE, IncNodePurity, MSE_rank, Purity_rank
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
-    </boxed-text>
-    <code language="r script">write_csv(importance_data_final, here::here(&quot;./notebooks/importance_data.csv&quot;))
+write_csv(importance_data_final, here::here(&quot;./notebooks/importance_data.csv&quot;))
 
 
 model_performance &lt;- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
@@ -6241,18 +6214,9 @@ if(file.exists(here::here(&quot;./notebooks/model_performance_data.csv&quot;))) 
   model_performance_final &lt;- read_csv(here::here(&quot;./notebooks/model_performance_data.csv&quot;)) |&gt;
     rows_upsert(model_performance, by = c(&quot;site&quot;, &quot;property&quot;))  
 } else model_performance_final &lt;- model_performance
-    </code>
-    <boxed-text>
-      <preformat>Rows: 25 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (2): site, property
-dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
-    </boxed-text>
-    <code language="r script">write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
+
+write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
     </code>
     </sec>
   </sec>
@@ -9173,7 +9137,7 @@ F-statistic:  7772 on 1 and 771 DF,  p-value: &lt; 2.2e-16</preformat>
 
 if(file.exists(here::here(&quot;./notebooks/importance_data.csv&quot;))) {
   importance_data_final &lt;- read_csv(here::here(&quot;./notebooks/importance_data.csv&quot;)) |&gt;
-    rows_upsert(importance_data, by = c(&quot;MSE_rank&quot;, &quot;site&quot;, &quot;property&quot;)) 
+    rows_upsert(importance_data, by = c(&quot;MSE_rank&quot;, &quot;site&quot;, &quot;property&quot;))
 } else importance_data_final &lt;- importance_data
     </code>
     <boxed-text>
@@ -9193,13 +9157,13 @@ model_performance &lt;- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
        Var_exp = rf.fit$rsq[length(rf.fit$rsq)],
        MSE_test = rf.fit$test$mse[length(rf.fit$test$mse)],
        Var_exp_test = rf.fit$test$rsq[length(rf.fit$test$rsq)],
-       R2 = r_sq$r.squared, 
+       R2 = r_sq$r.squared,
        site = &quot;Agriculture&quot;,
        property = &quot;Ca&quot;)
 
 if(file.exists(here::here(&quot;./notebooks/model_performance_data.csv&quot;))) {
   model_performance_final &lt;- read_csv(here::here(&quot;./notebooks/model_performance_data.csv&quot;)) |&gt;
-    rows_upsert(model_performance, by = c(&quot;site&quot;, &quot;property&quot;))  
+    rows_upsert(model_performance, by = c(&quot;site&quot;, &quot;property&quot;))
 } else model_performance_final &lt;- model_performance
     </code>
     <boxed-text>
@@ -9212,7 +9176,7 @@ dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
     </boxed-text>
-    <code language="r script">write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
+    <code language="r script"> write_csv(model_performance_final, here::here(&quot;./notebooks/model_performance_data.csv&quot;))
     </code>
     </sec>
   </sec>
@@ -11101,7 +11065,7 @@ p1
   theme(legend.position = &quot;none&quot;,
         axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = &quot;Site&quot;, y = &quot;Concentration&quot;) +
-  facet_wrap(~element, scales = &quot;free_y&quot;)
+  facet_wrap(~element, scales = &quot;free_y&quot;, ncol = 4)
     </code>
     <graphic mimetype="image" mime-subtype="png" xlink:href="univariate_summary_files/figure-jats/unnamed-chunk-7-1.png" />
     </sec>
