@@ -235,7 +235,7 @@ importance_data <- ImpData %>%
 
 if(file.exists(here::here("./notebooks/importance_data.csv"))) {
   importance_data_final <- read_csv(here::here("./notebooks/importance_data.csv")) |>
-    rows_upsert(importance_data, by = c("MSE_rank", "site", "property")) 
+    rows_upsert(importance_data, by = c("MSE_rank", "site", "property"))
 } else importance_data_final <- importance_data
 
 write_csv(importance_data_final, here::here("./notebooks/importance_data.csv"))
@@ -245,16 +245,16 @@ model_performance <- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
        Var_exp = rf.fit$rsq[length(rf.fit$rsq)],
        MSE_test = rf.fit$test$mse[length(rf.fit$test$mse)],
        Var_exp_test = rf.fit$test$rsq[length(rf.fit$test$rsq)],
-       R2 = r_sq$r.squared, 
+       R2 = r_sq$r.squared,
        site = "Agriculture",
        property = "Ca")
 
 if(file.exists(here::here("./notebooks/model_performance_data.csv"))) {
   model_performance_final <- read_csv(here::here("./notebooks/model_performance_data.csv")) |>
-    rows_upsert(model_performance, by = c("site", "property"))  
+    rows_upsert(model_performance, by = c("site", "property"))
 } else model_performance_final <- model_performance
 
 
-write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
+ write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
 
 ```

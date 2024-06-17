@@ -103,6 +103,8 @@ p1
 
 ## Plot2
 ```{r}
+#| fig-width: 7
+#| fig-height: 20
 ggplot(data = filter(data, group == "geochem"), aes(x = site, y = value, fill = site))+
   geom_boxplot() +
   theme_bw(base_size = 12) +
@@ -110,7 +112,7 @@ ggplot(data = filter(data, group == "geochem"), aes(x = site, y = value, fill = 
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "Site", y = "Concentration") +
-  facet_wrap(~element, scales = "free_y")
+  facet_wrap(~element, scales = "free_y", ncol = 4)
 ```
 
 ### Table
