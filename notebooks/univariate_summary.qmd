@@ -404,12 +404,19 @@ corr_tab <- temp3 %>%
 ```{r}
 #| label: tbl-correlation-summary
 #| tbl-cap: Pearson’s correlation coefficients for soil properties and terrain attributes using interpoloated values (10m resolution).
-corr_tab |>
+correlation <- corr_tab |>
   group_by(site) |>
   gt() |>
   fmt_markdown(columns = Property) |>
     tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
   tab_options(column_labels.font.weight = "bold") |>
-    row_group_order(groups = c("Agriculture", "Forest"))
+    row_group_order(groups = c("Agriculture", "Forest"))|>
+  tab_footnote(
+    footnote = "*** p < 0.001; ** p < 0.01; * p < 0.05; NS = non-significant at p = 0.05"
+  )
+
+correlation
+
+saveRDS(correlation, file = here::here("./images/correlation.rds"))
 ```
 

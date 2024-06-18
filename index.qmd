@@ -156,3 +156,13 @@ Summary statistics of all measured geochemical soil properties at both sites. Er
 
 Summary statistics of all measured colour soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.
 :::
+
+::: {#supptab-corr-summary}
+
+```{r}
+readRDS(file = "./images/correlation.rds")
+```
+
+Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
+
+:::
