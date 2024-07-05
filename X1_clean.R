@@ -59,8 +59,11 @@ ag_data <- read_csv("../Data/Raw data/agric_soil_prop_pnts_terrain_values_new.cs
          any_of(attribute)) %>%
   drop_na(x, y)
 
-# resample form 1m to 10 m res
-ag_data <- as.data.frame(resample(rast(ag_data), rast(extent = ext(rast(ag_data)), resolution = 10)), xy = TRUE)
+# resample from 1m to 10 m res
+r <- resample(rast(ag_data), rast(extent = ext(rast(ag_data)), resolution = 10))
+
+#writeRaster(r, filename = "./notebooks/ag_data.tif", overwrite=TRUE)
+ag_data <- as.data.frame(r, xy = TRUE)
 
 # write_csv(x = ag_data, file = "./notebooks/ag_terrain_data.csv")
 
@@ -76,8 +79,12 @@ forest_data <- read_csv("../Data/Raw data/forest_soil_prop_pnts_terrain_values_n
          any_of(forest_prints),
          any_of(attribute))
 
-forest_data <- as.data.frame(resample(rast(forest_data), rast(extent = ext(rast(forest_data)), resolution = 10)), xy = TRUE)
+# resample from 1m to 10 m res
+r2 <- resample(rast(forest_data), rast(extent = ext(rast(forest_data)), resolution = 10))
 
+#writeRaster(r2, filename = "./notebooks/forest_data.tif", overwrite=TRUE)
+
+forest_data <- as.data.frame(r, xy = TRUE)
 
 # write_csv(x = forest_data, file = "./notebooks/forest_terrain_data.csv")
 
