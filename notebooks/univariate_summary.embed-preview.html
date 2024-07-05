@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.5.45">
+    <meta name="generator" content="quarto-1.6.1">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -251,7 +251,7 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="86eff886-2b3f-4d61-8b7f-550b3e4a8d78" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="0ca43d6c-18cb-4cb5-9533-2ff09aa9db0b" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -275,7 +275,7 @@ The following object is masked from 'package:tidyr':
 </section>
 <section id="load-in-data" class="level1">
 <h1>load in data</h1>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="5f9c634c-883b-45da-be14-830471132551" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="07ad7250-7eb0-44f2-ab17-933888da2ff7" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/soil_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 6078 Columns: 5
@@ -290,7 +290,7 @@ dbl (2): sample_number, value
 </div></div>
 <section id="summarize" class="level2">
 <h2 class="anchored" data-anchor-id="summarize">Summarize</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="e649f7c2-b606-4559-806b-365f3659da72" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="2bdd990f-85e8-451c-84f7-0d116943572b" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_summary <span class="op">&lt;-</span> data <span class="op">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  group_by(element) <span class="op">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  group_by(element, site, group) <span class="op">%&gt;%</span></span>
@@ -304,7 +304,7 @@ dbl (2): sample_number, value
 </div></div>
 <section id="max-min-scaling" class="level3">
 <h3 class="anchored" data-anchor-id="max-min-scaling">Max-min scaling</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="fc21fc8b-7aa6-4ea3-9987-03838d1f0281" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="c855e8ad-fac0-4ff6-a683-7a1f0471ff04" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">&lt;-</span> data <span class="op">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  group_by(element) <span class="op">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  mutate(value2 <span class="op">=</span> (value <span class="op">-</span> <span class="bu">min</span>(value, na.rm <span class="op">=</span> T)) <span class="op">/</span> (<span class="bu">max</span>(value, na.rm <span class="op">=</span> T) <span class="op">-</span> <span class="bu">min</span>(value, na.rm <span class="op">=</span> T))) <span class="op">%&gt;%</span></span>
@@ -325,7 +325,7 @@ dbl (2): sample_number, value
 <h2 class="anchored" data-anchor-id="geochemistry">Geochemistry</h2>
 <section id="plot-prep" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="8e1bcf7c-a495-47c6-8fa2-2c5937d573d4" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="426c9ce7-4cb6-4f36-a9df-9c8661f2ae8f" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>geo <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"geochem"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  mutate(facet <span class="op">=</span> case_when(element <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"Ag"</span>, <span class="st">"Al"</span>, <span class="st">"As"</span>,<span class="st">"B"</span>,<span class="st">"Ba"</span>,<span class="st">"Be"</span>,<span class="st">"Bi"</span>,<span class="st">"Ca"</span>,<span class="st">"Cd"</span>,<span class="st">"Ce"</span>,<span class="st">"Co"</span>, <span class="st">"Cr"</span>, <span class="st">"Cs"</span>, <span class="st">"Cu"</span>, <span class="st">"Fe"</span>, <span class="st">"Ga"</span>, <span class="st">"Hf"</span>, <span class="st">"Hg"</span>, <span class="st">"In"</span>, <span class="st">"K"</span>, <span class="st">"La"</span>, <span class="st">"Li"</span>) <span class="op">~</span> <span class="st">"Geomchemistry A-L"</span>,</span>
@@ -387,7 +387,7 @@ Figure S1
 </section>
 <section id="plot2" class="level2">
 <h2 class="anchored" data-anchor-id="plot2">Plot2</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="bfbff7dc-3cb5-4419-b6ec-c68c7c2dcef0" class="cell" data-fig-width="7" data-fig-height="20">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="5beee2ec-2365-4ae4-baf0-39654c0eb3a5" class="cell" data-fig-width="7" data-fig-height="20">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">==</span> <span class="st">"geochem"</span>), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -406,7 +406,7 @@ Figure S1
 </div></div>
 <section id="table" class="level3">
 <h3 class="anchored" data-anchor-id="table">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="ce9b213e-9490-4ac5-b839-9e79c5af98b0" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="2f353def-4cf6-4a6c-9fb5-ba120616c3d7" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>geo_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"geochem"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>group) </span>
@@ -1417,7 +1417,7 @@ Figure S1
 <h2 class="anchored" data-anchor-id="colour">Colour</h2>
 <section id="plot-prep-1" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep-1">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="0deb353f-3ac2-418a-8039-4f6ac9f95f4b" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="0cd6ece9-a9ad-40f9-ae50-16bcc79cd65b" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>colour <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"colour"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  mutate(element <span class="op">=</span> str_extract(element, (<span class="st">"[:alpha:](?=_)"</span>))) <span class="op">%&gt;%</span> <span class="co"># remove _col</span></span>
@@ -1471,7 +1471,7 @@ Figure S2
 </section>
 <section id="plot2-1" class="level3">
 <h3 class="anchored" data-anchor-id="plot2-1">Plot2</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="52884021-0ac3-4499-989d-3a309b747014" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="fb420cf3-b445-460d-ac86-d1ec3ef3de07" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">==</span> <span class="st">"colour"</span>), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -1491,7 +1491,7 @@ Figure S2
 </section>
 <section id="table-1" class="level3">
 <h3 class="anchored" data-anchor-id="table-1">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="fd12a6e8-62cb-44d9-9535-ae7dc72b8d26" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="827f8814-667c-43b6-8aa9-7a9745529afc" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>colour_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">==</span> <span class="st">"colour"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  mutate(element <span class="op">=</span> str_extract(element, (<span class="st">"[:alpha:](?=_)"</span>))) <span class="op">%&gt;%</span> <span class="co"># remove _col</span></span>
@@ -1865,7 +1865,7 @@ Figure S2
 <h2 class="anchored" data-anchor-id="psa-and-organic-matter">PSA and organic matter</h2>
 <section id="plot-prep-2" class="level3">
 <h3 class="anchored" data-anchor-id="plot-prep-2">plot prep</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="1ab9a42c-4a2c-4a7e-908a-5f860c044623" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="7b8035fb-745e-469a-83a1-cdc25c72ab55" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>psa <span class="op">&lt;-</span> data2 <span class="op">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  mutate(bar <span class="op">=</span> c(rep(c(rep(Inf, <span class="dv">2</span>), rep(<span class="dv">0</span>, <span class="dv">2</span>)), <span class="dv">1</span>), Inf, Inf)) <span class="op">%&gt;%</span></span>
@@ -1882,7 +1882,7 @@ Figure S2
 </section>
 <section id="plot-2" class="level3">
 <h3 class="anchored" data-anchor-id="plot-2">plot</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="33284ad8-b549-4c29-be0a-b9241211d3f9" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="9ed8dbe9-d2ba-410b-8970-e77eaf8a201a" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ggplot() <span class="op">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  geom_bar(data <span class="op">=</span> psa2, aes(x<span class="op">=</span>element, y <span class="op">=</span> bar), fill <span class="op">=</span><span class="st">"grey20"</span>, position<span class="op">=</span><span class="st">"identity"</span>, stat <span class="op">=</span> <span class="st">"identity"</span>, alpha <span class="op">=</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
@@ -1911,7 +1911,7 @@ Figure S2
 </section>
 <section id="plot2-2" class="level2">
 <h2 class="anchored" data-anchor-id="plot2-2">Plot2</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cae6cd64-5b55-4e0d-8f10-3c33dcc61dc5" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="b6bcdac4-e014-4023-8800-95fab8757bad" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ggplot(data <span class="op">=</span> <span class="bu">filter</span>(data, group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)), aes(x <span class="op">=</span> site, y <span class="op">=</span> value, fill <span class="op">=</span> site))<span class="op">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  geom_boxplot() <span class="op">+</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
@@ -1930,7 +1930,7 @@ Figure S2
 </div></div>
 <section id="table-2" class="level3">
 <h3 class="anchored" data-anchor-id="table-2">Table</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="b35f1fa8-e32d-4fc6-91b2-8fb31db601da" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="fdb7cd46-c4ba-49eb-8af0-a6f9ad6546d9" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>psa_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(group <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"psa"</span>, <span class="st">"organic"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>group) </span>
@@ -2033,7 +2033,7 @@ Figure S2
 </table>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="0854a7f4-f692-4aea-898e-a1c89a8163bb" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="956d5499-3986-4d92-bce0-0f3ea4ac41fe" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>summary_tab <span class="op">&lt;-</span> data_summary <span class="op">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(element <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"Li"</span>, <span class="st">"a_col"</span>, <span class="st">"Fe"</span>, <span class="st">"Co"</span>, <span class="st">"x_col"</span>, <span class="st">"Cs"</span>, <span class="st">"La"</span>, <span class="st">"Ni"</span>, <span class="st">"Nb"</span>, <span class="st">"h_col"</span>, <span class="st">"b_col"</span>, <span class="st">"Rb"</span>, <span class="st">"Ca"</span>, <span class="st">"Sr"</span>, <span class="st">"c_col"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   mutate(element <span class="op">=</span> <span class="im">as</span>.character(fct_recode(element, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>))) <span class="op">%&gt;%</span></span>
@@ -2803,7 +2803,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </figure>
 </div></div></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="8674eac2-30e6-45ac-82b5-97f520b1bc2b" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="e1c6f0f8-0774-48bf-af5f-15442009ba04" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>forest_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) <span class="op">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  pivot_longer(cols <span class="op">=</span> li:elevation, names_to <span class="op">=</span> <span class="st">"property"</span>, values_to <span class="op">=</span> <span class="st">"value"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  group_by(<span class="bu">property</span>) <span class="op">%&gt;%</span></span>
@@ -3685,7 +3685,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 <section id="forest" class="level3">
 <h3 class="anchored" data-anchor-id="forest">Forest</h3>
 <p>not used</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="d3630413-da56-43cb-9796-47c1427dbeb1" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="80e4b69e-be80-491f-a2de-a2da03409d88" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>forest_corr_tab <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) <span class="op">%&gt;%</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  select(<span class="op">-</span>x, <span class="op">-</span>y)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4896,7 +4896,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
