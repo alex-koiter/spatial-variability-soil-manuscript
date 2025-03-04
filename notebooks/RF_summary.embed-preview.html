@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.1">
+    <meta name="generator" content="quarto-1.7.13">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,15 +147,16 @@
     
 <script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4c3f21f622398162bebe0d2c2d806a7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -215,14 +216,14 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="dff27974-7a73-494a-8d9d-d15df10f9e57" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="d625a18d-8ac7-43ba-bddd-089630eafdf4" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(patchwork)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  library(gt)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="42b2d5e4-71e9-4b11-9079-b4fcf5f96f71" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="d23cbb1a-c123-4dde-ac96-5e6c0009cd80" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imp_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"Terrain Attribute"</span> <span class="op">=</span> <span class="st">"Var.Names"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_recode(`Terrain Attribute`, <span class="st">"Elevation"</span> <span class="op">=</span> <span class="st">"elevation"</span>, </span>
@@ -262,7 +263,7 @@ Figure&nbsp;1: Heat map of the Random Forest regresssion results showing the ran
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="e6beb7f5-37d1-48e7-8da0-136c5c8e8b94" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="832a81f1-112b-41e7-9234-03eb50652855" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="op">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
@@ -314,23 +315,23 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
 </figcaption>
 <div aria-describedby="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="gpcnmbwuco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gpcnmbwuco table {
+<div id="mrjlpcipfu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mrjlpcipfu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gpcnmbwuco thead, #gpcnmbwuco tbody, #gpcnmbwuco tfoot, #gpcnmbwuco tr, #gpcnmbwuco td, #gpcnmbwuco th {
+#mrjlpcipfu thead, #mrjlpcipfu tbody, #mrjlpcipfu tfoot, #mrjlpcipfu tr, #mrjlpcipfu td, #mrjlpcipfu th {
   border-style: none;
 }
 
-#gpcnmbwuco p {
+#mrjlpcipfu p {
   margin: 0;
   padding: 0;
 }
 
-#gpcnmbwuco .gt_table {
+#mrjlpcipfu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -356,12 +357,12 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-left-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_caption {
+#mrjlpcipfu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gpcnmbwuco .gt_title {
+#mrjlpcipfu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -373,7 +374,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-width: 0;
 }
 
-#gpcnmbwuco .gt_subtitle {
+#mrjlpcipfu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -385,7 +386,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-width: 0;
 }
 
-#gpcnmbwuco .gt_heading {
+#mrjlpcipfu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -397,13 +398,13 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_bottom_border {
+#mrjlpcipfu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_col_headings {
+#mrjlpcipfu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -418,7 +419,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_col_heading {
+#mrjlpcipfu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -438,7 +439,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer {
+#mrjlpcipfu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -450,15 +451,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 4px;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer:first-child {
+#mrjlpcipfu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer:last-child {
+#mrjlpcipfu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gpcnmbwuco .gt_column_spanner {
+#mrjlpcipfu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -470,11 +471,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   width: 100%;
 }
 
-#gpcnmbwuco .gt_spanner_row {
+#mrjlpcipfu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gpcnmbwuco .gt_group_heading {
+#mrjlpcipfu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,7 +501,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   text-align: left;
 }
 
-#gpcnmbwuco .gt_empty_group_heading {
+#mrjlpcipfu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -515,15 +516,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: middle;
 }
 
-#gpcnmbwuco .gt_from_md > :first-child {
+#mrjlpcipfu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gpcnmbwuco .gt_from_md > :last-child {
+#mrjlpcipfu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gpcnmbwuco .gt_row {
+#mrjlpcipfu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +543,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#gpcnmbwuco .gt_stub {
+#mrjlpcipfu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,7 +556,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_stub_row_group {
+#mrjlpcipfu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -569,15 +570,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: top;
 }
 
-#gpcnmbwuco .gt_row_group_first td {
+#mrjlpcipfu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_row_group_first th {
+#mrjlpcipfu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_summary_row {
+#mrjlpcipfu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -587,16 +588,16 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_first_summary_row {
+#mrjlpcipfu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_first_summary_row.thick {
+#mrjlpcipfu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_last_summary_row {
+#mrjlpcipfu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -606,7 +607,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_grand_summary_row {
+#mrjlpcipfu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -616,7 +617,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_first_grand_summary_row {
+#mrjlpcipfu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -626,7 +627,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_last_grand_summary_row_top {
+#mrjlpcipfu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,11 +637,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_striped {
+#mrjlpcipfu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gpcnmbwuco .gt_table_body {
+#mrjlpcipfu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -649,7 +650,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_footnotes {
+#mrjlpcipfu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -663,7 +664,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_footnote {
+#mrjlpcipfu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -672,7 +673,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_sourcenotes {
+#mrjlpcipfu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -686,7 +687,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_sourcenote {
+#mrjlpcipfu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -694,64 +695,73 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_left {
+#mrjlpcipfu .gt_left {
   text-align: left;
 }
 
-#gpcnmbwuco .gt_center {
+#mrjlpcipfu .gt_center {
   text-align: center;
 }
 
-#gpcnmbwuco .gt_right {
+#mrjlpcipfu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gpcnmbwuco .gt_font_normal {
+#mrjlpcipfu .gt_font_normal {
   font-weight: normal;
 }
 
-#gpcnmbwuco .gt_font_bold {
+#mrjlpcipfu .gt_font_bold {
   font-weight: bold;
 }
 
-#gpcnmbwuco .gt_font_italic {
+#mrjlpcipfu .gt_font_italic {
   font-style: italic;
 }
 
-#gpcnmbwuco .gt_super {
+#mrjlpcipfu .gt_super {
   font-size: 65%;
 }
 
-#gpcnmbwuco .gt_footnote_marks {
+#mrjlpcipfu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gpcnmbwuco .gt_asterisk {
+#mrjlpcipfu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gpcnmbwuco .gt_indent_1 {
+#mrjlpcipfu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gpcnmbwuco .gt_indent_2 {
+#mrjlpcipfu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gpcnmbwuco .gt_indent_3 {
+#mrjlpcipfu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gpcnmbwuco .gt_indent_4 {
+#mrjlpcipfu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gpcnmbwuco .gt_indent_5 {
+#mrjlpcipfu .gt_indent_5 {
   text-indent: 25px;
+}
+
+#mrjlpcipfu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mrjlpcipfu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -765,25 +775,20 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_col_headings">
-<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
-<th id="MSE<br/>Training<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>
-Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="% Var<br/>Training<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var<br>
-Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="MSE<br/>Testing<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>
-Testing<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="% Var<br/>Validation<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var<br>
-Validation<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="R<span style=&quot;white-space:nowrap;&quot;><sup>2</sup></span><br/>Testing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">R<span style="white-space:nowrap;"><sup>2</sup></span><br>
-Testing</th>
+<tr class="gt_col_headings header">
+<th id="property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
+<th id="MSE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Var_exp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="MSE_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>Testing<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Var_exp_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">{{R^2}}<br>Testing</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="6" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Ca</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.374</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">91.6</td>
@@ -903,10 +908,10 @@ Testing</th>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">61.8</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.59</td>
 </tr>
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="6" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Ca</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.231</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">61.1</td>
@@ -987,11 +992,11 @@ Testing</th>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.64</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="even">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Mean square error</td>
-</tr>
 <tr class="odd">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Percent variance explained</td>
+<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Mean square error</td>
+</tr>
+<tr class="even">
+<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Percent variance explained</td>
 </tr>
 </tfoot>
 
@@ -1087,8 +1092,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1199,7 +1202,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1424,7 +1426,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

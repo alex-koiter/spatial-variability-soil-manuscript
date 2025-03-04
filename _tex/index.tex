@@ -78,23 +78,20 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
-\usepackage{booktabs}
-\usepackage{caption}
-\usepackage{longtable}
-\usepackage{colortbl}
-\usepackage{array}
 \makeatletter
 \@ifpackageloaded{float}{}{\usepackage{float}}
 \floatstyle{plain}
@@ -105,6 +102,17 @@
 \DeclareCaptionLabelFormat{quartosuppfigreflabelformat}{#1#2}
 \captionsetup[suppfig]{labelformat=quartosuppfigreflabelformat}
 \newcommand*\listofsuppfigs{\listof{suppfig}{List of Supplementary Figures}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{plain}
+\@ifundefined{c@chapter}{\newfloat{supptab}{h}{losupptab}}{\newfloat{supptab}{h}{losupptab}[chapter]}
+\floatname{supptab}{Table S}
+\newcommand*\quartosupptabref[1]{Table \hyperref[#1]{S\ref{#1}}}
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\DeclareCaptionLabelFormat{quartosupptabreflabelformat}{#1#2}
+\captionsetup[supptab]{labelformat=quartosupptabreflabelformat}
+\newcommand*\listofsupptabs{\listof{supptab}{List of Supplementary Tables}}
 \makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -148,9 +156,6 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage[]{natbib}
 \bibliographystyle{elsarticle-num}
 \usepackage{bookmark}
@@ -159,7 +164,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Investigating the Spatial Variability in Soil Geochemical and Colour Properties Across Two Contrasting Land Uses},
-  pdfauthor={Maria Luna; Alexander J Koiter; Taras E Lychuk; Arnie Waddel; Alan Moulin},
+  pdfauthor={Maria Luna Miño; Alexander J Koiter; Taras E Lychuk; Arnie Waddel; Alan Moulin},
   pdfkeywords={Soil geochemistry, Soil colour, Spatial analysis},
   colorlinks=true,
   linkcolor={blue},
@@ -175,7 +180,7 @@
 \begin{frontmatter}
 \title{Investigating the Spatial Variability in Soil Geochemical and
 Colour Properties Across Two Contrasting Land Uses}
-\author[1]{Maria Luna%
+\author[1]{Maria Luna Miño%
 %
 }
  \ead{LUNAMIMA56@brandonu.ca} 
@@ -258,147 +263,163 @@ meet research needs and objectives.
 
 Variation in soil biological, chemical, and physical properties occurs
 across the landscape and in response to both regional and local (i.e.,
-field-scale) variations in parent material, relief or topography,
-organisms, climate, time and land use/management (Mulla and McBratney,
-2002). Understanding the patterns and drivers for this variation is an
-important component of many agri-environmental studies. For example, the
-spatial variability in soil properties is a key component for plant
-nutrient management plans as investigating the spatial variation
-influences how suitable producers sample their fields for fertilization
-and compliance with management practices and environmental regulations
-(Kariuki et al., 2009).
+field-scale) variations in the five soil forming factors: parent
+material, relief or topography, biota, climate, and time. Superimposed
+on this is the influence of changes in land use and current and historic
+management practices which can further modify soil properties.
+Quantifying and understanding the patterns and drivers for this
+variation is an important component of many agri-environmental studies.
+For example, to meet the desired level of precision for agronomic and
+environmental nutrient management plans the spatial variability in soil
+nutrients will influence the soil sampling design in terms of number and
+locations of soil samples \citep{starr1995, kariuki2009}.
 
-The spatial variability in soil properties is often caused by changes in
-topography that affect the storage and transport of water within the
-soil profile (Mulla and McBratney, 2002). The soil variability at a
-field-scale might be described by methods of geostatistics and soil
-mapping. Geostatistics is a technology used to estimate the soil
-property values in non-sampled areas or areas with sparse samplings and
-provides a set of statistical tools for a description of spatial
-patterns, quantitative modeling of spatial continuity, spatial
-prediction, and uncertainty assessment (Goovaerts, 1999). Geostatistical
-techniques that incorporate spatial information into predictions can
-improve estimation and enhance map quality (Zhang et al., 2007). Most
-applications of this statistical technique were estimated in small-scale
-areas or on a field-scale with minimal work completed in large land
-areas or soil regions even though standard geostatistical techniques
-have been suitable for describing the spatial distribution of soil and
-to successfully analyze spatial variability of soil properties (Zhang et
-al., 2007). Geostatistics is focused on spatial correlation, spatial
-interpolation, simulation, and visualization of values of random
-variables. Spatial interpolation is commonly used to predict a value of
-a variable of interest at unmeasured locations with the available
-measurements at sampled sites (Robertson, 2008). Kriging, for instance,
-is a multistep method of spatial interpolation, which assumes that the
-direction or distance between sample points reflects a spatial
-autocorrelation that can be used to explain variation in the surface
-(Oliver and Webster, 1990).
+Sediment source fingerprinting is a watershed-scale technique that is
+used to identify and quantify the relative proportions of sediment
+derived from unique sources. This technique uses natural occurring
+biogeochemical properties as fingerprints (i.e., tracers) to
+discriminate between potential sources of sediment and are linked to
+downstream sediment using mixing models. From a sediment fingerprinting
+perspective, investigating the spatial variability of soil properties at
+a watershed-scale can be advantageous to identify, classify, and
+distinguish between potential sources of sediment \citep{pulley2017}.
+However, investigating spatial variability at smaller scales is less
+common \citep[e.g.,][]{du2017, pulley2018, collins2019, lunamiño2024}
+and remains a research priority \citep{collins2020}.
 
-The use of semivariograms illustrate the spatial autocorrelation of the
-measured sample points at each field. To better understand
-semivariograms, three main characteristics are commonly used to describe
-these models. The range is the distance where the model first flattens.
-For instance, sample locations separated by distances closer than the
-range are spatially autocorrelated, whereas locations farther apart than
-the range are not. The sill is the value that the semivariogram model
-attains at the range (i.e., the value on the y-axis). The nugget refers
-to when at zero separation distance, the semivariogram value is zero.
-However, at a small separation distance, the semivariogram often
-exhibits a nugget effect, which is a value greater than zero (Oliver and
-Webster, 1990; Robertson, 2008). Spatial dependency or autocorrelation
-is often evaluated in terms of ratio of the nugget to sill expressed in
-percentage or proportion. For instance, a low ratio (less than 25\%)
-means that a large part of the variance is introduced spatially,
-indicating a strong spatial dependency of the variable. A high ratio
-(more than 75\%) generally indicates weak spatial dependency; otherwise,
-the spatial dependency is considered moderate (25\% - 75\%) (Cambardella
-et al., 1994).
+There are three main, interconnected, ways that spatial variability in
+fingerprint properties are an important aspect of sediment
+fingerprinting. First is to adequately quantify the fingerprint
+properties such that it is representative of that source. For some
+fingerprints the variability is not random but rather varies in a more
+systematic way. For example, the pattern of fallout radionuclides will
+reflect the patterns of soil erosion and deposition
+\citep{wilkinson2015}. Designing and implementing source sampling plans
+need to take this into consideration as the sampling designed used has
+been shown to influence the characterization of wide range of commonly
+used fingerprints \citep{lunamiño2024}.
 
-From a sediment fingerprinting perspective, investigating the spatial
-variability of soil properties at a field-scale can be advantageous to
-identify, classify, and distinguish between potential sources of
-sediment (Boudreault et al., 2019). However, only some studies have
-explored fingerprint variability at individual sampling locations (e.g.,
-Du and Walling, 2017; Pulley et al., 2017) as well as over larger scales
-(e.g., Wilkinson et al., 2015). Therefore, investigating spatial
-variability is not common in fingerprinting studies. The field-scale
-variability in fingerprint properties at different scales has been
-employed in sediment fingerprinting studies. For example, in a study
-conducted by Collins et al.~(2019), determined that the main finding
-derives from reported observations on the variability of fingerprint
-properties (δ13C, δ15N, and total carbon and nitrogen) that were used at
-a field-scale. Observations of variability from the study are related to
-sites that present different climates, slopes, soils, and management
-characteristics. Because in this study the soil was relatively aerobic
-during the sampling period, it is determined that diffusion of gaseous
-products (e.g., N and O) thorough the soil profile might be the cause of
-having lack of variation in geochemistry between soil layers. Similarly,
-in order to estimate the variability of soils fingerprint properties,
-topsoil characteristics, such as texture, and organic matter (OM)
-content are important data to take into account (Miranda et al., 2006).
+Secondly, the issue of spatial variability of fingerprint properties is
+further complicated by overlying spatial variability in the rates of
+erosion and sediment delivery. Incorporation of both types of
+variability into the mixing model will provide a more reliable estimate
+of the proportion of sediment derived from each source. Many mixing
+models have well defined inputs (sources) and outputs (sediment) that
+are characterized by their mean and standard deviation and the spatial
+distribution or pattern of fingerprints are not considered. This is not
+ideal as the values of samples that are collected closer, and more
+hydrologically connected, to the stream network may in fact a better
+representation of that source despite potentially deviating from the
+mean value. This issue can be addressed by strategic sampling where the
+more likely to erode areas are targeted for sampling. However, a
+considerable amount of information and insight is lost through that
+approach. There has been some progress using information on erosion
+rates to calculate a erosion rate-weighted mean
+\citep{wilkinson2015, du2017} and using spatially interpolated maps of
+fingerprint values to provided a finer resolution of the fingerprint
+variability within each source \citep{haddadchi2019}.
 
-The degree of spatial variability in fingerprint properties can be
-described by the coefficient of variation (CV) and R2, which is
-associated with the semivariogram. A study conducted by Du and Walling
-(2017) used radionuclides and geochemistry as the main fingerprint
-properties in samples of surface soils that were collected. Results
-present a range CV between 10-30\%. Due to the fact that 137Cs fallout
-to the study field occurred over a period of 25 years, it was reasonable
-to assume that the spatial variation of the 137Cs activity of the
-surface soil was reflected by systematic variation related with the
-effect of soil redistribution during the sampling period. In the case of
-the other fingerprint properties, the variability could be principally
-associated with soil redistribution and topography. This study suggests
-that erosional history and topography are important aspects of designing
-an appropriate sampling approach.
+Secondly, understanding the geomorphic, hydrologic, and biochemical
+processes that have led to the observed patterns in spatial variability
+helps in the selection of robust and reliable fingerprints and/or guide
+the sampling design for source characterization. In selecting
+fingerprints that provide good discrimination between sources many
+studies typically used a statistical-based approach \citep{collins1997}.
+However, there are concerns that this approach may result in the
+inclusion of false positives (i.e., type I error) or non-conservative
+fingerprints \citep{koiter2013}. Consequently, there has been a call for
+the inclusion of a process-based (e.g., weathering, erosion) or
+geologic/lithologic-based explanation of the fingerprints selected to
+address these concerns \citep{collins2020}. Furthermore, there is also a
+lack of standardization in how sediment source areas are sampled (e.g.,
+judgement, random, transect, grid, stratified) and it can be difficult
+to have an efficient sampling design without prior knowledge of why and
+how soil properties vary across the landscape \citep{lunamiño2024}.
+Prior knowledge of the spatial variability of soil fingerprint
+properties would be beneficial; however, in practice this can be
+difficult, particularly with geochemical properties as routine lab
+analysis often return information on more than 50 elements. The spatial
+patterns of some soil properties are well studied because of their
+agronomic importance or ability to infer other important soil properties
+and processes and can include fallout radionuclides {[}e.g.,
+\textsuperscript{137}Cs, \textsuperscript{7}Be; \citep{ritchie1970}{]},
+plant nutrients {[}e.g., N, P; \citep{vasu2017}{]}, soil colour {[}e.g.,
+hue, value; \citep{viscarrarossel2006}{]}, major non-acid forming
+cations {[}e.g., Ca, Na; \citep{sun2021}{]}. In contrast, other soil
+properties including rare Earth elements and trace metals the processes
+leading to their distribution across the landscape is less studied or it
+is difficult to make generalizations (i.e., site specific).
 
-A different study by Zhang et al.~(2007) determined spatial variability
-of nutrient properties in black soil of Northeast China. The spatial
-variability of organic matter content, total N, and total P was
-principally associated with climate and terrain and perhaps the most
-possible reason was cultivation and the difference in potassium
-fertilizer application. The difference in annual average temperature in
-black soil study area was reported to be more than 7°C, which indicated
-that temperature could be a significant factor that might influence soil
-nutrient mineralization and accumulation. Therefore, at larger spatial
-scales, land management history and climate variables are likely
-important aspects to consider when investigating variability and
-characterizing sources of sediment.
+Terrain attributes such as elevation, slope curvature, slope position,
+and soil wetness have been shown to be useful information in the
+understanding and modelling of a range of soil properties including soil
+moisture \citep{beaudette2013}, texture \citep{kokulan2018}, colour
+\citep{brown2004}, organic matter \citep{zhang2012}, conductivity
+\citep{umali2012}, and geochemistry \citep{lima2023}. Similar techniques
+may provide additional insight into the pedologic and geomorphic
+processes that drive the observed patterns of fingerprint properties
+within a given source. This information can be used to guide sampling
+design and interpret the data it provides.
 
-Methods of geostatistics have been developed to estimate spatial
-variability of fingerprint and soil physical properties (Goovaerts,
-1999). The major application of geostatistics to soil physical
-properties include the variability of soil colour, texture, structure,
-density, and porosity. Another application of geostatistics includes the
-estimation and mapping of soil attributes in unsampled areas. Moreover,
-a significant contribution of geostatistics is the assessment of the
-uncertainty about unsampled values, which normally takes the form of a
-map of the probability of exceeding critical values, such as regulatory
-thresholds in soil pollution or soil quality.
-
-Geostatistical analyses allow to quantify the spatial distribution and
-variability based on spatial field-scale of the site(s) and spatial
-pattern of modeling semivariograms. These models have been broadly
-applied to assess spatial correlation in soil properties, including
-physical and geochemical properties. The main objectives in this study
-are to: 1) quantify the spatial variability in soil geochemical and
-colour fingerprint properties at a field-scale across two contrasting
-land uses (agriculture and forest) using geostatistics and terrain
-analysis; and 2) identify patterns and sources of variability in
-fingerprint properties over a large spatial scale. The range of spatial
-scales/sampling designs presented are intended to capture variation in
-fingerprint properties as part of sediment source fingerprinting
-studies.
+This study builds on the previous work of Luna Miño \citep{lunamiño2024}
+where the impact of three different sampling designs on the
+characterization of source materials, within the framework of the
+sediment fingerprinting approach, was assessed. This study expands that
+study by using the data from grid sampling approach to assess the
+spatial autocorrelation, create iso-fingerprint maps, and identify
+important terrain attributes driving the observed patterns. The
+objectives of this study were (1) to investigate the spatial variability
+of a range of soil colour and geochemical properties in an agricultural
+and forested site; and (2) to assess the relative importance and
+correlation of terrain attributes with the spatial distribution of these
+soil properties.
 
 \section{Methods}\label{methods}
 
 \subsection{Site description}\label{site-description}
 
+Two sites of contrasting land uses located in the Wilson Creek Watershed
+(WCW), near McCreary, Manitoba, Canada were selected to investigate the
+spatial variability in fingerprint properties. The headwaters of the WCW
+are located on top of the Manitoba Escarpment within the boundary of
+Riding Mountain National Park. There is a \textasciitilde300m drop in
+elevation crosses the escarpment where the streams become deeply
+incised. At the base of the escarpment is a large alluvial fan situated
+in the lacustrine deposits of glacial lake Aggasiz where the main stem
+has a meandering form. However, beyond the national park boundary the
+stream flows straight through an engineered drain until it reaches the
+Turtle river (Figure~\ref{fig-location_map}). Both sites are both
+hydrologicaly connected to the mainstem of the Wilson Creek
+
+The first site was a mixedwood forest including white and black spruce
+(Picea glauca, Picea mariana), balsam fir (Abies balsamea), larch (Larix
+laricina) and young stands of deciduous trees including trembling aspen
+(Populus tremuloides). The forested site is located within the
+boundaries of the national park where there is little disturbance beyond
+recreational hiking trails. The soil within the park are not well mapped
+but likely are part of the Grey Wooded soil association (Luvisol)
+consisting of fine sandy loam to clay loam soils developed on boulder
+till of mostly shale with some limestone, and granitic rocks
+\citep{ehrlich1958}. The second site is under agricultural production
+and includes rotations of grain crops and forage. The site is mapped to
+the Edwards Soil Series (Cumulic Regosol) consisting of silty clay loam
+to silty clay soil developed on recent alluvial deposits
+\citep{ehrlich1958}.
+
+The Köppen-Geiger climate classification of the WCW is cold, without dry
+season, and with warm summer (Dfb) \citep{beck2018}. The average annual
+precipitation is \textasciitilde539 mm, with approximately 27\% falling
+as snow with a mean annual temperature is 3.0°C
+\citep{environmentandclimatechangecanada2024}. The hydrology of the
+watershed is snowmelt dominated with \textasciitilde{} 80\% of the
+cumulative runoff occurring during the spring season (May and June)
+\citep{mackay1970}.
+
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics{index_files/figure-latex/notebooks-location_map-fig-location_map-output-2.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-location_map-fig-location_map-output-2.png}}
 
 }
 
@@ -411,9 +432,116 @@ sites within Canada, and the regional land use and topography.}
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/location_map.qmd.html\#cell-fig-location_map}{Research
 Site Locations}}
 
+\subsection{Soil sampling and
+analysis}\label{soil-sampling-and-analysis}
+
+This study uses samples and data collected as part of the grid sampling
+design outlined in Luna Miño \citep{lunamiño2024}. Briefly, at each site
+49 samples were collected using a soil auger on a 7x7 grid at a 100m
+spacing. Within the forested surface soil samples were collected below
+the LFH layer to a depth of 5cm, and the agricultural site was sampled
+to a depth of 15cm to account for the regular mixing of the soil due to
+tillage and other field operations.
+
+Samples were dried, homogenized with a motar and pestle, and sieved
+through a 63 𝜇m sieve to remove the sand fraction. The sand fraction was
+removed in an effort to reduce the differences in grain size and organic
+matter content between the two sites \citep{laceby2017}. Samples were
+analyzed for a broad suite geochemical element using inductively coupled
+plasma mass spectrometry (ICP-MS) following a microwave-assisted
+digestion with aqua-regia (ALS Mineral Division, North Vancouver, BC,
+Canada). Spectral measurements were made with a spectroradiometer (ASD
+FieldSpecPro Malvern Panalytical Inc Westborough MA 01581, United
+States). Spectral reflectance measurements were taken in 1 nm increments
+over the 0.4-2.5 μm wavelength range. Both samples and Spectralon
+standard (white reference) were illuminated with a white light source
+using a halogen-based lamp (12 VDC, 20 Watt). Following the method
+outlined in Boudreault et al. \citep{boudreault2018}, fifteen colour
+coefficients (R, G, B, x, y, Y, X, Z, L, a*, b*, u*, v*, c*, h*) were
+calculated for each sample \citep{koiter2021}. Based on the results of
+Luna Miño \citep{lunamiño2024}, a composite fingerprint consisting of 10
+geochemical elements (Ca, Co, Cs, Fe, Li, La, Nb, Ni, Rb, and Sr) and
+five colour coefficients (a, b, c, h, and x) were identifying as
+providing a strong discrimination between the agricultural and forested
+surface soils. These fifteen soil properties are the focus of the
+detailed spatial analysis detailed in this study.
+
+\subsection{Geospatial and terrain
+analysis}\label{geospatial-and-terrain-analysis}
+
+All geostatistics were performed with ArcGIS Pro \citep[v
+3.3.0][]{esri2024}. Semivariograms were used to quantify spatial
+correlation for each of the 15 soil properties. The optimization tool,
+based on minimizing the mean square error, was used to parameterize the
+semivariogram model. Kriging was used to interpolate and generate maps
+of each soil property. The exploratory interpolation tool
+(Geostatistical Analyst extension) was used to select the kriging type
+with the highest ranked prediction accuracy.
+
+A Digital Elevation Model (DEM) for the forested site was acquired from
+publicly available data \citep{naturalresourcescanada2024}. A DEM for
+the agricultural site was generated by photogrammetry using UAV imagery,
+including the use of ground control and check points, with Agisoft
+Metashape Professional \citep[v1.8.2][]{agisoft2021}. Ordinary kriging
+was used to calculate a 1 m gridded digital elevation model for each
+site. Geographic information software \citep[SAGA v2.1.4][]{conrad2015}
+was used to calculate six additional terrain attributes and included
+plan and profile curvatures, saga wetness index, catchment area,
+relative slope position, vertical channel network distance.
+
+\subsection{Data analysis}\label{data-analysis}
+
+All subsequent statistical analysis was undertaken using R statistical
+Software v4.4.0 \citep{rcoreteam2024} through RStudio Integrated
+Development Environment v2024.04.2 \citep{rstudio2024}. Plots and maps
+were created using the R package \texttt{ggplot2} v
+\texttt{r\ packageVersion("ggplot2")} \citep{wickham2016}. Skewness was
+categorized as values between -0.5 and 0.5 considered approximately
+symmetric, -1.0 to -0.5 or 0.5 to 1 as moderately skewed, and
+\textless{} -1.0 or \textgreater{} 1.0 as highly skewed. Coefficient of
+variation (CV) thresholds were categorized as low (\textless15\%),
+moderate (15--35\%), high (35--75\%), and very high (\textgreater75\%)
+.Interpolated soil property and terrain attribute data were resampled to
+a 10 m resolution prior to analysis \citep[\texttt{terra}
+v\texttt{r\ packageVersion("terra")}][]{hijmans2024}. Random Forest
+Regression \citep[\texttt{randomForest}
+v\texttt{r\ packageVersion("randomForest")}][]{liaw2002} was used to
+assess the relative importance of the terrain attributes on the spatial
+distribution of soil properties. The dataset was randomly split into
+training, validation, and testing datasets. Multicollinearity among the
+terrain attributed was assessed using the Variance Inflation Factor with
+a threshold of eight and correlated terrain attributes were removed
+\citep[\texttt{usdm} v\texttt{r\ packageVersion("usdm")}][]{Naimi2014}.
+The number of variables randomly sampled as candidates at each split
+within the random forest model was tuned using the training and
+validation data sets \citep[\texttt{caret}
+v\texttt{r\ packageVersion("caret")}][]{kuhn2008}. The number of trees
+to grow was set to 500 and assessed using the Root Mean Square Error for
+both the Out of Bag Error and the validation data sets. To test the
+model, actual and predicted values were plotted and the
+R\textsuperscript{\textsubscript{2}} was calculated.
+
 \section{Results}\label{results}
 
 \subsection{Univariate summary}\label{univariate-summary}
+
+Overall, the agricultural site had soil colour and geochemical
+properties that exhibited lower variability and more symmetrical data
+distributions as compared to the forested site. Considering all 15
+colour properties measured it was observed that all the colour
+properties for both sites exhibit an approximate symmetric distribution.
+All 15 colour properties for the agriculture site had a low CV and the
+forested site had slightly greater variability with 10 colour properties
+the a low CV and five with a moderate CV. Overall, the agricultural site
+had lower variability and the distribution of data for each element were
+generally more symmetrical as compared to the forest site. Of the 44
+geochemical concentrations measured at the agricultural site, nine
+elements exhibited moderately skewed distributions, while five displayed
+highly skewed distributions. Additionally, 12 elements had moderate
+coefficients of variation (CV), and five had high CV. At the forested
+site, seven elements showed moderately skewed distributions and 14
+exhibited highly skewed distributions. Furthermore, 28 elements had
+moderate CV, six had high CV, and two had very high CV.
 
 \begin{longtable}[]{@{}ccccccc@{}}
 
@@ -500,20 +628,20 @@ b* & 8.73 & 0.707 & 10.2 & 6.98 & −0.162 & 8.10 \\
 c* & 9.34 & 0.762 & 11.0 & 7.41 & −0.158 & 8.15 \\
 h* & 1.20 & 0.00977 & 1.23 & 1.18 & −0.0603 & 0.811 \\
 x & 23.1 & 1.31 & 26.6 & 18.6 & −0.501 & 5.68 \\
-Plan Curvature & 1.65 × 10\textsuperscript{−6} & 1.36 ×
-10\textsuperscript{−4} & 6.57 × 10\textsuperscript{−4} & −5.07 ×
-10\textsuperscript{−4} & 3.54 × 10\textsuperscript{−1} & 8.24 ×
-10\textsuperscript{3} \\
-Profile Curvature & −7.64 × 10\textsuperscript{−6} & 1.53 ×
-10\textsuperscript{−4} & 5.83 × 10\textsuperscript{−4} & −6.47 ×
-10\textsuperscript{−4} & 9.51 × 10\textsuperscript{−2} & −2.00 ×
-10\textsuperscript{3} \\
+Plan Curvature & 1.65~×~10\textsuperscript{−6} &
+1.36~×~10\textsuperscript{−4} & 6.57~×~10\textsuperscript{−4} &
+−5.07~×~10\textsuperscript{−4} & 3.54~×~10\textsuperscript{−1} &
+8.24~×~10\textsuperscript{3} \\
+Profile Curvature & −7.64~×~10\textsuperscript{−6} &
+1.53~×~10\textsuperscript{−4} & 5.83~×~10\textsuperscript{−4} &
+−6.47~×~10\textsuperscript{−4} & 9.51~×~10\textsuperscript{−2} &
+−2.00~×~10\textsuperscript{3} \\
 SAGA Wetness Index & 9.64 & 0.704 & 11.2 & 7.77 & −0.122 & 7.30 \\
 Catchment Area & 475 & 1,010 & 10,100 & 4.35 & 4.76 & 213 \\
 Rel. Slope Position & 0.718 & 0.288 & 1.20 & 0.0221 & −0.946 & 40.1 \\
-Vert. Dist. Channel & 5.98 × 10\textsuperscript{−2} & 4.10 ×
-10\textsuperscript{−2} & 2.92 × 10\textsuperscript{−1} & 4.25 ×
-10\textsuperscript{−3} & 1.21 & 6.85 × 10\textsuperscript{1} \\
+Vert. Dist. Channel & 5.98~×~10\textsuperscript{−2} &
+4.10~×~10\textsuperscript{−2} & 2.92~×~10\textsuperscript{−1} &
+4.25~×~10\textsuperscript{−3} & 1.21 & 6.85~×~10\textsuperscript{1} \\
 Elevation & 310 & 0.593 & 312 & 309 & 0.615 & 0.191 \\
 \multicolumn{7}{@{}c@{}}{%
 Forest} \\
@@ -527,20 +655,20 @@ Ni & 18.2 & 2.49 & 24.9 & 14.3 & 0.314 & 13.7 \\
 Sr & 31.6 & 8.50 & 53.1 & 18.1 & 0.716 & 26.9 \\
 h* & 1.13 & 0.0371 & 1.22 & 1.06 & 0.257 & 3.27 \\
 x & 19.7 & 3.92 & 30.5 & 10.8 & 0.362 & 19.9 \\
-Plan Curvature & 3.97 × 10\textsuperscript{−4} & 3.27 ×
-10\textsuperscript{−3} & 2.89 × 10\textsuperscript{−2} & −2.62 ×
-10\textsuperscript{−2} & 7.91 × 10\textsuperscript{−1} & 8.22 ×
-10\textsuperscript{2} \\
-Profile Curvature & −1.83 × 10\textsuperscript{−4} & 9.47 ×
-10\textsuperscript{−3} & 6.37 × 10\textsuperscript{−2} & −7.37 ×
-10\textsuperscript{−2} & −5.31 × 10\textsuperscript{−1} & −5.18 ×
-10\textsuperscript{3} \\
+Plan Curvature & 3.97~×~10\textsuperscript{−4} &
+3.27~×~10\textsuperscript{−3} & 2.89~×~10\textsuperscript{−2} &
+−2.62~×~10\textsuperscript{−2} & 7.91~×~10\textsuperscript{−1} &
+8.22~×~10\textsuperscript{2} \\
+Profile Curvature & −1.83~×~10\textsuperscript{−4} &
+9.47~×~10\textsuperscript{−3} & 6.37~×~10\textsuperscript{−2} &
+−7.37~×~10\textsuperscript{−2} & −5.31~×~10\textsuperscript{−1} &
+−5.18~×~10\textsuperscript{3} \\
 SAGA Wetness Index & 6.00 & 0.988 & 8.48 & 2.21 & −0.430 & 16.5 \\
 Catchment Area & 571 & 1,940 & 25,400 & 3.44 & 6.60 & 339 \\
 Rel. Slope Position & 0.222 & 0.232 & 0.993 & 0.00617 & 1.56 & 105 \\
-Vert. Dist. Channel & 4.15 × 10\textsuperscript{−1} & 4.43 ×
-10\textsuperscript{−1} & 3.66 & 2.02 × 10\textsuperscript{−2} & 2.96 &
-1.07 × 10\textsuperscript{2} \\
+Vert. Dist. Channel & 4.15~×~10\textsuperscript{−1} &
+4.43~×~10\textsuperscript{−1} & 3.66 & 2.02~×~10\textsuperscript{−2} &
+2.96 & 1.07~×~10\textsuperscript{2} \\
 Elevation & 369 & 3.34 & 377 & 359 & −0.184 & 0.904 \\
 
 \end{longtable}
@@ -582,7 +710,7 @@ Cs & Ordinary & 0.0 & 0.0 & 100 & 210 & 0.5 & Strong \\
 Fe & Ordinary & 0.0 & 0.0 & 100 & 185 & 0.2 & Strong \\
 Li & Universal & 0.3 & 1.5 & 81 & 185 & 0.6 & Strong \\
 La & Simple & 0.4 & 1.0 & 56 & 308 & 0.5 & Moderate \\
-Nb & Universal & 2.7 & 2.7 & 0 & 210 & 0.7 & Low \\
+Nb & Universal & 0.0 & 0.0 & 91 & 210 & 0.7 & Strong \\
 Ni & Ordinary & 1.4 & 8.9 & 84 & 352 & 0.6 & Strong \\
 Rb & Ordinary & 1.4 & 27.6 & 95 & 551 & 0.9 & Strong \\
 Sr & Ordinary & 0.9 & 900.2 & 100 & 220 & 1.0 & Strong \\
@@ -613,7 +741,7 @@ x & Ordinary & 0.0 & 39.2 & 100 & 312 & 0.2 & Strong \\
 
 \centering{
 
-\includegraphics{index_files/figure-latex/notebooks-property_maps-fig-ag_map-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-property_maps-fig-ag_map-output-1.png}}
 
 }
 
@@ -630,7 +758,7 @@ property mapping}}
 
 \centering{
 
-\includegraphics{index_files/figure-latex/notebooks-property_maps-fig-forest_map-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-property_maps-fig-forest_map-output-1.png}}
 
 }
 
@@ -647,7 +775,7 @@ property mapping}}
 
 \centering{
 
-\includegraphics{index_files/figure-latex/notebooks-RF_summary-fig-rf-results-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-RF_summary-fig-rf-results-output-1.png}}
 
 }
 
@@ -665,12 +793,12 @@ each site and across both sites.}
 Forest summary}}
 
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
 
 \caption{\label{tbl-rf-summary}Model summary and performance statistics
 for the random forest regression using the training, validation, and
@@ -682,31 +810,26 @@ test data sets.}
 \begin{minipage}[b]{\linewidth}\raggedright
 Property
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MSE\\
-Training{\textsuperscript{1}}\strut
+{MSETraining}{\textsuperscript{1}}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\% Var\\
-Training{\textsuperscript{2}}\strut
+{}{\textsuperscript{2}}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-MSE\\
-Testing{\textsuperscript{1}}\strut
+{MSETesting}{\textsuperscript{1}}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\% Var\\
-Validation{\textsuperscript{2}}\strut
+{}{\textsuperscript{2}}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-R{\textsuperscript{2}}\\
-Testing\strut
+{\{\{R\^{}2\}\}Testing}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \midrule\noalign{}
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
+\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
 {\textsuperscript{1}} Mean square error} \\
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
+\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
 {\textsuperscript{2}} Percent variance explained} \\
 \bottomrule\noalign{}
 \endlastfoot
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
+\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
 Agriculture} \\
 Ca & 0.374 & 91.6 & 0.359 & 91.8 & 0.91 \\
 Co & 0.089 & 79.8 & 0.080 & 82.5 & 0.80 \\
@@ -723,7 +846,7 @@ b* & 0.136 & 72.5 & 0.120 & 75.3 & 0.72 \\
 c* & 0.155 & 73.2 & 0.136 & 75.9 & 0.73 \\
 h* & 0.000 & 58.3 & 0.000 & 58.6 & 0.56 \\
 x & 0.628 & 61.9 & 0.701 & 61.8 & 0.59 \\
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
+\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
 Forest} \\
 Ca & 0.231 & 61.1 & 0.231 & 60.7 & 0.63 \\
 Co & 0.244 & 39.1 & 0.234 & 42.9 & 0.48 \\
@@ -747,70 +870,6 @@ Forest summary}}
 
 \renewcommand{\bibsection}{}
 \bibliography{references.bib}
-
-\section*{Supplemental materials}\label{supplemental-materials}
-\addcontentsline{toc}{section}{Supplemental materials}
-
-\phantomsection\label{ssuppfig-geo_summary}
-\includegraphics[width=1\textwidth,height=\textheight]{images/geo_summary.png}
-
-Summary statistics of all measured geochemical soil properties at both
-sites. Error bars represent 1SD and the numeric values indicate the CV.
-
-\phantomsection\label{ssuppfig-colour_summary}
-\includegraphics[width=1\textwidth,height=\textheight]{images/colour_summary.png}
-
-Summary statistics of all measured colour soil properties at both sites.
-Error bars represent 1SD and the numeric values indicate the CV.
-
-\phantomsection\label{supptab-corr-summary}
-\setlength{\LTpost}{0mm}
-\begin{longtable*}{llrlrlll}
-\toprule
-Property & Elevation & SAGA Wetness Index & Rel. Slope Position & Vert. Dist. Channel & Catchment Area & Plan Curvature & Profile Curvature \\ 
-\midrule\addlinespace[2.5pt]
-\multicolumn{8}{l}{Agriculture} \\ 
-\midrule\addlinespace[2.5pt]
-Ca & -0.76*** & 0.59*** & -0.26*** & -0.25*** & 0.1*** & NS & NS \\ 
-Co & -0.63*** & 0.61*** & -0.23*** & -0.24*** & 0.14*** & NS & NS \\ 
-Cs & 0.58*** & -0.45*** & 0.06*** & 0.14*** & -0.11*** & NS & NS \\ 
-Fe & -0.14*** & 0.32*** & -0.09*** & -0.09*** & 0.09*** & NS & NS \\ 
-Li & -0.4*** & 0.27*** & -0.42*** & -0.2*** & 0.13*** & NS & NS \\ 
-La & 0.53*** & -0.3*** & 0.07*** & 0.15*** & NS & NS & NS \\ 
-Nb & 0.48*** & -0.52*** & 0.25*** & 0.15*** & -0.08*** & NS & NS \\ 
-Ni & -0.75*** & 0.71*** & -0.32*** & -0.32*** & 0.2*** & NS & NS \\ 
-Rb & 0.81*** & -0.71*** & 0.24*** & 0.3*** & -0.15*** & NS & NS \\ 
-Sr & -0.81*** & 0.64*** & -0.35*** & -0.27*** & 0.12*** & NS & NS \\ 
-\emph{a}* & 0.61*** & -0.44*** & 0.35*** & 0.23*** & -0.12*** & NS & NS \\ 
-\emph{b}* & 0.39*** & -0.22*** & 0.22*** & 0.1*** & -0.09*** & NS & NS \\ 
-\emph{c}* & 0.41*** & -0.24*** & 0.22*** & 0.11*** & -0.09*** & NS & NS \\ 
-\emph{h}* & -0.22*** & 0.31*** & -0.15*** & -0.15*** & NS & NS & NS \\ 
-\emph{x} & -0.15*** & 0.25*** & -0.23*** & -0.12*** & NS & NS & NS \\ 
-\midrule\addlinespace[2.5pt]
-\multicolumn{8}{l}{Forest} \\ 
-\midrule\addlinespace[2.5pt]
-Ca & -0.11*** & -0.47*** & 0.09*** & 0.4*** & 0.24*** & 0.1*** & NS \\ 
-Co & -0.04* & -0.34*** & 0.05*** & 0.32*** & 0.15*** & 0.05** & -0.03* \\ 
-Cs & 0.09*** & -0.4*** & 0.17*** & 0.34*** & 0.18*** & 0.06*** & -0.03* \\ 
-Li & 0.1*** & -0.15*** & 0.05*** & 0.18*** & 0.07*** & NS & NS \\ 
-La & NS & -0.23*** & NS & 0.24*** & 0.11*** & 0.05*** & NS \\ 
-Nb & 0.12*** & 0.46*** & -0.11*** & -0.34*** & -0.21*** & -0.09*** & 0.05*** \\ 
-Ni & 0.19*** & -0.27*** & 0.14*** & 0.2*** & 0.04** & NS & NS \\ 
-Sr & -0.34*** & -0.44*** & -0.12*** & 0.36*** & 0.26*** & 0.11*** & -0.05** \\ 
-\emph{h}* & -0.08*** & -0.36*** & NS & 0.35*** & 0.22*** & 0.08*** & -0.03* \\ 
-\emph{x} & -0.04** & -0.38*** & 0.09*** & 0.35*** & 0.22*** & 0.09*** & -0.03* \\ 
-\bottomrule
-\end{longtable*}
-\begin{minipage}{\linewidth}
-*** p < 0.001; ** p < 0.01; * p < 0.05; NS = non-significant at p = 0.05\\
-\end{minipage}
-
-\textsubscript{Source:
-\href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/index.qmd.html}{Article
-Notebook}}
-
-Pearson's correlation coefficients for soil properties and terrain
-attributes using interpolated values (10m resolution).
 
 
 

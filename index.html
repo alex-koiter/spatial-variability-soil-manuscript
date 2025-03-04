@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.1">
+<meta name="generator" content="quarto-1.7.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Maria Luna">
+<meta name="author" content="Maria Luna Miño">
 <meta name="author" content="Alexander J Koiter">
 <meta name="author" content="Taras E Lychuk">
 <meta name="author" content="Arnie Waddel">
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -49,15 +50,16 @@ div.csl-indent {
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4c3f21f622398162bebe0d2c2d806a7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -70,7 +72,7 @@ div.csl-indent {
 <meta name="citation_abstract" content="Quantification and accurate assessment of the spatial variability and distribution of soil physical and biogeochemical properties are vital components of agri-environmental research and modeling, including sediment source fingerprinting. Understanding the distribution of soil properties is crucial in the development of appropriate, reliable, and efficient sampling campaigns. This study was aimed to investigate the spatial variability in soil geochemical and colour (i.e., spectral reflectance) soil properties (&amp;amp;lt;63um) across two contrasting land uses. The main objectives of this study are to: 1) quantify the spatial variability of geochemical and colour properties at a field-scale (~ 40 ha) across agricultural and forested sites; 2) evaluate the spatial variability and distribution of soil properties and its relation to seven terrain attributes (e.g., catchment area, elevation). A combination of univariate analysis and geostatistical methods were applied to characterize the soil geochemistry and colour properties. This information was used to both quantify and assess the variability in soil properties. The variability and spatial autocorrelation were generally both site and soil property specific. For a selection of soil properties exhibiting some spatial autocorrelation, random forest regression was used to indentify the relative importance of terrain attributes on observed patterns of soil geochemical and colour properties. Elevation was found to explain the greatest amount of the variation in soil properties followed by the SAGA wetness index and relative slope position. These types of information can be used to help create efficient soil sampling designs by providing information that can inform sampling locations and number of samples collected in order to meet research needs and objectives.
 ">
 <meta name="citation_keywords" content="Soil geochemistry,Soil colour,Spatial analysis">
-<meta name="citation_author" content="Maria Luna">
+<meta name="citation_author" content="Maria Luna Miño">
 <meta name="citation_author" content="Alexander J Koiter">
 <meta name="citation_author" content="Taras E Lychuk">
 <meta name="citation_author" content="Arnie Waddel">
@@ -78,6 +80,46 @@ div.csl-indent {
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="TBD">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
+<meta name="citation_reference" content="citation_title=Spatial variability and soil sampling in a grazed pasture;,citation_author=S. K. Kariuki;,citation_author=H. Zhang;,citation_author=J. L. Schroder;,citation_author=T. Hanks;,citation_author=M. Payton;,citation_author=T. Morris;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_fulltext_html_url=http://www.tandfonline.com/doi/abs/10.1080/00103620902832089;,citation_issue=9-10;,citation_volume=40;,citation_journal_title=Communications in Soil Science and Plant Analysis;">
+<meta name="citation_reference" content="citation_title=Influence of sample size on chemical and physical soil measurements;,citation_author=J. L. Starr;,citation_author=J. J. Meisinger;,citation_author=T. B. Parkin;,citation_publication_date=1995;,citation_cover_date=1995;,citation_year=1995;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.2136/sssaj1995.03615995005900030012x;,citation_issue=3;,citation_doi=10.2136/sssaj1995.03615995005900030012x;,citation_volume=59;,citation_language=en;,citation_journal_title=Soil Science Society of America Journal;">
+<meta name="citation_reference" content="citation_title=Fingerprinting surficial sediment sources: Exploring some potential problems associated with the spatial variability of source material properties;,citation_author=Pengfei Du;,citation_author=Des E. Walling;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=http://www.sciencedirect.com/science/article/pii/S0301479716303218;,citation_issue=1;,citation_doi=https://doi.org/10.1016/j.jenvman.2016.05.066;,citation_volume=194;,citation_journal_title=Journal of Environmental Management;">
+<meta name="citation_reference" content="citation_title=The impact of catchment source group classification on the accuracy of sediment fingerprinting outputs;,citation_author=Simon Pulley;,citation_author=Ian Foster;,citation_author=Adrian L. Collins;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=http://www.sciencedirect.com/science/article/pii/S0301479716302195;,citation_volume=194;,citation_journal_title=Journal of Environmental Management;">
+<meta name="citation_reference" content="citation_title=Effect of sampling design on characterizing surface soil fingerprinting properties;,citation_author=Maria Alejandra Luna Miño;,citation_author=Alexander J. Koiter;,citation_author=David A. Lobb;,citation_publication_date=2024-05-01;,citation_cover_date=2024-05-01;,citation_year=2024;,citation_fulltext_html_url=https://doi.org/10.1007/s11368-024-03805-x;,citation_issue=5;,citation_doi=10.1007/s11368-024-03805-x;,citation_volume=24;,citation_language=en;,citation_journal_title=Journal of Soils and Sediments;">
+<meta name="citation_reference" content="citation_title=Sediment source tracing with stratified sampling and weightings based on spatial gradients in soil erosion;,citation_author=Scott N. Wilkinson;,citation_author=Jon M. Olley;,citation_author=Takahisa Furuichi;,citation_author=Joanne Burton;,citation_author=Anne E. Kinsey-Henderson;,citation_publication_date=2015-04-24;,citation_cover_date=2015-04-24;,citation_year=2015;,citation_fulltext_html_url=http://proxy.library.unbc.ca:2118/article/10.1007/s11368-015-1134-2;,citation_issue=10;,citation_doi=10.1007/s11368-015-1134-2;,citation_volume=15;,citation_language=en;,citation_journal_title=Journal of Soils and Sediments;">
+<meta name="citation_reference" content="citation_title=Field scale temporal and spatial variability of δ13C, δ15N, TC and TN soil properties: Implications for sediment source tracing;,citation_author=Adrian L. Collins;,citation_author=Emma Burak;,citation_author=Paul Harris;,citation_author=Simon Pulley;,citation_author=Laura Cardenas;,citation_author=Qiang Tang;,citation_publication_date=2019-01-01;,citation_cover_date=2019-01-01;,citation_year=2019;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0016706118303185;,citation_doi=10.1016/j.geoderma.2018.07.019;,citation_volume=333;,citation_journal_title=Geoderma;">
+<meta name="citation_reference" content="citation_title=Sediment source fingerprinting: benchmarking recent outputs, remaining challenges and emerging themes;,citation_author=Adrian L. Collins;,citation_author=Martin Blackwell;,citation_author=Pascal Boeckx;,citation_author=Charlotte-Anne Chivers;,citation_author=Monica Emelko;,citation_author=Olivier Evrard;,citation_author=Ian Foster;,citation_author=Allen Gellis;,citation_author=Hamid Gholami;,citation_author=Steve Granger;,citation_author=Paul Harris;,citation_author=Arthur J. Horowitz;,citation_author=J. Patrick Laceby;,citation_author=Nuria Martinez-Carreras;,citation_author=Jean Minella;,citation_author=Lisa Mol;,citation_author=Kazem Nosrati;,citation_author=Simon Pulley;,citation_author=Uldis Silins;,citation_author=Yuri Jacques Silva;,citation_author=Micheal Stone;,citation_author=Tales Tiecher;,citation_author=Hari Ram Upadhayay;,citation_author=Yusheng Zhang;,citation_publication_date=2020-12-01;,citation_cover_date=2020-12-01;,citation_year=2020;,citation_fulltext_html_url=https://doi.org/10.1007/s11368-020-02755-4;,citation_issue=12;,citation_doi=10.1007/s11368-020-02755-4;,citation_volume=20;,citation_language=en;,citation_journal_title=Journal of Soils and Sediments;">
+<meta name="citation_reference" content="citation_title=Variability in the mineral magnetic properties of soils and sediments within a single field in the cape fold mountains, south africa: Implications for sediment source tracing;,citation_author=S. Pulley;,citation_author=A. L. Collins;,citation_author=B. Van der Waal;,citation_publication_date=2018-04-01;,citation_cover_date=2018-04-01;,citation_year=2018;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0341816217304216;,citation_doi=10.1016/j.catena.2017.12.019;,citation_volume=163;,citation_journal_title=CATENA;">
+<meta name="citation_reference" content="citation_title=Grid-based sediment tracing approach to determine sediment sources;,citation_author=Arman Haddadchi;,citation_author=Murray Hicks;,citation_author=Jon M. Olley;,citation_author=Shailesh Singh;,citation_author=M.s. Srinivasan;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.1002/ldr.3407;,citation_issue=17;,citation_doi=10.1002/ldr.3407;,citation_volume=30;,citation_language=en;,citation_journal_title=Land Degradation and Development;">
+<meta name="citation_reference" content="citation_title=Predictive modeling of total hg background concentration in soils of the amazon rainforest biome with support of proximal sensors and auxiliary variables;,citation_author=Francielle R. D. Lima;,citation_author=Polyana Pereira;,citation_author=Isabela C. F. Vasques;,citation_author=Ediu C. Silva Junior;,citation_author=Marcelo Mancini;,citation_author=Jakeline R. Oliveira;,citation_author=Marcelo T. A. Prianti;,citation_author=Cláudia C. Windmöller;,citation_author=David C. Weindorf;,citation_author=Nilton Curi;,citation_author=Bruno T. Ribeiro;,citation_author=Jacob Richardson;,citation_author=João José Marques;,citation_author=Luiz Roberto G. Guilherme;,citation_publication_date=2023-09-01;,citation_cover_date=2023-09-01;,citation_year=2023;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0895981123003218;,citation_doi=10.1016/j.jsames.2023.104510;,citation_volume=129;,citation_journal_title=Journal of South American Earth Sciences;">
+<meta name="citation_reference" content="citation_title=The effect of terrain and management on the spatial variability of soil properties in an apple orchard;,citation_author=Beng P. Umali;,citation_author=Danielle P. Oliver;,citation_author=Sean Forrester;,citation_author=David J. Chittleborough;,citation_author=John L. Hutson;,citation_author=Rai S. Kookana;,citation_author=Bertram Ostendorf;,citation_publication_date=2012-06-01;,citation_cover_date=2012-06-01;,citation_year=2012;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0341816212000136;,citation_doi=10.1016/j.catena.2012.01.010;,citation_volume=93;,citation_journal_title=CATENA;">
+<meta name="citation_reference" content="citation_title=Terrain-Shape Indices for Modeling Soil Moisture Dynamics;,citation_author=Dylan E. Beaudette;,citation_author=Randy A. Dahlgren;,citation_author=Anthony T. O’Geen;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_fulltext_html_url=https://onlinelibrary.wiley.com/doi/abs/10.2136/sssaj2013.02.0048;,citation_issue=5;,citation_doi=10.2136/sssaj2013.02.0048;,citation_volume=77;,citation_language=en;,citation_journal_title=Soil Science Society of America Journal;">
+<meta name="citation_reference" content="citation_title=Importance of terrain attributes in relation to the spatial distribution of soil properties at the micro scale: A case study;,citation_author=Vivekananthan Kokulan;,citation_author=Olalekan Akinremi;,citation_author=Alan Pierre Moulin;,citation_author=Darshani Kumaragamage;,citation_publication_date=2018-06;,citation_cover_date=2018-06;,citation_year=2018;,citation_fulltext_html_url=https://cdnsciencepub.com/doi/10.1139/cjss-2017-0128;,citation_issue=2;,citation_doi=10.1139/cjss-2017-0128;,citation_volume=98;,citation_journal_title=Canadian Journal of Soil Science;">
+<meta name="citation_reference" content="citation_title=Potential terrain controls on soil color, texture contrast and grain-size deposition for the original catena landscape in uganda;,citation_author=David J. Brown;,citation_author=Murray K. Clayton;,citation_author=Kevin McSweeney;,citation_publication_date=2004-09-01;,citation_cover_date=2004-09-01;,citation_year=2004;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0016706104000035;,citation_issue=1;,citation_doi=10.1016/j.geoderma.2003.12.004;,citation_volume=122;,citation_journal_title=Geoderma;">
+<meta name="citation_reference" content="citation_title=Spatial prediction of soil organic matter using terrain indices and categorical variables as auxiliary information;,citation_author=Shiwen Zhang;,citation_author=Yuanfang Huang;,citation_author=Chongyang Shen;,citation_author=Huichun Ye;,citation_author=Yichun Du;,citation_publication_date=2012-02-01;,citation_cover_date=2012-02-01;,citation_year=2012;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S001670611100214X;,citation_doi=10.1016/j.geoderma.2011.07.012;,citation_volume=171-172;,citation_journal_title=Geoderma;,citation_series_title=Entering the digital era: Special issue of pedometrics 2009, beijing;">
+<meta name="citation_reference" content="citation_title=Distribution of fallout and natural gamma radionuclides in litter, humus and surface mineral soil layers under natural vegetation in the great smoky mountains, north carolina-tennessee;,citation_author=J. C. Ritchie;,citation_author=E. E. C. Clebsch;,citation_author=W. K. Rudolph;,citation_publication_date=1970-05;,citation_cover_date=1970-05;,citation_year=1970;,citation_fulltext_html_url=https://journals.lww.com/health-physics/Abstract/1970/05000/Distribution_of_Fallout_and_Natural_Gamma.3.aspx;,citation_issue=5;,citation_volume=18;,citation_language=en-US;,citation_journal_title=Health Physics;">
+<meta name="citation_reference" content="citation_title=Assessment of spatial variability of soil properties using geospatial techniques for farm level nutrient management;,citation_author=Duraisamy Vasu;,citation_author=S. K. Singh;,citation_author=Nisha Sahu;,citation_author=Pramod Tiwary;,citation_author=P. Chandran;,citation_author=V. P. Duraisami;,citation_author=V. Ramamurthy;,citation_author=M. Lalitha;,citation_author=B. Kalaiselvi;,citation_publication_date=2017-06-01;,citation_cover_date=2017-06-01;,citation_year=2017;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0167198717300065;,citation_doi=10.1016/j.still.2017.01.006;,citation_volume=169;,citation_journal_title=Soil and Tillage Research;">
+<meta name="citation_reference" content="citation_title=Colour space models for soil science;,citation_author=R. A. Viscarra Rossel;,citation_author=B. Minasny;,citation_author=P. Roudier;,citation_author=A. B. McBratney;,citation_publication_date=2006;,citation_cover_date=2006;,citation_year=2006;,citation_issue=3;,citation_volume=133;,citation_journal_title=Geoderma;">
+<meta name="citation_reference" content="citation_title=Field-scale spatial variability of soil calcium in a semi-arid region: Implications for soil erosion and site-specific management;,citation_author=Yazhou Sun;,citation_author=Wenxuan Guo;,citation_author=David C. Weindorf;,citation_author=Fujun Sun;,citation_author=Sanjit Deb;,citation_author=Guofeng Cao;,citation_author=Jasmine Neupane;,citation_author=Zhe Lin;,citation_author=Abir Raihan;,citation_publication_date=2021-10;,citation_cover_date=2021-10;,citation_year=2021;,citation_fulltext_html_url=https://www.webofscience.com/wos/woscc/summary/a5c79ace-f964-4a0b-90b2-d726580a394c-fae59ae2/relevance/1;,citation_issue=5;,citation_doi=10.1016/S1002-0160(21)60019-X;,citation_volume=31;,citation_language=en-US;,citation_journal_title=PEDOSPHERE;">
+<meta name="citation_reference" content="citation_title=The behavioural characteristics of sediment properties and their implications for sediment fingerprinting as an approach for identifying sediment sources in river basins;,citation_author=A. J. Koiter;,citation_author=P. N. Owens;,citation_author=E. L. Petticrew;,citation_author=D. A. Lobb;,citation_publication_date=2013-10;,citation_cover_date=2013-10;,citation_year=2013;,citation_fulltext_html_url=http://www.sciencedirect.com/science/article/pii/S0012825213001074;,citation_doi=https://doi.org/10.1016/j.earscirev.2013.05.009;,citation_volume=125;,citation_journal_title=Earth-Science Reviews;">
+<meta name="citation_reference" content="citation_title=Source type ascription for fluvial suspended sediment based on a quantitative composite fingerprinting technique;,citation_author=A. L. Collins;,citation_author=D. E. Walling;,citation_author=G. J. L. Leeks;,citation_publication_date=1997-03;,citation_cover_date=1997-03;,citation_year=1997;,citation_fulltext_html_url=http://www.sciencedirect.com/science/article/B6VCG-3SVY7CV-1/2/17d8e824e1b6c26e15fcd31608eb6d05;,citation_issue=1;,citation_doi=https://doi.org/10.1016/S0341-8162(96)00064-1;,citation_volume=29;,citation_journal_title=Catena;">
+<meta name="citation_reference" content="citation_title=Reconnaissance soil survey of west-lake map sheet area;,citation_author=W. A Ehrlich;,citation_author=L. E. Pratt;,citation_author=F. P. Leclaire;,citation_publication_date=1958;,citation_cover_date=1958;,citation_year=1958;">
+<meta name="citation_reference" content="citation_title=Present and future Köppen-Geiger climate classification maps at 1-km resolution;,citation_author=Hylke E. Beck;,citation_author=Niklaus E. Zimmermann;,citation_author=Tim R. McVicar;,citation_author=Noemi Vergopolan;,citation_author=Alexis Berg;,citation_author=Eric F. Wood;,citation_publication_date=2018-10-30;,citation_cover_date=2018-10-30;,citation_year=2018;,citation_fulltext_html_url=https://www.nature.com/articles/sdata2018214;,citation_issue=1;,citation_doi=10.1038/sdata.2018.214;,citation_volume=5;,citation_language=en;,citation_journal_title=Scientific Data;">
+<meta name="citation_reference" content="citation_title=Canadian Climate Normals;,citation_author=undefined Environment;,citation_author=undefined Climate Change Canada;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://climate.weather.gc.ca/climate_normals/index_e.html;,citation_language=eng;">
+<meta name="citation_reference" content="citation_title=A quantitative study of geomorphology of the wilson creek watershed, manitoba;,citation_author=G. H MacKay;,citation_publication_date=1970;,citation_cover_date=1970;,citation_year=1970;">
+<meta name="citation_reference" content="citation_title=The challenges and opportunities of addressing particle size effects in sediment source fingerprinting: A review;,citation_author=J. Patrick Laceby;,citation_author=Olivier Evrard;,citation_author=H. G Smith;,citation_author=W. H. Blake;,citation_author=J. M. Olley;,citation_author=Jean P. G. Minella;,citation_author=P N Owens;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=http://proxy.library.unbc.ca:2111/science/article/pii/S0012825216304548;,citation_doi=https://doi.org/10.1016/j.earscirev.2017.04.009;,citation_volume=169;,citation_journal_title=Earth-Science Reviews;">
+<meta name="citation_reference" content="citation_title=Using colour, shape and radionuclide sediment fingerprints to identify sources of sediment in an agricultural watershed in atlantic canada;,citation_author=Monica Boudreault;,citation_author=A J Koiter;,citation_author=D A Lobb;,citation_author=P N Owens;,citation_author=K Liu;,citation_author=Glenn Benoy;,citation_author=S Danielescu;,citation_author=S. Li;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=3;,citation_doi=https://doi.org/10.1080/07011784.2018.1451781;,citation_volume=43;,citation_journal_title=Canadian Water Resources Journal;">
+<meta name="citation_reference" content="citation_title=Colour analysis scripts;,citation_author=Alex Koiter;,citation_publication_date=2021-07-22;,citation_cover_date=2021-07-22;,citation_year=2021;,citation_fulltext_html_url=https://github.com/alex-koiter/Colour-analysis;,citation_doi=10.5281/zenodo.5123327;">
+<meta name="citation_reference" content="citation_title=High Resolution Digital Elevation Model Mosaic (HRDEM Mosaic) - CanElevation Series;,citation_author=undefined Natural Resources Canada;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b;,citation_language=eng;">
+<meta name="citation_reference" content="citation_title=Agisoft metashape: installer;,citation_author=undefined Agisoft;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://www.agisoft.com/downloads/installer/;">
+<meta name="citation_reference" content="citation_title=System for automated geoscientific analyses (SAGA) v. 2.1.4;,citation_author=O. Conrad;,citation_author=B. Bechtel;,citation_author=M. Bock;,citation_author=H. Dietrich;,citation_author=E. Fischer;,citation_author=L. Gerlitz;,citation_author=J. Wehberg;,citation_author=V. Wichmann;,citation_author=J. Böhner;,citation_publication_date=2015-07-07;,citation_cover_date=2015-07-07;,citation_year=2015;,citation_fulltext_html_url=https://gmd.copernicus.org/articles/8/1991/2015/;,citation_issue=7;,citation_doi=10.5194/gmd-8-1991-2015;,citation_volume=8;,citation_language=en-US;,citation_journal_title=Geoscientific Model Development;">
+<meta name="citation_reference" content="citation_title=ArcGIS pro;,citation_author=undefined Esri;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://www.esri.ca/;">
+<meta name="citation_reference" content="citation_title=R: A language and environment for statistical computing;,citation_author=undefined R Core Team;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=http://www.R-project.org;">
+<meta name="citation_reference" content="citation_title=RStudio: Integrated development environment for r;,citation_author=undefined RStudio;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=http://www.rstudio.org/;">
+<meta name="citation_reference" content="citation_title=ggplot2: Elegant graphics for data analysis;,citation_author=H Wickham;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;">
+<meta name="citation_reference" content="citation_title=Terra: Spatial data analysis;,citation_author=Robert J. Hijmans;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://CRAN.R-project.org/package=terra;">
+<meta name="citation_reference" content="citation_title=Classification and regression by randomForest;,citation_author=Andy Liaw;,citation_author=Matthew Wiener;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_fulltext_html_url=https://CRAN.R-project.org/doc/Rnews/;,citation_issue=3;,citation_volume=2;,citation_journal_title=R News;">
+<meta name="citation_reference" content="citation_title=Where is positional uncertainty a problem for species distribution modelling;,citation_author=Babak Naimi;,citation_author=Nicholas Hamm;,citation_author=Thomas A. Groen;,citation_author=Andrew K. Skidmore;,citation_author=Albertus G. Toxopeus;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_doi=10.1111/j.1600-0587.2013.00205.x;,citation_volume=37;,citation_journal_title=Ecography;">
+<meta name="citation_reference" content="citation_title=Building predictive models in r using the caret package;,citation_author=Kuhn;,citation_author=Max;,citation_publication_date=2008;,citation_cover_date=2008;,citation_year=2008;,citation_fulltext_html_url=https://www.jstatsoft.org/index.php/jss/article/view/v028i05;,citation_issue=5;,citation_doi=10.18637/jss.v028.i05;,citation_volume=28;,citation_journal_title=Journal of Statistical Software;">
 </head>
 
 <body>
@@ -96,7 +138,7 @@ div.csl-indent {
           <div class="quarto-title-meta-heading">Affiliations</div>
           
                 <div class="quarto-title-meta-contents">
-            <p class="author">Maria Luna <a href="mailto:LUNAMIMA56@brandonu.ca" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0004-3739-5103" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            <p class="author">Maria Luna Miño <a href="mailto:LUNAMIMA56@brandonu.ca" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0004-3739-5103" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
                 <div class="quarto-title-meta-contents">
                     <p class="affiliation">
@@ -144,7 +186,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Modified</div>
             <div class="quarto-title-meta-contents">
-              <p class="date-modified">Friday, July 5, 2024</p>
+              <p class="date-modified">Tuesday, March 4, 2025</p>
             </div>
           </div>
                 
@@ -180,6 +222,9 @@ div.csl-indent {
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">2</span> Methods</a>
   <ul class="collapse">
   <li><a href="#site-description" id="toc-site-description" class="nav-link" data-scroll-target="#site-description"><span class="header-section-number">2.1</span> Site description</a></li>
+  <li><a href="#soil-sampling-and-analysis" id="toc-soil-sampling-and-analysis" class="nav-link" data-scroll-target="#soil-sampling-and-analysis"><span class="header-section-number">2.2</span> Soil sampling and analysis</a></li>
+  <li><a href="#geospatial-and-terrain-analysis" id="toc-geospatial-and-terrain-analysis" class="nav-link" data-scroll-target="#geospatial-and-terrain-analysis"><span class="header-section-number">2.3</span> Geospatial and terrain analysis</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><span class="header-section-number">2.4</span> Data analysis</a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">3</span> Results</a>
   <ul class="collapse">
@@ -187,9 +232,8 @@ div.csl-indent {
   <li><a href="#spatial-analysis" id="toc-spatial-analysis" class="nav-link" data-scroll-target="#spatial-analysis"><span class="header-section-number">3.2</span> Spatial analysis</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#supplemental-materials" id="toc-supplemental-materials" class="nav-link" data-scroll-target="#supplemental-materials">Supplemental materials</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="notebooks/Ca_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Calcium (Ca) Agriculture site RF_Regression</a></li><li><a href="notebooks/Ca_For_RF-preview.html"><i class="bi bi-journal-code"></i>Calcium (Ca) Forest site RF_Regression</a></li><li><a href="notebooks/Cs_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Cesium (Cs) Agriculture site RF_Regression</a></li><li><a href="notebooks/Cs_Fo_RF-preview.html"><i class="bi bi-journal-code"></i>Cesium (Cs) Forest site RF_Regression</a></li><li><a href="notebooks/b_c_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate opponent blue–yellow scales (b*) Agriculture site RF_Regression</a></li><li><a href="notebooks/a_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate opponent red–green scales (a*) Agriculture site RF_Regression</a></li><li><a href="notebooks/x_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate x (x) Agriculture site RF_Regression</a></li><li><a href="notebooks/x_col_For_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate x (x*) Forest site RF_Regression</a></li><li><a href="notebooks/h_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>CIE chroma (h*) Agriculture site RF_Regression</a></li><li><a href="notebooks/h_c_For_RF-preview.html"><i class="bi bi-journal-code"></i>CIE chroma (h*) Forest site RF_Regression</a></li><li><a href="notebooks/c_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>CIE hue (c*) Agriculture site RF_Regression</a></li><li><a href="notebooks/Co_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Cobalt (Co) Agriculture site RF_Regression</a></li><li><a href="notebooks/Co_For_RF-preview.html"><i class="bi bi-journal-code"></i>Cobalt (Co) Forest site RF_Regression</a></li><li><a href="notebooks/Fe_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Iron (Fe) Agriculture site RF_Regression</a></li><li><a href="notebooks/La_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Lanthanum (La) Agriculture site RF_Regression</a></li><li><a href="notebooks/La_For_RF-preview.html"><i class="bi bi-journal-code"></i>Lanthanum (La) Forest site RF_Regression</a></li><li><a href="notebooks/Li_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Lithium (Li) Agriculture site RF_Regression</a></li><li><a href="notebooks/Li_For_RF-preview.html"><i class="bi bi-journal-code"></i>Lithium (Li) Forest site RF_Regression</a></li><li><a href="notebooks/Ni_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Nickel (Ni) Agriculture site RF_Regression</a></li><li><a href="notebooks/Ni_For_RF-preview.html"><i class="bi bi-journal-code"></i>Nickel (Ni) Forest site RF_Regression</a></li><li><a href="notebooks/Nb_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Niobium (Nb) Agriculture site RF_Regression</a></li><li><a href="notebooks/Nb_For_RF-preview.html"><i class="bi bi-journal-code"></i>Niobium (Nb) Forest site RF_Regression</a></li><li><a href="notebooks/RF_summary.embed-preview.html"><i class="bi bi-journal-code"></i>Random Forest summary</a></li><li><a href="notebooks/location_map.embed-preview.html"><i class="bi bi-journal-code"></i>Research Site Locations</a></li><li><a href="notebooks/Rb_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Rubidium (Rb) Agriculture site RF_Regression</a></li><li><a href="notebooks/semivariogram.embed-preview.html"><i class="bi bi-journal-code"></i>Semivariograms</a></li><li><a href="notebooks/property_maps.embed-preview.html"><i class="bi bi-journal-code"></i>Soil property mapping</a></li><li><a href="notebooks/Sr_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Strontium (Sr) Agriculture site RF_Regression</a></li><li><a href="notebooks/Sr_For_RF-preview.html"><i class="bi bi-journal-code"></i>Strontium (Sr) Forest site RF_Regression</a></li><li><a href="notebooks/univariate_summary.embed-preview.html"><i class="bi bi-journal-code"></i>Univariate summary</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/Ca_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Calcium (Ca) Agriculture site RF_Regression</a></li><li><a href="notebooks/Ca_For_RF-preview.html"><i class="bi bi-journal-code"></i>Calcium (Ca) Forest site RF_Regression</a></li><li><a href="notebooks/Cs_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Cesium (Cs) Agriculture site RF_Regression</a></li><li><a href="notebooks/Cs_Fo_RF-preview.html"><i class="bi bi-journal-code"></i>Cesium (Cs) Forest site RF_Regression</a></li><li><a href="notebooks/b_c_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate opponent blue–yellow scales (b*) Agriculture site RF_Regression</a></li><li><a href="notebooks/a_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate opponent red–green scales (a*) Agriculture site RF_Regression</a></li><li><a href="notebooks/x_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate x (x) Agriculture site RF_Regression</a></li><li><a href="notebooks/x_col_For_RF-preview.html"><i class="bi bi-journal-code"></i>Chromatic coordinate x (x*) Forest site RF_Regression</a></li><li><a href="notebooks/h_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>CIE chroma (h*) Agriculture site RF_Regression</a></li><li><a href="notebooks/h_c_For_RF-preview.html"><i class="bi bi-journal-code"></i>CIE chroma (h*) Forest site RF_Regression</a></li><li><a href="notebooks/c_col_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>CIE hue (c*) Agriculture site RF_Regression</a></li><li><a href="notebooks/Co_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Cobalt (Co) Agriculture site RF_Regression</a></li><li><a href="notebooks/Co_For_RF-preview.html"><i class="bi bi-journal-code"></i>Cobalt (Co) Forest site RF_Regression</a></li><li><a href="notebooks/colour_abbrev-preview.html"><i class="bi bi-journal-code"></i>Colour space abbreviations</a></li><li><a href="notebooks/Fe_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Iron (Fe) Agriculture site RF_Regression</a></li><li><a href="notebooks/La_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Lanthanum (La) Agriculture site RF_Regression</a></li><li><a href="notebooks/La_For_RF-preview.html"><i class="bi bi-journal-code"></i>Lanthanum (La) Forest site RF_Regression</a></li><li><a href="notebooks/Li_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Lithium (Li) Agriculture site RF_Regression</a></li><li><a href="notebooks/Li_For_RF-preview.html"><i class="bi bi-journal-code"></i>Lithium (Li) Forest site RF_Regression</a></li><li><a href="notebooks/Ni_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Nickel (Ni) Agriculture site RF_Regression</a></li><li><a href="notebooks/Ni_For_RF-preview.html"><i class="bi bi-journal-code"></i>Nickel (Ni) Forest site RF_Regression</a></li><li><a href="notebooks/Nb_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Niobium (Nb) Agriculture site RF_Regression</a></li><li><a href="notebooks/Nb_For_RF-preview.html"><i class="bi bi-journal-code"></i>Niobium (Nb) Forest site RF_Regression</a></li><li><a href="notebooks/RF_summary.embed-preview.html"><i class="bi bi-journal-code"></i>Random Forest summary</a></li><li><a href="notebooks/location_map.embed-preview.html"><i class="bi bi-journal-code"></i>Research Site Locations</a></li><li><a href="notebooks/Rb_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Rubidium (Rb) Agriculture site RF_Regression</a></li><li><a href="notebooks/semivariogram.embed-preview.html"><i class="bi bi-journal-code"></i>Semivariograms</a></li><li><a href="notebooks/property_maps.embed-preview.html"><i class="bi bi-journal-code"></i>Soil property mapping</a></li><li><a href="notebooks/Sr_Ag_RF-preview.html"><i class="bi bi-journal-code"></i>Strontium (Sr) Agriculture site RF_Regression</a></li><li><a href="notebooks/Sr_For_RF-preview.html"><i class="bi bi-journal-code"></i>Strontium (Sr) Forest site RF_Regression</a></li><li><a href="notebooks/univariate_summary.embed-preview.html"><i class="bi bi-journal-code"></i>Univariate summary</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -202,19 +246,21 @@ div.csl-indent {
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>Variation in soil biological, chemical, and physical properties occurs across the landscape and in response to both regional and local (i.e., field-scale) variations in parent material, relief or topography, organisms, climate, time and land use/management (Mulla and McBratney, 2002). Understanding the patterns and drivers for this variation is an important component of many agri-environmental studies. For example, the spatial variability in soil properties is a key component for plant nutrient management plans as investigating the spatial variation influences how suitable producers sample their fields for fertilization and compliance with management practices and environmental regulations (Kariuki et al., 2009).</p>
-<p>The spatial variability in soil properties is often caused by changes in topography that affect the storage and transport of water within the soil profile (Mulla and McBratney, 2002). The soil variability at a field-scale might be described by methods of geostatistics and soil mapping. Geostatistics is a technology used to estimate the soil property values in non-sampled areas or areas with sparse samplings and provides a set of statistical tools for a description of spatial patterns, quantitative modeling of spatial continuity, spatial prediction, and uncertainty assessment (Goovaerts, 1999). Geostatistical techniques that incorporate spatial information into predictions can improve estimation and enhance map quality (Zhang et al., 2007). Most applications of this statistical technique were estimated in small-scale areas or on a field-scale with minimal work completed in large land areas or soil regions even though standard geostatistical techniques have been suitable for describing the spatial distribution of soil and to successfully analyze spatial variability of soil properties (Zhang et al., 2007). Geostatistics is focused on spatial correlation, spatial interpolation, simulation, and visualization of values of random variables. Spatial interpolation is commonly used to predict a value of a variable of interest at unmeasured locations with the available measurements at sampled sites (Robertson, 2008). Kriging, for instance, is a multistep method of spatial interpolation, which assumes that the direction or distance between sample points reflects a spatial autocorrelation that can be used to explain variation in the surface (Oliver and Webster, 1990).</p>
-<p>The use of semivariograms illustrate the spatial autocorrelation of the measured sample points at each field. To better understand semivariograms, three main characteristics are commonly used to describe these models. The range is the distance where the model first flattens. For instance, sample locations separated by distances closer than the range are spatially autocorrelated, whereas locations farther apart than the range are not. The sill is the value that the semivariogram model attains at the range (i.e., the value on the y-axis). The nugget refers to when at zero separation distance, the semivariogram value is zero. However, at a small separation distance, the semivariogram often exhibits a nugget effect, which is a value greater than zero (Oliver and Webster, 1990; Robertson, 2008). Spatial dependency or autocorrelation is often evaluated in terms of ratio of the nugget to sill expressed in percentage or proportion. For instance, a low ratio (less than 25%) means that a large part of the variance is introduced spatially, indicating a strong spatial dependency of the variable. A high ratio (more than 75%) generally indicates weak spatial dependency; otherwise, the spatial dependency is considered moderate (25% - 75%) (Cambardella et al., 1994).</p>
-<p>From a sediment fingerprinting perspective, investigating the spatial variability of soil properties at a field-scale can be advantageous to identify, classify, and distinguish between potential sources of sediment (Boudreault et al., 2019). However, only some studies have explored fingerprint variability at individual sampling locations (e.g., Du and Walling, 2017; Pulley et al., 2017) as well as over larger scales (e.g., Wilkinson et al., 2015). Therefore, investigating spatial variability is not common in fingerprinting studies. The field-scale variability in fingerprint properties at different scales has been employed in sediment fingerprinting studies. For example, in a study conducted by Collins et al.&nbsp;(2019), determined that the main finding derives from reported observations on the variability of fingerprint properties (δ13C, δ15N, and total carbon and nitrogen) that were used at a field-scale. Observations of variability from the study are related to sites that present different climates, slopes, soils, and management characteristics. Because in this study the soil was relatively aerobic during the sampling period, it is determined that diffusion of gaseous products (e.g., N and O) thorough the soil profile might be the cause of having lack of variation in geochemistry between soil layers. Similarly, in order to estimate the variability of soils fingerprint properties, topsoil characteristics, such as texture, and organic matter (OM) content are important data to take into account (Miranda et al., 2006).</p>
-<p>The degree of spatial variability in fingerprint properties can be described by the coefficient of variation (CV) and R2, which is associated with the semivariogram. A study conducted by Du and Walling (2017) used radionuclides and geochemistry as the main fingerprint properties in samples of surface soils that were collected. Results present a range CV between 10-30%. Due to the fact that 137Cs fallout to the study field occurred over a period of 25 years, it was reasonable to assume that the spatial variation of the 137Cs activity of the surface soil was reflected by systematic variation related with the effect of soil redistribution during the sampling period. In the case of the other fingerprint properties, the variability could be principally associated with soil redistribution and topography. This study suggests that erosional history and topography are important aspects of designing an appropriate sampling approach.</p>
-<p>A different study by Zhang et al.&nbsp;(2007) determined spatial variability of nutrient properties in black soil of Northeast China. The spatial variability of organic matter content, total N, and total P was principally associated with climate and terrain and perhaps the most possible reason was cultivation and the difference in potassium fertilizer application. The difference in annual average temperature in black soil study area was reported to be more than 7°C, which indicated that temperature could be a significant factor that might influence soil nutrient mineralization and accumulation. Therefore, at larger spatial scales, land management history and climate variables are likely important aspects to consider when investigating variability and characterizing sources of sediment.</p>
-<p>Methods of geostatistics have been developed to estimate spatial variability of fingerprint and soil physical properties (Goovaerts, 1999). The major application of geostatistics to soil physical properties include the variability of soil colour, texture, structure, density, and porosity. Another application of geostatistics includes the estimation and mapping of soil attributes in unsampled areas. Moreover, a significant contribution of geostatistics is the assessment of the uncertainty about unsampled values, which normally takes the form of a map of the probability of exceeding critical values, such as regulatory thresholds in soil pollution or soil quality.</p>
-<p>Geostatistical analyses allow to quantify the spatial distribution and variability based on spatial field-scale of the site(s) and spatial pattern of modeling semivariograms. These models have been broadly applied to assess spatial correlation in soil properties, including physical and geochemical properties. The main objectives in this study are to: 1) quantify the spatial variability in soil geochemical and colour fingerprint properties at a field-scale across two contrasting land uses (agriculture and forest) using geostatistics and terrain analysis; and 2) identify patterns and sources of variability in fingerprint properties over a large spatial scale. The range of spatial scales/sampling designs presented are intended to capture variation in fingerprint properties as part of sediment source fingerprinting studies.</p>
+<p>Variation in soil biological, chemical, and physical properties occurs across the landscape and in response to both regional and local (i.e., field-scale) variations in the five soil forming factors: parent material, relief or topography, biota, climate, and time. Superimposed on this is the influence of changes in land use and current and historic management practices which can further modify soil properties. Quantifying and understanding the patterns and drivers for this variation is an important component of many agri-environmental studies. For example, to meet the desired level of precision for agronomic and environmental nutrient management plans the spatial variability in soil nutrients will influence the soil sampling design in terms of number and locations of soil samples <span class="citation" data-cites="starr1995 kariuki2009">(<a href="#ref-kariuki2009" role="doc-biblioref">Kariuki et al., 2009</a>; <a href="#ref-starr1995" role="doc-biblioref">Starr et al., 1995</a>)</span>.</p>
+<p>Sediment source fingerprinting is a watershed-scale technique that is used to identify and quantify the relative proportions of sediment derived from unique sources. This technique uses natural occurring biogeochemical properties as fingerprints (i.e., tracers) to discriminate between potential sources of sediment and are linked to downstream sediment using mixing models. From a sediment fingerprinting perspective, investigating the spatial variability of soil properties at a watershed-scale can be advantageous to identify, classify, and distinguish between potential sources of sediment <span class="citation" data-cites="pulley2017">(<a href="#ref-pulley2017" role="doc-biblioref">Pulley et al., 2017</a>)</span>. However, investigating spatial variability at smaller scales is less common <span class="citation" data-cites="du2017 pulley2018 collins2019 lunamiño2024">(<a href="#ref-collins2019" role="doc-biblioref">Collins et al., 2019</a>; e.g., <a href="#ref-du2017" role="doc-biblioref">Du and Walling, 2017</a>; <a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>; <a href="#ref-pulley2018" role="doc-biblioref">Pulley et al., 2018</a>)</span> and remains a research priority <span class="citation" data-cites="collins2020">(<a href="#ref-collins2020" role="doc-biblioref">Collins et al., 2020</a>)</span>.</p>
+<p>There are three main, interconnected, ways that spatial variability in fingerprint properties are an important aspect of sediment fingerprinting. First is to adequately quantify the fingerprint properties such that it is representative of that source. For some fingerprints the variability is not random but rather varies in a more systematic way. For example, the pattern of fallout radionuclides will reflect the patterns of soil erosion and deposition <span class="citation" data-cites="wilkinson2015">(<a href="#ref-wilkinson2015" role="doc-biblioref">Wilkinson et al., 2015</a>)</span>. Designing and implementing source sampling plans need to take this into consideration as the sampling designed used has been shown to influence the characterization of wide range of commonly used fingerprints <span class="citation" data-cites="lunamiño2024">(<a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>)</span>.</p>
+<p>Secondly, the issue of spatial variability of fingerprint properties is further complicated by overlying spatial variability in the rates of erosion and sediment delivery. Incorporation of both types of variability into the mixing model will provide a more reliable estimate of the proportion of sediment derived from each source. Many mixing models have well defined inputs (sources) and outputs (sediment) that are characterized by their mean and standard deviation and the spatial distribution or pattern of fingerprints are not considered. This is not ideal as the values of samples that are collected closer, and more hydrologically connected, to the stream network may in fact a better representation of that source despite potentially deviating from the mean value. This issue can be addressed by strategic sampling where the more likely to erode areas are targeted for sampling. However, a considerable amount of information and insight is lost through that approach. There has been some progress using information on erosion rates to calculate a erosion rate-weighted mean <span class="citation" data-cites="wilkinson2015 du2017">(<a href="#ref-du2017" role="doc-biblioref">Du and Walling, 2017</a>; <a href="#ref-wilkinson2015" role="doc-biblioref">Wilkinson et al., 2015</a>)</span> and using spatially interpolated maps of fingerprint values to provided a finer resolution of the fingerprint variability within each source <span class="citation" data-cites="haddadchi2019">(<a href="#ref-haddadchi2019" role="doc-biblioref">Haddadchi et al., 2019</a>)</span>.</p>
+<p>Secondly, understanding the geomorphic, hydrologic, and biochemical processes that have led to the observed patterns in spatial variability helps in the selection of robust and reliable fingerprints and/or guide the sampling design for source characterization. In selecting fingerprints that provide good discrimination between sources many studies typically used a statistical-based approach <span class="citation" data-cites="collins1997">(<a href="#ref-collins1997" role="doc-biblioref">Collins et al., 1997</a>)</span>. However, there are concerns that this approach may result in the inclusion of false positives (i.e., type I error) or non-conservative fingerprints <span class="citation" data-cites="koiter2013">(<a href="#ref-koiter2013" role="doc-biblioref">Koiter et al., 2013</a>)</span>. Consequently, there has been a call for the inclusion of a process-based (e.g., weathering, erosion) or geologic/lithologic-based explanation of the fingerprints selected to address these concerns <span class="citation" data-cites="collins2020">(<a href="#ref-collins2020" role="doc-biblioref">Collins et al., 2020</a>)</span>. Furthermore, there is also a lack of standardization in how sediment source areas are sampled (e.g., judgement, random, transect, grid, stratified) and it can be difficult to have an efficient sampling design without prior knowledge of why and how soil properties vary across the landscape <span class="citation" data-cites="lunamiño2024">(<a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>)</span>. Prior knowledge of the spatial variability of soil fingerprint properties would be beneficial; however, in practice this can be difficult, particularly with geochemical properties as routine lab analysis often return information on more than 50 elements. The spatial patterns of some soil properties are well studied because of their agronomic importance or ability to infer other important soil properties and processes and can include fallout radionuclides [e.g., <sup>137</sup>Cs, <sup>7</sup>Be; <span class="citation" data-cites="ritchie1970">(<a href="#ref-ritchie1970" role="doc-biblioref">Ritchie et al., 1970</a>)</span>], plant nutrients [e.g., N, P; <span class="citation" data-cites="vasu2017">(<a href="#ref-vasu2017" role="doc-biblioref">Vasu et al., 2017</a>)</span>], soil colour [e.g., hue, value; <span class="citation" data-cites="viscarrarossel2006">(<a href="#ref-viscarrarossel2006" role="doc-biblioref">Viscarra Rossel et al., 2006</a>)</span>], major non-acid forming cations [e.g., Ca, Na; <span class="citation" data-cites="sun2021">(<a href="#ref-sun2021" role="doc-biblioref">Sun et al., 2021</a>)</span>]. In contrast, other soil properties including rare Earth elements and trace metals the processes leading to their distribution across the landscape is less studied or it is difficult to make generalizations (i.e., site specific).</p>
+<p>Terrain attributes such as elevation, slope curvature, slope position, and soil wetness have been shown to be useful information in the understanding and modelling of a range of soil properties including soil moisture <span class="citation" data-cites="beaudette2013">(<a href="#ref-beaudette2013" role="doc-biblioref">Beaudette et al., 2013</a>)</span>, texture <span class="citation" data-cites="kokulan2018">(<a href="#ref-kokulan2018" role="doc-biblioref">Kokulan et al., 2018</a>)</span>, colour <span class="citation" data-cites="brown2004">(<a href="#ref-brown2004" role="doc-biblioref">Brown et al., 2004</a>)</span>, organic matter <span class="citation" data-cites="zhang2012">(<a href="#ref-zhang2012" role="doc-biblioref">Zhang et al., 2012</a>)</span>, conductivity <span class="citation" data-cites="umali2012">(<a href="#ref-umali2012" role="doc-biblioref">Umali et al., 2012</a>)</span>, and geochemistry <span class="citation" data-cites="lima2023">(<a href="#ref-lima2023" role="doc-biblioref">Lima et al., 2023</a>)</span>. Similar techniques may provide additional insight into the pedologic and geomorphic processes that drive the observed patterns of fingerprint properties within a given source. This information can be used to guide sampling design and interpret the data it provides.</p>
+<p>This study builds on the previous work of Luna Miño <span class="citation" data-cites="lunamiño2024">(<a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>)</span> where the impact of three different sampling designs on the characterization of source materials, within the framework of the sediment fingerprinting approach, was assessed. This study expands that study by using the data from grid sampling approach to assess the spatial autocorrelation, create iso-fingerprint maps, and identify important terrain attributes driving the observed patterns. The objectives of this study were (1) to investigate the spatial variability of a range of soil colour and geochemical properties in an agricultural and forested site; and (2) to assess the relative importance and correlation of terrain attributes with the spatial distribution of these soil properties.</p>
 </section>
 <section id="methods" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
 <section id="site-description" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="site-description"><span class="header-section-number">2.1</span> Site description</h3>
+<p>Two sites of contrasting land uses located in the Wilson Creek Watershed (WCW), near McCreary, Manitoba, Canada were selected to investigate the spatial variability in fingerprint properties. The headwaters of the WCW are located on top of the Manitoba Escarpment within the boundary of Riding Mountain National Park. There is a ~300m drop in elevation crosses the escarpment where the streams become deeply incised. At the base of the escarpment is a large alluvial fan situated in the lacustrine deposits of glacial lake Aggasiz where the main stem has a meandering form. However, beyond the national park boundary the stream flows straight through an engineered drain until it reaches the Turtle river (<a href="#fig-location_map" class="quarto-xref">Figure&nbsp;1</a>). Both sites are both hydrologicaly connected to the mainstem of the Wilson Creek</p>
+<p>The first site was a mixedwood forest including white and black spruce (Picea glauca, Picea mariana), balsam fir (Abies balsamea), larch (Larix laricina) and young stands of deciduous trees including trembling aspen (Populus tremuloides). The forested site is located within the boundaries of the national park where there is little disturbance beyond recreational hiking trails. The soil within the park are not well mapped but likely are part of the Grey Wooded soil association (Luvisol) consisting of fine sandy loam to clay loam soils developed on boulder till of mostly shale with some limestone, and granitic rocks <span class="citation" data-cites="ehrlich1958">(<a href="#ref-ehrlich1958" role="doc-biblioref">Ehrlich et al., 1958</a>)</span>. The second site is under agricultural production and includes rotations of grain crops and forage. The site is mapped to the Edwards Soil Series (Cumulic Regosol) consisting of silty clay loam to silty clay soil developed on recent alluvial deposits <span class="citation" data-cites="ehrlich1958">(<a href="#ref-ehrlich1958" role="doc-biblioref">Ehrlich et al., 1958</a>)</span>.</p>
+<p>The Köppen-Geiger climate classification of the WCW is cold, without dry season, and with warm summer (Dfb) <span class="citation" data-cites="beck2018">(<a href="#ref-beck2018" role="doc-biblioref">Beck et al., 2018</a>)</span>. The average annual precipitation is ~539 mm, with approximately 27% falling as snow with a mean annual temperature is 3.0°C <span class="citation" data-cites="environmentandclimatechangecanada2024">(<a href="#ref-environmentandclimatechangecanada2024" role="doc-biblioref">Environment and Climate Change Canada, 2024</a>)</span>. The hydrology of the watershed is snowmelt dominated with ~ 80% of the cumulative runoff occurring during the spring season (May and June) <span class="citation" data-cites="mackay1970">(<a href="#ref-mackay1970" role="doc-biblioref">MacKay, 1970</a>)</span>.</p>
 <div class="quarto-embed-nb-cell">
 <div id="cell-fig-location_map" class="cell">
 <div class="cell-output cell-output-display">
@@ -232,11 +278,26 @@ Figure&nbsp;1: Map showing the location of the study sites within Canada, and th
 </div>
 </div>
 </section>
+<section id="soil-sampling-and-analysis" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="soil-sampling-and-analysis"><span class="header-section-number">2.2</span> Soil sampling and analysis</h3>
+<p>This study uses samples and data collected as part of the grid sampling design outlined in Luna Miño <span class="citation" data-cites="lunamiño2024">(<a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>)</span>. Briefly, at each site 49 samples were collected using a soil auger on a 7x7 grid at a 100m spacing. Within the forested surface soil samples were collected below the LFH layer to a depth of 5cm, and the agricultural site was sampled to a depth of 15cm to account for the regular mixing of the soil due to tillage and other field operations.</p>
+<p>Samples were dried, homogenized with a motar and pestle, and sieved through a 63 𝜇m sieve to remove the sand fraction. The sand fraction was removed in an effort to reduce the differences in grain size and organic matter content between the two sites <span class="citation" data-cites="laceby2017">(<a href="#ref-laceby2017" role="doc-biblioref">Laceby et al., 2017</a>)</span>. Samples were analyzed for a broad suite geochemical element using inductively coupled plasma mass spectrometry (ICP-MS) following a microwave-assisted digestion with aqua-regia (ALS Mineral Division, North Vancouver, BC, Canada). Spectral measurements were made with a spectroradiometer (ASD FieldSpecPro Malvern Panalytical Inc Westborough MA 01581, United States). Spectral reflectance measurements were taken in 1 nm increments over the 0.4-2.5 μm wavelength range. Both samples and Spectralon standard (white reference) were illuminated with a white light source using a halogen-based lamp (12 VDC, 20 Watt). Following the method outlined in Boudreault et al. <span class="citation" data-cites="boudreault2018">(<a href="#ref-boudreault2018" role="doc-biblioref">Boudreault et al., 2018</a>)</span>, fifteen colour coefficients (R, G, B, x, y, Y, X, Z, L, a*, b*, u*, v*, c*, h*) were calculated for each sample <span class="citation" data-cites="koiter2021">(<a href="#ref-koiter2021" role="doc-biblioref">Koiter, 2021</a>)</span>. Based on the results of Luna Miño <span class="citation" data-cites="lunamiño2024">(<a href="#ref-lunamiño2024" role="doc-biblioref">Luna Miño et al., 2024</a>)</span>, a composite fingerprint consisting of 10 geochemical elements (Ca, Co, Cs, Fe, Li, La, Nb, Ni, Rb, and Sr) and five colour coefficients (a, b, c, h, and x) were identifying as providing a strong discrimination between the agricultural and forested surface soils. These fifteen soil properties are the focus of the detailed spatial analysis detailed in this study.</p>
+</section>
+<section id="geospatial-and-terrain-analysis" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="geospatial-and-terrain-analysis"><span class="header-section-number">2.3</span> Geospatial and terrain analysis</h3>
+<p>All geostatistics were performed with ArcGIS Pro <span class="citation" data-cites="esri2024">(v 3.3.0 <a href="#ref-esri2024" role="doc-biblioref">Esri, 2024</a>)</span>. Semivariograms were used to quantify spatial correlation for each of the 15 soil properties. The optimization tool, based on minimizing the mean square error, was used to parameterize the semivariogram model. Kriging was used to interpolate and generate maps of each soil property. The exploratory interpolation tool (Geostatistical Analyst extension) was used to select the kriging type with the highest ranked prediction accuracy.</p>
+<p>A Digital Elevation Model (DEM) for the forested site was acquired from publicly available data <span class="citation" data-cites="naturalresourcescanada2024">(<a href="#ref-naturalresourcescanada2024" role="doc-biblioref">Natural Resources Canada, 2024</a>)</span>. A DEM for the agricultural site was generated by photogrammetry using UAV imagery, including the use of ground control and check points, with Agisoft Metashape Professional <span class="citation" data-cites="agisoft2021">(v1.8.2 <a href="#ref-agisoft2021" role="doc-biblioref">Agisoft, 2021</a>)</span>. Ordinary kriging was used to calculate a 1 m gridded digital elevation model for each site. Geographic information software <span class="citation" data-cites="conrad2015">(SAGA v2.1.4 <a href="#ref-conrad2015" role="doc-biblioref">Conrad et al., 2015</a>)</span> was used to calculate six additional terrain attributes and included plan and profile curvatures, saga wetness index, catchment area, relative slope position, vertical channel network distance.</p>
+</section>
+<section id="data-analysis" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="data-analysis"><span class="header-section-number">2.4</span> Data analysis</h3>
+<p>All subsequent statistical analysis was undertaken using R statistical Software v4.4.0 <span class="citation" data-cites="rcoreteam2024">(<a href="#ref-rcoreteam2024" role="doc-biblioref">R Core Team, 2024</a>)</span> through RStudio Integrated Development Environment v2024.04.2 <span class="citation" data-cites="rstudio2024">(<a href="#ref-rstudio2024" role="doc-biblioref">RStudio, 2024</a>)</span>. Plots and maps were created using the R package <code>ggplot2</code> v <code>r packageVersion("ggplot2")</code> <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham, 2016</a>)</span>. Skewness was categorized as values between -0.5 and 0.5 considered approximately symmetric, -1.0 to -0.5 or 0.5 to 1 as moderately skewed, and &lt; -1.0 or &gt; 1.0 as highly skewed. Coefficient of variation (CV) thresholds were categorized as low (&lt;15%), moderate (15–35%), high (35–75%), and very high (&gt;75%) .Interpolated soil property and terrain attribute data were resampled to a 10 m resolution prior to analysis <span class="citation" data-cites="hijmans2024">(<code>terra</code> v<code>r packageVersion("terra")</code> <a href="#ref-hijmans2024" role="doc-biblioref">Hijmans, 2024</a>)</span>. Random Forest Regression <span class="citation" data-cites="liaw2002">(<code>randomForest</code> v<code>r packageVersion("randomForest")</code> <a href="#ref-liaw2002" role="doc-biblioref">Liaw and Wiener, 2002</a>)</span> was used to assess the relative importance of the terrain attributes on the spatial distribution of soil properties. The dataset was randomly split into training, validation, and testing datasets. Multicollinearity among the terrain attributed was assessed using the Variance Inflation Factor with a threshold of eight and correlated terrain attributes were removed <span class="citation" data-cites="Naimi2014">(<code>usdm</code> v<code>r packageVersion("usdm")</code> <a href="#ref-Naimi2014" role="doc-biblioref">Naimi et al., 2014</a>)</span>. The number of variables randomly sampled as candidates at each split within the random forest model was tuned using the training and validation data sets <span class="citation" data-cites="kuhn2008">(<code>caret</code> v<code>r packageVersion("caret")</code> <a href="#ref-kuhn2008" role="doc-biblioref">Kuhn and Max, 2008</a>)</span>. The number of trees to grow was set to 500 and assessed using the Root Mean Square Error for both the Out of Bag Error and the validation data sets. To test the model, actual and predicted values were plotted and the R<sup><sub>2</sub></sup> was calculated.</p>
+</section>
 </section>
 <section id="results" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="results"><span class="header-section-number">3</span> Results</h2>
 <section id="univariate-summary" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="univariate-summary"><span class="header-section-number">3.1</span> Univariate summary</h3>
+<p>Overall, the agricultural site had soil colour and geochemical properties that exhibited lower variability and more symmetrical data distributions as compared to the forested site. Considering all 15 colour properties measured it was observed that all the colour properties for both sites exhibit an approximate symmetric distribution. All 15 colour properties for the agriculture site had a low CV and the forested site had slightly greater variability with 10 colour properties the a low CV and five with a moderate CV. Overall, the agricultural site had lower variability and the distribution of data for each element were generally more symmetrical as compared to the forest site. Of the 44 geochemical concentrations measured at the agricultural site, nine elements exhibited moderately skewed distributions, while five displayed highly skewed distributions. Additionally, 12 elements had moderate coefficients of variation (CV), and five had high CV. At the forested site, seven elements showed moderately skewed distributions and 14 exhibited highly skewed distributions. Furthermore, 28 elements had moderate CV, six had high CV, and two had very high CV.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell">
 <div id="tbl-univariate-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -246,23 +307,23 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </figcaption>
 <div aria-describedby="tbl-univariate-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="yyhwctudxr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yyhwctudxr table {
+<div id="iqfsaovtki" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iqfsaovtki table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yyhwctudxr thead, #yyhwctudxr tbody, #yyhwctudxr tfoot, #yyhwctudxr tr, #yyhwctudxr td, #yyhwctudxr th {
+#iqfsaovtki thead, #iqfsaovtki tbody, #iqfsaovtki tfoot, #iqfsaovtki tr, #iqfsaovtki td, #iqfsaovtki th {
   border-style: none;
 }
 
-#yyhwctudxr p {
+#iqfsaovtki p {
   margin: 0;
   padding: 0;
 }
 
-#yyhwctudxr .gt_table {
+#iqfsaovtki .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -288,12 +349,12 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-left-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_caption {
+#iqfsaovtki .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yyhwctudxr .gt_title {
+#iqfsaovtki .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -305,7 +366,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-width: 0;
 }
 
-#yyhwctudxr .gt_subtitle {
+#iqfsaovtki .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -317,7 +378,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-top-width: 0;
 }
 
-#yyhwctudxr .gt_heading {
+#iqfsaovtki .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -329,13 +390,13 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_bottom_border {
+#iqfsaovtki .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_col_headings {
+#iqfsaovtki .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -350,7 +411,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_col_heading {
+#iqfsaovtki .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -370,7 +431,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   overflow-x: hidden;
 }
 
-#yyhwctudxr .gt_column_spanner_outer {
+#iqfsaovtki .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -382,15 +443,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 4px;
 }
 
-#yyhwctudxr .gt_column_spanner_outer:first-child {
+#iqfsaovtki .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yyhwctudxr .gt_column_spanner_outer:last-child {
+#iqfsaovtki .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yyhwctudxr .gt_column_spanner {
+#iqfsaovtki .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -402,11 +463,11 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   width: 100%;
 }
 
-#yyhwctudxr .gt_spanner_row {
+#iqfsaovtki .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yyhwctudxr .gt_group_heading {
+#iqfsaovtki .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +493,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   text-align: left;
 }
 
-#yyhwctudxr .gt_empty_group_heading {
+#iqfsaovtki .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -447,15 +508,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   vertical-align: middle;
 }
 
-#yyhwctudxr .gt_from_md > :first-child {
+#iqfsaovtki .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yyhwctudxr .gt_from_md > :last-child {
+#iqfsaovtki .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yyhwctudxr .gt_row {
+#iqfsaovtki .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -474,7 +535,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   overflow-x: hidden;
 }
 
-#yyhwctudxr .gt_stub {
+#iqfsaovtki .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -487,7 +548,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#yyhwctudxr .gt_stub_row_group {
+#iqfsaovtki .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -501,15 +562,15 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   vertical-align: top;
 }
 
-#yyhwctudxr .gt_row_group_first td {
+#iqfsaovtki .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yyhwctudxr .gt_row_group_first th {
+#iqfsaovtki .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yyhwctudxr .gt_summary_row {
+#iqfsaovtki .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -519,16 +580,16 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#yyhwctudxr .gt_first_summary_row {
+#iqfsaovtki .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_first_summary_row.thick {
+#iqfsaovtki .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yyhwctudxr .gt_last_summary_row {
+#iqfsaovtki .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -538,7 +599,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_grand_summary_row {
+#iqfsaovtki .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -548,7 +609,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#yyhwctudxr .gt_first_grand_summary_row {
+#iqfsaovtki .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -558,7 +619,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-top-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_last_grand_summary_row_top {
+#iqfsaovtki .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -568,11 +629,11 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_striped {
+#iqfsaovtki .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yyhwctudxr .gt_table_body {
+#iqfsaovtki .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -581,7 +642,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-bottom-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_footnotes {
+#iqfsaovtki .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -595,7 +656,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_footnote {
+#iqfsaovtki .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -604,7 +665,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#yyhwctudxr .gt_sourcenotes {
+#iqfsaovtki .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -618,7 +679,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   border-right-color: #D3D3D3;
 }
 
-#yyhwctudxr .gt_sourcenote {
+#iqfsaovtki .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -626,70 +687,79 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
   padding-right: 5px;
 }
 
-#yyhwctudxr .gt_left {
+#iqfsaovtki .gt_left {
   text-align: left;
 }
 
-#yyhwctudxr .gt_center {
+#iqfsaovtki .gt_center {
   text-align: center;
 }
 
-#yyhwctudxr .gt_right {
+#iqfsaovtki .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yyhwctudxr .gt_font_normal {
+#iqfsaovtki .gt_font_normal {
   font-weight: normal;
 }
 
-#yyhwctudxr .gt_font_bold {
+#iqfsaovtki .gt_font_bold {
   font-weight: bold;
 }
 
-#yyhwctudxr .gt_font_italic {
+#iqfsaovtki .gt_font_italic {
   font-style: italic;
 }
 
-#yyhwctudxr .gt_super {
+#iqfsaovtki .gt_super {
   font-size: 65%;
 }
 
-#yyhwctudxr .gt_footnote_marks {
+#iqfsaovtki .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yyhwctudxr .gt_asterisk {
+#iqfsaovtki .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yyhwctudxr .gt_indent_1 {
+#iqfsaovtki .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yyhwctudxr .gt_indent_2 {
+#iqfsaovtki .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yyhwctudxr .gt_indent_3 {
+#iqfsaovtki .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yyhwctudxr .gt_indent_4 {
+#iqfsaovtki .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yyhwctudxr .gt_indent_5 {
+#iqfsaovtki .gt_indent_5 {
   text-indent: 25px;
+}
+
+#iqfsaovtki .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#iqfsaovtki div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
 <th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Mean</th>
 <th id="SD" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">SD</th>
@@ -700,10 +770,10 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="7" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Ca</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">4.00</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">2.19</td>
@@ -838,10 +908,10 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.06</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">0.46</td>
 </tr>
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="7" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Ca</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">1.89</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">1.53</td>
@@ -995,23 +1065,23 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </figcaption>
 <div aria-describedby="tbl-univariate2-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="lofpdnmjqv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lofpdnmjqv table {
+<div id="mgzqpbzpwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgzqpbzpwv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lofpdnmjqv thead, #lofpdnmjqv tbody, #lofpdnmjqv tfoot, #lofpdnmjqv tr, #lofpdnmjqv td, #lofpdnmjqv th {
+#mgzqpbzpwv thead, #mgzqpbzpwv tbody, #mgzqpbzpwv tfoot, #mgzqpbzpwv tr, #mgzqpbzpwv td, #mgzqpbzpwv th {
   border-style: none;
 }
 
-#lofpdnmjqv p {
+#mgzqpbzpwv p {
   margin: 0;
   padding: 0;
 }
 
-#lofpdnmjqv .gt_table {
+#mgzqpbzpwv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1037,12 +1107,12 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-left-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_caption {
+#mgzqpbzpwv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lofpdnmjqv .gt_title {
+#mgzqpbzpwv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1054,7 +1124,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-width: 0;
 }
 
-#lofpdnmjqv .gt_subtitle {
+#mgzqpbzpwv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1066,7 +1136,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-top-width: 0;
 }
 
-#lofpdnmjqv .gt_heading {
+#mgzqpbzpwv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1078,13 +1148,13 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_bottom_border {
+#mgzqpbzpwv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_col_headings {
+#mgzqpbzpwv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1099,7 +1169,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_col_heading {
+#mgzqpbzpwv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1119,7 +1189,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   overflow-x: hidden;
 }
 
-#lofpdnmjqv .gt_column_spanner_outer {
+#mgzqpbzpwv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1131,15 +1201,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 4px;
 }
 
-#lofpdnmjqv .gt_column_spanner_outer:first-child {
+#mgzqpbzpwv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lofpdnmjqv .gt_column_spanner_outer:last-child {
+#mgzqpbzpwv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lofpdnmjqv .gt_column_spanner {
+#mgzqpbzpwv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1151,11 +1221,11 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   width: 100%;
 }
 
-#lofpdnmjqv .gt_spanner_row {
+#mgzqpbzpwv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lofpdnmjqv .gt_group_heading {
+#mgzqpbzpwv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1181,7 +1251,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   text-align: left;
 }
 
-#lofpdnmjqv .gt_empty_group_heading {
+#mgzqpbzpwv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1196,15 +1266,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   vertical-align: middle;
 }
 
-#lofpdnmjqv .gt_from_md > :first-child {
+#mgzqpbzpwv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lofpdnmjqv .gt_from_md > :last-child {
+#mgzqpbzpwv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lofpdnmjqv .gt_row {
+#mgzqpbzpwv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1223,7 +1293,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   overflow-x: hidden;
 }
 
-#lofpdnmjqv .gt_stub {
+#mgzqpbzpwv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1236,7 +1306,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#lofpdnmjqv .gt_stub_row_group {
+#mgzqpbzpwv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1250,15 +1320,15 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   vertical-align: top;
 }
 
-#lofpdnmjqv .gt_row_group_first td {
+#mgzqpbzpwv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lofpdnmjqv .gt_row_group_first th {
+#mgzqpbzpwv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lofpdnmjqv .gt_summary_row {
+#mgzqpbzpwv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1268,16 +1338,16 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#lofpdnmjqv .gt_first_summary_row {
+#mgzqpbzpwv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_first_summary_row.thick {
+#mgzqpbzpwv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lofpdnmjqv .gt_last_summary_row {
+#mgzqpbzpwv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1287,7 +1357,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_grand_summary_row {
+#mgzqpbzpwv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1297,7 +1367,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#lofpdnmjqv .gt_first_grand_summary_row {
+#mgzqpbzpwv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1307,7 +1377,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-top-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_last_grand_summary_row_top {
+#mgzqpbzpwv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1317,11 +1387,11 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_striped {
+#mgzqpbzpwv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lofpdnmjqv .gt_table_body {
+#mgzqpbzpwv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1330,7 +1400,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-bottom-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_footnotes {
+#mgzqpbzpwv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1344,7 +1414,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_footnote {
+#mgzqpbzpwv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1353,7 +1423,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#lofpdnmjqv .gt_sourcenotes {
+#mgzqpbzpwv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1367,7 +1437,7 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   border-right-color: #D3D3D3;
 }
 
-#lofpdnmjqv .gt_sourcenote {
+#mgzqpbzpwv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1375,70 +1445,79 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
   padding-right: 5px;
 }
 
-#lofpdnmjqv .gt_left {
+#mgzqpbzpwv .gt_left {
   text-align: left;
 }
 
-#lofpdnmjqv .gt_center {
+#mgzqpbzpwv .gt_center {
   text-align: center;
 }
 
-#lofpdnmjqv .gt_right {
+#mgzqpbzpwv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lofpdnmjqv .gt_font_normal {
+#mgzqpbzpwv .gt_font_normal {
   font-weight: normal;
 }
 
-#lofpdnmjqv .gt_font_bold {
+#mgzqpbzpwv .gt_font_bold {
   font-weight: bold;
 }
 
-#lofpdnmjqv .gt_font_italic {
+#mgzqpbzpwv .gt_font_italic {
   font-style: italic;
 }
 
-#lofpdnmjqv .gt_super {
+#mgzqpbzpwv .gt_super {
   font-size: 65%;
 }
 
-#lofpdnmjqv .gt_footnote_marks {
+#mgzqpbzpwv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lofpdnmjqv .gt_asterisk {
+#mgzqpbzpwv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lofpdnmjqv .gt_indent_1 {
+#mgzqpbzpwv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lofpdnmjqv .gt_indent_2 {
+#mgzqpbzpwv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lofpdnmjqv .gt_indent_3 {
+#mgzqpbzpwv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lofpdnmjqv .gt_indent_4 {
+#mgzqpbzpwv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lofpdnmjqv .gt_indent_5 {
+#mgzqpbzpwv .gt_indent_5 {
   text-indent: 25px;
+}
+
+#mgzqpbzpwv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mgzqpbzpwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
 <th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Mean</th>
 <th id="SD" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">SD</th>
@@ -1449,10 +1528,10 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="7" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Ca</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">4.12</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">2.10</td>
@@ -1589,21 +1668,21 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Plan Curvature</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.65 × 10<sup>−6</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.36 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">6.57 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">−5.07 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">3.54 × 10<sup>−1</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">8.24 × 10<sup>3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">1.65&nbsp;×&nbsp;10<sup>−6</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.36&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">6.57&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">−5.07&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">3.54&nbsp;×&nbsp;10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">8.24&nbsp;×&nbsp;10<sup>3</sup></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Profile Curvature</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">−7.64 × 10<sup>−6</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.53 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">5.83 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">−6.47 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">9.51 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">−2.00 × 10<sup>3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">−7.64&nbsp;×&nbsp;10<sup>−6</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">1.53&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">5.83&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">−6.47&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">9.51&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">−2.00&nbsp;×&nbsp;10<sup>3</sup></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">SAGA Wetness Index</td>
@@ -1634,12 +1713,12 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Vert. Dist. Channel</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">5.98 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">4.10 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">2.92 × 10<sup>−1</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">4.25 × 10<sup>−3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Mean">5.98&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SD">4.10&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Max">2.92&nbsp;×&nbsp;10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Min">4.25&nbsp;×&nbsp;10<sup>−3</sup></td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">1.21</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">6.85 × 10<sup>1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">6.85&nbsp;×&nbsp;10<sup>1</sup></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">Elevation</td>
@@ -1650,10 +1729,10 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Skewness">0.615</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  CV">0.191</td>
 </tr>
-<tr class="even gt_group_heading_row">
+<tr class="gt_group_heading_row even">
 <td colspan="7" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="odd gt_row_group_first">
+<tr class="gt_row_group_first odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Ca</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">1.88</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">0.769</td>
@@ -1745,21 +1824,21 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Plan Curvature</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">3.97 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">3.27 × 10<sup>−3</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">2.89 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−2.62 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">7.91 × 10<sup>−1</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">8.22 × 10<sup>2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">3.97&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">3.27&nbsp;×&nbsp;10<sup>−3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">2.89&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−2.62&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">7.91&nbsp;×&nbsp;10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">8.22&nbsp;×&nbsp;10<sup>2</sup></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Profile Curvature</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">−1.83 × 10<sup>−4</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">9.47 × 10<sup>−3</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">6.37 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−7.37 × 10<sup>−2</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−5.31 × 10<sup>−1</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">−5.18 × 10<sup>3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">−1.83&nbsp;×&nbsp;10<sup>−4</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">9.47&nbsp;×&nbsp;10<sup>−3</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">6.37&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">−7.37&nbsp;×&nbsp;10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">−5.31&nbsp;×&nbsp;10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">−5.18&nbsp;×&nbsp;10<sup>3</sup></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">SAGA Wetness Index</td>
@@ -1790,12 +1869,12 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Vert. Dist. Channel</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">4.15 × 10<sup>−1</sup></td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">4.43 × 10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Mean">4.15&nbsp;×&nbsp;10<sup>−1</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SD">4.43&nbsp;×&nbsp;10<sup>−1</sup></td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Max">3.66</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">2.02 × 10<sup>−2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Min">2.02&nbsp;×&nbsp;10<sup>−2</sup></td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Skewness">2.96</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">1.07 × 10<sup>2</sup></td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Forest  CV">1.07&nbsp;×&nbsp;10<sup>2</sup></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">Elevation</td>
@@ -1828,23 +1907,23 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
 </figcaption>
 <div aria-describedby="tbl-geocol-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="mduiqrqgwx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mduiqrqgwx table {
+<div id="pcgxwsmbqn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pcgxwsmbqn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mduiqrqgwx thead, #mduiqrqgwx tbody, #mduiqrqgwx tfoot, #mduiqrqgwx tr, #mduiqrqgwx td, #mduiqrqgwx th {
+#pcgxwsmbqn thead, #pcgxwsmbqn tbody, #pcgxwsmbqn tfoot, #pcgxwsmbqn tr, #pcgxwsmbqn td, #pcgxwsmbqn th {
   border-style: none;
 }
 
-#mduiqrqgwx p {
+#pcgxwsmbqn p {
   margin: 0;
   padding: 0;
 }
 
-#mduiqrqgwx .gt_table {
+#pcgxwsmbqn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1870,12 +1949,12 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-left-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_caption {
+#pcgxwsmbqn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mduiqrqgwx .gt_title {
+#pcgxwsmbqn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1887,7 +1966,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-width: 0;
 }
 
-#mduiqrqgwx .gt_subtitle {
+#pcgxwsmbqn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1899,7 +1978,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-top-width: 0;
 }
 
-#mduiqrqgwx .gt_heading {
+#pcgxwsmbqn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1911,13 +1990,13 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_bottom_border {
+#pcgxwsmbqn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_col_headings {
+#pcgxwsmbqn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1932,7 +2011,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_col_heading {
+#pcgxwsmbqn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1952,7 +2031,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   overflow-x: hidden;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer {
+#pcgxwsmbqn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1964,15 +2043,15 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 4px;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer:first-child {
+#pcgxwsmbqn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer:last-child {
+#pcgxwsmbqn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mduiqrqgwx .gt_column_spanner {
+#pcgxwsmbqn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1984,11 +2063,11 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   width: 100%;
 }
 
-#mduiqrqgwx .gt_spanner_row {
+#pcgxwsmbqn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mduiqrqgwx .gt_group_heading {
+#pcgxwsmbqn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2014,7 +2093,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   text-align: left;
 }
 
-#mduiqrqgwx .gt_empty_group_heading {
+#pcgxwsmbqn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2029,15 +2108,15 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   vertical-align: middle;
 }
 
-#mduiqrqgwx .gt_from_md > :first-child {
+#pcgxwsmbqn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mduiqrqgwx .gt_from_md > :last-child {
+#pcgxwsmbqn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mduiqrqgwx .gt_row {
+#pcgxwsmbqn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2056,7 +2135,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   overflow-x: hidden;
 }
 
-#mduiqrqgwx .gt_stub {
+#pcgxwsmbqn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2069,7 +2148,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_stub_row_group {
+#pcgxwsmbqn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2083,15 +2162,15 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   vertical-align: top;
 }
 
-#mduiqrqgwx .gt_row_group_first td {
+#pcgxwsmbqn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_row_group_first th {
+#pcgxwsmbqn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_summary_row {
+#pcgxwsmbqn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2101,16 +2180,16 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_first_summary_row {
+#pcgxwsmbqn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_first_summary_row.thick {
+#pcgxwsmbqn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_last_summary_row {
+#pcgxwsmbqn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2120,7 +2199,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_grand_summary_row {
+#pcgxwsmbqn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2130,7 +2209,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_first_grand_summary_row {
+#pcgxwsmbqn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2140,7 +2219,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-top-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_last_grand_summary_row_top {
+#pcgxwsmbqn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2150,11 +2229,11 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_striped {
+#pcgxwsmbqn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mduiqrqgwx .gt_table_body {
+#pcgxwsmbqn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2163,7 +2242,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_footnotes {
+#pcgxwsmbqn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2177,7 +2256,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_footnote {
+#pcgxwsmbqn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2186,7 +2265,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_sourcenotes {
+#pcgxwsmbqn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2200,7 +2279,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_sourcenote {
+#pcgxwsmbqn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2208,85 +2287,94 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_left {
+#pcgxwsmbqn .gt_left {
   text-align: left;
 }
 
-#mduiqrqgwx .gt_center {
+#pcgxwsmbqn .gt_center {
   text-align: center;
 }
 
-#mduiqrqgwx .gt_right {
+#pcgxwsmbqn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mduiqrqgwx .gt_font_normal {
+#pcgxwsmbqn .gt_font_normal {
   font-weight: normal;
 }
 
-#mduiqrqgwx .gt_font_bold {
+#pcgxwsmbqn .gt_font_bold {
   font-weight: bold;
 }
 
-#mduiqrqgwx .gt_font_italic {
+#pcgxwsmbqn .gt_font_italic {
   font-style: italic;
 }
 
-#mduiqrqgwx .gt_super {
+#pcgxwsmbqn .gt_super {
   font-size: 65%;
 }
 
-#mduiqrqgwx .gt_footnote_marks {
+#pcgxwsmbqn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mduiqrqgwx .gt_asterisk {
+#pcgxwsmbqn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mduiqrqgwx .gt_indent_1 {
+#pcgxwsmbqn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mduiqrqgwx .gt_indent_2 {
+#pcgxwsmbqn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mduiqrqgwx .gt_indent_3 {
+#pcgxwsmbqn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mduiqrqgwx .gt_indent_4 {
+#pcgxwsmbqn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mduiqrqgwx .gt_indent_5 {
+#pcgxwsmbqn .gt_indent_5 {
   text-indent: 25px;
+}
+
+#pcgxwsmbqn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pcgxwsmbqn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Property" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
-<th id="Kriging Type<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Kriging Type<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="Nugget (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
-<th id="Sill (Co + C)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co + C)</th>
-<th id="C/(C + Co) (%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
-<th id="Range (m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
-<th id="r<span style=&quot;white-space:nowrap;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">r<span style="white-space:nowrap;"><sup>2</sup></span></th>
-<th id="Spatial Class<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Spatial Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+<th id="Kriging-Type" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Kriging Type<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Nugget-(Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
+<th id="Sill-(Co-+-C)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co + C)</th>
+<th id="C/(C-+-Co)-(%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
+<th id="Range-(m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
+<th id="r2" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">r<span style="white-space:nowrap;"><sup>2</sup></span></th>
+<th id="Spatial-Class" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Spatial Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ca</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
@@ -2349,12 +2437,12 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Nb</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">2.7</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">2.7</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">91</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">210</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.7</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Low</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ni</td>
@@ -2436,10 +2524,10 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.1</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Moderate</td>
 </tr>
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Ca</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">1.6</td>
@@ -2540,11 +2628,11 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="even">
-<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Models are all isotropic.</td>
-</tr>
 <tr class="odd">
-<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25).</td>
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Models are all isotropic.</td>
+</tr>
+<tr class="even">
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25).</td>
 </tr>
 </tfoot>
 
@@ -2614,23 +2702,23 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
 </figcaption>
 <div aria-describedby="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="gpcnmbwuco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gpcnmbwuco table {
+<div id="mrjlpcipfu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mrjlpcipfu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gpcnmbwuco thead, #gpcnmbwuco tbody, #gpcnmbwuco tfoot, #gpcnmbwuco tr, #gpcnmbwuco td, #gpcnmbwuco th {
+#mrjlpcipfu thead, #mrjlpcipfu tbody, #mrjlpcipfu tfoot, #mrjlpcipfu tr, #mrjlpcipfu td, #mrjlpcipfu th {
   border-style: none;
 }
 
-#gpcnmbwuco p {
+#mrjlpcipfu p {
   margin: 0;
   padding: 0;
 }
 
-#gpcnmbwuco .gt_table {
+#mrjlpcipfu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2656,12 +2744,12 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-left-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_caption {
+#mrjlpcipfu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gpcnmbwuco .gt_title {
+#mrjlpcipfu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2673,7 +2761,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-bottom-width: 0;
 }
 
-#gpcnmbwuco .gt_subtitle {
+#mrjlpcipfu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2685,7 +2773,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-top-width: 0;
 }
 
-#gpcnmbwuco .gt_heading {
+#mrjlpcipfu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2697,13 +2785,13 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_bottom_border {
+#mrjlpcipfu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_col_headings {
+#mrjlpcipfu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2718,7 +2806,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_col_heading {
+#mrjlpcipfu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2738,7 +2826,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer {
+#mrjlpcipfu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2750,15 +2838,15 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 4px;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer:first-child {
+#mrjlpcipfu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gpcnmbwuco .gt_column_spanner_outer:last-child {
+#mrjlpcipfu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gpcnmbwuco .gt_column_spanner {
+#mrjlpcipfu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2770,11 +2858,11 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   width: 100%;
 }
 
-#gpcnmbwuco .gt_spanner_row {
+#mrjlpcipfu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gpcnmbwuco .gt_group_heading {
+#mrjlpcipfu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2800,7 +2888,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   text-align: left;
 }
 
-#gpcnmbwuco .gt_empty_group_heading {
+#mrjlpcipfu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2815,15 +2903,15 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   vertical-align: middle;
 }
 
-#gpcnmbwuco .gt_from_md > :first-child {
+#mrjlpcipfu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gpcnmbwuco .gt_from_md > :last-child {
+#mrjlpcipfu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gpcnmbwuco .gt_row {
+#mrjlpcipfu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2842,7 +2930,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#gpcnmbwuco .gt_stub {
+#mrjlpcipfu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2855,7 +2943,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_stub_row_group {
+#mrjlpcipfu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2869,15 +2957,15 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   vertical-align: top;
 }
 
-#gpcnmbwuco .gt_row_group_first td {
+#mrjlpcipfu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_row_group_first th {
+#mrjlpcipfu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_summary_row {
+#mrjlpcipfu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2887,16 +2975,16 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_first_summary_row {
+#mrjlpcipfu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_first_summary_row.thick {
+#mrjlpcipfu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gpcnmbwuco .gt_last_summary_row {
+#mrjlpcipfu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2906,7 +2994,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_grand_summary_row {
+#mrjlpcipfu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2916,7 +3004,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_first_grand_summary_row {
+#mrjlpcipfu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2926,7 +3014,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-top-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_last_grand_summary_row_top {
+#mrjlpcipfu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2936,11 +3024,11 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_striped {
+#mrjlpcipfu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gpcnmbwuco .gt_table_body {
+#mrjlpcipfu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2949,7 +3037,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_footnotes {
+#mrjlpcipfu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2963,7 +3051,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_footnote {
+#mrjlpcipfu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2972,7 +3060,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_sourcenotes {
+#mrjlpcipfu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2986,7 +3074,7 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#gpcnmbwuco .gt_sourcenote {
+#mrjlpcipfu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2994,64 +3082,73 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#gpcnmbwuco .gt_left {
+#mrjlpcipfu .gt_left {
   text-align: left;
 }
 
-#gpcnmbwuco .gt_center {
+#mrjlpcipfu .gt_center {
   text-align: center;
 }
 
-#gpcnmbwuco .gt_right {
+#mrjlpcipfu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gpcnmbwuco .gt_font_normal {
+#mrjlpcipfu .gt_font_normal {
   font-weight: normal;
 }
 
-#gpcnmbwuco .gt_font_bold {
+#mrjlpcipfu .gt_font_bold {
   font-weight: bold;
 }
 
-#gpcnmbwuco .gt_font_italic {
+#mrjlpcipfu .gt_font_italic {
   font-style: italic;
 }
 
-#gpcnmbwuco .gt_super {
+#mrjlpcipfu .gt_super {
   font-size: 65%;
 }
 
-#gpcnmbwuco .gt_footnote_marks {
+#mrjlpcipfu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gpcnmbwuco .gt_asterisk {
+#mrjlpcipfu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gpcnmbwuco .gt_indent_1 {
+#mrjlpcipfu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gpcnmbwuco .gt_indent_2 {
+#mrjlpcipfu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gpcnmbwuco .gt_indent_3 {
+#mrjlpcipfu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gpcnmbwuco .gt_indent_4 {
+#mrjlpcipfu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gpcnmbwuco .gt_indent_5 {
+#mrjlpcipfu .gt_indent_5 {
   text-indent: 25px;
+}
+
+#mrjlpcipfu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mrjlpcipfu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -3065,25 +3162,20 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
 <col style="width: 16%">
 </colgroup>
 <thead>
-<tr class="header gt_col_headings">
-<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
-<th id="MSE<br/>Training<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>
-Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="% Var<br/>Training<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var<br>
-Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="MSE<br/>Testing<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>
-Testing<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="% Var<br/>Validation<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var<br>
-Validation<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-<th id="R<span style=&quot;white-space:nowrap;&quot;><sup>2</sup></span><br/>Testing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">R<span style="white-space:nowrap;"><sup>2</sup></span><br>
-Testing</th>
+<tr class="gt_col_headings header">
+<th id="property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
+<th id="MSE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Var_exp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="MSE_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<br>Testing<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Var_exp_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">{{R^2}}<br>Testing</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="6" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Ca</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.374</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">91.6</td>
@@ -3203,10 +3295,10 @@ Testing</th>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">61.8</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.59</td>
 </tr>
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="6" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Ca</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.231</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">61.1</td>
@@ -3287,11 +3379,11 @@ Testing</th>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.64</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="even">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Mean square error</td>
-</tr>
 <tr class="odd">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Percent variance explained</td>
+<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Mean square error</td>
+</tr>
+<tr class="even">
+<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Percent variance explained</td>
 </tr>
 </tfoot>
 
@@ -3308,762 +3400,133 @@ Testing</th>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-agisoft2021" class="csl-entry" role="listitem">
+Agisoft, 2021. <a href="https://www.agisoft.com/downloads/installer/">Agisoft metashape: installer</a>.
 </div>
-</section>
-<section id="supplemental-materials" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="supplemental-materials">Supplemental materials</h2>
-<div id="ssuppfig-geo_summary">
-<p><a href="images/geo_summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/geo_summary.png" class="img-fluid" style="width:100.0%"></a></p>
-<p>Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.</p>
+<div id="ref-beaudette2013" class="csl-entry" role="listitem">
+Beaudette, D.E., Dahlgren, R.A., O’Geen, A.T., 2013. Terrain-Shape Indices for Modeling Soil Moisture Dynamics. Soil Science Society of America Journal 77, 1696–1710. <a href="https://doi.org/10.2136/sssaj2013.02.0048">https://doi.org/10.2136/sssaj2013.02.0048</a>
 </div>
-<div id="ssuppfig-colour_summary">
-<p><a href="images/colour_summary.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/colour_summary.png" class="img-fluid" style="width:100.0%"></a></p>
-<p>Summary statistics of all measured colour soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.</p>
+<div id="ref-beck2018" class="csl-entry" role="listitem">
+Beck, H.E., Zimmermann, N.E., McVicar, T.R., Vergopolan, N., Berg, A., Wood, E.F., 2018. Present and future Köppen-Geiger climate classification maps at 1-km resolution. Scientific Data 5, 180214. <a href="https://doi.org/10.1038/sdata.2018.214">https://doi.org/10.1038/sdata.2018.214</a>
 </div>
-<div id="supptab-corr-summary">
-<div class="cell">
-<div class="cell-output-display">
-<div id="rgsbxgxyuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rgsbxgxyuq table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#rgsbxgxyuq thead, #rgsbxgxyuq tbody, #rgsbxgxyuq tfoot, #rgsbxgxyuq tr, #rgsbxgxyuq td, #rgsbxgxyuq th {
-  border-style: none;
-}
-
-#rgsbxgxyuq p {
-  margin: 0;
-  padding: 0;
-}
-
-#rgsbxgxyuq .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#rgsbxgxyuq .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#rgsbxgxyuq .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#rgsbxgxyuq .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: bold;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#rgsbxgxyuq .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: bold;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#rgsbxgxyuq .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#rgsbxgxyuq .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#rgsbxgxyuq .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#rgsbxgxyuq .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#rgsbxgxyuq .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#rgsbxgxyuq .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#rgsbxgxyuq .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#rgsbxgxyuq .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#rgsbxgxyuq .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#rgsbxgxyuq .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rgsbxgxyuq .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#rgsbxgxyuq .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#rgsbxgxyuq .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#rgsbxgxyuq .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rgsbxgxyuq .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#rgsbxgxyuq .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rgsbxgxyuq .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#rgsbxgxyuq .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rgsbxgxyuq .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rgsbxgxyuq .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rgsbxgxyuq .gt_left {
-  text-align: left;
-}
-
-#rgsbxgxyuq .gt_center {
-  text-align: center;
-}
-
-#rgsbxgxyuq .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#rgsbxgxyuq .gt_font_normal {
-  font-weight: normal;
-}
-
-#rgsbxgxyuq .gt_font_bold {
-  font-weight: bold;
-}
-
-#rgsbxgxyuq .gt_font_italic {
-  font-style: italic;
-}
-
-#rgsbxgxyuq .gt_super {
-  font-size: 65%;
-}
-
-#rgsbxgxyuq .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#rgsbxgxyuq .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#rgsbxgxyuq .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#rgsbxgxyuq .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#rgsbxgxyuq .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#rgsbxgxyuq .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#rgsbxgxyuq .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header gt_col_headings">
-<th id="Property" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
-<th id="Elevation" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Elevation</th>
-<th id="SAGA Wetness Index" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">SAGA Wetness Index</th>
-<th id="Rel. Slope Position" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Rel. Slope Position</th>
-<th id="Vert. Dist. Channel" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Vert. Dist. Channel</th>
-<th id="Catchment Area" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Catchment Area</th>
-<th id="Plan Curvature" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Plan Curvature</th>
-<th id="Profile Curvature" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Profile Curvature</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
-<td colspan="8" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
-</tr>
-<tr class="even gt_row_group_first">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Ca</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.76***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.59***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.26***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.25***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.1***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Co</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.63***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.61***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.23***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.24***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.14***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Cs</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.58***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.45***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.06***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.14***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.11***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Fe</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.14***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.32***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.09***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Li</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.4***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.27***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.42***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.2***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.13***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>La</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.53***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.3***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.07***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Nb</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.48***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.52***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.25***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.08***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Ni</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.75***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.71***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.32***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.32***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.2***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Rb</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.81***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.71***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.24***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.3***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>Sr</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.81***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.64***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.35***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.27***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">0.12***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>*a**</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.61***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.44***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.35***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.23***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.12***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>*b**</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.39***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.22***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.22***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.1***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>*c**</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.41***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.24***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.22***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">0.11***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">-0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p>*h**</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.22***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.31***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.15***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><p><em>x</em></p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.15***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.25***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.23***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Vert. Dist. Channel">-0.12***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Catchment Area">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
-</tr>
-<tr class="odd gt_group_heading_row">
-<td colspan="8" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
-</tr>
-<tr class="even gt_row_group_first">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Ca</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.11***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.47***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.09***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.4***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.24***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.1***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Co</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.04*</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.34***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.05***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.32***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.05**</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.03*</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Cs</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">0.09***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.4***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.17***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.34***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.18***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.06***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.03*</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Li</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">0.1***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.15***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.05***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.18***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.07***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">NS</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>La</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">NS</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.23***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">NS</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.24***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.11***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.05***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Nb</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">0.12***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">0.46***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">-0.11***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">-0.34***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">-0.21***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">-0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">0.05***</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Ni</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">0.19***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.27***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.14***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.2***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.04**</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">NS</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">NS</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>Sr</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.34***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.44***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">-0.12***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.36***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.26***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.11***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.05**</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p>*h**</p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.08***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.36***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">NS</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.35***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.22***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.08***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.03*</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><p><em>x</em></p></td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.04**</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.38***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">0.09***</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Forest  Vert. Dist. Channel">0.35***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Catchment Area">0.22***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Plan Curvature">0.09***</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.03*</td>
-</tr>
-</tbody><tfoot class="gt_footnotes">
-<tr class="even">
-<td colspan="8" class="gt_footnote" style="text-align: center;">*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05; NS = non-significant at p = 0.05</td>
-</tr>
-</tfoot>
-
-</table>
-
+<div id="ref-boudreault2018" class="csl-entry" role="listitem">
+Boudreault, M., Koiter, A.J., Lobb, D.A., Owens, P.N., Liu, K., Benoy, G., Danielescu, S., Li, S., 2018. Using colour, shape and radionuclide sediment fingerprints to identify sources of sediment in an agricultural watershed in atlantic canada. Canadian Water Resources Journal 43, 347–365. https://doi.org/<a href="https://doi.org/10.1080/07011784.2018.1451781">https://doi.org/10.1080/07011784.2018.1451781</a>
 </div>
+<div id="ref-brown2004" class="csl-entry" role="listitem">
+Brown, D.J., Clayton, M.K., McSweeney, K., 2004. Potential terrain controls on soil color, texture contrast and grain-size deposition for the original catena landscape in uganda. Geoderma 122, 51–72. <a href="https://doi.org/10.1016/j.geoderma.2003.12.004">https://doi.org/10.1016/j.geoderma.2003.12.004</a>
 </div>
+<div id="ref-collins2020" class="csl-entry" role="listitem">
+Collins, A.L., Blackwell, M., Boeckx, P., Chivers, C.-A., Emelko, M., Evrard, O., Foster, I., Gellis, A., Gholami, H., Granger, S., Harris, P., Horowitz, A.J., Laceby, J.P., Martinez-Carreras, N., Minella, J., Mol, L., Nosrati, K., Pulley, S., Silins, U., Silva, Y.J. da, Stone, M., Tiecher, T., Upadhayay, H.R., Zhang, Y., 2020. Sediment source fingerprinting: benchmarking recent outputs, remaining challenges and emerging themes. Journal of Soils and Sediments 20, 4160–4193. <a href="https://doi.org/10.1007/s11368-020-02755-4">https://doi.org/10.1007/s11368-020-02755-4</a>
 </div>
-<p>Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).</p>
+<div id="ref-collins2019" class="csl-entry" role="listitem">
+Collins, A.L., Burak, E., Harris, P., Pulley, S., Cardenas, L., Tang, Q., 2019. Field scale temporal and spatial variability of δ13C, δ15N, TC and TN soil properties: Implications for sediment source tracing. Geoderma 333, 108–122. <a href="https://doi.org/10.1016/j.geoderma.2018.07.019">https://doi.org/10.1016/j.geoderma.2018.07.019</a>
+</div>
+<div id="ref-collins1997" class="csl-entry" role="listitem">
+Collins, A.L., Walling, D.E., Leeks, G.J.L., 1997. Source type ascription for fluvial suspended sediment based on a quantitative composite fingerprinting technique. Catena 29, 1–27. https://doi.org/<a href="https://doi.org/10.1016/S0341-8162(96)00064-1">https://doi.org/10.1016/S0341-8162(96)00064-1</a>
+</div>
+<div id="ref-conrad2015" class="csl-entry" role="listitem">
+Conrad, O., Bechtel, B., Bock, M., Dietrich, H., Fischer, E., Gerlitz, L., Wehberg, J., Wichmann, V., Böhner, J., 2015. System for automated geoscientific analyses (SAGA) v. 2.1.4. Geoscientific Model Development 8, 1991–2007. <a href="https://doi.org/10.5194/gmd-8-1991-2015">https://doi.org/10.5194/gmd-8-1991-2015</a>
+</div>
+<div id="ref-du2017" class="csl-entry" role="listitem">
+Du, P., Walling, D.E., 2017. Fingerprinting surficial sediment sources: Exploring some potential problems associated with the spatial variability of source material properties. Journal of Environmental Management 194, 4–15. https://doi.org/<a href="https://doi.org/10.1016/j.jenvman.2016.05.066">https://doi.org/10.1016/j.jenvman.2016.05.066</a>
+</div>
+<div id="ref-ehrlich1958" class="csl-entry" role="listitem">
+Ehrlich, W.A., Pratt, L.E., Leclaire, F.P., 1958. Reconnaissance soil survey of west-lake map sheet area.
+</div>
+<div id="ref-environmentandclimatechangecanada2024" class="csl-entry" role="listitem">
+Environment, Climate Change Canada, 2024. <a href="https://climate.weather.gc.ca/climate_normals/index_e.html">Canadian Climate Normals</a>.
+</div>
+<div id="ref-esri2024" class="csl-entry" role="listitem">
+Esri, 2024. <a href="https://www.esri.ca/">ArcGIS pro</a>. Esri.
+</div>
+<div id="ref-haddadchi2019" class="csl-entry" role="listitem">
+Haddadchi, A., Hicks, M., Olley, J.M., Singh, S., Srinivasan, M.s., 2019. Grid-based sediment tracing approach to determine sediment sources. Land Degradation and Development 30, 2088–2106. <a href="https://doi.org/10.1002/ldr.3407">https://doi.org/10.1002/ldr.3407</a>
+</div>
+<div id="ref-hijmans2024" class="csl-entry" role="listitem">
+Hijmans, R.J., 2024. <a href="https://CRAN.R-project.org/package=terra">Terra: Spatial data analysis</a>.
+</div>
+<div id="ref-kariuki2009" class="csl-entry" role="listitem">
+Kariuki, S.K., Zhang, H., Schroder, J.L., Hanks, T., Payton, M., Morris, T., 2009. <a href="http://www.tandfonline.com/doi/abs/10.1080/00103620902832089">Spatial variability and soil sampling in a grazed pasture</a>. Communications in Soil Science and Plant Analysis 40, 16741687.
+</div>
+<div id="ref-koiter2021" class="csl-entry" role="listitem">
+Koiter, A., 2021. Colour analysis scripts. <a href="https://doi.org/10.5281/zenodo.5123327">https://doi.org/10.5281/zenodo.5123327</a>
+</div>
+<div id="ref-koiter2013" class="csl-entry" role="listitem">
+Koiter, A.J., Owens, P.N., Petticrew, E.L., Lobb, D.A., 2013. The behavioural characteristics of sediment properties and their implications for sediment fingerprinting as an approach for identifying sediment sources in river basins. Earth-Science Reviews 125, 24–42. https://doi.org/<a href="https://doi.org/10.1016/j.earscirev.2013.05.009">https://doi.org/10.1016/j.earscirev.2013.05.009</a>
+</div>
+<div id="ref-kokulan2018" class="csl-entry" role="listitem">
+Kokulan, V., Akinremi, O., Moulin, A.P., Kumaragamage, D., 2018. Importance of terrain attributes in relation to the spatial distribution of soil properties at the micro scale: A case study. Canadian Journal of Soil Science 98, 292–305. <a href="https://doi.org/10.1139/cjss-2017-0128">https://doi.org/10.1139/cjss-2017-0128</a>
+</div>
+<div id="ref-kuhn2008" class="csl-entry" role="listitem">
+Kuhn, Max, 2008. Building predictive models in r using the caret package. Journal of Statistical Software 28, 1–26. <a href="https://doi.org/10.18637/jss.v028.i05">https://doi.org/10.18637/jss.v028.i05</a>
+</div>
+<div id="ref-laceby2017" class="csl-entry" role="listitem">
+Laceby, J.P., Evrard, O., Smith, H.G., Blake, W.H., Olley, J.M., Minella, J.P.G., Owens, P.N., 2017. The challenges and opportunities of addressing particle size effects in sediment source fingerprinting: A review. Earth-Science Reviews 169, 85–103. https://doi.org/<a href="https://doi.org/10.1016/j.earscirev.2017.04.009">https://doi.org/10.1016/j.earscirev.2017.04.009</a>
+</div>
+<div id="ref-liaw2002" class="csl-entry" role="listitem">
+Liaw, A., Wiener, M., 2002. <a href="https://CRAN.R-project.org/doc/Rnews/">Classification and regression by randomForest</a>. R News 2, 18–22.
+</div>
+<div id="ref-lima2023" class="csl-entry" role="listitem">
+Lima, F.R.D., Pereira, P., Vasques, I.C.F., Silva Junior, E.C., Mancini, M., Oliveira, J.R., Prianti, M.T.A., Windmöller, C.C., Weindorf, D.C., Curi, N., Ribeiro, B.T., Richardson, J., Marques, J.J., Guilherme, L.R.G., 2023. Predictive modeling of total hg background concentration in soils of the amazon rainforest biome with support of proximal sensors and auxiliary variables. Journal of South American Earth Sciences 129, 104510. <a href="https://doi.org/10.1016/j.jsames.2023.104510">https://doi.org/10.1016/j.jsames.2023.104510</a>
+</div>
+<div id="ref-lunamiño2024" class="csl-entry" role="listitem">
+Luna Miño, M.A., Koiter, A.J., Lobb, D.A., 2024. Effect of sampling design on characterizing surface soil fingerprinting properties. Journal of Soils and Sediments 24, 2180–2198. <a href="https://doi.org/10.1007/s11368-024-03805-x">https://doi.org/10.1007/s11368-024-03805-x</a>
+</div>
+<div id="ref-mackay1970" class="csl-entry" role="listitem">
+MacKay, G.H., 1970. A quantitative study of geomorphology of the wilson creek watershed, manitoba (PhD thesis). Winnipeg, MB.
+</div>
+<div id="ref-Naimi2014" class="csl-entry" role="listitem">
+Naimi, B., Hamm, N. a.s., Groen, T.A., Skidmore, A.K., Toxopeus, A.G., 2014. Where is positional uncertainty a problem for species distribution modelling. Ecography 37, 191–203. <a href="https://doi.org/10.1111/j.1600-0587.2013.00205.x">https://doi.org/10.1111/j.1600-0587.2013.00205.x</a>
+</div>
+<div id="ref-naturalresourcescanada2024" class="csl-entry" role="listitem">
+Natural Resources Canada, 2024. <a href="https://open.canada.ca/data/en/dataset/0fe65119-e96e-4a57-8bfe-9d9245fba06b">High Resolution Digital Elevation Model Mosaic (HRDEM Mosaic) - CanElevation Series</a>.
+</div>
+<div id="ref-pulley2018" class="csl-entry" role="listitem">
+Pulley, S., Collins, A.L., Van der Waal, B., 2018. Variability in the mineral magnetic properties of soils and sediments within a single field in the cape fold mountains, south africa: Implications for sediment source tracing. CATENA 163, 172–183. <a href="https://doi.org/10.1016/j.catena.2017.12.019">https://doi.org/10.1016/j.catena.2017.12.019</a>
+</div>
+<div id="ref-pulley2017" class="csl-entry" role="listitem">
+Pulley, S., Foster, I., Collins, A.L., 2017. <a href="http://www.sciencedirect.com/science/article/pii/S0301479716302195">The impact of catchment source group classification on the accuracy of sediment fingerprinting outputs</a>. Journal of Environmental Management 194, 16–26.
+</div>
+<div id="ref-rcoreteam2024" class="csl-entry" role="listitem">
+R Core Team, 2024. <a href="http://www.R-project.org">R: A language and environment for statistical computing</a>.
+</div>
+<div id="ref-ritchie1970" class="csl-entry" role="listitem">
+Ritchie, J.C., Clebsch, E.E.C., Rudolph, W.K., 1970. <a href="https://journals.lww.com/health-physics/Abstract/1970/05000/Distribution_of_Fallout_and_Natural_Gamma.3.aspx">Distribution of fallout and natural gamma radionuclides in litter, humus and surface mineral soil layers under natural vegetation in the great smoky mountains, north carolina-tennessee</a>. Health Physics 18, 479.
+</div>
+<div id="ref-rstudio2024" class="csl-entry" role="listitem">
+RStudio, 2024. <a href="http://www.rstudio.org/">RStudio: Integrated development environment for r</a>.
+</div>
+<div id="ref-starr1995" class="csl-entry" role="listitem">
+Starr, J.L., Meisinger, J.J., Parkin, T.B., 1995. Influence of sample size on chemical and physical soil measurements. Soil Science Society of America Journal 59, 713–719. <a href="https://doi.org/10.2136/sssaj1995.03615995005900030012x">https://doi.org/10.2136/sssaj1995.03615995005900030012x</a>
+</div>
+<div id="ref-sun2021" class="csl-entry" role="listitem">
+Sun, Y., Guo, W., Weindorf, D.C., Sun, F., Deb, S., Cao, G., Neupane, J., Lin, Z., Raihan, A., 2021. Field-scale spatial variability of soil calcium in a semi-arid region: Implications for soil erosion and site-specific management. PEDOSPHERE 31, 705–714. <a href="https://doi.org/10.1016/S1002-0160(21)60019-X">https://doi.org/10.1016/S1002-0160(21)60019-X</a>
+</div>
+<div id="ref-umali2012" class="csl-entry" role="listitem">
+Umali, B.P., Oliver, D.P., Forrester, S., Chittleborough, D.J., Hutson, J.L., Kookana, R.S., Ostendorf, B., 2012. The effect of terrain and management on the spatial variability of soil properties in an apple orchard. CATENA 93, 38–48. <a href="https://doi.org/10.1016/j.catena.2012.01.010">https://doi.org/10.1016/j.catena.2012.01.010</a>
+</div>
+<div id="ref-vasu2017" class="csl-entry" role="listitem">
+Vasu, D., Singh, S.K., Sahu, N., Tiwary, P., Chandran, P., Duraisami, V.P., Ramamurthy, V., Lalitha, M., Kalaiselvi, B., 2017. Assessment of spatial variability of soil properties using geospatial techniques for farm level nutrient management. Soil and Tillage Research 169, 25–34. <a href="https://doi.org/10.1016/j.still.2017.01.006">https://doi.org/10.1016/j.still.2017.01.006</a>
+</div>
+<div id="ref-viscarrarossel2006" class="csl-entry" role="listitem">
+Viscarra Rossel, R.A., Minasny, B., Roudier, P., McBratney, A.B., 2006. Colour space models for soil science. Geoderma 133, 320337.
+</div>
+<div id="ref-wickham2016" class="csl-entry" role="listitem">
+Wickham, H., 2016. ggplot2: Elegant graphics for data analysis. Springer-Verlag, New York NY U.S.A.
+</div>
+<div id="ref-wilkinson2015" class="csl-entry" role="listitem">
+Wilkinson, S.N., Olley, J.M., Furuichi, T., Burton, J., Kinsey-Henderson, A.E., 2015. Sediment source tracing with stratified sampling and weightings based on spatial gradients in soil erosion. Journal of Soils and Sediments 15, 2038–2051. <a href="https://doi.org/10.1007/s11368-015-1134-2">https://doi.org/10.1007/s11368-015-1134-2</a>
+</div>
+<div id="ref-zhang2012" class="csl-entry" role="listitem">
+Zhang, S., Huang, Y., Shen, C., Ye, H., Du, Y., 2012. Spatial prediction of soil organic matter using terrain indices and categorical variables as auxiliary information. Geoderma, Entering the digital era: Special issue of pedometrics 2009, beijing 171-172, 35–43. <a href="https://doi.org/10.1016/j.geoderma.2011.07.012">https://doi.org/10.1016/j.geoderma.2011.07.012</a>
+</div>
 </div>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{luna,
-  author = {Luna, Maria and J Koiter, Alexander and E Lychuk, Taras and
-    Waddel, Arnie and Moulin, Alan},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{luna_miño,
+  author = {Luna Miño, Maria and J Koiter, Alexander and E Lychuk, Taras
+    and Waddel, Arnie and Moulin, Alan},
   title = {Investigating the {Spatial} {Variability} in {Soil}
     {Geochemical} and {Colour} {Properties} {Across} {Two} {Contrasting}
     {Land} {Uses}},
@@ -4098,8 +3561,8 @@ Testing</th>
     locations and number of samples collected in order to meet research
     needs and objectives.}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-luna" class="csl-entry quarto-appendix-citeas" role="listitem">
-Luna, M., J Koiter, A., E Lychuk, T., Waddel, A., Moulin, A., n.d.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-luna_miño" class="csl-entry quarto-appendix-citeas" role="listitem">
+Luna Miño, M., J Koiter, A., E Lychuk, T., Waddel, A., Moulin, A., n.d.
 Investigating the Spatial Variability in Soil Geochemical and Colour
 Properties Across Two Contrasting Land Uses [WWW Document]. TBD.
 </div></div></section></div></main>
@@ -4186,8 +3649,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -4298,7 +3759,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -4525,7 +3985,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

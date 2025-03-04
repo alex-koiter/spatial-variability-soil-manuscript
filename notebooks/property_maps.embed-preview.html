@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.1">
+    <meta name="generator" content="quarto-1.7.13">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,15 +147,16 @@
     
 <script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4c3f21f622398162bebe0d2c2d806a7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -224,7 +225,7 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="04e2f9fc-b195-4ee0-886d-891706cc58e5" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="82ee4473-7f3b-4b86-9f40-5567971b08f5" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(terra)</span>
@@ -235,12 +236,12 @@
 </section>
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="fe83ba86-13df-4bb8-90bb-d202b563c0bd" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="a62b7ffc-619a-4960-ac2a-c88a44ad7b5c" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ag_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/ag_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>forest_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="b1d46272-030a-4298-a991-83db160215af" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="8d292c64-c48a-42c1-951f-8e152ccf887f" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>theme_right <span class="op">&lt;-</span>  theme(axis.title <span class="op">=</span> element_blank(),</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        axis.text <span class="op">=</span> element_blank(),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
@@ -274,7 +275,7 @@
 <h2 class="anchored" data-anchor-id="agricultural-soil-properties">Agricultural soil properties</h2>
 <section id="geochemisty-and-colour" class="level3">
 <h3 class="anchored" data-anchor-id="geochemisty-and-colour">Geochemisty and colour</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="9bc4b9cd-d895-48e2-bf70-04ddf5c29456" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="3bfaf565-eb8e-480d-baab-491486e1bf3d" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ag_rast <span class="op">&lt;-</span> rast(ag_data)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>crs(x <span class="op">=</span> ag_rast, warn<span class="op">=</span>FALSE) <span class="op">&lt;-</span> <span class="st">"epsg:26914"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -421,7 +422,7 @@
 </section>
 <section id="grain-size-om-elevation" class="level3">
 <h3 class="anchored" data-anchor-id="grain-size-om-elevation">Grain size, OM, elevation</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="b7b352f5-2ba7-44d5-9838-29b02929ef99" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="194b49fb-539f-433f-ba23-d6e7c352e414" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dem <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> ag_rast, aes(fill <span class="op">=</span> elevation)) <span class="op">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elevation"</span>, option <span class="op">=</span> <span class="st">"inferno"</span>, limits <span class="op">=</span> c(<span class="dv">309</span>, <span class="dv">312</span>)) <span class="op">+</span></span>
@@ -476,7 +477,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <h2 class="anchored" data-anchor-id="forest-soil-properties">Forest soil properties</h2>
 <section id="geochemisty-and-colour-1" class="level3">
 <h3 class="anchored" data-anchor-id="geochemisty-and-colour-1">Geochemisty and colour</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="194d803f-3c05-4d09-a2fd-c1724183e34f" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="c18db703-b767-4254-8ffd-8b2003a83c23" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>forest_rast <span class="op">&lt;-</span> rast(forest_data)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>crs(x <span class="op">=</span> forest_rast, warn<span class="op">=</span>FALSE) <span class="op">&lt;-</span> <span class="st">"epsg:26914"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -573,7 +574,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 </section>
 <section id="grain-size-om-elevation-1" class="level3">
 <h3 class="anchored" data-anchor-id="grain-size-om-elevation-1">Grain size, OM, elevation</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="d9d0ac64-739c-4df7-b913-5cdb8a133207" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="df7a52a8-7969-4b25-a965-fb716f4ed000" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dem_forest <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> forest_rast, aes(fill <span class="op">=</span> elevation)) <span class="op">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elevation"</span>, option <span class="op">=</span> <span class="st">"inferno"</span>) <span class="op">+</span></span>
@@ -708,8 +709,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -820,7 +819,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1045,7 +1043,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

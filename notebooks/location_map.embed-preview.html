@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.1">
+    <meta name="generator" content="quarto-1.7.13">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,15 +147,16 @@
     
 <script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4c3f21f622398162bebe0d2c2d806a7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -225,7 +226,7 @@
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
        <p>Alex Koiter</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="fe0da7ae-4d21-4aa5-a46b-3676cce8dee7" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="84a45c91-6bde-4c6e-947e-fe2590474284" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({library(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>library(ggspatial)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>library(sf)</span>
@@ -237,7 +238,7 @@
 </div></div>
 <section id="bounding-box-of-region-and-sites" class="level2">
 <h2 class="anchored" data-anchor-id="bounding-box-of-region-and-sites">Bounding box of region and sites</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="e47ccc3b-5c6f-4f38-918a-1b91a62284f3" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="25f57982-ebc5-4084-adc4-24b6317a1bf3" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> c(xmin <span class="op">=</span> <span class="dv">455200</span>, ymin <span class="op">=</span> <span class="dv">5616000</span>, xmax <span class="op">=</span> <span class="dv">466200</span>, ymax <span class="op">=</span> <span class="dv">5626500</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ag_site <span class="op">&lt;-</span> data.frame(x <span class="op">=</span> c(<span class="dv">464124</span>, <span class="dv">463318</span>),</span>
@@ -267,7 +268,7 @@
 <h2 class="anchored" data-anchor-id="land-use-data-of-region">Land use data of region</h2>
 <section id="get-data" class="level3">
 <h3 class="anchored" data-anchor-id="get-data">Get data</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="395754f3-ecab-4ca2-ac24-f775b190d073" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="328fd87c-c213-4c2d-ac1b-f28f9bda761e" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>minnedosa_data <span class="op">&lt;-</span> <span class="st">"lcv_minnedosa_2004_2006_shp"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">file</span>.exists(minnedosa_data)) {</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"The data already exists!"</span>)</span>
@@ -283,7 +284,7 @@
 </section>
 <section id="summarize-and-crop" class="level3">
 <h3 class="anchored" data-anchor-id="summarize-and-crop">Summarize and crop</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="42ad7058-66e7-4201-b372-7d58b2cf98e8" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="7be703bb-11d1-4677-aa37-0433afe71155" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>land <span class="op">&lt;-</span> st_read(here::here(<span class="st">"./notebooks/lcv_minnedosa_2004_2006_shp/lcv_minnedosa_2004_2006.shp"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  st_crop(st_bbox(box)) <span class="op">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  st_transform(<span class="dv">4269</span>) <span class="op">%&gt;%</span></span>
@@ -295,7 +296,7 @@
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  mutate(Land_use <span class="op">=</span> factor(Land_use, levels<span class="op">=</span>c(<span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>, <span class="st">"Forage"</span>, <span class="st">"Water"</span>, <span class="st">"Wetland"</span>, <span class="st">"Other"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `lcv_minnedosa_2004_2006' from data source 
-  `/home/alex/Dropbox/Graduate students/Maria/Manucripts/Manuscript 2/spatial-variability-soil-manuscript/notebooks/lcv_minnedosa_2004_2006_shp/lcv_minnedosa_2004_2006.shp' 
+  `/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/lcv_minnedosa_2004_2006_shp/lcv_minnedosa_2004_2006.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 160653 features and 5 fields
 Geometry type: POLYGON
@@ -316,23 +317,29 @@ relationships</code></pre>
 <section id="dem-data" class="level2">
 <h2 class="anchored" data-anchor-id="dem-data">DEM data</h2>
 <p>Freely available from <a href="https://maps.canada.ca/czs/index-en.html" class="uri">https://maps.canada.ca/czs/index-en.html</a> Data type is Elevation. You provide the clipping area and then submit the data request</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="f7006d9e-2f25-49d3-aa25-68d3da0aead6" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="03025eb8-b915-42fe-be1e-e92a3b611760" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">&lt;-</span> raster::aggregate(raster(here::here(<span class="st">"./notebooks/DEM.tif"</span>)), fact <span class="op">=</span> <span class="dv">3</span>) <span class="op">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  crop(extent(land)) <span class="op">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="im">as</span>.data.frame(xy <span class="op">=</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in new_CppObject_xp(fields$.module, fields$.pointer, ...): GDAL Message
+1: CRS EPSG:4140 is deprecated. Its non-deprecated replacement EPSG:4617 will
+be used instead. To use the original CRS, set the OSR_USE_NON_DEPRECATED
+configuration option to NO.</code></pre>
+</div>
 </div></div>
 </section>
 <section id="hydro-data" class="level2">
 <h2 class="anchored" data-anchor-id="hydro-data">Hydro data</h2>
 <p>Freely available from <a href="https://maps.canada.ca/czs/index-en.html" class="uri">https://maps.canada.ca/czs/index-en.html</a> Data type is the CanVec. You provide the clipping area and then submit the data request</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="37a4ff39-6ba5-480c-9447-a058177bc612" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>water_linear <span class="op">&lt;-</span> st_read(here::here(<span class="st">"./notebooks/canvec_190514_89905/water_linear_flow_1.shp"</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> st_crs(land)) <span class="op">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  st_make_valid() <span class="op">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  st_crop(st_bbox(land))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="338157fc-f77f-4537-b7ab-b5bb2c5d3a3b" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>water_linear <span class="op">&lt;-</span> st_read(here::here(<span class="st">"./notebooks/canvec_190514_89905/water_linear_flow_1.shp"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> st_crs(land)) <span class="op">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  st_make_valid() <span class="op">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  st_crop(st_bbox(land))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `water_linear_flow_1' from data source 
-  `/home/alex/Dropbox/Graduate students/Maria/Manucripts/Manuscript 2/spatial-variability-soil-manuscript/notebooks/canvec_190514_89905/water_linear_flow_1.shp' 
+  `/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/canvec_190514_89905/water_linear_flow_1.shp' 
   using driver `ESRI Shapefile'
 Simple feature collection with 5160 features and 44 fields
 Geometry type: LINESTRING
@@ -348,123 +355,123 @@ all geometries</code></pre>
 </section>
 <section id="canada-wide-map" class="level2">
 <h2 class="anchored" data-anchor-id="canada-wide-map">Canada wide map</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="1e61c5de-f74b-4e01-b287-2c4f66fc277a" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>canada <span class="op">&lt;-</span> ne_states(country <span class="op">=</span> <span class="st">"Canada"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span>) <span class="op">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> <span class="dv">3348</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>locations2 <span class="op">&lt;-</span> data.frame(name <span class="op">=</span> c(<span class="st">"Center"</span>), <span class="bu">long</span> <span class="op">=</span> c(<span class="op">-</span><span class="fl">99.989671</span>), lat <span class="op">=</span> c(<span class="fl">50.742554</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  st_as_sf(coords <span class="op">=</span> c(<span class="st">"long"</span>, <span class="st">"lat"</span>),  crs <span class="op">=</span> <span class="dv">4326</span>) <span class="op">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> st_crs(land))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="b49764a3-b603-412f-8ed0-ccb07dacdf25" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>canada <span class="op">&lt;-</span> ne_states(country <span class="op">=</span> <span class="st">"Canada"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span>) <span class="op">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> <span class="dv">3348</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>locations2 <span class="op">&lt;-</span> data.frame(name <span class="op">=</span> c(<span class="st">"Center"</span>), <span class="bu">long</span> <span class="op">=</span> c(<span class="op">-</span><span class="fl">99.989671</span>), lat <span class="op">=</span> c(<span class="fl">50.742554</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  st_as_sf(coords <span class="op">=</span> c(<span class="st">"long"</span>, <span class="st">"lat"</span>),  crs <span class="op">=</span> <span class="dv">4326</span>) <span class="op">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> st_crs(land))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="maps" class="level2">
 <h2 class="anchored" data-anchor-id="maps">Maps</h2>
 <section id="canada" class="level3">
 <h3 class="anchored" data-anchor-id="canada">Canada</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="b5678208-ec62-4820-a6df-4b168c673bd7" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  theme_bw() <span class="op">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  layer_spatial(canada, fill <span class="op">=</span> <span class="st">"white"</span>) <span class="op">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  layer_spatial(locations2, shape <span class="op">=</span> <span class="dv">23</span>, colour <span class="op">=</span> <span class="st">"red"</span>, fill <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="f0d4ad80-3b0d-4410-8f43-d27264c44625" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  theme_bw() <span class="op">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  layer_spatial(canada, fill <span class="op">=</span> <span class="st">"white"</span>) <span class="op">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  layer_spatial(locations2, shape <span class="op">=</span> <span class="dv">23</span>, colour <span class="op">=</span> <span class="st">"red"</span>, fill <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="land-use" class="level3">
 <h3 class="anchored" data-anchor-id="land-use">Land use</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="d77c32e0-7f35-4611-8509-092c07a82681" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> land, aes(fill <span class="op">=</span> Land_use)) <span class="op">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  scale_fill_manual(values<span class="op">=</span>c(<span class="st">"#458B00"</span>, <span class="st">"#006400"</span>, <span class="st">"#CDAD00"</span>, <span class="st">"#009ACD"</span>, <span class="st">"#CDB38B"</span>,  <span class="st">"#C1CDCD"</span>), name <span class="op">=</span> <span class="st">"Land use"</span>) <span class="op">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> water_linear, colour <span class="op">=</span> <span class="st">"#009ACD"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>, </span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>, </span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> ag_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> forest_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(cities),</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>),</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>        legend.title <span class="op">=</span> element_blank(),</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>        legend.key.size <span class="op">=</span> unit(<span class="dv">5</span>, <span class="st">'mm'</span>),</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>        legend.box.spacing <span class="op">=</span> unit(<span class="dv">0</span>, <span class="st">"pt"</span>)) <span class="op">+</span></span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>  scale_x_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  scale_y_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="4d806249-6a9f-4ddd-94d8-2870f7325ea4" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> land, aes(fill <span class="op">=</span> Land_use)) <span class="op">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  scale_fill_manual(values<span class="op">=</span>c(<span class="st">"#458B00"</span>, <span class="st">"#006400"</span>, <span class="st">"#CDAD00"</span>, <span class="st">"#009ACD"</span>, <span class="st">"#CDB38B"</span>,  <span class="st">"#C1CDCD"</span>), name <span class="op">=</span> <span class="st">"Land use"</span>) <span class="op">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> water_linear, colour <span class="op">=</span> <span class="st">"#009ACD"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>, </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>, </span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> ag_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> forest_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(cities),</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>),</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>        legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>        legend.title <span class="op">=</span> element_blank(),</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>        legend.key.size <span class="op">=</span> unit(<span class="dv">5</span>, <span class="st">'mm'</span>),</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>        legend.box.spacing <span class="op">=</span> unit(<span class="dv">0</span>, <span class="st">"pt"</span>)) <span class="op">+</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  scale_x_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>  scale_y_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="dem" class="level3">
 <h3 class="anchored" data-anchor-id="dem">DEM</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="31be376c-4fb0-4ba5-9909-b4e4ded3708c" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  geom_raster(data <span class="op">=</span> topo , aes(x <span class="op">=</span> x, y <span class="op">=</span> y, fill <span class="op">=</span> DEM)) <span class="op">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elev. (m)  "</span>, limits <span class="op">=</span> c(<span class="dv">282</span>, <span class="dv">800</span>), breaks <span class="op">=</span> c(<span class="dv">300</span>, <span class="dv">550</span>, <span class="dv">800</span>)) <span class="op">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> ag_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> forest_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(cities),</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  scale_x_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  scale_y_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>),</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>        legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>        legend.box.spacing <span class="op">=</span> unit(<span class="dv">0</span>, <span class="st">"pt"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cfbd8aeb-898f-408c-89f5-0fbe7e48bdcd" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  geom_raster(data <span class="op">=</span> topo , aes(x <span class="op">=</span> x, y <span class="op">=</span> y, fill <span class="op">=</span> DEM)) <span class="op">+</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elev. (m)  "</span>, limits <span class="op">=</span> c(<span class="dv">282</span>, <span class="dv">800</span>), breaks <span class="op">=</span> c(<span class="dv">300</span>, <span class="dv">550</span>, <span class="dv">800</span>)) <span class="op">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(locations),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> ag_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> forest_site, fill <span class="op">=</span> NA, colour <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  geom_label_repel(</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> head(cities),</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    aes(label <span class="op">=</span> name, geometry <span class="op">=</span> geometry),</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    stat <span class="op">=</span> <span class="st">"sf_coordinates"</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">min</span>.segment.length <span class="op">=</span> <span class="dv">0</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    nudge_y <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  scale_x_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  scale_y_continuous(expand <span class="op">=</span> c(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  annotation_scale(location <span class="op">=</span> <span class="st">"bl"</span>,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>                   height <span class="op">=</span> unit(<span class="fl">0.05</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  annotation_north_arrow(location <span class="op">=</span> <span class="st">"br"</span>, </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>                         height <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>),</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>                         width <span class="op">=</span> unit(<span class="fl">0.5</span>, <span class="st">"cm"</span>)) <span class="op">+</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  theme(axis.text <span class="op">=</span> element_blank(),</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>        axis.title <span class="op">=</span> element_blank(),</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>        plot.margin <span class="op">=</span> unit(c(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="st">"mm"</span>),</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>        legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        legend.box.spacing <span class="op">=</span> unit(<span class="dv">0</span>, <span class="st">"pt"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-fig-location_map" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p6 <span class="op">&lt;-</span> p1 <span class="op">+</span> guide_area() <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, guides <span class="op">=</span> <span class="st">"collect"</span>) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>p6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p6 <span class="op">&lt;-</span> p1 <span class="op">+</span> guide_area() <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, guides <span class="op">=</span> <span class="st">"collect"</span>) </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>p6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
 give correct results for longitude/latitude data
@@ -575,8 +582,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -687,7 +692,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -912,7 +916,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

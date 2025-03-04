@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.1">
+    <meta name="generator" content="quarto-1.7.13">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,15 +147,16 @@
     
 <script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4c3f21f622398162bebe0d2c2d806a7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
@@ -213,7 +214,7 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="1c495971-82a1-4f14-9610-d1ea42b9b790" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="9219c6ab-7412-4fd8-b73f-feb82d067d46" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(readODS)</span>
@@ -223,7 +224,7 @@
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="204c78cb-b10f-412a-8dc2-754448e05ddf" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="baa10f8b-3295-46aa-9dd6-5c9ddaf96fea" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vario <span class="op">&lt;-</span> read_ods(here::here(<span class="st">"./notebooks/semivariogram.ods"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  mutate(sill <span class="op">=</span> p_sill <span class="op">+</span> nugget, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         `C<span class="op">/</span>(C <span class="op">+</span> Co) (<span class="op">%</span>)` <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> p_sill<span class="op">/</span>sill,</span>
@@ -257,23 +258,23 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
 </figcaption>
 <div aria-describedby="tbl-geocol-semivariogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="mduiqrqgwx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mduiqrqgwx table {
+<div id="pcgxwsmbqn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pcgxwsmbqn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mduiqrqgwx thead, #mduiqrqgwx tbody, #mduiqrqgwx tfoot, #mduiqrqgwx tr, #mduiqrqgwx td, #mduiqrqgwx th {
+#pcgxwsmbqn thead, #pcgxwsmbqn tbody, #pcgxwsmbqn tfoot, #pcgxwsmbqn tr, #pcgxwsmbqn td, #pcgxwsmbqn th {
   border-style: none;
 }
 
-#mduiqrqgwx p {
+#pcgxwsmbqn p {
   margin: 0;
   padding: 0;
 }
 
-#mduiqrqgwx .gt_table {
+#pcgxwsmbqn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -299,12 +300,12 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-left-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_caption {
+#pcgxwsmbqn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mduiqrqgwx .gt_title {
+#pcgxwsmbqn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -316,7 +317,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-width: 0;
 }
 
-#mduiqrqgwx .gt_subtitle {
+#pcgxwsmbqn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -328,7 +329,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-top-width: 0;
 }
 
-#mduiqrqgwx .gt_heading {
+#pcgxwsmbqn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -340,13 +341,13 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_bottom_border {
+#pcgxwsmbqn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_col_headings {
+#pcgxwsmbqn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -361,7 +362,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_col_heading {
+#pcgxwsmbqn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -381,7 +382,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   overflow-x: hidden;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer {
+#pcgxwsmbqn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -393,15 +394,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 4px;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer:first-child {
+#pcgxwsmbqn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mduiqrqgwx .gt_column_spanner_outer:last-child {
+#pcgxwsmbqn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mduiqrqgwx .gt_column_spanner {
+#pcgxwsmbqn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -413,11 +414,11 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   width: 100%;
 }
 
-#mduiqrqgwx .gt_spanner_row {
+#pcgxwsmbqn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mduiqrqgwx .gt_group_heading {
+#pcgxwsmbqn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -443,7 +444,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   text-align: left;
 }
 
-#mduiqrqgwx .gt_empty_group_heading {
+#pcgxwsmbqn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -458,15 +459,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   vertical-align: middle;
 }
 
-#mduiqrqgwx .gt_from_md > :first-child {
+#pcgxwsmbqn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mduiqrqgwx .gt_from_md > :last-child {
+#pcgxwsmbqn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mduiqrqgwx .gt_row {
+#pcgxwsmbqn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -485,7 +486,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   overflow-x: hidden;
 }
 
-#mduiqrqgwx .gt_stub {
+#pcgxwsmbqn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -498,7 +499,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_stub_row_group {
+#pcgxwsmbqn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -512,15 +513,15 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   vertical-align: top;
 }
 
-#mduiqrqgwx .gt_row_group_first td {
+#pcgxwsmbqn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_row_group_first th {
+#pcgxwsmbqn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_summary_row {
+#pcgxwsmbqn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -530,16 +531,16 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_first_summary_row {
+#pcgxwsmbqn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_first_summary_row.thick {
+#pcgxwsmbqn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mduiqrqgwx .gt_last_summary_row {
+#pcgxwsmbqn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,7 +550,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_grand_summary_row {
+#pcgxwsmbqn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -559,7 +560,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_first_grand_summary_row {
+#pcgxwsmbqn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -569,7 +570,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-top-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_last_grand_summary_row_top {
+#pcgxwsmbqn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -579,11 +580,11 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_striped {
+#pcgxwsmbqn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mduiqrqgwx .gt_table_body {
+#pcgxwsmbqn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -592,7 +593,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-bottom-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_footnotes {
+#pcgxwsmbqn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -606,7 +607,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_footnote {
+#pcgxwsmbqn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -615,7 +616,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_sourcenotes {
+#pcgxwsmbqn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -629,7 +630,7 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   border-right-color: #D3D3D3;
 }
 
-#mduiqrqgwx .gt_sourcenote {
+#pcgxwsmbqn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -637,85 +638,94 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
   padding-right: 5px;
 }
 
-#mduiqrqgwx .gt_left {
+#pcgxwsmbqn .gt_left {
   text-align: left;
 }
 
-#mduiqrqgwx .gt_center {
+#pcgxwsmbqn .gt_center {
   text-align: center;
 }
 
-#mduiqrqgwx .gt_right {
+#pcgxwsmbqn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mduiqrqgwx .gt_font_normal {
+#pcgxwsmbqn .gt_font_normal {
   font-weight: normal;
 }
 
-#mduiqrqgwx .gt_font_bold {
+#pcgxwsmbqn .gt_font_bold {
   font-weight: bold;
 }
 
-#mduiqrqgwx .gt_font_italic {
+#pcgxwsmbqn .gt_font_italic {
   font-style: italic;
 }
 
-#mduiqrqgwx .gt_super {
+#pcgxwsmbqn .gt_super {
   font-size: 65%;
 }
 
-#mduiqrqgwx .gt_footnote_marks {
+#pcgxwsmbqn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mduiqrqgwx .gt_asterisk {
+#pcgxwsmbqn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mduiqrqgwx .gt_indent_1 {
+#pcgxwsmbqn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mduiqrqgwx .gt_indent_2 {
+#pcgxwsmbqn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mduiqrqgwx .gt_indent_3 {
+#pcgxwsmbqn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mduiqrqgwx .gt_indent_4 {
+#pcgxwsmbqn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mduiqrqgwx .gt_indent_5 {
+#pcgxwsmbqn .gt_indent_5 {
   text-indent: 25px;
+}
+
+#pcgxwsmbqn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pcgxwsmbqn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header gt_col_headings">
+<tr class="gt_col_headings header">
 <th id="Property" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Property</th>
-<th id="Kriging Type<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Kriging Type<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="Nugget (Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
-<th id="Sill (Co + C)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co + C)</th>
-<th id="C/(C + Co) (%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
-<th id="Range (m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
-<th id="r<span style=&quot;white-space:nowrap;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">r<span style="white-space:nowrap;"><sup>2</sup></span></th>
-<th id="Spatial Class<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Spatial Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+<th id="Kriging-Type" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Kriging Type<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="Nugget-(Co)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Nugget (Co)</th>
+<th id="Sill-(Co-+-C)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Sill (Co + C)</th>
+<th id="C/(C-+-Co)-(%)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">C/(C + Co) (%)</th>
+<th id="Range-(m)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Range (m)</th>
+<th id="r2" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">r<span style="white-space:nowrap;"><sup>2</sup></span></th>
+<th id="Spatial-Class" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: center;" data-quarto-table-cell-role="th" scope="col">Spatial Class<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ca</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
@@ -778,12 +788,12 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Nb</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Kriging Type">Universal</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">2.7</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">2.7</td>
-<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Nugget (Co)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Sill (Co + C)">0.0</td>
+<td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  C/(C + Co) (%)">91</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  Range (m)">210</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.7</td>
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Low</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Strong</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: center;" headers="Agriculture  Property">Ni</td>
@@ -865,10 +875,10 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  r2">0.1</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Spatial Class">Moderate</td>
 </tr>
-<tr class="odd gt_group_heading_row">
+<tr class="gt_group_heading_row odd">
 <td colspan="8" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
-<tr class="even gt_row_group_first">
+<tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: center;" headers="Forest  Property">Ca</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Kriging Type">Ordinary</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  Nugget (Co)">1.6</td>
@@ -969,11 +979,11 @@ Table&nbsp;1: Geostatistical parameters of the fitted semivariogram models of se
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Spatial Class">Strong</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="even">
-<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Models are all isotropic.</td>
-</tr>
 <tr class="odd">
-<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25).</td>
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Models are all isotropic.</td>
+</tr>
+<tr class="even">
+<td colspan="8" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Strong spatial dependency (C/(C + Co) % &gt;75); Moderate spatial dependency (C/(C + Co) % between 75 and 25); Low spatial dependency (C/(C + Co) % &lt;25).</td>
 </tr>
 </tfoot>
 
@@ -1069,8 +1079,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1181,7 +1189,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
