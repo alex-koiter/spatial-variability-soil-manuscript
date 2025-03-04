@@ -30,6 +30,49 @@ data_summary <- data %>%
             cv = sd(value, na.rm = TRUE) / mean(value, na.rm = TRUE) * 100, .groups = "drop") 
 ```
 
+```{r}
+
+data_summary |>
+  filter(group %in% c("geochem", "colour"))|>
+  group_by(site) |>
+  summarise(skew_small = sum(skewness <=0.5 & skewness >=-0.5),
+            skew_moderate = sum(skewness > 0.5 & skewness <1| skewness < -0.5 & skewness > -1),
+            skew_large = sum(skewness >= 1 | skewness <= -1),
+            pos_skew = sum(skewness > 0),
+            neg_skew = sum(skewness < 0),
+            CV_low = sum(cv <15),
+            CV_mod = sum(cv >= 15 & cv < 35),
+            CV_high = sum(cv >= 35 & cv <= 75),
+            CV_v_high = sum(cv > 75),
+            n = n())
+
+data_summary |>
+  filter(group %in% c("geochem", "colour")) |>
+  group_by(site, group) |>
+  summarise(skew_small = sum(skewness <=0.5 & skewness >=-0.5),
+            skew_moderate = sum(skewness > 0.5 & skewness <1| skewness < -0.5 & skewness > -1),
+            skew_large = sum(skewness >= 1 | skewness <= -1),
+            pos_skew = sum(skewness > 0),
+            neg_skew = sum(skewness < 0),
+            CV_low = sum(cv <15),
+            CV_mod = sum(cv >= 15 & cv < 35),
+            CV_high = sum(cv >= 35 & cv <= 75),
+            CV_v_high = sum(cv > 75),
+            n = n())
+
+data_summary |>
+  filter(skewness >= 1 | skewness <= -1) |>
+  filter(group %in% c("geochem", "colour")) |>
+  group_by(site, group) |>
+  summarise(pos_skew = sum(skewness > 0),
+            neg_skew = sum(skewness < 0),
+            CV_low = sum(cv <15),
+            CV_mod = sum(cv >= 15 & cv < 35),
+            CV_high = sum(cv >= 35 & cv <= 75),
+            CV_v_high = sum(cv > 75),
+            n = n())
+```
+
 
 ### Max-min scaling
 ```{r}
@@ -282,6 +325,22 @@ tab_style(
 ```
 
 ```{r}
+summary_tab |>
+  group_by(site) |>
+  summarise(skew_small = sum(Skewness <=0.5 & Skewness >=-0.5),
+            skew_large = sum(Skewness > 0.5 | Skewness < -0.5),
+            pos_skew = sum(Skewness > 0),
+            neg_skew = sum(Skewness < 0),
+            CV_low = sum(CV <15),
+            CV_mod = sum(CV >= 15 & CV < 35),
+            CV_high = sum(CV >= 35 & CV <= 75),
+            CV_v_high = sum(CV > 75))
+  
+```
+
+
+
+```{r}
 forest_data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) %>%
   pivot_longer(cols = li:elevation, names_to = "property", values_to = "value") %>%
   group_by(property) %>%
@@ -327,6 +386,34 @@ terrain_summary |>
   fmt_scientific(rows = Property %in% c("Plan Curvature", "Profile Curvature", "Vert. Dist. Channel")) |>
   #fmt_number(row = everything() > 100, decimal = 0) |>
   #cols_align(align = "left") |>
+  tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
+  tab_options(column_labels.font.weight = "bold") |>
+tab_style(
+    style = list(cell_text(style = "italic")),
+    locations = cells_body(
+      columns = Property,
+      rows = Property %in% c("a*", "b*", "c*", "h*", "x")))
+```
+
+
+```{r}
+data_summary |>
+  filter(group %in% c("geochem", "colour")) |>
+  rename("property" = "element") |>
+  filter(property %in% c("Ca", "Co", "Cs", "Fe", "Li", "La", "Nb", "Ni", "Rb", "Sr", "a_col", "b_col", "c_col", "h_col", "x_col"))|>
+  mutate(property = as.character(fct_recode(property, "h*" = "h_col", "a*" = "a_col", "c*" = "c_col", "b*" = "b_col", "x" = "x_col"))) |>
+  left_join(terrain_summary, by = join_by(property, site)) |>
+  #drop_na() |>
+  mutate(Mean = paste0(sprintf("%.2f", mean), " (", sprintf("%.2f", Mean), ")"),
+         SD = paste0(sprintf("%.2f", sd), " (", sprintf("%.2f", SD), ")"),
+         Max = paste0(sprintf("%.2f", max), " (", sprintf("%.2f", Max), ")"),
+         Min = paste0(sprintf("%.2f", min), " (", sprintf("%.2f", Min), ")"),
+         Skewness = paste0(sprintf("%.2f", skewness), " (", sprintf("%.2f", Skewness), ")"),
+         CV = paste0(sprintf("%.2f", cv), " (", sprintf("%.2f", CV), ")")) |>
+  select(-group, -mean, -sd, -max, -min, -se, -skewness, -cv) |>
+  rename("Property" = "property")  |>
+  group_by(site) |>
+  gt()|>
   tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
   tab_options(column_labels.font.weight = "bold") |>
 tab_style(
@@ -398,12 +485,13 @@ corr_tab <- temp3 %>%
     arrange(Property) %>%
   mutate(Property = as.character(Property))
   
-
+#write.csv(x = corr_tab, file = "correlation.csv", row.names = FALSE)
 ```
 
 ```{r}
-#| label: tbl-correlation-summary
-#| tbl-cap: Pearson’s correlation coefficients for soil properties and terrain attributes using interpoloated values (10m resolution).
+#| label: supptab-correlation
+#| tbl-cap: Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
+
 correlation <- corr_tab |>
   group_by(site) |>
   gt() |>
@@ -417,6 +505,6 @@ correlation <- corr_tab |>
 
 correlation
 
-saveRDS(correlation, file = here::here("./images/correlation.rds"))
+#saveRDS(correlation, file = here::here("./images/correlation.rds"))
 ```
 

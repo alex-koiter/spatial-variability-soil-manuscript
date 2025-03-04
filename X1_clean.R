@@ -33,6 +33,7 @@ org_data <- read_csv("../Data/Raw data/OM_data.csv") %>%
 psa_data <- read_csv("../Data/Raw data/PSA_data.csv") %>%
   clean_names() %>%
   filter(sampling_design == "Grid") %>%
+  filter(measurement_date_time != "8/3/2021 11:22") %>%
   select(sample_number, site, dx_50, specific_surface_area) %>%
   rename("ssa" = specific_surface_area) %>%
   pivot_longer(cols = c(dx_50, ssa), names_to = "element", values_to = "value") %>%
@@ -96,3 +97,23 @@ coords <- read_csv("../Data/Raw data/Sampling coordinates.csv") %>%
   select(site, long, lat)
 
 # write_csv(x = coords, file = "./notebooks/coords.csv")
+
+## orginal 49
+
+org_49 <- read.csv("../Data/Raw data/OM_data.csv") %>%
+  filter(Sampling_Design %in% c("Grid", "Likely to erode", "Transect")) %>%
+  dplyr::select("Site", "Sampling_Design", "Latitude", "Longitude", "Sample_Number") %>%
+  mutate(long = parzer::parse_lon(Longitude),
+         lat = parzer::parse_lat(Latitude)) %>%
+  mutate(Site = fct_recode(Site, "Agriculture" = "Agricultural")) %>%
+  mutate(Sampling_Design = fct_relevel(Sampling_Design, "Grid", "Transect", "Likely to erode")) %>% 
+  filter(Sampling_Design == "Grid") %>%
+  clean_names() %>%
+  right_join(all_data)
+
+# write_csv(x = org_49, file = "../Data/Datasets/orig_49.csv")
+
+org_49_wide <- org_49 %>%
+  pivot_wider(id_cols = - group, names_from = element, values_from = value)
+
+# write_csv(x = org_49_wide, file = "../Data/Datasets/orig_49_wide.csv")

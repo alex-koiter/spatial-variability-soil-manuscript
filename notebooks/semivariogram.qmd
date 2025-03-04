@@ -30,6 +30,7 @@ vario <- read_ods(here::here("./notebooks/semivariogram.ods")) %>%
 ```
 
 ```{r}
+
 #| label: tbl-geocol-semivariogram
 #| tbl-cap: Geostatistical parameters of the fitted semivariogram models of selected colour and geochemical properties within the agricultural and forested sites.
 
