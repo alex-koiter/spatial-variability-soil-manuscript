@@ -213,19 +213,3 @@ Pearson’s correlation coefficients for soil properties and terrain attributes 
 :::
 :::
 
-::: {.content-visible when-format="pdf"}
-::: {#supptab-correlation2}
-
-```{r}
-#| output: asis
-readRDS(file = "./images/correlation.rds") |>
-  gt::tab_options(quarto.disable_processing = TRUE) |>
-  gt::as_latex() |>
-  as.character() |>
-  cat()
-```
-
-Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
-
-:::
-:::
