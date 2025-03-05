@@ -142,6 +142,8 @@ Overall, the agricultural site had soil colour and geochemical properties that e
 
 {{< embed notebooks/univariate_summary.qmd#tbl-univariate-summary >}}
 
+The agricultural site has a relatively flat topography with an elevation change of approximately 3m, with the field draining toward a ditch in the northeast corner. The forested site has a relatively more complex topography, with a channel flowing from the southwest toward the northeast and an overall elevation difference of 18 m across the site. The mean plan and profile curvature measurements for both sites are near zero indicating a area of sediment transit and not accumulation or erosion. The agricultural site had a higher SAGA Wetness Index but the forested site had a larger range in values and exhibited a higher degree of variability. The forested site exhibited a smaller mean Relative Slope Position value (streams and depressional areas) and a smaller Vertical Distance to Channel Network, and for both terrain attributes a greater variability as compared to the agricultural reflecting the presence of the stream crossing the forested site.
+
 {{< embed notebooks/univariate_summary.qmd#tbl-univariate2-summary >}}
 
 ### Spatial analysis
@@ -161,3 +163,69 @@ Overall, the agricultural site had soil colour and geochemical properties that e
 ::: {#refs}
 :::
 
+## Supplemental figures {.unnumbered}
+
+::: {#suppfig-colour_summary}
+![](images/colour_summary.png){width="100%"}
+
+Summary statistics of all measured colour soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.
+:::
+
+::: {#suppfig-geo_summary}
+![](images/geo_summary.png){width="100%"}
+
+Summary statistics of all measured geochemical soil properties at both sites. Error bars represent 1SD and the numeric values indicate the CV.
+:::
+
+## Supplemental tables {.unnumbered}
+
+::: {#supptab-abbrev}
+| **Colour space model** | Parameter | Abbreviation |
+|---------------------|---------------------------------|------------------|
+| RGB | Red | R |
+| RGB | Green | G |
+| RGB | Blue | B |
+| CIE xyY | Chromatic Coordinate x | x |
+| CIE xyY | Chromatic Coordinate y | y |
+| CIE xyY | Brightness | Y |
+| CIE XYZ | Virtual component X | X |
+| CIE XYZ | Virtual component Z | Z |
+| CIE LAB | Metric lightness function | L |
+| CIE LAB | Chromatic coordinate opponent red–green scales | *a\** |
+| CIE LAB | Chromatic coordinate opponent red–green scales | *b\** |
+| CIE LUV | Chromatic coordinate opponent blue–yellow scales | *u\** |
+| CIE LUV | Chromatic oordinate opponent red–green scales | *v\** |
+| CIE LCH | CIE hue | *c\** |
+| CIE LCH | CIE chroma | *h\** |
+
+: Description of spectral reflectance colour coefficients used as fingerprints. Reproduced from Boudreault et al. (2018)
+:::
+
+::: {.content-visible unless-format="pdf"}
+::: {#supptab-correlation2}
+
+```{r}
+readRDS(file = "./images/correlation.rds")
+```
+
+Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
+
+:::
+:::
+
+::: {.content-visible when-format="pdf"}
+::: {#supptab-correlation2}
+
+```{r}
+#| output: asis
+readRDS(file = "./images/correlation.rds") |>
+  gt::tab_options(quarto.disable_processing = TRUE) |>
+  gt::as_latex() |>
+  as.character() |>
+  cat()
+```
+
+Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
+
+:::
+:::
