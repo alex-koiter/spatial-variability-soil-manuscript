@@ -148,6 +148,10 @@ The agricultural site has a relatively flat topography with an elevation change 
 
 ### Spatial analysis
 
+Soil colour and geochemical composition varied across both sites. In the agricultural field, all 15 soil color and geochemical properties exhibited spatial autocorrelation with most properties demonstrating a strong spatial dependency. Some of the soil properties presented a pattern that roughly matches (e.g., Rb, Cs) or mirrors (e.g., Ca, Sr) the overall topography of the site with a gradation between the highest point in the south-west corner towards the lowest points in the north-east. Other properties appear to have more localized highs and low concentrations/values (e.g., c\*, h). The geochemical concentrations of Ca and Rb had the largest range values and as result displayed a less patchy distribution across the site. The nugget (Co) was small for all soil properties (<1.5), and Sr had an exceptionally large sill value (900).
+
+At the forested site, the geochemical concentrations of Fe and Rb, along with the color properties a\*, b\*, c\*, and x showed no spatial autocorrelation and were excluded from further analysis. Overall, the influence of the channel environment can be seen in the remaining nine soil properties. In comparison to the agricultural site, the soil properties at the forested site displayed a more moderate spatial dependency. The nugget (Co) was generally small for most soil properties (<2) with the exception of La and Ni. The range values were similar across the different soil properties and fell between 176 and 298 m.
+
 {{< embed notebooks/semivariogram.qmd#tbl-geocol-semivariogram >}}
 
 {{< embed notebooks/property_maps.qmd#fig-ag_map >}}
@@ -157,6 +161,12 @@ The agricultural site has a relatively flat topography with an elevation change 
 {{< embed notebooks/RF_summary.qmd#fig-RF-results >}}
 
 {{< embed notebooks/RF_summary.qmd#tbl-RF-summary >}}
+
+## Discussion
+
+A large sill in a semivariogram indicates that the total variance of a soil property is high. 
+
+A soil property with a large range relative to other properties in a semivariogram indicates that spatial correlation persists over a greater distance. The property is relatively uniform over large areas, with gradual changes rather than abrupt variations.
 
 ## References {.unnumbered}
 
@@ -181,7 +191,7 @@ Summary statistics of all measured geochemical soil properties at both sites. Er
 
 ::: {#supptab-abbrev}
 | **Colour space model** | Parameter | Abbreviation |
-|---------------------|---------------------------------|------------------|
+|---------------------|--------------------------------|-------------------|
 | RGB | Red | R |
 | RGB | Green | G |
 | RGB | Blue | B |
@@ -201,15 +211,59 @@ Summary statistics of all measured geochemical soil properties at both sites. Er
 : Description of spectral reflectance colour coefficients used as fingerprints. Reproduced from Boudreault et al. (2018)
 :::
 
-::: {.content-visible unless-format="pdf"}
+:::: {.content-visible unless-format="pdf"}
 ::: {#supptab-correlation2}
-
 ```{r}
 readRDS(file = "./images/correlation.rds")
 ```
 
 Pearson’s correlation coefficients for soil properties and terrain attributes using interpolated values (10m resolution).
+:::
+::::
 
-:::
-:::
+<!-- ## Random Forest Importance Data -->
+
+<!-- {{< embed notebooks/a_col_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/b_col_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/c_col_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Ca_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Ca_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Co_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Co_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Cs_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Cs_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Fe_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/h_col_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/h_col_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/La_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/La_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Li_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Li_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Nb_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Nb_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Ni_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Ni_For_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/Rb_Ag_RF.qmd#test >}} -->
+
+<!-- {{< embed notebooks/x_col_Ag_RF.qmd#test >}} -->
 

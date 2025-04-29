@@ -313,7 +313,7 @@
                 <div>
             <div class="quarto-title-meta-heading">Modified</div>
             <div class="quarto-title-meta-contents">
-              <p class="date-modified">Wednesday, March 5, 2025</p>
+              <p class="date-modified">Wednesday, March 19, 2025</p>
             </div>
           </div>
                 
@@ -358,6 +358,7 @@
   <li><a href="#univariate-summary" id="toc-univariate-summary" class="nav-link" data-scroll-target="#univariate-summary"><span class="header-section-number">3.1</span> Univariate summary</a></li>
   <li><a href="#spatial-analysis" id="toc-spatial-analysis" class="nav-link" data-scroll-target="#spatial-analysis"><span class="header-section-number">3.2</span> Spatial analysis</a></li>
   </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">4</span> Discussion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#supplemental-figures" id="toc-supplemental-figures" class="nav-link" data-scroll-target="#supplemental-figures">Supplemental figures</a></li>
   <li><a href="#supplemental-tables" id="toc-supplemental-tables" class="nav-link" data-scroll-target="#supplemental-tables">Supplemental tables</a></li>
@@ -385,7 +386,7 @@
 <p>Two sites of contrasting land uses located in the Wilson Creek Watershed (WCW), near McCreary, Manitoba, Canada were selected to investigate the spatial variability in fingerprint properties. The headwaters of the WCW are located on top of the Manitoba Escarpment within the boundary of Riding Mountain National Park. There is a ~300m drop in elevation crosses the escarpment where the streams become deeply incised. At the base of the escarpment is a large alluvial fan situated in the lacustrine deposits of glacial lake Aggasiz where the main stem has a meandering form. However, beyond the national park boundary the stream flows straight through an engineered drain until it reaches the Turtle river (<a href="#fig-location_map" class="quarto-xref">Figure&nbsp;1</a>). Both sites are both hydrologicaly connected to the mainstem of the Wilson Creek</p>
 <p>The first site was a mixedwood forest including white and black spruce (Picea glauca, Picea mariana), balsam fir (Abies balsamea), larch (Larix laricina) and young stands of deciduous trees including trembling aspen (Populus tremuloides). The forested site is located within the boundaries of the national park where there is little disturbance beyond recreational hiking trails. The soil within the park are not well mapped but likely are part of the Grey Wooded soil association (Luvisol) consisting of fine sandy loam to clay loam soils developed on boulder till of mostly shale with some limestone, and granitic rocks <span class="citation" data-cites="ehrlich1958">(<a href="#ref-ehrlich1958" role="doc-biblioref">Ehrlich et al., 1958</a>)</span>. The second site is under agricultural production and includes rotations of grain crops and forage. The site is mapped to the Edwards Soil Series (Cumulic Regosol) consisting of silty clay loam to silty clay soil developed on recent alluvial deposits <span class="citation" data-cites="ehrlich1958">(<a href="#ref-ehrlich1958" role="doc-biblioref">Ehrlich et al., 1958</a>)</span>.</p>
 <p>The Köppen-Geiger climate classification of the WCW is cold, without dry season, and with warm summer (Dfb) <span class="citation" data-cites="beck2018">(<a href="#ref-beck2018" role="doc-biblioref">Beck et al., 2018</a>)</span>. The average annual precipitation is ~539 mm, with approximately 27% falling as snow with a mean annual temperature is 3.0°C <span class="citation" data-cites="environmentandclimatechangecanada2024">(<a href="#ref-environmentandclimatechangecanada2024" role="doc-biblioref">Environment and Climate Change Canada, 2024</a>)</span>. The hydrology of the watershed is snowmelt dominated with ~ 80% of the cumulative runoff occurring during the spring season (May and June) <span class="citation" data-cites="mackay1970">(<a href="#ref-mackay1970" role="doc-biblioref">MacKay, 1970</a>)</span>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/location_map.qmd" data-notebook-title="Research Site Locations" data-notebook-cellid="cell-fig-location_map">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/location_map.qmd" data-notebook-title="Research Site Locations" data-notebook-cellid="cell-fig-location_map">
 <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-fig-location_map" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p6 <span class="op">&lt;-</span> p1 <span class="op">+</span> guide_area() <span class="op">+</span> p2 <span class="op">+</span> p3 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">2</span>, guides <span class="op">=</span> <span class="st">"collect"</span>) </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -428,7 +429,7 @@ Figure&nbsp;1: Map showing the location of the study sites within Canada, and th
 </section>
 <section id="data-analysis" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="data-analysis"><span class="header-section-number">2.4</span> Data analysis</h3>
-<p>All subsequent statistical analysis was undertaken using R statistical Software v4.4.0 <span class="citation" data-cites="rcoreteam2024">(<a href="#ref-rcoreteam2024" role="doc-biblioref">R Core Team, 2024</a>)</span> through RStudio Integrated Development Environment v2024.04.2 <span class="citation" data-cites="rstudio2024">(<a href="#ref-rstudio2024" role="doc-biblioref">RStudio, 2024</a>)</span>. Plots and maps were created using the R package <code>ggplot2</code> v 3.5.1 <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham, 2016</a>)</span>. Skewness was categorized as values between -0.5 and 0.5 considered approximately symmetric, -1.0 to -0.5 or 0.5 to 1 as moderately skewed, and &lt; -1.0 or &gt; 1.0 as highly skewed. Coefficient of variation (CV) thresholds were categorized as low (&lt;15%), moderate (15–35%), high (35–75%), and very high (&gt;75%) .Interpolated soil property and terrain attribute data were resampled to a 10 m resolution prior to analysis <span class="citation" data-cites="hijmans2024">(<code>terra</code> v1.8.29 <a href="#ref-hijmans2024" role="doc-biblioref">Hijmans, 2024</a>)</span>. Random Forest Regression <span class="citation" data-cites="liaw2002">(<code>randomForest</code> v4.7.1.2 <a href="#ref-liaw2002" role="doc-biblioref">Liaw and Wiener, 2002</a>)</span> was used to assess the relative importance of the terrain attributes on the spatial distribution of soil properties. The dataset was randomly split into training, validation, and testing datasets. Multicollinearity among the terrain attributed was assessed using the Variance Inflation Factor with a threshold of eight and correlated terrain attributes were removed <span class="citation" data-cites="Naimi2014">(<code>usdm</code> v2.1.7 <a href="#ref-Naimi2014" role="doc-biblioref">Naimi et al., 2014</a>)</span>. The number of variables randomly sampled as candidates at each split within the random forest model was tuned using the training and validation data sets <span class="citation" data-cites="kuhn2008">(<code>caret</code> v7.0.1 <a href="#ref-kuhn2008" role="doc-biblioref">Kuhn and Max, 2008</a>)</span>. The number of trees to grow was set to 500 and assessed using the Root Mean Square Error for both the Out of Bag Error and the validation data sets. To test the model, actual and predicted values were plotted and the R<sup><sub>2</sub></sup> was calculated.</p>
+<p>All subsequent statistical analysis was undertaken using R statistical Software v4.4.0 <span class="citation" data-cites="rcoreteam2024">(<a href="#ref-rcoreteam2024" role="doc-biblioref">R Core Team, 2024</a>)</span> through RStudio Integrated Development Environment v2024.04.2 <span class="citation" data-cites="rstudio2024">(<a href="#ref-rstudio2024" role="doc-biblioref">RStudio, 2024</a>)</span>. Plots and maps were created using the R package <code>ggplot2</code> v 3.5.2 <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham, 2016</a>)</span>. Skewness was categorized as values between -0.5 and 0.5 considered approximately symmetric, -1.0 to -0.5 or 0.5 to 1 as moderately skewed, and &lt; -1.0 or &gt; 1.0 as highly skewed. Coefficient of variation (CV) thresholds were categorized as low (&lt;15%), moderate (15–35%), high (35–75%), and very high (&gt;75%) .Interpolated soil property and terrain attribute data were resampled to a 10 m resolution prior to analysis <span class="citation" data-cites="hijmans2024">(<code>terra</code> v1.8.42 <a href="#ref-hijmans2024" role="doc-biblioref">Hijmans, 2024</a>)</span>. Random Forest Regression <span class="citation" data-cites="liaw2002">(<code>randomForest</code> v4.7.1.2 <a href="#ref-liaw2002" role="doc-biblioref">Liaw and Wiener, 2002</a>)</span> was used to assess the relative importance of the terrain attributes on the spatial distribution of soil properties. The dataset was randomly split into training, validation, and testing datasets. Multicollinearity among the terrain attributed was assessed using the Variance Inflation Factor with a threshold of eight and correlated terrain attributes were removed <span class="citation" data-cites="Naimi2014">(<code>usdm</code> v2.1.7 <a href="#ref-Naimi2014" role="doc-biblioref">Naimi et al., 2014</a>)</span>. The number of variables randomly sampled as candidates at each split within the random forest model was tuned using the training and validation data sets <span class="citation" data-cites="kuhn2008">(<code>caret</code> v7.0.1 <a href="#ref-kuhn2008" role="doc-biblioref">Kuhn and Max, 2008</a>)</span>. The number of trees to grow was set to 500 and assessed using the Root Mean Square Error for both the Out of Bag Error and the validation data sets. To test the model, actual and predicted values were plotted and the R<sup><sub>2</sub></sup> was calculated.</p>
 </section>
 </section>
 <section id="results" class="level2" data-number="3">
@@ -436,7 +437,7 @@ Figure&nbsp;1: Map showing the location of the study sites within Canada, and th
 <section id="univariate-summary" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="univariate-summary"><span class="header-section-number">3.1</span> Univariate summary</h3>
 <p>Overall, the agricultural site had soil colour and geochemical properties that exhibited lower variability and more symmetrical data distributions as compared to the forested site. Considering all 15 colour properties measured it was observed that all the colour properties for both sites exhibit an approximate symmetric distribution. All 15 colour properties for the agriculture site had a low CV and the forested site had slightly greater variability with 10 colour properties the a low CV and five with a moderate CV. Overall, the agricultural site had lower variability and the distribution of data for each element were generally more symmetrical as compared to the forest site. Of the 44 geochemical concentrations measured at the agricultural site, nine elements exhibited moderately skewed distributions, while five displayed highly skewed distributions. Additionally, 12 elements had moderate coefficients of variation (CV), and five had high CV. At the forested site, seven elements showed moderately skewed distributions and 14 exhibited highly skewed distributions. Furthermore, 28 elements had moderate CV, six had high CV, and two had very high CV.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/univariate_summary.qmd" data-notebook-title="Univariate summary" data-notebook-cellid="cell-tbl-univariate-summary">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/univariate_summary.qmd" data-notebook-title="Univariate summary" data-notebook-cellid="cell-tbl-univariate-summary">
 <div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
 
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>summary_tab <span class="op">|&gt;</span></span>
@@ -1209,7 +1210,7 @@ Table&nbsp;1: Summary univariate statistics of selected geochemical and colour s
 </div></div>
 </div>
 <p>The agricultural site has a relatively flat topography with an elevation change of approximately 3m, with the field draining toward a ditch in the northeast corner. The forested site has a relatively more complex topography, with a channel flowing from the southwest toward the northeast and an overall elevation difference of 18 m across the site. The mean plan and profile curvature measurements for both sites are near zero indicating a area of sediment transit and not accumulation or erosion. The agricultural site had a higher SAGA Wetness Index but the forested site had a larger range in values and exhibited a higher degree of variability. The forested site exhibited a smaller mean Relative Slope Position value (streams and depressional areas) and a smaller Vertical Distance to Channel Network, and for both terrain attributes a greater variability as compared to the agricultural reflecting the presence of the stream crossing the forested site.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/univariate_summary.qmd" data-notebook-title="Univariate summary" data-notebook-cellid="cell-tbl-univariate2-summary">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/univariate_summary.qmd" data-notebook-title="Univariate summary" data-notebook-cellid="cell-tbl-univariate2-summary">
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
 
 <div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>terrain_summary <span class="op">|&gt;</span></span>
@@ -2067,7 +2068,9 @@ Table&nbsp;2: Summary statistics for the interpoloated values (10m resolution) f
 </section>
 <section id="spatial-analysis" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="spatial-analysis"><span class="header-section-number">3.2</span> Spatial analysis</h3>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/semivariogram.qmd" data-notebook-title="Semivariograms" data-notebook-cellid="cell-tbl-geocol-semivariogram">
+<p>Soil colour and geochemical composition varied across both sites. In the agricultural field, all 15 soil color and geochemical properties exhibited spatial autocorrelation with most properties demonstrating a strong spatial dependency. Some of the soil properties presented a pattern that roughly matches (e.g., Rb, Cs) or mirrors (e.g., Ca, Sr) the overall topography of the site with a gradation between the highest point in the south-west corner towards the lowest points in the north-east. Other properties appear to have more localized highs and low concentrations/values (e.g., c*, h). The geochemical concentrations of Ca and Rb had the largest range values and as result displayed a less patchy distribution across the site. The nugget (Co) was small for all soil properties (&lt;1.5), and Sr had an exceptionally large sill value (900).</p>
+<p>At the forested site, the geochemical concentrations of Fe and Rb, along with the color properties a*, b*, c*, and x showed no spatial autocorrelation and were excluded from further analysis. Overall, the influence of the channel environment can be seen in the remaining nine soil properties. In comparison to the agricultural site, the soil properties at the forested site displayed a more moderate spatial dependency. The nugget (Co) was generally small for most soil properties (&lt;2) with the exception of La and Ni. The range values were similar across the different soil properties and fell between 176 and 298 m.</p>
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/semivariogram.qmd" data-notebook-title="Semivariograms" data-notebook-cellid="cell-tbl-geocol-semivariogram">
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
 
 <div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vario <span class="op">|&gt;</span></span>
@@ -2828,7 +2831,7 @@ Table&nbsp;3: Geostatistical parameters of the fitted semivariogram models of se
 </div></div></div>
 </div></div>
 </div>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/property_maps.qmd" data-notebook-title="Soil property mapping" data-notebook-cellid="cell-fig-ag_map">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/property_maps.qmd" data-notebook-title="Soil property mapping" data-notebook-cellid="cell-fig-ag_map">
 <div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-fig-ag_map" class="cell" data-fig-width="14" data-fig-asp="2">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ca <span class="op">+</span> co <span class="op">+</span> cs <span class="op">+</span> fe <span class="op">+</span> li <span class="op">+</span> la <span class="op">+</span> nb <span class="op">+</span> ni <span class="op">+</span> rb <span class="op">+</span> sr <span class="op">+</span> a_col <span class="op">+</span> b_col <span class="op">+</span> c_col <span class="op">+</span> h_col <span class="op">+</span> x_col <span class="op">+</span> dem <span class="op">+</span> scale_p <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2845,7 +2848,7 @@ Figure&nbsp;2: Kriged maps of select colour and geochemical properties and elevt
 </div>
 </div></div>
 </div>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/property_maps.qmd" data-notebook-title="Soil property mapping" data-notebook-cellid="cell-fig-forest_map">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/property_maps.qmd" data-notebook-title="Soil property mapping" data-notebook-cellid="cell-fig-forest_map">
 <div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-fig-forest_map" class="cell" data-fig-width="12" data-fig-asp="1.3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ca_forest <span class="op">+</span> co_forest <span class="op">+</span> cs_forest <span class="op">+</span> la_forest <span class="op">+</span> li_forest <span class="op">+</span> nb_forest <span class="op">+</span> ni_forest <span class="op">+</span> sr_forest <span class="op">+</span> h_col_forest <span class="op">+</span> x_col_forest <span class="op">+</span> dem_forest <span class="op">+</span> scale_p_forest <span class="op">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  plot_layout(ncol <span class="op">=</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2863,7 +2866,7 @@ Figure&nbsp;3: Kriged map of select colour and geochemical properties and elevat
 </div>
 </div></div>
 </div>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd" data-notebook-title="Random Forest summary" data-notebook-cellid="cell-fig-RF-results">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd" data-notebook-title="Random Forest summary" data-notebook-cellid="cell-fig-RF-results">
 <div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-fig-RF-results" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="op">+</span> g1 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">1</span>, heights <span class="op">=</span> c(<span class="dv">2</span>, <span class="dv">10</span>), guides <span class="op">=</span> <span class="st">"collect"</span>) <span class="op">&amp;</span> theme(legend.position <span class="op">=</span> <span class="st">'right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2880,7 +2883,7 @@ Figure&nbsp;4: Heat map of the Random Forest regresssion results showing the ran
 </div>
 </div></div>
 </div>
-<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Graduate students/Maria/Manuscript 2/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd" data-notebook-title="Random Forest summary" data-notebook-cellid="cell-tbl-RF-summary">
+<div class="quarto-embed-nb-cell" data-notebook="/home/alex/Dropbox/Spatial variability/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd" data-notebook-title="Random Forest summary" data-notebook-cellid="cell-tbl-RF-summary">
 <div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div class="cell">
 
 <div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">|&gt;</span></span>
@@ -3611,6 +3614,11 @@ Table&nbsp;4: Model summary and performance statistics for the random forest reg
 </div>
 </section>
 </section>
+<section id="discussion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">4</span> Discussion</h2>
+<p>A large sill in a semivariogram indicates that the total variance of a soil property is high.</p>
+<p>A soil property with a large range relative to other properties in a semivariogram indicates that spatial correlation persists over a greater distance. The property is relatively uniform over large areas, with gradual changes rather than abrupt variations.</p>
+</section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -3770,8 +3778,8 @@ Table S1: Description of spectral reflectance colour coefficients used as finger
 <table class="caption-top table">
 <colgroup>
 <col style="width: 29%">
-<col style="width: 45%">
-<col style="width: 25%">
+<col style="width: 44%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -3870,23 +3878,23 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"./images/correlation.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="uppazcdcxw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uppazcdcxw table {
+<div id="rzkltolqwu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rzkltolqwu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uppazcdcxw thead, #uppazcdcxw tbody, #uppazcdcxw tfoot, #uppazcdcxw tr, #uppazcdcxw td, #uppazcdcxw th {
+#rzkltolqwu thead, #rzkltolqwu tbody, #rzkltolqwu tfoot, #rzkltolqwu tr, #rzkltolqwu td, #rzkltolqwu th {
   border-style: none;
 }
 
-#uppazcdcxw p {
+#rzkltolqwu p {
   margin: 0;
   padding: 0;
 }
 
-#uppazcdcxw .gt_table {
+#rzkltolqwu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3912,12 +3920,12 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-left-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_caption {
+#rzkltolqwu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uppazcdcxw .gt_title {
+#rzkltolqwu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3929,7 +3937,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-bottom-width: 0;
 }
 
-#uppazcdcxw .gt_subtitle {
+#rzkltolqwu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3941,7 +3949,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-top-width: 0;
 }
 
-#uppazcdcxw .gt_heading {
+#rzkltolqwu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3953,13 +3961,13 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-right-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_bottom_border {
+#rzkltolqwu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_col_headings {
+#rzkltolqwu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3974,7 +3982,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-right-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_col_heading {
+#rzkltolqwu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3994,7 +4002,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   overflow-x: hidden;
 }
 
-#uppazcdcxw .gt_column_spanner_outer {
+#rzkltolqwu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4006,15 +4014,15 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 4px;
 }
 
-#uppazcdcxw .gt_column_spanner_outer:first-child {
+#rzkltolqwu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uppazcdcxw .gt_column_spanner_outer:last-child {
+#rzkltolqwu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uppazcdcxw .gt_column_spanner {
+#rzkltolqwu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4026,11 +4034,11 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   width: 100%;
 }
 
-#uppazcdcxw .gt_spanner_row {
+#rzkltolqwu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uppazcdcxw .gt_group_heading {
+#rzkltolqwu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4056,7 +4064,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   text-align: left;
 }
 
-#uppazcdcxw .gt_empty_group_heading {
+#rzkltolqwu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4071,15 +4079,15 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   vertical-align: middle;
 }
 
-#uppazcdcxw .gt_from_md > :first-child {
+#rzkltolqwu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uppazcdcxw .gt_from_md > :last-child {
+#rzkltolqwu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uppazcdcxw .gt_row {
+#rzkltolqwu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4098,7 +4106,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   overflow-x: hidden;
 }
 
-#uppazcdcxw .gt_stub {
+#rzkltolqwu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4111,7 +4119,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 5px;
 }
 
-#uppazcdcxw .gt_stub_row_group {
+#rzkltolqwu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4125,15 +4133,15 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   vertical-align: top;
 }
 
-#uppazcdcxw .gt_row_group_first td {
+#rzkltolqwu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uppazcdcxw .gt_row_group_first th {
+#rzkltolqwu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uppazcdcxw .gt_summary_row {
+#rzkltolqwu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4143,16 +4151,16 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 5px;
 }
 
-#uppazcdcxw .gt_first_summary_row {
+#rzkltolqwu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_first_summary_row.thick {
+#rzkltolqwu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uppazcdcxw .gt_last_summary_row {
+#rzkltolqwu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4162,7 +4170,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-bottom-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_grand_summary_row {
+#rzkltolqwu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4172,7 +4180,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 5px;
 }
 
-#uppazcdcxw .gt_first_grand_summary_row {
+#rzkltolqwu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4182,7 +4190,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-top-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_last_grand_summary_row_top {
+#rzkltolqwu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4192,11 +4200,11 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-bottom-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_striped {
+#rzkltolqwu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uppazcdcxw .gt_table_body {
+#rzkltolqwu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4205,7 +4213,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-bottom-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_footnotes {
+#rzkltolqwu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4219,7 +4227,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-right-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_footnote {
+#rzkltolqwu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4228,7 +4236,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 5px;
 }
 
-#uppazcdcxw .gt_sourcenotes {
+#rzkltolqwu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4242,7 +4250,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   border-right-color: #D3D3D3;
 }
 
-#uppazcdcxw .gt_sourcenote {
+#rzkltolqwu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4250,72 +4258,72 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
   padding-right: 5px;
 }
 
-#uppazcdcxw .gt_left {
+#rzkltolqwu .gt_left {
   text-align: left;
 }
 
-#uppazcdcxw .gt_center {
+#rzkltolqwu .gt_center {
   text-align: center;
 }
 
-#uppazcdcxw .gt_right {
+#rzkltolqwu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uppazcdcxw .gt_font_normal {
+#rzkltolqwu .gt_font_normal {
   font-weight: normal;
 }
 
-#uppazcdcxw .gt_font_bold {
+#rzkltolqwu .gt_font_bold {
   font-weight: bold;
 }
 
-#uppazcdcxw .gt_font_italic {
+#rzkltolqwu .gt_font_italic {
   font-style: italic;
 }
 
-#uppazcdcxw .gt_super {
+#rzkltolqwu .gt_super {
   font-size: 65%;
 }
 
-#uppazcdcxw .gt_footnote_marks {
+#rzkltolqwu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uppazcdcxw .gt_asterisk {
+#rzkltolqwu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uppazcdcxw .gt_indent_1 {
+#rzkltolqwu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uppazcdcxw .gt_indent_2 {
+#rzkltolqwu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uppazcdcxw .gt_indent_3 {
+#rzkltolqwu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uppazcdcxw .gt_indent_4 {
+#rzkltolqwu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uppazcdcxw .gt_indent_5 {
+#rzkltolqwu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uppazcdcxw .katex-display {
+#rzkltolqwu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uppazcdcxw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rzkltolqwu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4438,7 +4446,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><em>a</em>*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">*a**</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.61***</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.44***</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.35***</td>
@@ -4448,7 +4456,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><em>b</em>*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">*b**</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.39***</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.22***</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.22***</td>
@@ -4458,7 +4466,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><em>c</em>*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">*c**</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">0.41***</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">-0.24***</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">0.22***</td>
@@ -4468,7 +4476,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Profile Curvature">NS</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property"><em>h</em>*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Property">*h**</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Elevation">-0.22***</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Agriculture  SAGA Wetness Index">0.31***</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Agriculture  Rel. Slope Position">-0.15***</td>
@@ -4571,7 +4579,7 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Profile Curvature">-0.05**</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property"><em>h</em>*</td>
+<td class="gt_row gt_left" style="text-align: center;" headers="Forest  Property">*h**</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Elevation">-0.08***</td>
 <td class="gt_row gt_right" style="text-align: center;" headers="Forest  SAGA Wetness Index">-0.36***</td>
 <td class="gt_row gt_left" style="text-align: center;" headers="Forest  Rel. Slope Position">NS</td>
@@ -4604,6 +4612,29 @@ Table S2: Pearson’s correlation coefficients for soil properties and terrain a
 </div>
 </figure>
 </div>
+<!-- ## Random Forest Importance Data -->
+<!-- {{< embed notebooks/a_col_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/b_col_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/c_col_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Ca_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Ca_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Co_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Co_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Cs_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Cs_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Fe_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/h_col_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/h_col_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/La_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/La_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Li_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Li_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Nb_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Nb_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Ni_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Ni_For_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/Rb_Ag_RF.qmd#test >}} -->
+<!-- {{< embed notebooks/x_col_Ag_RF.qmd#test >}} -->
 </section>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">

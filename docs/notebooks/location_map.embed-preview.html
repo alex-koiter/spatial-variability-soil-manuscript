@@ -225,7 +225,7 @@
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
        <p>Alex Koiter</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="9f786b24-c1e5-423b-9741-3578a68ed66d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="90b2ee0a-284d-4e42-a8b0-f59102045338" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({library(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>library(ggspatial)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>library(sf)</span>
@@ -237,7 +237,7 @@
 </div></div>
 <section id="bounding-box-of-region-and-sites" class="level2">
 <h2 class="anchored" data-anchor-id="bounding-box-of-region-and-sites">Bounding box of region and sites</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="3b11f14d-5247-428b-8da6-3c2c8f0b0e54" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="ef6d034b-46ae-480c-a2de-a08514027f21" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> c(xmin <span class="op">=</span> <span class="dv">455200</span>, ymin <span class="op">=</span> <span class="dv">5616000</span>, xmax <span class="op">=</span> <span class="dv">466200</span>, ymax <span class="op">=</span> <span class="dv">5626500</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ag_site <span class="op">&lt;-</span> data.frame(x <span class="op">=</span> c(<span class="dv">464124</span>, <span class="dv">463318</span>),</span>
@@ -267,7 +267,7 @@
 <h2 class="anchored" data-anchor-id="land-use-data-of-region">Land use data of region</h2>
 <section id="get-data" class="level3">
 <h3 class="anchored" data-anchor-id="get-data">Get data</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="9bbb4850-5bc9-40cf-bfa7-ffdb374bb5f8" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="1475a07e-43dd-4284-93b4-b0f82ceb6b7b" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>minnedosa_data <span class="op">&lt;-</span> <span class="st">"lcv_minnedosa_2004_2006_shp"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">file</span>.exists(minnedosa_data)) {</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"The data already exists!"</span>)</span>
@@ -283,7 +283,7 @@
 </section>
 <section id="summarize-and-crop" class="level3">
 <h3 class="anchored" data-anchor-id="summarize-and-crop">Summarize and crop</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="67083d5e-046b-4f61-9bad-55630b779c47" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="6f6aebc2-81b9-4975-8bc2-4603071c5d67" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>land <span class="op">&lt;-</span> st_read(here::here(<span class="st">"./notebooks/lcv_minnedosa_2004_2006_shp/lcv_minnedosa_2004_2006.shp"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  st_crop(st_bbox(box)) <span class="op">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  st_transform(<span class="dv">4269</span>) <span class="op">%&gt;%</span></span>
@@ -316,7 +316,7 @@ relationships</code></pre>
 <section id="dem-data" class="level2">
 <h2 class="anchored" data-anchor-id="dem-data">DEM data</h2>
 <p>Freely available from <a href="https://maps.canada.ca/czs/index-en.html" class="uri">https://maps.canada.ca/czs/index-en.html</a> Data type is Elevation. You provide the clipping area and then submit the data request</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="bd46c20d-5ee3-4773-b684-fb450640cb6e" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="f44eb868-3b7c-49b4-a040-32d377e7d46f" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>topo <span class="op">&lt;-</span> raster::aggregate(raster(here::here(<span class="st">"./notebooks/DEM.tif"</span>)), fact <span class="op">=</span> <span class="dv">3</span>) <span class="op">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  crop(extent(land)) <span class="op">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="im">as</span>.data.frame(xy <span class="op">=</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -331,7 +331,7 @@ configuration option to NO.</code></pre>
 <section id="hydro-data" class="level2">
 <h2 class="anchored" data-anchor-id="hydro-data">Hydro data</h2>
 <p>Freely available from <a href="https://maps.canada.ca/czs/index-en.html" class="uri">https://maps.canada.ca/czs/index-en.html</a> Data type is the CanVec. You provide the clipping area and then submit the data request</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="e0285dd6-4576-4587-ac30-852be89234e4" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="488af10b-17d4-4bf6-9592-e054f10ba99a" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>water_linear <span class="op">&lt;-</span> st_read(here::here(<span class="st">"./notebooks/canvec_190514_89905/water_linear_flow_1.shp"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> st_crs(land)) <span class="op">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  st_make_valid() <span class="op">%&gt;%</span></span>
@@ -354,7 +354,7 @@ all geometries</code></pre>
 </section>
 <section id="canada-wide-map" class="level2">
 <h2 class="anchored" data-anchor-id="canada-wide-map">Canada wide map</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="12969354-80d5-425f-9aae-07aa9dd81cbf" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="2af86253-db84-4ce4-9c7e-83eef4a52415" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>canada <span class="op">&lt;-</span> ne_states(country <span class="op">=</span> <span class="st">"Canada"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  st_transform(crs <span class="op">=</span> <span class="dv">3348</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -367,7 +367,7 @@ all geometries</code></pre>
 <h2 class="anchored" data-anchor-id="maps">Maps</h2>
 <section id="canada" class="level3">
 <h3 class="anchored" data-anchor-id="canada">Canada</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="0f69de6e-5b93-43bb-926b-59cf02750027" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="7c777e2e-2381-4281-ae9c-728d3fd012a9" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  theme_bw() <span class="op">+</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  layer_spatial(canada, fill <span class="op">=</span> <span class="st">"white"</span>) <span class="op">+</span></span>
@@ -385,7 +385,7 @@ all geometries</code></pre>
 </section>
 <section id="land-use" class="level3">
 <h3 class="anchored" data-anchor-id="land-use">Land use</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="c04032ff-9128-4f16-a316-db4bdf4965e9" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="d5ceac90-aa5b-4b84-ab65-80fd4c8932fd" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  geom_sf(data <span class="op">=</span> land, aes(fill <span class="op">=</span> Land_use)) <span class="op">+</span></span>
@@ -433,7 +433,7 @@ all geometries</code></pre>
 </section>
 <section id="dem" class="level3">
 <h3 class="anchored" data-anchor-id="dem">DEM</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="ac18ab91-ce9e-4566-97ad-13a39028d755" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="173dcc1b-ce26-4a32-9d14-04a08a04d496" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  theme_bw(base_size <span class="op">=</span> <span class="dv">10</span>) <span class="op">+</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  geom_raster(data <span class="op">=</span> topo , aes(x <span class="op">=</span> x, y <span class="op">=</span> y, fill <span class="op">=</span> DEM)) <span class="op">+</span> </span>

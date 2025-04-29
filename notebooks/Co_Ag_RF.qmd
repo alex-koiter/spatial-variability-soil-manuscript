@@ -220,6 +220,8 @@ p2<- ggplot(slice_max(ImpData,order_by = `%IncMSE`, n = 10), aes(x = fct_reorder
 ### Combined
 
 ```{r}
+#| label: test
+#| fig-cap: Ag Co 
 p1+p2
 ```
 

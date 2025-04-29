@@ -63,6 +63,8 @@ p2 <- ggplot() +
 ```
 
 ```{r}
+#| label: test
+#| fig-cap: Ag c* 
 #| fig-width: 12
 #| fig-asp: 0.5
 p1+p2  

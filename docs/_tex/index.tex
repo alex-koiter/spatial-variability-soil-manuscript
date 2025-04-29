@@ -501,7 +501,7 @@ relative slope position, vertical channel network distance.
 All subsequent statistical analysis was undertaken using R statistical
 Software v4.4.0 \citep{rcoreteam2024} through RStudio Integrated
 Development Environment v2024.04.2 \citep{rstudio2024}. Plots and maps
-were created using the R package \texttt{ggplot2} v 3.5.1
+were created using the R package \texttt{ggplot2} v 3.5.2
 \citep{wickham2016}. Skewness was categorized as values between -0.5 and
 0.5 considered approximately symmetric, -1.0 to -0.5 or 0.5 to 1 as
 moderately skewed, and \textless{} -1.0 or \textgreater{} 1.0 as highly
@@ -509,7 +509,7 @@ skewed. Coefficient of variation (CV) thresholds were categorized as low
 (\textless15\%), moderate (15--35\%), high (35--75\%), and very high
 (\textgreater75\%) .Interpolated soil property and terrain attribute
 data were resampled to a 10 m resolution prior to analysis
-\citep[\texttt{terra} v1.8.29][]{hijmans2024}. Random Forest Regression
+\citep[\texttt{terra} v1.8.42][]{hijmans2024}. Random Forest Regression
 \citep[\texttt{randomForest} v4.7.1.2][]{liaw2002} was used to assess
 the relative importance of the terrain attributes on the spatial
 distribution of soil properties. The dataset was randomly split into
@@ -698,6 +698,31 @@ summary}}
 
 \subsection{Spatial analysis}\label{spatial-analysis}
 
+Soil colour and geochemical composition varied across both sites. In the
+agricultural field, all 15 soil color and geochemical properties
+exhibited spatial autocorrelation with most properties demonstrating a
+strong spatial dependency. Some of the soil properties presented a
+pattern that roughly matches (e.g., Rb, Cs) or mirrors (e.g., Ca, Sr)
+the overall topography of the site with a gradation between the highest
+point in the south-west corner towards the lowest points in the
+north-east. Other properties appear to have more localized highs and low
+concentrations/values (e.g., c*, h). The geochemical concentrations of
+Ca and Rb had the largest range values and as result displayed a less
+patchy distribution across the site. The nugget (Co) was small for all
+soil properties (\textless1.5), and Sr had an exceptionally large sill
+value (900).
+
+At the forested site, the geochemical concentrations of Fe and Rb, along
+with the color properties a*, b*, c*, and x showed no spatial
+autocorrelation and were excluded from further analysis. Overall, the
+influence of the channel environment can be seen in the remaining nine
+soil properties. In comparison to the agricultural site, the soil
+properties at the forested site displayed a more moderate spatial
+dependency. The nugget (Co) was generally small for most soil properties
+(\textless2) with the exception of La and Ni. The range values were
+similar across the different soil properties and fell between 176 and
+298 m.
+
 \begin{longtable}[]{@{}cccccccc@{}}
 
 \caption{\label{tbl-geocol-semivariogram}Geostatistical parameters of
@@ -884,6 +909,16 @@ x & 5.646 & 62.6 & 5.810 & 63.4 & 0.64 \\
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-tbl-RF-summary}{Random
 Forest summary}}
 
+\section{Discussion}\label{discussion}
+
+A large sill in a semivariogram indicates that the total variance of a
+soil property is high.
+
+A soil property with a large range relative to other properties in a
+semivariogram indicates that spatial correlation persists over a greater
+distance. The property is relatively uniform over large areas, with
+gradual changes rather than abrupt variations.
+
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
@@ -934,8 +969,8 @@ al.~(2018)}
 
 \begin{longtable*}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2917}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4583}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4444}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2639}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Colour space model}

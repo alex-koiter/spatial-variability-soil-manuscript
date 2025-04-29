@@ -157,7 +157,7 @@
 66.00745684732128,141.70972133962871,profile_curvature,4,4,Agriculture,c_col
 96.13196351965554,213.55238059289644,saga_wetness_index,2,2,Agriculture,c_col
 41.47228879111311,73.1572595628411,catchment_area,6,6,Agriculture,c_col
-75.9619955519864,168.64491862880303,relative_slope_position,3,3,Agriculture,c_col
+75.9619955519864,168.64491862880305,relative_slope_position,3,3,Agriculture,c_col
 57.900738470598704,113.87636794148278,channel_network_distance,5,5,Agriculture,c_col
 156.3626365084923,574.0771544993285,elevation,1,1,Agriculture,c_col
 26.104476600818636,2120.0431911520673,plan_curvature,7,7,Forest,x_col

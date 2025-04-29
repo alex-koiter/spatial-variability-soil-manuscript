@@ -25,7 +25,6 @@ data <- read_csv(here::here("./notebooks/ag_terrain_data.csv"), show_col_types =
 
 ## Map soil property
 ```{r}
-
 temp_rast <- rast(data)
 crs(x = temp_rast, warn=FALSE) <- "epsg:26914"
 
@@ -220,6 +219,8 @@ p2<- ggplot(slice_max(ImpData,order_by = `%IncMSE`, n = 10), aes(x = fct_reorder
 ### Combined
 
 ```{r}
+#| label: test
+#| fig-cap: Ag Cs 
 p1+p2
 ```
 
