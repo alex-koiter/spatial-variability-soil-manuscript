@@ -468,7 +468,7 @@ coefficients (R, G, B, x, y, Y, X, Z, L, a*, b*, u*, v*, c*, h*) were
 calculated for each sample \citep{koiter2021}. Based on the results of
 Luna Miño \citep{lunamiño2024}, a composite fingerprint consisting of 10
 geochemical elements (Ca, Co, Cs, Fe, Li, La, Nb, Ni, Rb, and Sr) and
-five colour coefficients (a, b, c, h, and x) were identifying as
+five colour coefficients (a*, b*, c*, h*, and x) were identifying as
 providing a strong discrimination between the agricultural and forested
 surface soils. These fifteen soil properties are the focus of the
 detailed spatial analysis detailed in this study.
@@ -507,7 +507,7 @@ were created using the R package \texttt{ggplot2} v 3.5.2
 moderately skewed, and \textless{} -1.0 or \textgreater{} 1.0 as highly
 skewed. Coefficient of variation (CV) thresholds were categorized as low
 (\textless15\%), moderate (15--35\%), high (35--75\%), and very high
-(\textgreater75\%) .Interpolated soil property and terrain attribute
+(\textgreater75\%). Interpolated soil property and terrain attribute
 data were resampled to a 10 m resolution prior to analysis
 \citep[\texttt{terra} v1.8.42][]{hijmans2024}. Random Forest Regression
 \citep[\texttt{randomForest} v4.7.1.2][]{liaw2002} was used to assess
@@ -531,21 +531,21 @@ R\textsuperscript{\textsubscript{2}} was calculated.
 
 Overall, the agricultural site had soil colour and geochemical
 properties that exhibited lower variability and more symmetrical data
-distributions as compared to the forested site. Considering all 15
-colour properties measured it was observed that all the colour
-properties for both sites exhibit an approximate symmetric distribution.
-All 15 colour properties for the agriculture site had a low CV and the
-forested site had slightly greater variability with 10 colour properties
-the a low CV and five with a moderate CV. Overall, the agricultural site
-had lower variability and the distribution of data for each element were
-generally more symmetrical as compared to the forest site. Of the 44
-geochemical concentrations measured at the agricultural site, nine
-elements exhibited moderately skewed distributions, while five displayed
-highly skewed distributions. Additionally, 12 elements had moderate
-coefficients of variation (CV), and five had high CV. At the forested
-site, seven elements showed moderately skewed distributions and 14
-exhibited highly skewed distributions. Furthermore, 28 elements had
-moderate CV, six had high CV, and two had very high CV.
+distributions as compared to the forested site. All 15 colour properties
+at both sites displayed approximately symmetrical distributions. At the
+agricultural site, all colour properties were characterized by low
+coefficients of variation (CV), while the forested site showed slightly
+greater variability, with 10 colour properties having low CVs and five
+having moderate CVs.
+
+Similarly, geochemical data at the agricultural site showed lower
+variability and greater symmetry. Most elements were approximately
+symmetrical, with only nine exhibiting moderate skewness and five highly
+skewed. Variability was also limited, with the majority of elements
+having low CVs; 12 had moderate CVs and five had high CVs. In contrast,
+the forested site showed greater skewness and variability: seven
+elements exhibited moderate skewness, 14 were highly skewed, 28 had
+moderate CVs, six had high CVs, and two had very high CVs.
 
 \begin{longtable}[]{@{}ccccccc@{}}
 
@@ -646,7 +646,7 @@ a* & 3.34 & 0.211 & 3.83 & 2.88 & 0.0621 & 6.33 \\
 b* & 8.73 & 0.707 & 10.2 & 6.98 & −0.162 & 8.10 \\
 c* & 9.34 & 0.762 & 11.0 & 7.41 & −0.158 & 8.15 \\
 h* & 1.20 & 0.00977 & 1.23 & 1.18 & −0.0603 & 0.811 \\
-x & 23.1 & 1.31 & 26.6 & 18.6 & −0.501 & 5.68 \\
+x & 0.473 & 0.00149 & 0.477 & 0.470 & −0.0168 & 0.314 \\
 Plan Curvature & 1.65~×~10\textsuperscript{−6} &
 1.36~×~10\textsuperscript{−4} & 6.57~×~10\textsuperscript{−4} &
 −5.07~×~10\textsuperscript{−4} & 3.54~×~10\textsuperscript{−1} &
@@ -673,7 +673,6 @@ Nb & 0.370 & 0.0356 & 0.440 & 0.278 & −0.436 & 9.64 \\
 Ni & 18.2 & 2.49 & 24.9 & 14.3 & 0.314 & 13.7 \\
 Sr & 31.6 & 8.50 & 53.1 & 18.1 & 0.716 & 26.9 \\
 h* & 1.13 & 0.0371 & 1.22 & 1.06 & 0.257 & 3.27 \\
-x & 19.7 & 3.92 & 30.5 & 10.8 & 0.362 & 19.9 \\
 Plan Curvature & 3.97~×~10\textsuperscript{−4} &
 3.27~×~10\textsuperscript{−3} & 2.89~×~10\textsuperscript{−2} &
 −2.62~×~10\textsuperscript{−2} & 7.91~×~10\textsuperscript{−1} &
@@ -706,22 +705,22 @@ pattern that roughly matches (e.g., Rb, Cs) or mirrors (e.g., Ca, Sr)
 the overall topography of the site with a gradation between the highest
 point in the south-west corner towards the lowest points in the
 north-east. Other properties appear to have more localized highs and low
-concentrations/values (e.g., c*, h). The geochemical concentrations of
-Ca and Rb had the largest range values and as result displayed a less
-patchy distribution across the site. The nugget (Co) was small for all
-soil properties (\textless1.5), and Sr had an exceptionally large sill
-value (900).
+concentrations/values (e.g., \emph{c*, h}). The geochemical
+concentrations of Ca and Rb had the largest range values and as result
+displayed a less patchy distribution across the site. The nugget (Co)
+was small for all soil properties (\textless1.5), and Sr had an
+exceptionally large sill value (900).
 
 At the forested site, the geochemical concentrations of Fe and Rb, along
-with the color properties a*, b*, c*, and x showed no spatial
-autocorrelation and were excluded from further analysis. Overall, the
-influence of the channel environment can be seen in the remaining nine
-soil properties. In comparison to the agricultural site, the soil
-properties at the forested site displayed a more moderate spatial
-dependency. The nugget (Co) was generally small for most soil properties
-(\textless2) with the exception of La and Ni. The range values were
-similar across the different soil properties and fell between 176 and
-298 m.
+with the color properties \emph{a*, b*, c*,} and \emph{x} showed no
+spatial autocorrelation and were excluded from further analysis.
+Overall, the influence of the channel environment can be seen in the
+remaining nine soil properties. In comparison to the agricultural site,
+the soil properties at the forested site displayed a more moderate
+spatial dependency. The nugget (Co) was generally small for most soil
+properties (\textless2) with the exception of La and Ni. The range
+values were similar across the different soil properties and fell
+between 176 and 298 m.
 
 \begin{longtable}[]{@{}cccccccc@{}}
 
@@ -774,7 +773,6 @@ Nb & Ordinary & 0.0 & 0.0 & 51 & 224 & 0.2 & Moderate \\
 Ni & Universal & 6.7 & 15.8 & 57 & 187 & 0.2 & Moderate \\
 Sr & Simple & 0.4 & 1.0 & 65 & 229 & 0.4 & Moderate \\
 h* & Universal & 0.0 & 0.0 & 100 & 230 & 0.3 & Strong \\
-x & Ordinary & 0.0 & 39.2 & 100 & 312 & 0.2 & Strong \\
 
 \end{longtable}
 
@@ -889,7 +887,7 @@ a* & 0.007 & 85.0 & 0.006 & 86.9 & 0.85 \\
 b* & 0.136 & 72.5 & 0.120 & 75.3 & 0.72 \\
 c* & 0.155 & 73.2 & 0.136 & 75.9 & 0.73 \\
 h* & 0.000 & 58.3 & 0.000 & 58.6 & 0.56 \\
-x & 0.628 & 61.9 & 0.701 & 61.8 & 0.59 \\
+x & 0.000 & 73.3 & 0.000 & 73.6 & 0.69 \\
 \multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
 Forest} \\
 Ca & 0.231 & 61.1 & 0.231 & 60.7 & 0.63 \\
@@ -901,7 +899,6 @@ Nb & 0.001 & 55.0 & 0.001 & 55.9 & 0.58 \\
 Ni & 2.819 & 55.2 & 2.806 & 56.0 & 0.55 \\
 Sr & 29.427 & 59.4 & 29.663 & 59.1 & 0.59 \\
 h* & 0.001 & 58.8 & 0.001 & 60.3 & 0.62 \\
-x & 5.646 & 62.6 & 5.810 & 63.4 & 0.64 \\
 
 \end{longtable}
 
@@ -911,13 +908,78 @@ Forest summary}}
 
 \section{Discussion}\label{discussion}
 
-A large sill in a semivariogram indicates that the total variance of a
-soil property is high.
+\subsection{Variability of soil
+properties}\label{variability-of-soil-properties}
 
-A soil property with a large range relative to other properties in a
-semivariogram indicates that spatial correlation persists over a greater
-distance. The property is relatively uniform over large areas, with
-gradual changes rather than abrupt variations.
+Variability in soil geochemical properties have been studied at a range
+of scales including continental \citep{drew2010}, regional
+\citep{rattenbury2018}, watershed \citep{nanos2012}, hillslope/catena,
+and farm field \citep{sun2021a}. The objectives of these studies
+included addressing issues of pollution/contamination, providing
+benchmark/baseline information, investigating pedological and weathering
+properties and processes, and soil surveying and mapping
+\citep{wilson2008}. Soil colour, typically using the Munsell colour
+system, is a commonly reported diagnostic feature used in soil
+classification. Soil colour has also been used to estimate other soil
+properties including mineralogy, iron content, and organic matter. Data
+distributions in soil science commonly exhibit a positively skewed
+distribution. This is likely due to several factors including that data
+of this nature are a semi-bounded distribution, with a lower bound of 0
+and no upper bound. Hot spots of soil processes, local variations in
+soil forming factors, and soil/land management practices can also lead
+to more extreme values. In many cases the cumulative effects of these
+process, factors and practices are multiplicative (i.e., interact) not
+linearly additive, resulting in a skewed data distribution. Lastly, the
+distribution of data will also be a product of the scale of observation,
+number of samples, and sampling design.
+
+Soil colour propertied exhibited a near-normal distribution with a low
+CV which is consistent with claims that soil hue and value (Munsell
+colour system) have a low CV \citep{pennock2008}. These data
+distribution properties are ideal for statistical and environmental
+modeling as it typically meets the model assumptions with out requiring
+transformations. For example, in sediment source fingerprinting, soil
+properties (i.e., fingerprints) are considered more reliable and robust
+for use in unmixing models when they show large differences between
+sources and low variability within each source. Additionally, most
+mixing models assume fingerprint data are normally distributed.
+\citep{lunamiño2024} demonstrated that soil colour coefficients a*, b*,
+c*, h*, and x provided good discriminanation between the agricultural
+and forested sites, and the low CV and skewness values reported in
+Table~\ref{tbl-univariate-summary} makes these colour properties ideal
+fingerprints for sediment source apportionment.
+
+The geochemical properties were more variable and skewed as compared to
+the soil colour properties. For many trace elements, concentrations are
+strongly correlated with the proportion of fine-grained material
+(\textless2\,µm), due to its high specific surface area and enhanced
+chemical reactivity \citep{horowitz1991}. However, in this study the
+sand-size (\textgreater63\,µm) material was removed prior to analysis to
+reduce the effects of grain-size on concentration. This likely resulted
+in lower variability and less extreme concentrations as compared to
+other studies that focus on bulk soil samples (\textless2 mm). In
+particular, the forested site exhibited a greater amount of variability
+which is likely due to the more complex topography and geomorphic
+setting. The floodplain within the forested is likely accumulating
+shale-rich material derived from the Manitoba Escarpment which is
+enriched in trace metals \citep{nicolas2011}. This creates a zone of
+high concentrations relative to upland areas
+Figure~\ref{fig-forest_map}. The forested site also had a higher and
+much more variable soil organic matter content (\(\bar{x}\) = 8.5 \%, CV
+= 51.9 \%) as compared to the agricultural site (\(\bar{x}\) = 11.6 \%,
+CV = 16.1 \%), which similar to the grain size distribution, can
+influence the concentration of many major and trace elements
+\citep{horowitz1991}.
+
+\subsection{Spatial distribution}\label{spatial-distribution}
+
+The semivariogram is a tool used to assess the spatial autocorrelation
+of sampled points. A large sill indicates high overall variance in a
+soil property. When a property has a long range, it means spatial
+correlation persists over greater distances, suggesting the property is
+relatively uniform and changes gradually across the landscape. A small
+nugget value reflects low measurement or sampling error and minimal
+small-scale variability.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
@@ -968,9 +1030,9 @@ al.~(2018)}
 \centering{
 
 \begin{longtable*}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2917}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4444}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2639}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2603}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4795}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2603}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Colour space model}

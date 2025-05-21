@@ -257,6 +257,6 @@ if(file.exists(here::here("./notebooks/model_performance_data.csv"))) {
 } else model_performance_final <- model_performance
 
 
-write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
+write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv")) 
 
 ```

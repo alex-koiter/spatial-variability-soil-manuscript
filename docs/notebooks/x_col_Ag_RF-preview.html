@@ -423,10 +423,10 @@ Call:
                      Number of trees: 500
 No. of variables tried at each split: 7
 
-          Mean of squared residuals: 0.6283935
-                    % Var explained: 61.95
-                       Test set MSE: 0.7
-                    % Var explained: 61.81</code></pre>
+          Mean of squared residuals: 5.940708e-07
+                    % Var explained: 73.33
+                       Test set MSE: 0
+                    % Var explained: 73.6</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell">
@@ -466,19 +466,19 @@ Call:
 lm(formula = pred ~ obs, data = test_plot)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.39545 -0.30856  0.05313  0.35896  2.52942 
+       Min         1Q     Median         3Q        Max 
+-2.299e-03 -4.380e-04  1.273e-05  3.658e-04  2.478e-03 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 10.58460    0.37698   28.08   &lt;2e-16 ***
-obs          0.54346    0.01632   33.30   &lt;2e-16 ***
+(Intercept)  0.14490    0.00784   18.48   &lt;2e-16 ***
+obs          0.69397    0.01656   41.91   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.6108 on 771 degrees of freedom
-Multiple R-squared:  0.5899,    Adjusted R-squared:  0.5893 
-F-statistic:  1109 on 1 and 771 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.0006807 on 771 degrees of freedom
+Multiple R-squared:  0.6949,    Adjusted R-squared:  0.6945 
+F-statistic:  1756 on 1 and 771 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> test_plot, <span class="fu">aes</span>(<span class="at">y =</span> pred, <span class="at">x =</span> obs)) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -515,13 +515,13 @@ F-statistic:  1109 on 1 and 771 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> IncNodePurity, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    %IncMSE IncNodePurity                Var.Names
-7 143.73654     1573.2571                elevation
-3 122.45133      791.0423       saga_wetness_index
-4  50.12798      355.8947           catchment_area
-5  45.10913      352.2350  relative_slope_position
-6  67.88313      350.3272 channel_network_distance
-2  25.22863      202.4648        profile_curvature
-1  13.76394      165.8744           plan_curvature</code></pre>
+3 203.38313  0.0030283986       saga_wetness_index
+7  82.95320  0.0006513711                elevation
+5  73.82745  0.0004070568  relative_slope_position
+4  61.02179  0.0003859107           catchment_area
+6  58.89243  0.0002983099 channel_network_distance
+2  22.17809  0.0001903821        profile_curvature
+1  15.99527  0.0001809327           plan_curvature</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell">
@@ -540,13 +540,13 @@ F-statistic:  1109 on 1 and 771 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    %IncMSE IncNodePurity                Var.Names
-7 143.73654     1573.2571                elevation
-3 122.45133      791.0423       saga_wetness_index
-6  67.88313      350.3272 channel_network_distance
-4  50.12798      355.8947           catchment_area
-5  45.10913      352.2350  relative_slope_position
-2  25.22863      202.4648        profile_curvature
-1  13.76394      165.8744           plan_curvature</code></pre>
+3 203.38313  0.0030283986       saga_wetness_index
+7  82.95320  0.0006513711                elevation
+5  73.82745  0.0004070568  relative_slope_position
+4  61.02179  0.0003859107           catchment_area
+6  58.89243  0.0002983099 channel_network_distance
+2  22.17809  0.0001903821        profile_curvature
+1  15.99527  0.0001809327           plan_curvature</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div class="cell">
@@ -589,7 +589,7 @@ F-statistic:  1109 on 1 and 771 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(importance_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"MSE_rank"</span>, <span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> importance_data_final <span class="ot">&lt;-</span> importance_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 175 Columns: 7
+<pre><code>Rows: 161 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): Var.Names, site, property
@@ -614,7 +614,7 @@ dbl (4): %IncMSE, IncNodePurity, MSE_rank, Purity_rank
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(model_performance, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
 <span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final <span class="ot">&lt;-</span> model_performance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 25 Columns: 7
+<pre><code>Rows: 24 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): site, property
@@ -623,7 +623,7 @@ dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 </section>

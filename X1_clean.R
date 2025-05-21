@@ -52,8 +52,14 @@ attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "cat
 
 
 ag_prints <- c("li", "a_c", "fe", "co", "x_c", "cs", "la", "ni", "nb", "h_c", "b_c", "rb", "ca", "sr", "c_c")
+
+x_data <- foreign::read.dbf("../Data/Raw data/x_agric_1m.dbf") %>%
+  rename("id" = "pointid", "x_c" = "grid_code")
+
 ag_data <- read_csv("../Data/Raw data/agric_soil_prop_pnts_terrain_values_new.csv") %>%
   clean_names() %>%
+  select(-x_c) %>% # Remove incorrect x colour
+  left_join(x_data) %>% # Insert updated x colour
   rename("elevation" = "dem") %>%
   select("x", "y",
          any_of(ag_prints),
@@ -69,7 +75,7 @@ ag_data <- as.data.frame(r, xy = TRUE)
 # write_csv(x = ag_data, file = "./notebooks/ag_terrain_data.csv")
 
 ## Two catchment areas. selecting the first 1
-forest_prints <- c("li", "co", "x_c", "cs", "la", "ni", "nb", "h_c", "ca", "sr")
+forest_prints <- c("li", "co", "cs", "la", "ni", "nb", "h_c", "ca", "sr")
 forest_data <- read_csv("../Data/Raw data/forest_soil_prop_pnts_terrain_values_new.csv") %>%
   clean_names() %>%
   rename("catchment_area" = "catchment_area_29",
@@ -85,7 +91,7 @@ r2 <- resample(rast(forest_data), rast(extent = ext(rast(forest_data)), resoluti
 
 #writeRaster(r2, filename = "./notebooks/forest_data.tif", overwrite=TRUE)
 
-forest_data <- as.data.frame(r, xy = TRUE)
+forest_data <- as.data.frame(r2, xy = TRUE)
 
 # write_csv(x = forest_data, file = "./notebooks/forest_terrain_data.csv")
 

@@ -335,7 +335,6 @@ summary_tab |>
             CV_mod = sum(CV >= 15 & CV < 35),
             CV_high = sum(CV >= 35 & CV <= 75),
             CV_v_high = sum(CV > 75))
-  
 ```
 
 

@@ -14,7 +14,6 @@ format:
     reference-doc: custom-reference-doc.docx
     link-citations: true
     link-bibliography: true
-  jats: default
   elsevier-pdf: default
   
 engine: knitr

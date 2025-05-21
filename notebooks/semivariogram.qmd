@@ -14,8 +14,6 @@ suppressPackageStartupMessages({
 
 ## Data
 ```{r}
-
-
 vario <- read_ods(here::here("./notebooks/semivariogram.ods")) %>%
   mutate(sill = p_sill + nugget, 
          `C/(C + Co) (%)` = 100 * p_sill/sill,
