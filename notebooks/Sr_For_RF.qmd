@@ -25,7 +25,6 @@ data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_typ
 
 ## Map soil property
 ```{r}
-
 temp_rast <- rast(data)
 crs(x = temp_rast, warn=FALSE) <- "epsg:26914"
 

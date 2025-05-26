@@ -39,7 +39,6 @@ locations <- data.frame(name = c("Forest", "Agriculture"),
 
 cities <- data.frame(name = "McCreary", long = -99.493, lat = 50.775) %>%
   st_as_sf(coords = c("long", "lat"),  crs = 4326) 
-  
 ```
 
 ## Land use data of region

@@ -2,6 +2,9 @@ project:
   type: manuscript
   output-dir: docs
 
+manuscript:
+  meca-bundle: false
+
 execute:
   freeze: auto
 
@@ -15,6 +18,7 @@ format:
     link-citations: true
     link-bibliography: true
   elsevier-pdf: default
+  jats: default
   
 engine: knitr
 

@@ -326,7 +326,7 @@ rates to calculate a erosion rate-weighted mean
 fingerprint values to provided a finer resolution of the fingerprint
 variability within each source \citep{haddadchi2019}.
 
-Secondly, understanding the geomorphic, hydrologic, and biochemical
+Lastly, understanding the geomorphic, hydrologic, and biochemical
 processes that have led to the observed patterns in spatial variability
 helps in the selection of robust and reliable fingerprints and/or guide
 the sampling design for source characterization. In selecting
@@ -531,8 +531,9 @@ R\textsuperscript{\textsubscript{2}} was calculated.
 
 Overall, the agricultural site had soil colour and geochemical
 properties that exhibited lower variability and more symmetrical data
-distributions as compared to the forested site. All 15 colour properties
-at both sites displayed approximately symmetrical distributions. At the
+distributions as compared to the forested site
+(Table~\ref{tbl-univariate-summary}). All 15 colour properties at both
+sites displayed approximately symmetrical distributions. At the
 agricultural site, all colour properties were characterized by low
 coefficients of variation (CV), while the forested site showed slightly
 greater variability, with 10 colour properties having low CVs and five
@@ -541,11 +542,12 @@ having moderate CVs.
 Similarly, geochemical data at the agricultural site showed lower
 variability and greater symmetry. Most elements were approximately
 symmetrical, with only nine exhibiting moderate skewness and five highly
-skewed. Variability was also limited, with the majority of elements
-having low CVs; 12 had moderate CVs and five had high CVs. In contrast,
-the forested site showed greater skewness and variability: seven
-elements exhibited moderate skewness, 14 were highly skewed, 28 had
-moderate CVs, six had high CVs, and two had very high CVs.
+skewed (Table~\ref{tbl-univariate-summary}). Variability was also
+limited, with the majority of elements having low CVs; 12 had moderate
+CVs and five had high CVs. In contrast, the forested site showed greater
+skewness and variability: seven elements exhibited moderate skewness, 14
+were highly skewed, 28 had moderate CVs, six had high CVs, and two had
+very high CVs.
 
 \begin{longtable}[]{@{}ccccccc@{}}
 
@@ -608,13 +610,14 @@ topography, with a channel flowing from the southwest toward the
 northeast and an overall elevation difference of 18 m across the site.
 The mean plan and profile curvature measurements for both sites are near
 zero indicating a area of sediment transit and not accumulation or
-erosion. The agricultural site had a higher SAGA Wetness Index but the
-forested site had a larger range in values and exhibited a higher degree
-of variability. The forested site exhibited a smaller mean Relative
-Slope Position value (streams and depressional areas) and a smaller
-Vertical Distance to Channel Network, and for both terrain attributes a
-greater variability as compared to the agricultural reflecting the
-presence of the stream crossing the forested site.
+erosion (Table~\ref{tbl-univariate2-summary}). The agricultural site had
+a higher SAGA Wetness Index but the forested site had a larger range in
+values and exhibited a higher degree of variability. The forested site
+exhibited a smaller mean Relative Slope Position value (streams and
+depressional areas) and a smaller Vertical Distance to Channel Network,
+and for both terrain attributes a greater variability as compared to the
+agricultural reflecting the presence of the stream crossing the forested
+site.
 
 \begin{longtable}[]{@{}ccccccc@{}}
 
@@ -700,11 +703,12 @@ summary}}
 Soil colour and geochemical composition varied across both sites. In the
 agricultural field, all 15 soil color and geochemical properties
 exhibited spatial autocorrelation with most properties demonstrating a
-strong spatial dependency. Some of the soil properties presented a
-pattern that roughly matches (e.g., Rb, Cs) or mirrors (e.g., Ca, Sr)
-the overall topography of the site with a gradation between the highest
-point in the south-west corner towards the lowest points in the
-north-east. Other properties appear to have more localized highs and low
+strong spatial dependency (Table~\ref{tbl-geocol-semivariogram}). Some
+of the soil properties presented a pattern that roughly matches (e.g.,
+Rb, Cs) or mirrors (e.g., Ca, Sr) the overall topography of the site
+with a gradation between the highest point in the south-west corner
+towards the lowest points in the north-east (Figure~\ref{fig-ag_map}).
+Other properties appear to have more localized highs and low
 concentrations/values (e.g., \emph{c*, h}). The geochemical
 concentrations of Ca and Rb had the largest range values and as result
 displayed a less patchy distribution across the site. The nugget (Co)
@@ -713,14 +717,16 @@ exceptionally large sill value (900).
 
 At the forested site, the geochemical concentrations of Fe and Rb, along
 with the color properties \emph{a*, b*, c*,} and \emph{x} showed no
-spatial autocorrelation and were excluded from further analysis.
-Overall, the influence of the channel environment can be seen in the
-remaining nine soil properties. In comparison to the agricultural site,
-the soil properties at the forested site displayed a more moderate
-spatial dependency. The nugget (Co) was generally small for most soil
-properties (\textless2) with the exception of La and Ni. The range
-values were similar across the different soil properties and fell
-between 176 and 298 m.
+spatial autocorrelation and were excluded from further analysis and four
+and five properties exhibiting strong and moderate spatial dependency,
+respectively (Table~\ref{tbl-geocol-semivariogram}). In comparison to
+the agricultural site, the soil properties at the forested site
+displayed a more moderate spatial dependency. The nugget (Co) was
+generally small for most soil properties (\textless2) with the exception
+of La and Ni. The range values were similar across the different soil
+properties and fell between 176 and 298 m. Overall, the influence of the
+channel and floodplain environment can be easily seen in the pattern of
+the nine soil properties (Figure~\ref{fig-forest_map}).
 
 \begin{longtable}[]{@{}cccccccc@{}}
 
@@ -813,6 +819,79 @@ geochemical properties and elevation across the forested site.}
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/property_maps.qmd.html\#cell-fig-forest_map}{Soil
 property mapping}}
 
+Across both sites, there was a significant (p \textless{} 0.05)
+correlation between the selected soil properties and the terrain
+attributes, with the excpetion of the plan and profile curvature
+attributes (\textbf{?@supptab-correlation2}). The elevation attribute
+generally had higher correlation coefficients; however, the direction
+and strength of the correlation did vary between both site and soil
+property. Overall, the random forest regression models exhibited
+relatively strong predictive performance, with the models better
+performing at the agricultural site compared to the forested site
+(Table~\ref{tbl-rf-summary}). With the exception of the Ni concentration
+and \emph{x} colour values at the agricutlural site, elevation was
+consistently the terrain attribute that provided the greatest predictive
+power (Figure~\ref{fig-rf-results}). SAGA Wetness and relative slope
+position were generally the second and third most informative terrain
+attributes. Plan curvature was consisteantly ranked least important
+predective terrain attribute.
+
+\begin{longtable}[]{@{}cccccc@{}}
+
+\caption{\label{tbl-rf-summary}Model summary and performance statistics
+for the random forest regression using the training, validation, and
+test data sets.}
+
+\tabularnewline
+
+\toprule\noalign{}
+Property & MSE Training{\textsuperscript{1}} & \% Var
+Training{\textsuperscript{2}} & MSE Testing{\textsuperscript{1}} & \%
+Var Validation{\textsuperscript{2}} & R{\textsuperscript{2}} Testing \\
+\midrule\noalign{}
+\endhead
+\midrule\noalign{}
+\multicolumn{6}{@{}c@{}}{%
+{\textsuperscript{1}} Mean square error} \\
+\multicolumn{6}{@{}c@{}}{%
+{\textsuperscript{2}} Percent variance explained} \\
+\bottomrule\noalign{}
+\endlastfoot
+\multicolumn{6}{@{}c@{}}{%
+Agriculture} \\
+Ca & 0.374 & 91.6 & 0.359 & 91.8 & 0.91 \\
+Co & 0.089 & 79.8 & 0.080 & 82.5 & 0.80 \\
+Cs & 0.002 & 85.7 & 0.002 & 86.4 & 0.85 \\
+Fe & 0.001 & 69.6 & 0.001 & 70.9 & 0.69 \\
+Li & 0.538 & 59.3 & 0.533 & 59.8 & 0.64 \\
+La & 0.048 & 93.0 & 0.044 & 93.1 & 0.93 \\
+Nb & 0.001 & 57.3 & 0.001 & 59.1 & 0.55 \\
+Ni & 0.338 & 93.1 & 0.335 & 93.7 & 0.93 \\
+Rb & 0.733 & 95.3 & 0.643 & 96.1 & 0.95 \\
+Sr & 97.221 & 93.5 & 93.970 & 93.6 & 0.93 \\
+a* & 0.007 & 85.0 & 0.006 & 86.9 & 0.85 \\
+b* & 0.136 & 72.5 & 0.120 & 75.3 & 0.72 \\
+c* & 0.155 & 73.2 & 0.136 & 75.9 & 0.73 \\
+h* & 0.000 & 58.3 & 0.000 & 58.6 & 0.56 \\
+x & 0.000 & 73.3 & 0.000 & 73.6 & 0.69 \\
+\multicolumn{6}{@{}c@{}}{%
+Forest} \\
+Ca & 0.231 & 61.1 & 0.231 & 60.7 & 0.63 \\
+Co & 0.244 & 39.1 & 0.234 & 42.9 & 0.48 \\
+Cs & 0.002 & 64.1 & 0.002 & 67.1 & 0.66 \\
+Li & 0.278 & 41.3 & 0.282 & 42.0 & 0.46 \\
+La & 1.401 & 43.3 & 1.323 & 47.5 & 0.48 \\
+Nb & 0.001 & 55.0 & 0.001 & 55.9 & 0.58 \\
+Ni & 2.819 & 55.2 & 2.806 & 56.0 & 0.55 \\
+Sr & 29.427 & 59.4 & 29.663 & 59.1 & 0.59 \\
+h* & 0.001 & 58.8 & 0.001 & 60.3 & 0.62 \\
+
+\end{longtable}
+
+\textsubscript{Source:
+\href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-tbl-rf-summary}{Random
+Forest summary}}
+
 \begin{figure}[H]
 
 \centering{
@@ -831,79 +910,7 @@ each site and across both sites.}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-fig-RF-results}{Random
-Forest summary}}
-
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
-
-\caption{\label{tbl-rf-summary}Model summary and performance statistics
-for the random forest regression using the training, validation, and
-test data sets.}
-
-\tabularnewline
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Property
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-{MSETraining}{\textsuperscript{1}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-{}{\textsuperscript{2}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-{MSETesting}{\textsuperscript{1}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-{}{\textsuperscript{2}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-{\{\{R\^{}2\}\}Testing}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\midrule\noalign{}
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
-{\textsuperscript{1}} Mean square error} \\
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
-{\textsuperscript{2}} Percent variance explained} \\
-\bottomrule\noalign{}
-\endlastfoot
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
-Agriculture} \\
-Ca & 0.374 & 91.6 & 0.359 & 91.8 & 0.91 \\
-Co & 0.089 & 79.8 & 0.080 & 82.5 & 0.80 \\
-Cs & 0.002 & 85.7 & 0.002 & 86.4 & 0.85 \\
-Fe & 0.001 & 69.6 & 0.001 & 70.9 & 0.69 \\
-Li & 0.538 & 59.3 & 0.533 & 59.8 & 0.64 \\
-La & 0.048 & 93.0 & 0.044 & 93.1 & 0.93 \\
-Nb & 0.001 & 57.3 & 0.001 & 59.1 & 0.55 \\
-Ni & 0.338 & 93.1 & 0.335 & 93.7 & 0.93 \\
-Rb & 0.733 & 95.3 & 0.643 & 96.1 & 0.95 \\
-Sr & 97.221 & 93.5 & 93.970 & 93.6 & 0.93 \\
-a* & 0.007 & 85.0 & 0.006 & 86.9 & 0.85 \\
-b* & 0.136 & 72.5 & 0.120 & 75.3 & 0.72 \\
-c* & 0.155 & 73.2 & 0.136 & 75.9 & 0.73 \\
-h* & 0.000 & 58.3 & 0.000 & 58.6 & 0.56 \\
-x & 0.000 & 73.3 & 0.000 & 73.6 & 0.69 \\
-\multicolumn{6}{@{}>{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{1.0000} + 10\tabcolsep}@{}}{%
-Forest} \\
-Ca & 0.231 & 61.1 & 0.231 & 60.7 & 0.63 \\
-Co & 0.244 & 39.1 & 0.234 & 42.9 & 0.48 \\
-Cs & 0.002 & 64.1 & 0.002 & 67.1 & 0.66 \\
-Li & 0.278 & 41.3 & 0.282 & 42.0 & 0.46 \\
-La & 1.401 & 43.3 & 1.323 & 47.5 & 0.48 \\
-Nb & 0.001 & 55.0 & 0.001 & 55.9 & 0.58 \\
-Ni & 2.819 & 55.2 & 2.806 & 56.0 & 0.55 \\
-Sr & 29.427 & 59.4 & 29.663 & 59.1 & 0.59 \\
-h* & 0.001 & 58.8 & 0.001 & 60.3 & 0.62 \\
-
-\end{longtable}
-
-\textsubscript{Source:
-\href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-tbl-RF-summary}{Random
+\href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-fig-rf-results}{Random
 Forest summary}}
 
 \section{Discussion}\label{discussion}
@@ -944,8 +951,8 @@ for use in unmixing models when they show large differences between
 sources and low variability within each source. Additionally, most
 mixing models assume fingerprint data are normally distributed.
 \citep{lunamiño2024} demonstrated that soil colour coefficients a*, b*,
-c*, h*, and x provided good discriminanation between the agricultural
-and forested sites, and the low CV and skewness values reported in
+c*, h*, and x provided good discrimination between the agricultural and
+forested sites, and the low CV and skewness values reported in
 Table~\ref{tbl-univariate-summary} makes these colour properties ideal
 fingerprints for sediment source apportionment.
 
@@ -969,7 +976,9 @@ much more variable soil organic matter content (\(\bar{x}\) = 8.5 \%, CV
 = 51.9 \%) as compared to the agricultural site (\(\bar{x}\) = 11.6 \%,
 CV = 16.1 \%), which similar to the grain size distribution, can
 influence the concentration of many major and trace elements
-\citep{horowitz1991}.
+\citep{horowitz1991}. These results provide evidence that both land use
+and landscape complexity both play a role in driving soil property
+variability.
 
 \subsection{Spatial distribution}\label{spatial-distribution}
 
@@ -979,10 +988,166 @@ soil property. When a property has a long range, it means spatial
 correlation persists over greater distances, suggesting the property is
 relatively uniform and changes gradually across the landscape. A small
 nugget value reflects low measurement or sampling error and minimal
-small-scale variability.
+small-scale variability. Typically the nugget value is evaluated within
+the context of the sill measurement and the Nugget-to-sill ratio is used
+to assess the spatial dependency of the soil property
+\citep{cambardella1994}. Mapping the soil properties that have a
+moderate to high spatial dependence can provide information on
+underlying soil forming processes and properties. At both sites, to some
+extent, the patterns appear to reflect the topography of the sites
+suggesting that geomorphic and hydrologic process and properties are
+likely driving the observed patterns.
+
+Identifying patterns and understanding the underlying process and
+properties that drive these patterns are important consideration when
+designing as soil sampling campaign to successfully meet study
+objectives, including characterizing soil properties of a field site. In
+a related context, \citep{koiter2013a} discussed the issues surrounding
+the use of a statistical only approach to selecting fingerprints and
+that consideration of how fingerprints have developed improves the
+robustness of the sediment fingerprinting approach. However, local
+information on the spatial distribution of geochemical and colour
+properties at field scales (\textless{} 1 km²) is often unavailable, and
+the processes driving these patterns are also not well documented or
+studied. When such information does exist, it typically focuses on
+agronomically important properties or is used for soil classification.
+These datasets usually include geochemical properties such as nitrogen
+(N), phosphorus (P), potassium (K), sulfur (S), calcium (Ca), magnesium
+(Mg), sodium (Na), iron (Fe), aluminum (Al), nitrate (NO₃⁻), carbonate
+(CO₃²⁻), bicarbonate (HCO₃⁻), chloride (Cl⁻), and sulfate (SO₄²⁻). They
+may also include colour characteristics, such as Munsell hue, value, and
+chroma, as well as other soil properties like texture, organic matter
+content, and pH. In cases where there are patterns in soil properties,
+transect, grid, or a stratified sampling approach is likely best. In
+contrast, soil properties that exhibit little to no spatial
+autocorrelation, a randomized sampling approach is likely to be
+sufficient.
+
+\subsection{Terrain attributes and soil
+properties}\label{terrain-attributes-and-soil-properties}
+
+Both the correlation analysis and random forest regression identified
+elevation as the most influential terrain attribute, followed by the
+SAGA Wetness Index and relative slope position, in explaining the
+majority of the observed variation/patterns in soil geochemical and
+colour properties. These attributes likely emerged as the most important
+factor in explaining the observed variability as they are strongly
+linked to a range of geomorphic and hydrolgic process and conditions.
+For example, Ca concentrations are often found to be higher in lower
+slope positions and depressional areas due to higher solubility of many
+Ca-minerals (e.g., CaCO\textsubscript{3}) and the subsequent downslope
+transport in solution and reduced leaching losses in these accumulation
+zones. Landscape position can also have a strong influence on pedogenic
+process; for example, the translocation of Fe and clay down the soil
+profile is a diagnostic criteria used in classifying soils
+\citep{stonehouse1971}. Soil colour also tends to change in a
+predictable manner in relation to elevation. Tillage and water erosion
+results in the net loss of darker organic-rich topsoil from upper slope
+positions resulting in the exposure of the lighter subsoil. Moisture
+availability is also greater in the lower slope and depressional areas
+resulting in increased organic matter production resulting in darker
+organic-rich topsoil as compared to the upper slope positions. There is
+also evidence that suggests that soil texture varies with elevation and
+slope position, with coarser material on upper slopes and finer material
+accumulating in lower positions \citep[\citep{cox2003}]{kokulan2018}.
+Given the strong correlation of organic matter and texture with soil
+geochemistry and colour, these properties may also help explain the
+observed spatial patterns.
+
+The relative importance of terrain attributes in explaining soil
+property variability differs both among soil properties and between
+sites. The land use and the overall geomorphic complexity differences
+between the two study sites are likely interacting with terrain
+attributes and influencing the patterns of soil properties and modify
+the nature of terrain attribute and soil property relationship. This
+suggests that these relationships observed in this study may not be
+broadly generalizable. Similarly, information on how terrain attributes
+influence the spatial distribution of many trace elements and soil
+colour --- beyond the Munsell system--- at the field scale is very
+limited in the scientific literature. Additional variables including
+climate and large-scale landscape features will also influence the
+observed patterns of soil properties. As a result, using terrain
+attributes to guide soil sampling or interpret spatial patterns of many
+soil properties remains challenging.
+
+The impact of sampling design at the field scale on the characterization
+of soil properties can be substantial \citep{lunamiño2024}, which in
+turn can affect the interpretation of data, modeling results, and the
+conclusion drawn. High-quality LiDAR data or digital elevation models
+(DEMs) are increasingly openly available in many regions and can be used
+to create detailed terrain attribute maps. By incorporating terrain
+attributes into the sampling framework, researchers can ensure that key
+geomorphic and hydrologic gradients are adequately represented.
+Ultimately, integrating terrain analysis into sediment source
+fingerprinting not only as a mechanism to improve the quality of source
+characterization but to also better link source material to downstream
+sediment.
+
+\section{Conclusions}\label{conclusions}
+
+Understanding the spatial variability and distribution of soil
+geochemical and colour properties at a field-scale is important for
+agricultural and environmental research, monitoring, modeling, and
+management practices. This study conducted both univariate and spatial
+analyses of a suite of soil geochemical and colour properties at two
+sites with contrasting land uses. The agricultural site, characterized
+by gently sloping topography, exhibited lower coefficients of variation,
+approximately normal data distributions, and moderate to strong spatial
+autocorrelation across most measured properties. In contrast, the
+forested site featured more geomorphologically complex terrain, with
+greater variability in soil properties, data distributions that more
+frequently deviated from normality, and fewer properties exhibiting
+spatial autocorrelation. Despite these differences, random forest
+regression consistently identified elevation, the SAGA Wetness Index,
+and relative slope position as the three most important terrain
+attributes explaining the observed variability.
+
+These findings underscore the role of topographic controls on many soil
+property distributions, regardless of land use. However, the strength
+and direction of the relationship between terrain attributes and soil
+property results were inconsistent between both site and soil property.
+While the study was limited to two sites, the approach demonstrates the
+value of integrating tools like random forest regression with spatial
+data to better understand soil-landscape relationships. Future research
+should expand to broader landscapes and incorporate additional
+biophysical variables to improve generalizability. Overall, this work
+highlights how terrain-driven spatial patterns can inform more targeted
+soil sampling, modeling, and land management strategies.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
+
+\section*{Acknowledgments}\label{acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+A special thanks and recognition for the field and technical support
+from A. Avila and the Riding Mountain National Park personnel.
+
+\section*{Statements and
+declarations}\label{statements-and-declarations}
+\addcontentsline{toc}{section}{Statements and declarations}
+
+\subsection*{Funding}\label{funding}
+\addcontentsline{toc}{subsection}{Funding}
+
+This research was supported by the Natural Sciences and Engineering
+Research Council of Canada Discovery Grant - From source to sink:
+Investigating the linkages between sources of sediment and downstream
+water quality in Canadian watersheds - awarded to AJK
+(RGPIN-2019-05273).
+
+\subsection*{Competing interests}\label{competing-interests}
+\addcontentsline{toc}{subsection}{Competing interests}
+
+The authors have no competing interests to declare that are relevant to
+the content of this article.
+
+\subsection*{Data and code
+availability}\label{data-and-code-availability}
+\addcontentsline{toc}{subsection}{Data and code availability}
+
+Data and source code for analysis and manuscript available on GitHub:
+\url{https://github.com/alex-koiter/sampling-design-manuscript}
 
 \renewcommand{\bibsection}{}
 \bibliography{references.bib}
@@ -1030,9 +1195,9 @@ al.~(2018)}
 \centering{
 
 \begin{longtable*}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2603}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4795}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2603}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2639}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4722}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2639}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Colour space model}

@@ -11,6 +11,7 @@ suppressPackageStartupMessages({
   library(patchwork)
   library(gt)
 })
+
 ```
 
 ```{r}
@@ -65,10 +66,11 @@ g2 <- ggplot(data = overall, aes(x = as.factor(MSE_rank), y = property, fill = `
   theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(),
         axis.title.y = element_blank())  +
   facet_wrap(~facet, ncol = 1, scales = "free_y", strip.position = "right")
+
 ```
 
 ```{r}
-#| label: fig-RF-results
+#| label: fig-rf-results
 #| fig-cap: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites.
 
 g2 + g1 + plot_layout(ncol = 1, heights = c(2, 10), guides = "collect") & theme(legend.position = 'right')
@@ -86,7 +88,7 @@ m_performance <- read_csv(here::here("./notebooks/model_performance_data.csv")) 
 
 ```{r}
 
-#| label: tbl-RF-summary
+#| label: tbl-rf-summary
 #| tbl-cap: Model summary and performance statistics for the random forest regression using the training, validation, and test data sets.
 
 m_performance |>
@@ -102,7 +104,8 @@ m_performance |>
   tab_style(style =  cell_text(weight = "bold", align = "center"), locations =  cells_row_groups()) |>
   tab_style(style =  cell_text(align = "left"), locations =  cells_body()) |>
   tab_style(style =  cell_text(weight = "bold", align = "left"), locations =  cells_column_labels()) |>
-  cols_label(Var_exp = md("% Var<br/>Training"), Var_exp_test = md("% Var<br/>Validation"), MSE_test = md("MSE<br/>Testing"), MSE = md("MSE<br/>Training"), R2 = md("{{R^2}}<br/>Testing"), property = "Property") |>
+  # cols_label(Var_exp = md("% Var<br/>Training"), Var_exp_test = md("% Var<br/>Validation"), MSE_test = md("MSE<br/>Testing"), MSE = md("MSE<br/>Training"), R2 = md("{{R^2}}<br/>Testing"), property = "Property") |>
+    cols_label(Var_exp = "% Var Training", Var_exp_test = "% Var Validation", MSE_test = "MSE Testing", MSE = "MSE Training", R2 = "{{R^2}} Testing", property = "Property") |>
   row_group_order(groups = c("Agriculture", "Forest"))  |>
   tab_style(
     style = list(cell_text(style = "italic")),
@@ -115,7 +118,6 @@ m_performance |>
   tab_footnote(
     footnote = "Percent variance explained",
     locations = cells_column_labels(columns = c("Var_exp", "Var_exp_test")))
-
 ```
 
 

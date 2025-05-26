@@ -19,7 +19,9 @@ suppressPackageStartupMessages({
 ```{r}
 ag_data <- read_csv(here::here("./notebooks/ag_terrain_data.csv"), show_col_types = FALSE) 
 
+
 forest_data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) 
+
 ```
 
 
