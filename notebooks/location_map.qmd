@@ -204,8 +204,8 @@ p3 <- ggplot() +
 
 ```{r}
 #| label: fig-location_map
-#| fig-cap: Map showing the location of the study sites within Canada, and the regional land use and topography.
-p6 <- p1 + guide_area() + p2 + p3 + plot_layout(ncol = 2, guides = "collect") 
+#| fig-cap: a) Map showing the location of the study sites within Canada. Location of the two study sites and nearby town of McCreary, and regional  b) land use, and c) topography.
+p6 <- p1 + guide_area() + p2 + p3 + plot_layout(ncol = 2, guides = "collect") + plot_annotation(tag_levels = 'a', tag_suffix = ')')
 p6
 
 #ggsave(filename = "Figures/Maps.png", plot = p6, height = 80*1.5, width = 100*1.5, units = "mm", dpi = 800)

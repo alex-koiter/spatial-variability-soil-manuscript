@@ -2,6 +2,7 @@ library(tidyverse)
 #library(readxl)
 library(janitor)
 library(terra)
+library(sf)
 
 ## geochemistry data
 geo_data <- read_csv("../Data/Raw data/Geochemistry analysis - Copy 2.csv") %>%
@@ -123,3 +124,48 @@ org_49_wide <- org_49 %>%
   pivot_wider(id_cols = - group, names_from = element, values_from = value)
 
 # write_csv(x = org_49_wide, file = "../Data/Datasets/orig_49_wide.csv")
+
+## 49 data points with terrain attributes
+
+attribute <- c("plan_curvature", "profile_curvature", "saga_wetness_index", "catchment_area", "relative_slope_position", "channel_network_distance", "elevation")
+
+ag_prints <- c("li", "a_c", "fe", "co", "x_c", "cs", "la", "ni", "nb", "h_c", "b_c", "rb", "ca", "sr", "c_c")
+
+ag_data <- read_csv(here::here("./notebooks/ag_terrain_data.csv"), show_col_types = FALSE) %>%
+  select("x", "y", any_of(attribute), any_of(ag_prints)) %>% 
+  rename("long" = "x", "lat" = "y") %>%
+  st_as_sf(coords = c("long", "lat"),  crs = 32614) %>%
+  st_transform(crs = 26914)
+
+coords <- read_csv(here::here("./notebooks/coords.csv"), show_col_types = FALSE) %>% 
+  filter(site == "Agriculture") %>%
+  st_as_sf(coords = c("long", "lat"),  crs = 4326) %>%
+  st_transform(crs = 26914)
+
+
+ag_data_49 <- st_join(coords, ag_data, st_nearest_feature) %>%
+  select(-site) %>%
+  st_drop_geometry()
+
+# write_csv(x = ag_data_49, file = "./notebooks/ag_data_49.csv")
+
+
+forest_prints <- c("li", "co", "cs", "la", "ni", "nb", "h_c", "ca", "sr")
+
+forest_data <- read_csv(here::here("./notebooks/forest_terrain_data.csv"), show_col_types = FALSE) %>%
+  select("x", "y", any_of(attribute), any_of(forest_prints)) %>% 
+  rename("long" = "x", "lat" = "y") %>%
+  st_as_sf(coords = c("long", "lat"),  crs = 32614) %>%
+  st_transform(crs = 26914)
+
+coords <- read_csv(here::here("./notebooks/coords.csv"), show_col_types = FALSE) %>% 
+  filter(site == "Forest") %>%
+  st_as_sf(coords = c("long", "lat"),  crs = 4326) %>%
+  st_transform(crs = 26914)
+
+
+forest_data_49 <- st_join(coords, forest_data, st_nearest_feature) %>%
+  select(-site) %>%
+  st_drop_geometry()
+
+# write_csv(x = forest_data_49, file = "./notebooks/forest_data_49.csv")

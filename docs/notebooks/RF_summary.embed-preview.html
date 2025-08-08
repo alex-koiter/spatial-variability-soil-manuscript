@@ -205,6 +205,8 @@
    
   <ul>
   <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries">Load libraries</a></li>
+  <li><a href="#importance" id="toc-importance" class="nav-link" data-scroll-target="#importance">Importance</a></li>
+  <li><a href="#performance" id="toc-performance" class="nav-link" data-scroll-target="#performance">Performance</a></li>
   </ul>
 </nav>
 </div>
@@ -215,14 +217,17 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="9f9cbd1a-c740-46ac-a15a-f36e7bdca8be" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="44afa996-6c81-4c5c-a36f-da12cb8330f2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(patchwork)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  library(gt)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="d58145f5-0638-43a8-b2c6-c1ebc45f8859" class="cell">
+</section>
+<section id="importance" class="level2">
+<h2 class="anchored" data-anchor-id="importance">Importance</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="9b7d01f9-2820-4d0d-afe9-31245442a138" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imp_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"Terrain Attribute"</span> <span class="op">=</span> <span class="st">"Var.Names"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_recode(`Terrain Attribute`, <span class="st">"Elevation"</span> <span class="op">=</span> <span class="st">"elevation"</span>, </span>
@@ -253,85 +258,114 @@ the `.groups` argument.</code></pre>
 <div id="fig-rf-results" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rf-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="RF_summary.embed_files/figure-html/fig-rf-results-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites."><img src="RF_summary.embed_files/figure-html/fig-rf-results-output-1.png" class="img-fluid figure-img"></a>
+<a href="RF_summary.embed_files/figure-html/fig-rf-results-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Heat map of the Random Forest regression results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites."><img src="RF_summary.embed_files/figure-html/fig-rf-results-output-1.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rf-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Heat map of the Random Forest regresssion results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites.
+Figure&nbsp;1: Heat map of the Random Forest regression results showing the ranking of the importance of terrain attributes (based on % increase in Mean Squared Error) in explaining the spatial variabilty of selected colour and geochemical properties within the agricultural and forested sites. Top panel shows an average ranking for each site and across both sites.
 </figcaption>
 </figure>
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="9bc7e3fb-9ea0-4765-b1c7-71e4312a59e6" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">|&gt;</span></span>
+</section>
+<section id="performance" class="level2">
+<h2 class="anchored" data-anchor-id="performance">Performance</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="74fcfea9-29bb-40a6-a091-ef46dc1ce812" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m2_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data_49.csv"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>, <span class="st">"Ca"</span> <span class="op">=</span> <span class="st">"ca"</span>, <span class="st">"Co"</span> <span class="op">=</span> <span class="st">"co"</span>, <span class="st">"Cs"</span> <span class="op">=</span> <span class="st">"cs"</span>, <span class="st">"Fe"</span> <span class="op">=</span> <span class="st">"fe"</span>, <span class="st">"Li"</span> <span class="op">=</span> <span class="st">"li"</span>, <span class="st">"La"</span> <span class="op">=</span> <span class="st">"la"</span>, <span class="st">"Nb"</span> <span class="op">=</span> <span class="st">"nb"</span>, <span class="st">"Ni"</span> <span class="op">=</span> <span class="st">"ni"</span>, <span class="st">"Rb"</span> <span class="op">=</span> <span class="st">"rb"</span>, <span class="st">"Sr"</span> <span class="op">=</span> <span class="st">"sr"</span>)) <span class="op">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  mutate(Var_exp <span class="op">=</span> Var_exp <span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         Var_exp_test <span class="op">=</span> Var_exp_test <span class="op">*</span><span class="dv">100</span>) <span class="op">|&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"MSE_org"</span> <span class="op">=</span><span class="st">"MSE"</span>, <span class="st">"R2_org"</span> <span class="op">=</span> <span class="st">"R2"</span>) <span class="op">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 24 Columns: 7
+<pre><code>Rows: 24 Columns: 4
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): site, property
-dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
+dbl (2): MSE, R2
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="6f0f2983-45d9-420c-8425-e15f9fd7e8b0" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  mutate(Var_exp <span class="op">=</span> Var_exp <span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         Var_exp_test <span class="op">=</span> Var_exp_test <span class="op">*</span><span class="dv">100</span>) <span class="op">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) <span class="op">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  left_join(m2_performance, by <span class="op">=</span> c(<span class="st">"site"</span>, <span class="st">"property"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 22 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): site, property
+dbl (6): MSE, Var_exp, MSE_test, Var_exp_test, R2, mse_test
 
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  group_by(site) <span class="op">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  gt() <span class="op">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  cols_move_to_start(columns <span class="op">=</span> <span class="bu">property</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Testing", columns = "R2") |&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>), decimal <span class="op">=</span> <span class="dv">3</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"Var_exp_test"</span>, <span class="st">"Var_exp"</span>), decimal <span class="op">=</span> <span class="dv">1</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"R2"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_body()) <span class="op">|&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_column_labels()) <span class="op">|&gt;</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cols_label(Var_exp = md("% Var&lt;br/&gt;Training"), Var_exp_test = md("% Var&lt;br/&gt;Validation"), MSE_test = md("MSE&lt;br/&gt;Testing"), MSE = md("MSE&lt;br/&gt;Training"), R2 = md("{{R^2}}&lt;br/&gt;Testing"), property = "Property") |&gt;</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    cols_label(Var_exp <span class="op">=</span> <span class="st">"% Var Training"</span>, Var_exp_test <span class="op">=</span> <span class="st">"% Var Validation"</span>, MSE_test <span class="op">=</span> <span class="st">"MSE Testing"</span>, MSE <span class="op">=</span> <span class="st">"MSE Training"</span>, R2 <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st"> Testing"</span>, <span class="bu">property</span> <span class="op">=</span> <span class="st">"Property"</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  row_group_order(groups <span class="op">=</span> c(<span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>))  <span class="op">|&gt;</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  tab_style(</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    style <span class="op">=</span> <span class="bu">list</span>(cell_text(style <span class="op">=</span> <span class="st">"italic"</span>)),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_body(</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      columns <span class="op">=</span> <span class="bu">property</span>,</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      rows <span class="op">=</span> <span class="bu">property</span> <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>))) <span class="op">|&gt;</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    tab_footnote(</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Mean square error"</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>))) <span class="op">|&gt;</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Percent variance explained"</span>,</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"Var_exp"</span>, <span class="st">"Var_exp_test"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-rf-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
+
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  group_by(site) <span class="op">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  gt() <span class="op">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Training"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>               columns <span class="op">=</span> c(Var_exp, MSE)) <span class="op">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Validation"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(Var_exp_test, MSE_test)) <span class="op">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Test"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2, mse_test)) <span class="op">|&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    tab_spanner(label <span class="op">=</span> <span class="st">"Original"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2_org, MSE_org)) <span class="op">|&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  cols_move_to_start(columns <span class="op">=</span> <span class="bu">property</span>) <span class="op">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |&gt;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Testing", columns = "R2") |&gt;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"mse_test"</span>, <span class="st">"MSE_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"Var_exp_test"</span>, <span class="st">"Var_exp"</span>), decimal <span class="op">=</span> <span class="dv">1</span>) <span class="op">|&gt;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"R2"</span>, <span class="st">"R2_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_body()) <span class="op">|&gt;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_column_labels()) <span class="op">|&gt;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cols_label(Var_exp = md("% Var&lt;br/&gt;Training"), Var_exp_test = md("% Var&lt;br/&gt;Validation"), MSE_test = md("MSE&lt;br/&gt;Testing"), MSE = md("MSE&lt;br/&gt;Training"), R2 = md("{{R^2}}&lt;br/&gt;Testing"), property = "Property") |&gt;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    cols_label(Var_exp <span class="op">=</span> <span class="st">"% Variance"</span>, Var_exp_test <span class="op">=</span> <span class="st">"% Variance"</span>, MSE_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE <span class="op">=</span> <span class="st">"MSE"</span>, R2 <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, R2_org <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, <span class="bu">property</span> <span class="op">=</span> <span class="st">"Property"</span>, mse_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE_org <span class="op">=</span> <span class="st">"MSE"</span>) <span class="op">|&gt;</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  row_group_order(groups <span class="op">=</span> c(<span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>))  <span class="op">|&gt;</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  tab_style(</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    style <span class="op">=</span> <span class="bu">list</span>(cell_text(style <span class="op">=</span> <span class="st">"italic"</span>)),</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_body(</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>      columns <span class="op">=</span> <span class="bu">property</span>,</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>      rows <span class="op">=</span> <span class="bu">property</span> <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>))) <span class="op">|&gt;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    tab_footnote(</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Mean square error"</span>,</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"mse_test"</span>, <span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"MSE_org"</span>))) <span class="op">|&gt;</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Percent variance explained"</span>,</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"Var_exp"</span>, <span class="st">"Var_exp_test"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-rf-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Model summary and performance statistics for the random forest regression using the training, validation, and test data sets.
+Table&nbsp;1: Model summary and performance statistics for the random forest regression using the training, validation, test and original (non-interpolated) data sets.
 </figcaption>
 <div aria-describedby="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="jmxcfzgsan" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jmxcfzgsan table {
+<div id="ucmkqovsxz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ucmkqovsxz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jmxcfzgsan thead, #jmxcfzgsan tbody, #jmxcfzgsan tfoot, #jmxcfzgsan tr, #jmxcfzgsan td, #jmxcfzgsan th {
+#ucmkqovsxz thead, #ucmkqovsxz tbody, #ucmkqovsxz tfoot, #ucmkqovsxz tr, #ucmkqovsxz td, #ucmkqovsxz th {
   border-style: none;
 }
 
-#jmxcfzgsan p {
+#ucmkqovsxz p {
   margin: 0;
   padding: 0;
 }
 
-#jmxcfzgsan .gt_table {
+#ucmkqovsxz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -357,12 +391,12 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-left-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_caption {
+#ucmkqovsxz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jmxcfzgsan .gt_title {
+#ucmkqovsxz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -374,7 +408,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-width: 0;
 }
 
-#jmxcfzgsan .gt_subtitle {
+#ucmkqovsxz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -386,7 +420,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-width: 0;
 }
 
-#jmxcfzgsan .gt_heading {
+#ucmkqovsxz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -398,13 +432,13 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_bottom_border {
+#ucmkqovsxz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_col_headings {
+#ucmkqovsxz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -419,7 +453,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_col_heading {
+#ucmkqovsxz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,7 +473,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#jmxcfzgsan .gt_column_spanner_outer {
+#ucmkqovsxz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -451,15 +485,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 4px;
 }
 
-#jmxcfzgsan .gt_column_spanner_outer:first-child {
+#ucmkqovsxz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jmxcfzgsan .gt_column_spanner_outer:last-child {
+#ucmkqovsxz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jmxcfzgsan .gt_column_spanner {
+#ucmkqovsxz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -471,11 +505,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   width: 100%;
 }
 
-#jmxcfzgsan .gt_spanner_row {
+#ucmkqovsxz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jmxcfzgsan .gt_group_heading {
+#ucmkqovsxz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -501,7 +535,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   text-align: left;
 }
 
-#jmxcfzgsan .gt_empty_group_heading {
+#ucmkqovsxz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -516,15 +550,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: middle;
 }
 
-#jmxcfzgsan .gt_from_md > :first-child {
+#ucmkqovsxz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jmxcfzgsan .gt_from_md > :last-child {
+#ucmkqovsxz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jmxcfzgsan .gt_row {
+#ucmkqovsxz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -543,7 +577,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#jmxcfzgsan .gt_stub {
+#ucmkqovsxz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -556,7 +590,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#jmxcfzgsan .gt_stub_row_group {
+#ucmkqovsxz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -570,15 +604,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: top;
 }
 
-#jmxcfzgsan .gt_row_group_first td {
+#ucmkqovsxz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jmxcfzgsan .gt_row_group_first th {
+#ucmkqovsxz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jmxcfzgsan .gt_summary_row {
+#ucmkqovsxz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -588,16 +622,16 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#jmxcfzgsan .gt_first_summary_row {
+#ucmkqovsxz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_first_summary_row.thick {
+#ucmkqovsxz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jmxcfzgsan .gt_last_summary_row {
+#ucmkqovsxz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -607,7 +641,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_grand_summary_row {
+#ucmkqovsxz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -617,7 +651,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#jmxcfzgsan .gt_first_grand_summary_row {
+#ucmkqovsxz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -627,7 +661,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_last_grand_summary_row_top {
+#ucmkqovsxz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -637,11 +671,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_striped {
+#ucmkqovsxz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jmxcfzgsan .gt_table_body {
+#ucmkqovsxz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -650,7 +684,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_footnotes {
+#ucmkqovsxz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -664,7 +698,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_footnote {
+#ucmkqovsxz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -673,7 +707,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#jmxcfzgsan .gt_sourcenotes {
+#ucmkqovsxz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -687,7 +721,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#jmxcfzgsan .gt_sourcenote {
+#ucmkqovsxz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -695,292 +729,370 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#jmxcfzgsan .gt_left {
+#ucmkqovsxz .gt_left {
   text-align: left;
 }
 
-#jmxcfzgsan .gt_center {
+#ucmkqovsxz .gt_center {
   text-align: center;
 }
 
-#jmxcfzgsan .gt_right {
+#ucmkqovsxz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jmxcfzgsan .gt_font_normal {
+#ucmkqovsxz .gt_font_normal {
   font-weight: normal;
 }
 
-#jmxcfzgsan .gt_font_bold {
+#ucmkqovsxz .gt_font_bold {
   font-weight: bold;
 }
 
-#jmxcfzgsan .gt_font_italic {
+#ucmkqovsxz .gt_font_italic {
   font-style: italic;
 }
 
-#jmxcfzgsan .gt_super {
+#ucmkqovsxz .gt_super {
   font-size: 65%;
 }
 
-#jmxcfzgsan .gt_footnote_marks {
+#ucmkqovsxz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jmxcfzgsan .gt_asterisk {
+#ucmkqovsxz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jmxcfzgsan .gt_indent_1 {
+#ucmkqovsxz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jmxcfzgsan .gt_indent_2 {
+#ucmkqovsxz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jmxcfzgsan .gt_indent_3 {
+#ucmkqovsxz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jmxcfzgsan .gt_indent_4 {
+#ucmkqovsxz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jmxcfzgsan .gt_indent_5 {
+#ucmkqovsxz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jmxcfzgsan .katex-display {
+#ucmkqovsxz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jmxcfzgsan div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ucmkqovsxz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
 <thead>
-<tr class="gt_col_headings header">
-<th id="property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
-<th id="MSE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
-<th id="Var_exp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var Training<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
-<th id="MSE_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE Testing<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
-<th id="Var_exp_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Var Validation<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
-<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">R<span style="white-space:nowrap;"><sup>2</sup></span> Testing</th>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="property" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">Property</th>
+<th colspan="2" id="Training" class="gt_center gt_columns_top_border gt_column_spanner_outer" style="text-align: center;" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Training
+</div></th>
+<th colspan="2" id="Validation" class="gt_center gt_columns_top_border gt_column_spanner_outer" style="text-align: center;" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Validation
+</div></th>
+<th colspan="2" id="Test" class="gt_center gt_columns_top_border gt_column_spanner_outer" style="text-align: center;" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Test
+</div></th>
+<th colspan="2" id="Original" class="gt_center gt_columns_top_border gt_column_spanner_outer" style="text-align: center;" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Original
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Var_exp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Variance<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="MSE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="Var_exp_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">% Variance<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="MSE_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">R<span style="white-space:nowrap;"><sup>2</sup></span></th>
+<th id="mse_test" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+<th id="R2_org" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">R<span style="white-space:nowrap;"><sup>2</sup></span></th>
+<th id="MSE_org" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;" scope="col">MSE<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="gt_group_heading_row odd">
-<td colspan="6" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
+<td colspan="9" id="Agriculture" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Agriculture</td>
 </tr>
 <tr class="gt_row_group_first even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Ca</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.374</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">91.6</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.359</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.37</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">91.8</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.36</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.91</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.38</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.95</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.23</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Co</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.089</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">79.8</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.080</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.09</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">82.5</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.08</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.80</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.08</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.88</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.08</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Cs</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.002</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">85.7</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.002</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">86.4</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.85</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.92</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Fe</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.001</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">69.6</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.001</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">70.9</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.69</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.83</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Li</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.538</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">59.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.533</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.54</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">59.8</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.53</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.64</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.51</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.88</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.24</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">La</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.048</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">93.0</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.044</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.05</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">93.1</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.04</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.93</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.05</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.96</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.03</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Nb</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.001</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">57.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.001</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">59.1</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.55</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.71</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Ni</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.338</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">93.1</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.335</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.34</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">93.7</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.33</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.93</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.34</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.95</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.25</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Rb</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.733</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">95.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.643</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.73</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">96.1</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.64</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.95</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.79</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.98</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.39</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Agriculture  property">Sr</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">97.221</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">93.5</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">93.970</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">97.22</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">93.6</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">93.97</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.93</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">105.59</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.97</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">44.77</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Agriculture  property" style="text-align: left; font-style: italic;">a*</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.007</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">85.0</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.006</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.01</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">86.9</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.01</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.85</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.01</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.91</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Agriculture  property" style="text-align: left; font-style: italic;">b*</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.136</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">72.5</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.120</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.14</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">75.3</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.12</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.72</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.15</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.89</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.09</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Agriculture  property" style="text-align: left; font-style: italic;">c*</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.155</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">73.2</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.136</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.15</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">75.9</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.14</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.73</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.17</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.89</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.10</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="Agriculture  property" style="text-align: left; font-style: italic;">h*</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.000</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">58.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.000</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">58.6</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.56</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.73</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Agriculture  property" style="text-align: left; font-style: italic;">x</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.000</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp">73.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.000</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  Var_exp_test">73.6</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2">0.69</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  R2_org">0.82</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Agriculture  MSE_org">0.00</td>
 </tr>
 <tr class="gt_group_heading_row odd">
-<td colspan="6" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
+<td colspan="9" id="Forest" class="gt_group_heading" data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;" scope="colgroup">Forest</td>
 </tr>
 <tr class="gt_row_group_first even">
-<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Ca</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.231</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">61.1</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.231</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">60.7</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.63</td>
-</tr>
-<tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Co</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.244</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">39.1</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.234</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.24</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">42.9</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.23</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.48</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">0.21</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.77</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.29</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Cs</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.002</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">64.1</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.002</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">67.1</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.66</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.86</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.00</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Li</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.278</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">41.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.282</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.28</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">42.0</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.28</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.46</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">La</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">1.401</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">43.3</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">1.323</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">47.5</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.48</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">0.28</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.66</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.26</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Nb</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.001</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">55.0</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.001</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">55.9</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.58</td>
+<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">La</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">43.3</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">1.40</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">47.5</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">1.32</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.48</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">1.23</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.78</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.60</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Ni</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">2.819</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">55.2</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">2.806</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">56.0</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.55</td>
+<td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Nb</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">55.0</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">55.9</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.58</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.84</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.00</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" style="text-align: left;" headers="Forest  property">Sr</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">29.427</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">59.4</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">29.663</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">29.43</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">59.1</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">29.66</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.59</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">29.25</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.82</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">13.88</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_center" headers="Forest  property" style="text-align: left; font-style: italic;">h*</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.001</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp">58.8</td>
-<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.001</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  Var_exp_test">60.3</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_test">0.00</td>
 <td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2">0.62</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  mse_test">0.00</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  R2_org">0.86</td>
+<td class="gt_row gt_right" style="text-align: left;" headers="Forest  MSE_org">0.00</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Mean square error</td>
+<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Percent variance explained</td>
 </tr>
 <tr class="even">
-<td colspan="6" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Percent variance explained</td>
+<td colspan="9" class="gt_footnote" style="text-align: center;"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Mean square error</td>
 </tr>
 </tfoot>
 

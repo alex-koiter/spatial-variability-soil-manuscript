@@ -178,6 +178,9 @@ ggplot(data = test_plot, aes(y = pred, x = obs)) +
   theme_bw() +
   geom_abline(slope = 1, intercept = 0) +
   coord_fixed(ratio = 1)
+
+mse_test <- test_plot %>%
+  summarise(mse = mean((obs - pred)^2))
 ```
 
 ## Importance
@@ -247,6 +250,7 @@ model_performance <- tibble(MSE = rf.fit$mse[length(rf.fit$mse)],
        MSE_test = rf.fit$test$mse[length(rf.fit$test$mse)],
        Var_exp_test = rf.fit$test$rsq[length(rf.fit$test$rsq)],
        R2 = r_sq$r.squared, 
+       mse_test = mse_test$mse,
        site = "Agriculture",
        property = "Ni")
 
@@ -258,4 +262,46 @@ if(file.exists(here::here("./notebooks/model_performance_data.csv"))) {
 
 write_csv(model_performance_final, here::here("./notebooks/model_performance_data.csv"))
 
+```
+
+## Predict original data
+
+```{r}
+orig_data <- read_csv(here::here("./notebooks/ag_data_49.csv"))  %>%
+  select("ni", any_of(attribute))
+
+prediction_org <- predict(rf.fit, newdata = orig_data)
+test_plot_org <- data.frame(pred = prediction_org, obs = orig_data$ni)
+
+r_sq_org <- summary(lm(pred~obs, data = test_plot_org))
+r_sq_org
+
+ggplot(data = test_plot_org, aes(y = pred, x = obs)) +
+  geom_point() +
+  ggpmisc::stat_poly_line() +
+  ggpmisc::stat_poly_eq() +
+  theme_bw() +
+  geom_abline(slope = 1, intercept = 0) +
+  coord_fixed(ratio = 1)
+
+mse_org <- test_plot_org %>%
+  summarise(mse = mean((obs - pred)^2))
+```
+
+### Write data
+
+```{r}
+
+model_performance_org <- tibble(MSE = mse_org$mse,
+       R2 = r_sq_org$r.squared, 
+       site = "Agriculture",
+       property = "ni")
+
+if(file.exists(here::here("./notebooks/model_performance_data_49.csv"))) {
+  model_performance_final_org <- read_csv(here::here("./notebooks/model_performance_data_49.csv")) |>
+    rows_upsert(model_performance_org, by = c("site", "property")) 
+} else model_performance_final_org <- model_performance_org
+
+
+write_csv(model_performance_final_org, here::here("./notebooks/model_performance_data_49.csv"))
 ```

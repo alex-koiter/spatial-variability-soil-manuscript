@@ -227,6 +227,10 @@
   <li><a href="#combined" id="toc-combined" class="nav-link" data-scroll-target="#combined">Combined</a></li>
   <li><a href="#write-data" id="toc-write-data" class="nav-link" data-scroll-target="#write-data">Write data</a></li>
   </ul></li>
+  <li><a href="#predict-original-data" id="toc-predict-original-data" class="nav-link" data-scroll-target="#predict-original-data">Predict original data</a>
+  <ul class="collapse">
+  <li><a href="#write-data-1" id="toc-write-data-1" class="nav-link" data-scroll-target="#write-data-1">Write data</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -246,6 +250,9 @@
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(sf)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'randomForest' was built under R version 4.4.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -262,54 +269,54 @@
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a> attribute <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"plan_curvature"</span>, <span class="st">"profile_curvature"</span>, <span class="st">"saga_wetness_index"</span>, <span class="st">"catchment_area"</span>, <span class="st">"relative_slope_position"</span>, <span class="st">"channel_network_distance"</span>, <span class="st">"elevation"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"la"</span>, <span class="fu">any_of</span>(attribute))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> attribute <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"plan_curvature"</span>, <span class="st">"profile_curvature"</span>, <span class="st">"saga_wetness_index"</span>, <span class="st">"catchment_area"</span>, <span class="st">"relative_slope_position"</span>, <span class="st">"channel_network_distance"</span>, <span class="st">"elevation"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"la"</span>, <span class="fu">any_of</span>(attribute))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="map-soil-property" class="level2">
 <h2 class="anchored" data-anchor-id="map-soil-property">Map soil property</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temp_rast <span class="ot">&lt;-</span> <span class="fu">rast</span>(data)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(<span class="at">x =</span> temp_rast, <span class="at">warn=</span><span class="cn">FALSE</span>) <span class="ot">&lt;-</span> <span class="st">"epsg:26914"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/coords.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>),  <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">26914</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  tidyterra<span class="sc">::</span><span class="fu">geom_spatraster</span>(<span class="at">data =</span> temp_rast, <span class="fu">aes</span>(<span class="at">fill =</span> la)) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"La"</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(coords, site <span class="sc">==</span> <span class="st">"Forest"</span>)) <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"br"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  tidyterra<span class="sc">::</span><span class="fu">geom_spatraster</span>(<span class="at">data =</span> temp_rast, <span class="fu">aes</span>(<span class="at">fill =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Elevation (m)"</span>, <span class="at">option =</span> <span class="st">"inferno"</span>) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(coords, site <span class="sc">==</span> <span class="st">"Forest"</span>)) <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"br"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp_rast <span class="ot">&lt;-</span> <span class="fu">rast</span>(data)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(<span class="at">x =</span> temp_rast, <span class="at">warn=</span><span class="cn">FALSE</span>) <span class="ot">&lt;-</span> <span class="st">"epsg:26914"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/coords.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>),  <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">26914</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  tidyterra<span class="sc">::</span><span class="fu">geom_spatraster</span>(<span class="at">data =</span> temp_rast, <span class="fu">aes</span>(<span class="at">fill =</span> la)) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"La"</span>, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(coords, site <span class="sc">==</span> <span class="st">"Forest"</span>)) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"br"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  tidyterra<span class="sc">::</span><span class="fu">geom_spatraster</span>(<span class="at">data =</span> temp_rast, <span class="fu">aes</span>(<span class="at">fill =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"Elevation (m)"</span>, <span class="at">option =</span> <span class="st">"inferno"</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> <span class="fu">filter</span>(coords, site <span class="sc">==</span> <span class="st">"Forest"</span>)) <span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  ggspatial<span class="sc">::</span><span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"br"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 12</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-asp: 0.5</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 12</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-asp: 0.5</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -323,29 +330,29 @@
 <h2 class="anchored" data-anchor-id="create-training-validation-and-testing-datasets">Create training, validation and testing datasets</h2>
 <p>60 % of the data in the training data set 20 % of the data in the validation data set 20 % of the data in the testing data set</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># makes it reproducible</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>temp2 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"train"</span>, <span class="st">"validation"</span>, <span class="st">"test"</span>), <span class="at">size =</span> <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"train"</span> <span class="sc">|</span> dataset <span class="sc">==</span> <span class="st">"validation"</span>) </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"test"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># makes it reproducible</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>temp2 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dataset =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"train"</span>, <span class="st">"validation"</span>, <span class="st">"test"</span>), <span class="at">size =</span> <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"train"</span> <span class="sc">|</span> dataset <span class="sc">==</span> <span class="st">"validation"</span>) </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"test"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="feature-selection" class="level2">
 <h2 class="anchored" data-anchor-id="feature-selection">Feature selection</h2>
 <p>vifstep() calculates VIF for all variables, excludes the one with the highest VIF (if it is greater than the threshold), repeat the procedure until no variables with a VIF greater than th remains.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>features <span class="ot">&lt;-</span> usdm<span class="sc">::</span><span class="fu">vifstep</span>(<span class="fu">rast</span>(<span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"train"</span>), <span class="sc">-</span>dataset, <span class="sc">-</span>la)), <span class="at">th =</span> <span class="dv">8</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>features <span class="ot">&lt;-</span> usdm<span class="sc">::</span><span class="fu">vifstep</span>(<span class="fu">rast</span>(<span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"train"</span>), <span class="sc">-</span>dataset, <span class="sc">-</span>la)), <span class="at">th =</span> <span class="dv">8</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>No variable from the 7 input variables has collinearity problem. 
 
@@ -367,26 +374,26 @@ max correlation ( elevation ~ relative_slope_position ):  0.6435028
 <section id="remove-correlated-features-from-the-data-sets" class="level3">
 <h3 class="anchored" data-anchor-id="remove-correlated-features-from-the-data-sets">Remove correlated features from the data sets</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"train"</span> <span class="sc">|</span> dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"train"</span> <span class="sc">|</span> dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in usdm::exclude(., features): No variable to exclude!</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"validation"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in usdm::exclude(., features): No variable to exclude!</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"test"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> temp2 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dataset <span class="sc">==</span> <span class="st">"test"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dataset) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  usdm<span class="sc">::</span><span class="fu">exclude</span>(features) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x, <span class="sc">-</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in usdm::exclude(., features): No variable to exclude!</code></pre>
 </div>
@@ -397,11 +404,11 @@ max correlation ( elevation ~ relative_slope_position ):  0.6435028
 <h2 class="anchored" data-anchor-id="tune-the-training-rf-model-using-the-validation-dataset">Tune the training RF model using the validation dataset</h2>
 <p>Instructions (https://stackoverflow.com/questions/18155482/how-to-specify-a-validation-holdout-set-to-caret) This uses the caret package and I included the validation set inside my training set and just define the resampling measures to only use the validation data. This step is to optimize the mtry parameter</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tc <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">1</span>, <span class="at">index =</span> <span class="fu">list</span>(<span class="at">Fold1 =</span> <span class="fu">which</span>(train<span class="sc">$</span>dataset <span class="sc">==</span> <span class="st">"train"</span>)), <span class="at">savePredictions =</span> T)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>validate.rf <span class="ot">&lt;-</span> <span class="fu">train</span>(la <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">select</span>(train, <span class="sc">-</span>dataset), <span class="at">method =</span> <span class="st">"rf"</span>, <span class="at">trControl =</span> tc)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(validate.rf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tc <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">1</span>, <span class="at">index =</span> <span class="fu">list</span>(<span class="at">Fold1 =</span> <span class="fu">which</span>(train<span class="sc">$</span>dataset <span class="sc">==</span> <span class="st">"train"</span>)), <span class="at">savePredictions =</span> T)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>validate.rf <span class="ot">&lt;-</span> <span class="fu">train</span>(la <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">select</span>(train, <span class="sc">-</span>dataset), <span class="at">method =</span> <span class="st">"rf"</span>, <span class="at">trControl =</span> tc)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(validate.rf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -409,8 +416,8 @@ max correlation ( elevation ~ relative_slope_position ):  0.6435028
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_mtry <span class="ot">&lt;-</span> validate.rf<span class="sc">$</span>finalModel<span class="sc">$</span>mtry</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>my_mtry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>my_mtry <span class="ot">&lt;-</span> validate.rf<span class="sc">$</span>finalModel<span class="sc">$</span>mtry</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>my_mtry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
@@ -420,13 +427,13 @@ max correlation ( elevation ~ relative_slope_position ):  0.6435028
 <h2 class="anchored" data-anchor-id="validation-back-test">Validation back test</h2>
 <p>Uses the validation dataset as the test</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">789</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>rf.fit <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(la <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"train"</span>), <span class="sc">-</span>dataset), </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ntree =</span> <span class="dv">500</span>, <span class="at">keep.forest =</span> <span class="cn">TRUE</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>, <span class="at">mtry =</span> my_mtry,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ytest =</span> <span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"validation"</span>), <span class="sc">-</span>dataset)<span class="sc">$</span>la,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">xtest =</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"validation"</span>), <span class="sc">-</span>dataset), <span class="sc">-</span>la))</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>rf.fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">789</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>rf.fit <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(la <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"train"</span>), <span class="sc">-</span>dataset), </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ntree =</span> <span class="dv">500</span>, <span class="at">keep.forest =</span> <span class="cn">TRUE</span>, <span class="at">importance =</span> <span class="cn">TRUE</span>, <span class="at">mtry =</span> my_mtry,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ytest =</span> <span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"validation"</span>), <span class="sc">-</span>dataset)<span class="sc">$</span>la,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">xtest =</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">select</span>(<span class="fu">filter</span>(train, dataset <span class="sc">==</span> <span class="st">"validation"</span>), <span class="sc">-</span>dataset), <span class="sc">-</span>la))</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>rf.fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -442,18 +449,18 @@ No. of variables tried at each split: 7
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>oob_val <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(rf.fit<span class="sc">$</span>mse)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>test_val <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>val_plot <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">`</span><span class="at">Out of Bag Error</span><span class="st">`</span> <span class="ot">=</span> oob_val,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Validation =</span> test_val,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ntrees =</span> <span class="dv">1</span><span class="sc">:</span>rf.fit<span class="sc">$</span>ntree) <span class="sc">%&gt;%</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ntrees, <span class="at">names_to =</span> <span class="st">"Metric"</span>, <span class="at">values_to =</span> <span class="st">"RMSE"</span> )</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> val_plot, <span class="fu">aes</span>(ntrees, RMSE, <span class="at">color =</span> Metric)) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Number of trees"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>oob_val <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(rf.fit<span class="sc">$</span>mse)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>test_val <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>val_plot <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">`</span><span class="at">Out of Bag Error</span><span class="st">`</span> <span class="ot">=</span> oob_val,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Validation =</span> test_val,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ntrees =</span> <span class="dv">1</span><span class="sc">:</span>rf.fit<span class="sc">$</span>ntree) <span class="sc">%&gt;%</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ntrees, <span class="at">names_to =</span> <span class="st">"Metric"</span>, <span class="at">values_to =</span> <span class="st">"RMSE"</span> )</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> val_plot, <span class="fu">aes</span>(ntrees, RMSE, <span class="at">color =</span> Metric)) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Number of trees"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -467,11 +474,11 @@ No. of variables tried at each split: 7
 <h2 class="anchored" data-anchor-id="testing-the-rf-model">Testing the RF model</h2>
 <p>Uses the RF model to predict the test dataset. We compare predicted against actual</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf.fit, <span class="at">newdata =</span> test)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>test_plot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">pred =</span> prediction, <span class="at">obs =</span> test<span class="sc">$</span>la)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>r_sq <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(pred<span class="sc">~</span>obs, <span class="at">data =</span> test_plot))</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>r_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf.fit, <span class="at">newdata =</span> test)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>test_plot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">pred =</span> prediction, <span class="at">obs =</span> test<span class="sc">$</span>la)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>r_sq <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(pred<span class="sc">~</span>obs, <span class="at">data =</span> test_plot))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>r_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -492,13 +499,13 @@ Residual standard error: 0.6948 on 882 degrees of freedom
 Multiple R-squared:  0.4818,    Adjusted R-squared:  0.4812 
 F-statistic: 820.1 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> test_plot, <span class="fu">aes</span>(<span class="at">y =</span> pred, <span class="at">x =</span> obs)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_line</span>() <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_eq</span>() <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> test_plot, <span class="fu">aes</span>(<span class="at">y =</span> pred, <span class="at">x =</span> obs)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_line</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_eq</span>() <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 methods overwritten by 'ggpp':
   method                  from   
@@ -512,19 +519,21 @@ F-statistic: 820.1 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 </figure>
 </div>
 </div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mse_test <span class="ot">&lt;-</span> test_plot <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mse =</span> <span class="fu">mean</span>((obs <span class="sc">-</span> pred)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="importance" class="level2">
 <h2 class="anchored" data-anchor-id="importance">Importance</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ImpData <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">importance</span>(rf.fit)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Var.Names =</span> <span class="fu">row.names</span>(.)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">row.names&lt;-</span><span class="st">`</span>(<span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(<span class="fu">importance</span>(rf.fit))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ImpData <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">importance</span>(rf.fit)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Var.Names =</span> <span class="fu">row.names</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a> <span class="st">`</span><span class="at">row.names&lt;-</span><span class="st">`</span>(<span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(<span class="fu">importance</span>(rf.fit))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <section id="top-based-on-incnodepurity" class="level3">
 <h3 class="anchored" data-anchor-id="top-based-on-incnodepurity">Top based on IncNodePurity</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> IncNodePurity, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> IncNodePurity, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    %IncMSE IncNodePurity                Var.Names
 7 140.81498     1806.2992                elevation
@@ -537,19 +546,19 @@ F-statistic: 820.1 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> IncNodePurity, <span class="at">n =</span> <span class="dv">10</span>), <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">y =</span> IncNodePurity)) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">xend =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> IncNodePurity), <span class="at">color=</span><span class="st">"skyblue"</span>) <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Terrain Attribute"</span>) <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> IncNodePurity, <span class="at">n =</span> <span class="dv">10</span>), <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">y =</span> IncNodePurity)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">xend =</span> <span class="fu">fct_reorder</span>(Var.Names, IncNodePurity), <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> IncNodePurity), <span class="at">color=</span><span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Terrain Attribute"</span>) <span class="sc">+</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="top-10-based-on-incmse" class="level3">
 <h3 class="anchored" data-anchor-id="top-10-based-on-incmse">Top 10 based on %IncMSE</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    %IncMSE IncNodePurity                Var.Names
 7 140.81498     1806.2992                elevation
@@ -562,19 +571,19 @@ F-statistic: 820.1 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>, <span class="at">n =</span> <span class="dv">10</span>), <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">y =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">xend =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">color=</span><span class="st">"skyblue"</span>) <span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> IncNodePurity), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Terrain Attribute"</span>) <span class="sc">+</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">slice_max</span>(ImpData,<span class="at">order_by =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>, <span class="at">n =</span> <span class="dv">10</span>), <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">y =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">xend =</span> <span class="fu">fct_reorder</span>(Var.Names, <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>), <span class="at">color=</span><span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> IncNodePurity), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Terrain Attribute"</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="combined" class="level3">
 <h3 class="anchored" data-anchor-id="combined">Combined</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
@@ -587,16 +596,16 @@ F-statistic: 820.1 on 1 and 882 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="write-data" class="level3">
 <h3 class="anchored" data-anchor-id="write-data">Write data</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>importance_data <span class="ot">&lt;-</span> ImpData <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MSE_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Purity_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IncNodePurity)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="st">"Forest"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">property =</span> <span class="st">"La"</span>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))) {</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  importance_data_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(importance_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"MSE_rank"</span>, <span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> importance_data_final <span class="ot">&lt;-</span> importance_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>importance_data <span class="ot">&lt;-</span> ImpData <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MSE_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span><span class="st">`</span><span class="at">%IncMSE</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Purity_rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>IncNodePurity)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site =</span> <span class="st">"Forest"</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">property =</span> <span class="st">"La"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))) {</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  importance_data_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(importance_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"MSE_rank"</span>, <span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> importance_data_final <span class="ot">&lt;-</span> importance_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 168 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
@@ -607,32 +616,115 @@ dbl (4): %IncMSE, IncNodePurity, MSE_rank, Purity_rank
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(importance_data_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>model_performance <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">MSE =</span> rf.fit<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>mse)],</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp =</span> rf.fit<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>rsq)],</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">MSE_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)],</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq)],</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">R2 =</span> r_sq<span class="sc">$</span>r.squared, </span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">site =</span> <span class="st">"Forest"</span>,</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">property =</span> <span class="st">"La"</span>)</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))) {</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  model_performance_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rows_upsert</span>(model_performance, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>))  </span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final <span class="ot">&lt;-</span> model_performance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(importance_data_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/importance_data.csv"</span>))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>model_performance <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">MSE =</span> rf.fit<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>mse)],</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp =</span> rf.fit<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>rsq)],</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">MSE_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>mse)],</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">Var_exp_test =</span> rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq[<span class="fu">length</span>(rf.fit<span class="sc">$</span>test<span class="sc">$</span>rsq)],</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">R2 =</span> r_sq<span class="sc">$</span>r.squared,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">mse_test =</span> mse_test<span class="sc">$</span>mse,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">site =</span> <span class="st">"Forest"</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">property =</span> <span class="st">"La"</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))) {</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  model_performance_final <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rows_upsert</span>(model_performance, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>))  </span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final <span class="ot">&lt;-</span> model_performance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 24 Columns: 7
+<pre><code>Rows: 22 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (2): site, property
-dbl (5): MSE, Var_exp, MSE_test, Var_exp_test, R2
+dbl (6): MSE, Var_exp, MSE_test, Var_exp_test, R2, mse_test
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+</section>
+<section id="predict-original-data" class="level2">
+<h2 class="anchored" data-anchor-id="predict-original-data">Predict original data</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>orig_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/forest_data_49.csv"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"la"</span>, <span class="fu">any_of</span>(attribute))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 49 Columns: 16
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (16): plan_curvature, profile_curvature, saga_wetness_index, catchment_a...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>prediction_org <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf.fit, <span class="at">newdata =</span> orig_data)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>test_plot_org <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">pred =</span> prediction_org, <span class="at">obs =</span> orig_data<span class="sc">$</span>la)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>r_sq_org <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(pred<span class="sc">~</span>obs, <span class="at">data =</span> test_plot_org))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>r_sq_org</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pred ~ obs, data = test_plot_org)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.34540 -0.28996  0.02058  0.26583  1.29516 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  4.81598    0.78813   6.111 1.83e-07 ***
+obs          0.67509    0.05207  12.964  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5843 on 47 degrees of freedom
+Multiple R-squared:  0.7815,    Adjusted R-squared:  0.7768 
+F-statistic: 168.1 on 1 and 47 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> test_plot_org, <span class="fu">aes</span>(<span class="at">y =</span> pred, <span class="at">x =</span> obs)) <span class="sc">+</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_line</span>() <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  ggpmisc<span class="sc">::</span><span class="fu">stat_poly_eq</span>() <span class="sc">+</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="">
+<figure class="figure">
+<p class=""><a href="La_For_RF_files/figure-html/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="La_For_RF_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mse_org <span class="ot">&lt;-</span> test_plot_org <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mse =</span> <span class="fu">mean</span>((obs <span class="sc">-</span> pred)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<section id="write-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="write-data-1">Write data</h3>
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>model_performance_org <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">MSE =</span> mse_org<span class="sc">$</span>mse,</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">R2 =</span> r_sq_org<span class="sc">$</span>r.squared, </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">site =</span> <span class="st">"Forest"</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">property =</span> <span class="st">"la"</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">file.exists</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data_49.csv"</span>))) {</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  model_performance_final_org <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data_49.csv"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rows_upsert</span>(model_performance_org, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"property"</span>)) </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> model_performance_final_org <span class="ot">&lt;-</span> model_performance_org</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 24 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): site, property
+dbl (2): MSE, R2
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(model_performance_final_org, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"./notebooks/model_performance_data_49.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 </section>
