@@ -306,7 +306,7 @@ summary_tab <- data_summary %>%
 
 ```{r}
 #| label: tbl-univariate-summary
-#| tbl-cap: Summary univariate statistics of selected geochemical and colour soil properties for each site (n = 49). Geochemical concentrations are reported in ppm, excecpt Ca (%).
+#| tbl-cap: Summary univariate statistics of selected geochemical and colour soil properties for each site (n = 49). Geochemical concentrations are reported in ppm, excecpt Ca and Fe(%).
 
 summary_tab |>
   group_by(site) |>
@@ -374,7 +374,7 @@ terrain_summary <- forest_data %>%
 
 ```{r}
 #| label: tbl-univariate2-summary
-#| tbl-cap: Summary statistics for the interpolated values (10m resolution) for selected geochemical and colour soil properties and terrain attributes for each site.
+#| tbl-cap: Summary statistics for the interpolated values (10m resolution) for selected geochemical and colour soil properties and terrain attributes for each site. Geochemical concentrations are reported in ppm, excecpt Ca and Fe(%).
 
 terrain_summary |>
   rename("Property" = "property") |>

@@ -233,7 +233,7 @@ distribution of soil physical and biogeochemical properties are vital
 components of agri-environmental research and modeling, including
 sediment source fingerprinting. Understanding the distribution of soil
 properties is crucial in the development of appropriate, reliable, and
-efficient sampling campaigns. This study was aimed to investigate the
+efficient sampling campaigns. This study was aimed at investigating the
 spatial variability in soil geochemical and colour (i.e., spectral
 reflectance) soil properties (\textless63um) across two contrasting land
 uses. The main objectives of this study are to: 1) quantify the spatial
@@ -268,7 +268,7 @@ research needs and objectives.
 \end{frontmatter}
     
 
-\section{Introduction}\label{introduction}
+\subsection{Introduction}\label{introduction}
 
 Variation in soil biological, chemical, and physical properties occurs
 across the landscape and in response to both regional and local (i.e.,
@@ -383,11 +383,13 @@ The objectives of this study were (1) to investigate the spatial
 variability of a range of soil colour and geochemical properties in an
 agricultural and forested site; and (2) to assess the relative
 importance and correlation of terrain attributes with the spatial
-distribution of these soil properties.
+distribution of these soil properties. Together, these objectives
+address how terrain attributes may be used to understand spatial
+distributions of soil properties and help guide sampling design.
 
-\section{Methods}\label{methods}
+\subsection{Methods}\label{methods}
 
-\subsection{Site description}\label{site-description}
+\subsubsection{Site description}\label{site-description}
 
 Two sites of contrasting land uses located in the Wilson Creek Watershed
 (WCW), near McCreary, Manitoba, Canada were selected to investigate the
@@ -444,7 +446,7 @@ town of McCreary, and regional b) land use, and c) topography.}
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/location_map.qmd.html\#cell-fig-location_map}{Research
 Site Locations}}
 
-\subsection{Soil sampling and
+\subsubsection{Soil sampling and
 analysis}\label{soil-sampling-and-analysis}
 
 This study uses samples and data collected as part of the grid sampling
@@ -478,7 +480,7 @@ providing a strong discrimination between the agricultural and forested
 surface soils. These fifteen soil properties are the focus of the
 detailed spatial analysis detailed in this study.
 
-\subsection{Geospatial and terrain
+\subsubsection{Geospatial and terrain
 analysis}\label{geospatial-and-terrain-analysis}
 
 All geostatistics were performed with ArcGIS Pro \citep[v
@@ -502,7 +504,7 @@ plan and profile curvatures, saga wetness index, catchment area,
 relative slope position, and vertical channel network distance
 (\quartosupptabref{supptab-terrain}).
 
-\subsection{Data analysis}\label{data-analysis}
+\subsubsection{Data analysis}\label{data-analysis}
 
 All subsequent statistical analysis was undertaken using R statistical
 Software v4.4.0 \citep{rcoreteam2024} through RStudio Integrated
@@ -515,7 +517,7 @@ skewed. Coefficient of variation (CV) thresholds were categorized as low
 (\textless15\%), moderate (15--35\%), high (35--75\%), and very high
 (\textgreater75\%). Interpolated soil property and terrain attribute
 data were resampled to a 10 m resolution prior to analysis
-\citep[\texttt{terra} v1.8.42][]{hijmans2024}. Random Forest Regression
+\citep[\texttt{terra} v1.8.29][]{hijmans2024}. Random Forest Regression
 \citep[\texttt{randomForest} v4.7.1.2][]{liaw2002} was used to assess
 the relative importance of the terrain attributes on the spatial
 distribution of soil properties. The dataset was randomly split into
@@ -531,13 +533,13 @@ Error (MSE) and percent variance explained for both the training (Out of
 Bag Error) and the validation data sets. To test the model, actual and
 predicted values were plotted and the
 R\textsuperscript{\textsubscript{2}} and MSE were calculated using the
-testing data set. As an additional check, the random forest model was
-used to predict the original 49 data points (non-interpolated) for each
-site.
+testing data set. Because analyzing interpolated data can cause issues,
+the random forest model was used to predict the original 49
+non-interpolated data points at each site as an additional check.
 
-\section{Results}\label{results}
+\subsection{Results}\label{results}
 
-\subsection{Univariate summary}\label{univariate-summary}
+\subsubsection{Univariate summary}\label{univariate-summary}
 
 Overall, the agricultural site had soil colour and geochemical
 properties that exhibited lower variability and more symmetrical data
@@ -563,7 +565,7 @@ very high CVs.
 
 \caption{\label{tbl-univariate-summary}Summary univariate statistics of
 selected geochemical and colour soil properties for each site (n = 49).
-Geochemical concentrations are reported in ppm, excecpt Ca (\%).}
+Geochemical concentrations are reported in ppm, excecpt Ca and Fe(\%).}
 
 \tabularnewline
 
@@ -634,7 +636,8 @@ site.
 
 \caption{\label{tbl-univariate2-summary}Summary statistics for the
 interpolated values (10m resolution) for selected geochemical and colour
-soil properties and terrain attributes for each site.}
+soil properties and terrain attributes for each site. Geochemical
+concentrations are reported in ppm, excecpt Ca and Fe(\%).}
 
 \tabularnewline
 
@@ -709,7 +712,7 @@ Elevation & 369 & 3.34 & 377 & 359 & −0.184 & 0.904 \\
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/univariate_summary.qmd.html\#cell-tbl-univariate2-summary}{Univariate
 summary}}
 
-\subsection{Spatial analysis}\label{spatial-analysis}
+\subsubsection{Spatial analysis}\label{spatial-analysis}
 
 Soil colour and geochemical composition varied across both sites. In the
 agricultural field, all 15 soil color and geochemical properties
@@ -805,7 +808,7 @@ h* & Universal & 0.0 & 0.0 & 100 & 230 & 0.3 & Strong \\
 }
 
 \caption{\label{fig-ag_map}Kriged maps of select colour and geochemical
-properties and elevtion across the agricultural site.}
+properties and elevation across the agricultural site.}
 
 \end{figure}%
 
@@ -964,9 +967,9 @@ each site and across both sites.}
 \href{https://alex-koiter.github.io/spatial-variability-soil-manuscript/notebooks/RF_summary.qmd.html\#cell-fig-rf-results}{Random
 Forest summary}}
 
-\section{Discussion}\label{discussion}
+\subsection{Discussion}\label{discussion}
 
-\subsection{Variability of soil
+\subsubsection{Variability of soil
 properties}\label{variability-of-soil-properties}
 
 Variability in soil geochemical properties have been studied at a range
@@ -979,21 +982,23 @@ properties and processes, and soil surveying and mapping
 \citep{wilson2008}. Similarly, variability in soil colour, typically
 using the Munsell colour system, is a commonly reported diagnostic
 feature used in soil classification and ranges in spatial scale from
-reconnaissance to detailed soil surveys and maps. The increase use of
-soil spectroscopy \citep{poppiel2022} and creation of soil spectral
-libraries \citep[e.g.,][]{canadian} will allow researchers to also
-investigate soil colour variability using other colour space models
-\citep{viscarrarossel2006}. Data distributions in soil science commonly
-exhibit a positively skewed distribution. This is likely due to several
-factors including that data of this nature are a semi-bounded
-distribution, with a lower bound of zero and no upper bound. Hot spots
-of soil processes, local variations in soil forming factors, and
-soil/land management practices can also lead to more extreme values
-\citep[e.g.,][]{vidon2010}. In many cases the cumulative effects of
-these processes, factors, and practices are multiplicative (i.e.,
-interact) and not linearly additive, resulting in a skewed data
-distribution. Lastly, the distribution of data will also be a product of
-the scale of observation, number of samples, and sampling design.
+reconnaissance to detailed soil surveys and maps. For sediment
+fingerprinting studies, these types of studies are often too
+site-specific or focus on a smaller subset of soil properties to
+effectively guide sample design to ensure the desired confidence is met
+characterizing sources of sediment.
+
+Data distributions in soil science commonly exhibit a positively skewed
+distribution. This is likely due to several factors including that data
+of this nature are a semi-bounded distribution, with a lower bound of
+zero and no upper bound. Hot spots of soil processes, local variations
+in soil forming factors, and soil/land management practices can also
+lead to more extreme values \citep[e.g.,][]{vidon2010}. In many cases
+the cumulative effects of these processes, factors, and practices are
+multiplicative (i.e., interact) and not linearly additive, resulting in
+a skewed data distribution. Lastly, the distribution of data will also
+be a product of the scale of observation, number of samples, and
+sampling design.
 
 Soil colour properties exhibited a near-normal distribution with a low
 CV which is consistent with claims that soil hue and value (Munsell
@@ -1035,17 +1040,17 @@ influence the concentration of many major and trace elements
 and landscape complexity both play a role in driving soil property
 variability.
 
-\subsection{Spatial distribution}\label{spatial-distribution}
+\subsubsection{Spatial distribution}\label{spatial-distribution}
 
 The difference in the number of soil properties and the magnitude of the
-spatial auto correlation between the two sites can be used to in
-designing an effect sampling campaign. The agricultural site, which has
-a more simple topography and a higher degree of spatial autocorrelation,
-the range values can be used to guide the distance between sampling
-points and a grid-style sampling regime may be an effective approach. In
-contrast, the forested site, which has a more complex geomorphic setting
-and a lower degree of spatial autocorrelation, a stratified sampling
-design may be the better approach. For example, at the forested site the
+spatial auto correlation between the two sites can be used in designing
+an effect sampling campaign. The agricultural site, which has a simpler
+topography and a higher degree of spatial autocorrelation, the range
+values can be used to guide the distance between sampling points and a
+grid-style sampling regime may be an effective approach. In contrast,
+the forested site, which has a more complex geomorphic setting and a
+lower degree of spatial autocorrelation, a stratified sampling design
+may be the better approach. For example, at the forested site the
 stratas could include near-stream and hillslope environments. In
 situations where the soil properties of interest are not known or
 selected \emph{a priori} (e.g., sediment fingerprinting) the differences
@@ -1059,9 +1064,9 @@ Mapping the soil properties that have a moderate to high spatial
 dependence can provide information on underlying soil forming processes
 and properties. At both sites, to some extent, the patterns appear to
 reflect the topography of the sites suggesting that geomorphic and
-hydrologic process and properties are likely driving the observed
+hydrologic processes and properties are likely driving the observed
 patterns. Identifying patterns and understanding the underlying process
-and properties that drive these patterns are important consideration
+and properties that drive these patterns are important considerations
 when designing as soil sampling campaign to successfully meet study
 objectives, including characterizing soil properties of a field site. In
 a related context, Koiter \citep{koiter2013a} discussed the issues
@@ -1085,56 +1090,56 @@ and pH. The lack of information on the wide range of soil properties
 means the researchers are relying on other data, most often elevation,
 for informing sampling designs.
 
-\subsection{Terrain attributes and soil
+\subsubsection{Terrain attributes and soil
 properties}\label{terrain-attributes-and-soil-properties}
 
 Both the correlation analysis and random forest regression identified
 elevation as the most influential terrain attribute, followed by the
-SAGA Wetness Index and relative slope position, in explaining the
-majority of the observed variation in soil geochemical and colour
-properties. This is consitent with the findings of Mashalaba
-\citep{mashalaba2020} who also found that similar terrain attributes
-were important in predicting a range of other soil properties including
-texture, bulk density, and hydaulic conductivity. These attributes
-likely emerged as the most important factor in explaining the observed
-variability as they are strongly linked to a range of geomorphic and
-hydrolgic process and conditions {[}\citep{mello2022};
-\citep{libohova2024}{]}. For example, in eroded landscapes in the
-Prairie region of Canada, Ca concentrations have been found to be higher
-in upper slope positions from erosion and subsquent exposure of
-high-carbonate subsoil \citep{papiernik2005}. In contrast, higher Ca
-concentrations have been noted in lower slope and depressional areas due
-to higher solubility of many Ca-minerals (e.g., CaCO\textsubscript{3})
-and the subsequent downslope transport in solution and reduced leaching
-losses in these accumulation zones. Landscape position can also have a
-strong influence on pedogenic process; for example, the translocation of
-Fe and clay down the soil profile is a diagnostic criteria used in
-classifying soils \citep{stonehouse1971}. Soil colour also tends to
-change in a predictable manner in relation to local relief. Tillage and
-water erosion results in the net loss of darker organic-rich topsoil
-from upper slope positions resulting in the exposure of the lighter
-subsoil \citep{papiernik2005}. Moisture availability is also greater in
-the lower slope and depressional areas resulting in increased organic
-matter production resulting in darker organic-rich topsoil as compared
-to the upper slope positions. There is also evidence that suggests that
-soil texture varies with elevation and slope position, with coarser
-material on upper slopes and finer material accumulating in lower
-positions \citep{kokulan2018, cox2003}. Given the strong correlation of
-organic matter and texture with soil geochemistry \citep{horowitz1991}
-and colour \citep{viscarrarossel2009}, these properties may also help
+SAGA Wetness Index and relative slope position, in explaining most of
+the observed variation in soil geochemical and colour properties. This
+is consistent with the findings of Mashalaba \citep{mashalaba2020} who
+also found that similar terrain attributes were important in predicting
+a range of other soil properties including texture, bulk density, and
+hydaulic conductivity. These attributes likely emerged as the most
+important factor in explaining the observed variability as they are
+strongly linked to a range of geomorphic and hydrologic process and
+conditions {[}\citep{mello2022}; \citep{libohova2024}{]}. For example,
+in eroded landscapes in the Prairie region of Canada, Ca concentrations
+have been found to be higher in upper slope positions from erosion and
+subsquent exposure of high-carbonate subsoil \citep{papiernik2005}. In
+contrast, higher Ca concentrations have been noted in lower slope and
+depressional areas due to higher solubility of many Ca-minerals (e.g.,
+CaCO\textsubscript{3}) and the subsequent downslope transport in
+solution and reduced leaching losses in these accumulation zones.
+Landscape position can also have a strong influence on pedogenic
+process; for example, the translocation of Fe and clay down the soil
+profile is a diagnostic criteria used in classifying soils
+\citep{stonehouse1971}. Soil colour also tends to change in a
+predictable manner in relation to local relief. Tillage and water
+erosion results in the net loss of darker organic-rich topsoil from
+upper slope positions resulting in the exposure of the lighter subsoil
+\citep{papiernik2005}. Moisture availability is also greater in the
+lower slope and depressional areas resulting in increased organic matter
+production resulting in darker organic-rich topsoil as compared to the
+upper slope positions. There is also evidence that suggests that soil
+texture varies with elevation and slope position, with coarser material
+on upper slopes and finer material accumulating in lower positions
+\citep{kokulan2018, cox2003}. Given the strong correlation of organic
+matter and texture with soil geochemistry \citep{horowitz1991} and
+colour \citep{viscarrarossel2009}, these properties may also help
 explain the observed spatial patterns .
 
 The relative importance of terrain attributes in explaining soil
 property variability differs both among soil properties and between
 sites. The land use and the overall geomorphic complexity differences
 between the two study sites are likely interacting with terrain
-attributes and influencing the patterns of soil properties and modify
+attributes and influencing the patterns of soil properties and modifying
 the nature of terrain attribute and soil property relationship. This
 suggests that these relationships observed in this study may not be
-broadly generalizable. Similarly, information on how terrain attributes
+broadly generalized. Similarly, information on how terrain attributes
 influence the spatial distribution of many trace elements and soil
-colour --- beyond the Munsell system--- at the field scale is limited in
-the scientific literature. Additional variables including climate and
+colour, beyond the Munsell system, at the field scale is limited in the
+scientific literature. Additional variables including climate and
 large-scale landscape features will also influence the observed patterns
 of soil properties. As a result, using terrain attributes to guide soil
 sampling or interpret spatial patterns of many soil properties remains
@@ -1153,7 +1158,7 @@ fingerprinting is promising not only as a mechanism to improve the
 quality of source characterization but to also better link source
 material to downstream sediment.
 
-\section{Conclusions}\label{conclusions}
+\subsection{Conclusions}\label{conclusions}
 
 Understanding the spatial variability and distribution of soil
 geochemical and colour properties at a field-scale is important for
@@ -1184,18 +1189,18 @@ biophysical variables to improve generalizability. Overall, this work
 highlights how terrain-driven spatial patterns can inform more targeted
 soil sampling, modeling, and land management strategies.
 
-\section*{Acknowledgments}\label{acknowledgments}
-\addcontentsline{toc}{section}{Acknowledgments}
+\subsection*{Acknowledgments}\label{acknowledgments}
+\addcontentsline{toc}{subsection}{Acknowledgments}
 
-A special thanks and recognition for the field and technical support
-from A. Avila and the Riding Mountain National Park personnel.
+Special thanks and recognition for the field and technical support from
+A. Avila and the Riding Mountain National Park personnel.
 
-\section*{Statements and
+\subsection*{Statements and
 declarations}\label{statements-and-declarations}
-\addcontentsline{toc}{section}{Statements and declarations}
+\addcontentsline{toc}{subsection}{Statements and declarations}
 
-\subsection*{Funding}\label{funding}
-\addcontentsline{toc}{subsection}{Funding}
+\subsubsection*{Funding}\label{funding}
+\addcontentsline{toc}{subsubsection}{Funding}
 
 This research was supported by the Natural Sciences and Engineering
 Research Council of Canada Discovery Grant - From source to sink:
@@ -1203,21 +1208,21 @@ Investigating the linkages between sources of sediment and downstream
 water quality in Canadian watersheds - awarded to AJK
 (RGPIN-2019-05273).
 
-\subsection*{Competing interests}\label{competing-interests}
-\addcontentsline{toc}{subsection}{Competing interests}
+\subsubsection*{Competing interests}\label{competing-interests}
+\addcontentsline{toc}{subsubsection}{Competing interests}
 
 The authors have no competing interests to declare that are relevant to
 the content of this article.
 
-\subsection*{Data and code
+\subsubsection*{Data and code
 availability}\label{data-and-code-availability}
-\addcontentsline{toc}{subsection}{Data and code availability}
+\addcontentsline{toc}{subsubsection}{Data and code availability}
 
 Data and source code for analysis and manuscript available on GitHub:
 \url{https://github.com/alex-koiter/sampling-design-manuscript}
 
-\subsection*{Author contributions}\label{author-contributions}
-\addcontentsline{toc}{subsection}{Author contributions}
+\subsubsection*{Author contributions}\label{author-contributions}
+\addcontentsline{toc}{subsubsection}{Author contributions}
 
 \textbf{M Luna Miño} Methodology; Investigation; Data curation; Formal
 analysis; Writing - Original Draft; Writing - Review \& Editing
@@ -1236,14 +1241,14 @@ Editing
 \textbf{A Moulin} Methodology; Formal analysis; Writing - Review \&
 Editing
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
 
 \renewcommand{\bibsection}{}
 \bibliography{references.bib}
 
-\section*{Supplemental figures}\label{supplemental-figures}
-\addcontentsline{toc}{section}{Supplemental figures}
+\subsection*{Supplemental figures}\label{supplemental-figures}
+\addcontentsline{toc}{subsection}{Supplemental figures}
 
 \begin{suppfig}
 
@@ -1273,8 +1278,8 @@ the numeric values indicate the CV.}
 
 \end{suppfig}%
 
-\section*{Supplemental tables}\label{supplemental-tables}
-\addcontentsline{toc}{section}{Supplemental tables}
+\subsection*{Supplemental tables}\label{supplemental-tables}
+\addcontentsline{toc}{subsection}{Supplemental tables}
 
 \begin{supptab}
 

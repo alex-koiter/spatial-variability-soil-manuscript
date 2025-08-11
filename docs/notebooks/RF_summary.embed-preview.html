@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.39">
+    <meta name="generator" content="quarto-1.6.40">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -128,7 +128,7 @@
             // if location was not changed in 100 ms, then there is no history back
             if(currentUrl === window.location.href){              
                 // redirect to site root
-                window.location.href = "../index.html";
+                window.location.href = "...html";
             }
         }, 100);
       }
@@ -152,10 +152,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bb3eb020369cb14e268a6b18491f71f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a1ff8711b79ae3724c050874b28d9907.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -217,29 +217,32 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="44afa996-6c81-4c5c-a36f-da12cb8330f2" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="6ea06ade-23f1-4efe-b60c-d2751d8ddc43" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(patchwork)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  library(gt)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3Warning: package 'patchwork' was built under R version 4.4.2</code></pre>
+</div>
 </div></div>
 </section>
 <section id="importance" class="level2">
 <h2 class="anchored" data-anchor-id="importance">Importance</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="9b7d01f9-2820-4d0d-afe9-31245442a138" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imp_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"Terrain Attribute"</span> <span class="op">=</span> <span class="st">"Var.Names"</span>) <span class="op">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_recode(`Terrain Attribute`, <span class="st">"Elevation"</span> <span class="op">=</span> <span class="st">"elevation"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Catchment Area"</span> <span class="op">=</span> <span class="st">"catchment_area"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Plan Curvature"</span> <span class="op">=</span> <span class="st">"plan_curvature"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Profile Curvature"</span> <span class="op">=</span> <span class="st">"profile_curvature"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Rel. Slope Position"</span> <span class="op">=</span> <span class="st">"relative_slope_position"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"SAGA Wetness Index"</span> <span class="op">=</span> <span class="st">"saga_wetness_index"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Vert. Dist. Channel"</span> <span class="op">=</span> <span class="st">"channel_network_distance"</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_relevel(`Terrain Attribute`, <span class="st">"Elevation"</span>, <span class="st">"SAGA Wetness Index"</span>, <span class="st">"Rel. Slope Position"</span>, <span class="st">"Vert. Dist. Channel"</span>,<span class="st">"Catchment Area"</span>, <span class="st">"Profile Curvature"</span>, <span class="st">"Plan Curvature"</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"italic(`a*`)"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"italic(`b*`)"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"italic(`c*`)"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"italic(`h*`)"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"italic(`x`)"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"italic(`a*`)"</span>, <span class="st">"italic(`b*`)"</span>, <span class="st">"italic(`c*`)"</span>, <span class="st">"italic(`h*`)"</span>, <span class="st">"italic(`x`)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="58023350-30c0-43d4-b3b3-535cf84bb8bd" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>imp_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/importance_data.csv"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"Terrain Attribute"</span> <span class="op">=</span> <span class="st">"Var.Names"</span>) <span class="op">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_recode(`Terrain Attribute`, <span class="st">"Elevation"</span> <span class="op">=</span> <span class="st">"elevation"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Catchment Area"</span> <span class="op">=</span> <span class="st">"catchment_area"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Plan Curvature"</span> <span class="op">=</span> <span class="st">"plan_curvature"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Profile Curvature"</span> <span class="op">=</span> <span class="st">"profile_curvature"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Rel. Slope Position"</span> <span class="op">=</span> <span class="st">"relative_slope_position"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"SAGA Wetness Index"</span> <span class="op">=</span> <span class="st">"saga_wetness_index"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"Vert. Dist. Channel"</span> <span class="op">=</span> <span class="st">"channel_network_distance"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  mutate(`Terrain Attribute` <span class="op">=</span> fct_relevel(`Terrain Attribute`, <span class="st">"Elevation"</span>, <span class="st">"SAGA Wetness Index"</span>, <span class="st">"Rel. Slope Position"</span>, <span class="st">"Vert. Dist. Channel"</span>,<span class="st">"Catchment Area"</span>, <span class="st">"Profile Curvature"</span>, <span class="st">"Plan Curvature"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"italic(`a*`)"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"italic(`b*`)"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"italic(`c*`)"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"italic(`h*`)"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"italic(`x`)"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"italic(`a*`)"</span>, <span class="st">"italic(`b*`)"</span>, <span class="st">"italic(`c*`)"</span>, <span class="st">"italic(`h*`)"</span>, <span class="st">"italic(`x`)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 168 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
@@ -253,7 +256,9 @@ the `.groups` argument.</code></pre>
 </div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-fig-rf-results" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>g2 <span class="op">+</span> g1 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">1</span>, heights <span class="op">=</span> c(<span class="dv">2</span>, <span class="dv">10</span>), guides <span class="op">=</span> <span class="st">"collect"</span>) <span class="op">&amp;</span> theme(legend.position <span class="op">=</span> <span class="st">'right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">&lt;-</span> g2 <span class="op">+</span> g1 <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">1</span>, heights <span class="op">=</span> c(<span class="dv">2</span>, <span class="dv">10</span>), guides <span class="op">=</span> <span class="st">"collect"</span>) <span class="op">&amp;</span> theme(legend.position <span class="op">=</span> <span class="st">'right'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave(filename = "../Submission/Figure 4.png", plot = p, height = 130, width = 140, units = "mm", dpi = 600)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-rf-results" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -270,12 +275,12 @@ Figure&nbsp;1: Heat map of the Random Forest regression results showing the rank
 </section>
 <section id="performance" class="level2">
 <h2 class="anchored" data-anchor-id="performance">Performance</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="74fcfea9-29bb-40a6-a091-ef46dc1ce812" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m2_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data_49.csv"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>, <span class="st">"Ca"</span> <span class="op">=</span> <span class="st">"ca"</span>, <span class="st">"Co"</span> <span class="op">=</span> <span class="st">"co"</span>, <span class="st">"Cs"</span> <span class="op">=</span> <span class="st">"cs"</span>, <span class="st">"Fe"</span> <span class="op">=</span> <span class="st">"fe"</span>, <span class="st">"Li"</span> <span class="op">=</span> <span class="st">"li"</span>, <span class="st">"La"</span> <span class="op">=</span> <span class="st">"la"</span>, <span class="st">"Nb"</span> <span class="op">=</span> <span class="st">"nb"</span>, <span class="st">"Ni"</span> <span class="op">=</span> <span class="st">"ni"</span>, <span class="st">"Rb"</span> <span class="op">=</span> <span class="st">"rb"</span>, <span class="st">"Sr"</span> <span class="op">=</span> <span class="st">"sr"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"MSE_org"</span> <span class="op">=</span><span class="st">"MSE"</span>, <span class="st">"R2_org"</span> <span class="op">=</span> <span class="st">"R2"</span>) <span class="op">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="97cd7b1e-22c4-41c3-aeda-c48ea8a5401d" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m2_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data_49.csv"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>, <span class="st">"Ca"</span> <span class="op">=</span> <span class="st">"ca"</span>, <span class="st">"Co"</span> <span class="op">=</span> <span class="st">"co"</span>, <span class="st">"Cs"</span> <span class="op">=</span> <span class="st">"cs"</span>, <span class="st">"Fe"</span> <span class="op">=</span> <span class="st">"fe"</span>, <span class="st">"Li"</span> <span class="op">=</span> <span class="st">"li"</span>, <span class="st">"La"</span> <span class="op">=</span> <span class="st">"la"</span>, <span class="st">"Nb"</span> <span class="op">=</span> <span class="st">"nb"</span>, <span class="st">"Ni"</span> <span class="op">=</span> <span class="st">"ni"</span>, <span class="st">"Rb"</span> <span class="op">=</span> <span class="st">"rb"</span>, <span class="st">"Sr"</span> <span class="op">=</span> <span class="st">"sr"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  rename(<span class="st">"MSE_org"</span> <span class="op">=</span><span class="st">"MSE"</span>, <span class="st">"R2_org"</span> <span class="op">=</span> <span class="st">"R2"</span>) <span class="op">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 24 Columns: 4
 ── Column specification ────────────────────────────────────────────────────────
@@ -287,14 +292,14 @@ dbl (2): MSE, R2
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="6f0f2983-45d9-420c-8425-e15f9fd7e8b0" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  mutate(Var_exp <span class="op">=</span> Var_exp <span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         Var_exp_test <span class="op">=</span> Var_exp_test <span class="op">*</span><span class="dv">100</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) <span class="op">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  left_join(m2_performance, by <span class="op">=</span> c(<span class="st">"site"</span>, <span class="st">"property"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cfee697c-be45-4747-ab06-13641cc3b698" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/model_performance_data.csv"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_recode(<span class="bu">property</span>, <span class="st">"a*"</span> <span class="op">=</span> <span class="st">"a_col"</span>, <span class="st">"b*"</span> <span class="op">=</span> <span class="st">"b_col"</span>, <span class="st">"c*"</span> <span class="op">=</span> <span class="st">"c_col"</span>, <span class="st">"h*"</span> <span class="op">=</span> <span class="st">"h_col"</span>, <span class="st">"x"</span> <span class="op">=</span> <span class="st">"x_col"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  mutate(<span class="bu">property</span> <span class="op">=</span> fct_relevel(<span class="bu">property</span>, <span class="st">"Ca"</span>, <span class="st">"Co"</span>, <span class="st">"Cs"</span>, <span class="st">"Fe"</span>, <span class="st">"Li"</span>, <span class="st">"La"</span>, <span class="st">"Nb"</span>, <span class="st">"Ni"</span>, <span class="st">"Rb"</span>, <span class="st">"Sr"</span>, <span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>)) <span class="op">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  mutate(Var_exp <span class="op">=</span> Var_exp <span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         Var_exp_test <span class="op">=</span> Var_exp_test <span class="op">*</span><span class="dv">100</span>) <span class="op">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="bu">property</span>) <span class="op">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  left_join(m2_performance, by <span class="op">=</span> c(<span class="st">"site"</span>, <span class="st">"property"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 22 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
@@ -308,64 +313,64 @@ dbl (6): MSE, Var_exp, MSE_test, Var_exp_test, R2, mse_test
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
 
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  group_by(site) <span class="op">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  gt() <span class="op">|&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Training"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>               columns <span class="op">=</span> c(Var_exp, MSE)) <span class="op">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Validation"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(Var_exp_test, MSE_test)) <span class="op">|&gt;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Test"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2, mse_test)) <span class="op">|&gt;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    tab_spanner(label <span class="op">=</span> <span class="st">"Original"</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2_org, MSE_org)) <span class="op">|&gt;</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  cols_move_to_start(columns <span class="op">=</span> <span class="bu">property</span>) <span class="op">|&gt;</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |&gt;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |&gt;</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Testing", columns = "R2") |&gt;</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"mse_test"</span>, <span class="st">"MSE_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"Var_exp_test"</span>, <span class="st">"Var_exp"</span>), decimal <span class="op">=</span> <span class="dv">1</span>) <span class="op">|&gt;</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"R2"</span>, <span class="st">"R2_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_body()) <span class="op">|&gt;</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_column_labels()) <span class="op">|&gt;</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cols_label(Var_exp = md("% Var&lt;br/&gt;Training"), Var_exp_test = md("% Var&lt;br/&gt;Validation"), MSE_test = md("MSE&lt;br/&gt;Testing"), MSE = md("MSE&lt;br/&gt;Training"), R2 = md("{{R^2}}&lt;br/&gt;Testing"), property = "Property") |&gt;</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    cols_label(Var_exp <span class="op">=</span> <span class="st">"% Variance"</span>, Var_exp_test <span class="op">=</span> <span class="st">"% Variance"</span>, MSE_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE <span class="op">=</span> <span class="st">"MSE"</span>, R2 <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, R2_org <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, <span class="bu">property</span> <span class="op">=</span> <span class="st">"Property"</span>, mse_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE_org <span class="op">=</span> <span class="st">"MSE"</span>) <span class="op">|&gt;</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  row_group_order(groups <span class="op">=</span> c(<span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>))  <span class="op">|&gt;</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  tab_style(</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    style <span class="op">=</span> <span class="bu">list</span>(cell_text(style <span class="op">=</span> <span class="st">"italic"</span>)),</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_body(</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>      columns <span class="op">=</span> <span class="bu">property</span>,</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>      rows <span class="op">=</span> <span class="bu">property</span> <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>))) <span class="op">|&gt;</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    tab_footnote(</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Mean square error"</span>,</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"mse_test"</span>, <span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"MSE_org"</span>))) <span class="op">|&gt;</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Percent variance explained"</span>,</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"Var_exp"</span>, <span class="st">"Var_exp_test"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-rf-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m_performance <span class="op">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  group_by(site) <span class="op">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  gt() <span class="op">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Training"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>               columns <span class="op">=</span> c(Var_exp, MSE)) <span class="op">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Validation"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(Var_exp_test, MSE_test)) <span class="op">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  tab_spanner(label <span class="op">=</span> <span class="st">"Test"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2, mse_test)) <span class="op">|&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    tab_spanner(label <span class="op">=</span> <span class="st">"Original"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>              columns <span class="op">=</span> c(R2_org, MSE_org)) <span class="op">|&gt;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  cols_move_to_start(columns <span class="op">=</span> <span class="bu">property</span>) <span class="op">|&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Training", columns = c("MSE", "Var_exp")) |&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Validation", columns = c("MSE_test", "Var_exp_test")) |&gt;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tab_spanner(label = "Testing", columns = "R2") |&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"mse_test"</span>, <span class="st">"MSE_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"Var_exp_test"</span>, <span class="st">"Var_exp"</span>), decimal <span class="op">=</span> <span class="dv">1</span>) <span class="op">|&gt;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  fmt_number(columns <span class="op">=</span> c(<span class="st">"R2"</span>, <span class="st">"R2_org"</span>), decimal <span class="op">=</span> <span class="dv">2</span>) <span class="op">|&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"center"</span>), locations <span class="op">=</span>  cells_row_groups()) <span class="op">|&gt;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_body()) <span class="op">|&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  tab_style(style <span class="op">=</span>  cell_text(weight <span class="op">=</span> <span class="st">"bold"</span>, align <span class="op">=</span> <span class="st">"left"</span>), locations <span class="op">=</span>  cells_column_labels()) <span class="op">|&gt;</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cols_label(Var_exp = md("% Var&lt;br/&gt;Training"), Var_exp_test = md("% Var&lt;br/&gt;Validation"), MSE_test = md("MSE&lt;br/&gt;Testing"), MSE = md("MSE&lt;br/&gt;Training"), R2 = md("{{R^2}}&lt;br/&gt;Testing"), property = "Property") |&gt;</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    cols_label(Var_exp <span class="op">=</span> <span class="st">"% Variance"</span>, Var_exp_test <span class="op">=</span> <span class="st">"% Variance"</span>, MSE_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE <span class="op">=</span> <span class="st">"MSE"</span>, R2 <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, R2_org <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st">R^2</span><span class="sc">}}</span><span class="st">"</span>, <span class="bu">property</span> <span class="op">=</span> <span class="st">"Property"</span>, mse_test <span class="op">=</span> <span class="st">"MSE"</span>, MSE_org <span class="op">=</span> <span class="st">"MSE"</span>) <span class="op">|&gt;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  row_group_order(groups <span class="op">=</span> c(<span class="st">"Agriculture"</span>, <span class="st">"Forest"</span>))  <span class="op">|&gt;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  tab_style(</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    style <span class="op">=</span> <span class="bu">list</span>(cell_text(style <span class="op">=</span> <span class="st">"italic"</span>)),</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_body(</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>      columns <span class="op">=</span> <span class="bu">property</span>,</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>      rows <span class="op">=</span> <span class="bu">property</span> <span class="op">%</span><span class="kw">in</span><span class="op">%</span> c(<span class="st">"a*"</span>, <span class="st">"b*"</span>, <span class="st">"c*"</span>, <span class="st">"h*"</span>, <span class="st">"x"</span>))) <span class="op">|&gt;</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    tab_footnote(</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Mean square error"</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"mse_test"</span>, <span class="st">"MSE_test"</span>, <span class="st">"MSE"</span>, <span class="st">"MSE_org"</span>))) <span class="op">|&gt;</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  tab_footnote(</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    footnote <span class="op">=</span> <span class="st">"Percent variance explained"</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    locations <span class="op">=</span> cells_column_labels(columns <span class="op">=</span> c(<span class="st">"Var_exp"</span>, <span class="st">"Var_exp_test"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-rf-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Model summary and performance statistics for the random forest regression using the training, validation, test and original (non-interpolated) data sets.
 </figcaption>
 <div aria-describedby="tbl-rf-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display">
-<div id="ucmkqovsxz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ucmkqovsxz table {
+<div id="mxmhpsvbvb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mxmhpsvbvb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ucmkqovsxz thead, #ucmkqovsxz tbody, #ucmkqovsxz tfoot, #ucmkqovsxz tr, #ucmkqovsxz td, #ucmkqovsxz th {
+#mxmhpsvbvb thead, #mxmhpsvbvb tbody, #mxmhpsvbvb tfoot, #mxmhpsvbvb tr, #mxmhpsvbvb td, #mxmhpsvbvb th {
   border-style: none;
 }
 
-#ucmkqovsxz p {
+#mxmhpsvbvb p {
   margin: 0;
   padding: 0;
 }
 
-#ucmkqovsxz .gt_table {
+#mxmhpsvbvb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -391,12 +396,12 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-left-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_caption {
+#mxmhpsvbvb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ucmkqovsxz .gt_title {
+#mxmhpsvbvb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -408,7 +413,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-width: 0;
 }
 
-#ucmkqovsxz .gt_subtitle {
+#mxmhpsvbvb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -420,7 +425,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-width: 0;
 }
 
-#ucmkqovsxz .gt_heading {
+#mxmhpsvbvb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -432,13 +437,13 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_bottom_border {
+#mxmhpsvbvb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_col_headings {
+#mxmhpsvbvb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -453,7 +458,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_col_heading {
+#mxmhpsvbvb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -473,7 +478,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#ucmkqovsxz .gt_column_spanner_outer {
+#mxmhpsvbvb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -485,15 +490,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 4px;
 }
 
-#ucmkqovsxz .gt_column_spanner_outer:first-child {
+#mxmhpsvbvb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ucmkqovsxz .gt_column_spanner_outer:last-child {
+#mxmhpsvbvb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ucmkqovsxz .gt_column_spanner {
+#mxmhpsvbvb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -505,11 +510,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   width: 100%;
 }
 
-#ucmkqovsxz .gt_spanner_row {
+#mxmhpsvbvb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ucmkqovsxz .gt_group_heading {
+#mxmhpsvbvb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -535,7 +540,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   text-align: left;
 }
 
-#ucmkqovsxz .gt_empty_group_heading {
+#mxmhpsvbvb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -550,15 +555,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: middle;
 }
 
-#ucmkqovsxz .gt_from_md > :first-child {
+#mxmhpsvbvb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ucmkqovsxz .gt_from_md > :last-child {
+#mxmhpsvbvb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ucmkqovsxz .gt_row {
+#mxmhpsvbvb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -577,7 +582,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   overflow-x: hidden;
 }
 
-#ucmkqovsxz .gt_stub {
+#mxmhpsvbvb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -590,7 +595,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#ucmkqovsxz .gt_stub_row_group {
+#mxmhpsvbvb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -604,15 +609,15 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   vertical-align: top;
 }
 
-#ucmkqovsxz .gt_row_group_first td {
+#mxmhpsvbvb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ucmkqovsxz .gt_row_group_first th {
+#mxmhpsvbvb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ucmkqovsxz .gt_summary_row {
+#mxmhpsvbvb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -622,16 +627,16 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#ucmkqovsxz .gt_first_summary_row {
+#mxmhpsvbvb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_first_summary_row.thick {
+#mxmhpsvbvb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ucmkqovsxz .gt_last_summary_row {
+#mxmhpsvbvb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -641,7 +646,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_grand_summary_row {
+#mxmhpsvbvb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -651,7 +656,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#ucmkqovsxz .gt_first_grand_summary_row {
+#mxmhpsvbvb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -661,7 +666,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-top-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_last_grand_summary_row_top {
+#mxmhpsvbvb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -671,11 +676,11 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_striped {
+#mxmhpsvbvb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ucmkqovsxz .gt_table_body {
+#mxmhpsvbvb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -684,7 +689,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-bottom-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_footnotes {
+#mxmhpsvbvb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -698,7 +703,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_footnote {
+#mxmhpsvbvb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -707,7 +712,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#ucmkqovsxz .gt_sourcenotes {
+#mxmhpsvbvb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -721,7 +726,7 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   border-right-color: #D3D3D3;
 }
 
-#ucmkqovsxz .gt_sourcenote {
+#mxmhpsvbvb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -729,72 +734,72 @@ Table&nbsp;1: Model summary and performance statistics for the random forest reg
   padding-right: 5px;
 }
 
-#ucmkqovsxz .gt_left {
+#mxmhpsvbvb .gt_left {
   text-align: left;
 }
 
-#ucmkqovsxz .gt_center {
+#mxmhpsvbvb .gt_center {
   text-align: center;
 }
 
-#ucmkqovsxz .gt_right {
+#mxmhpsvbvb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ucmkqovsxz .gt_font_normal {
+#mxmhpsvbvb .gt_font_normal {
   font-weight: normal;
 }
 
-#ucmkqovsxz .gt_font_bold {
+#mxmhpsvbvb .gt_font_bold {
   font-weight: bold;
 }
 
-#ucmkqovsxz .gt_font_italic {
+#mxmhpsvbvb .gt_font_italic {
   font-style: italic;
 }
 
-#ucmkqovsxz .gt_super {
+#mxmhpsvbvb .gt_super {
   font-size: 65%;
 }
 
-#ucmkqovsxz .gt_footnote_marks {
+#mxmhpsvbvb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ucmkqovsxz .gt_asterisk {
+#mxmhpsvbvb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ucmkqovsxz .gt_indent_1 {
+#mxmhpsvbvb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ucmkqovsxz .gt_indent_2 {
+#mxmhpsvbvb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ucmkqovsxz .gt_indent_3 {
+#mxmhpsvbvb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ucmkqovsxz .gt_indent_4 {
+#mxmhpsvbvb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ucmkqovsxz .gt_indent_5 {
+#mxmhpsvbvb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ucmkqovsxz .katex-display {
+#mxmhpsvbvb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ucmkqovsxz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mxmhpsvbvb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

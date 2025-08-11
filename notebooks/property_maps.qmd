@@ -170,7 +170,7 @@ la <- ggplot() +
 
 nb <- ggplot() +
   tidyterra::geom_spatraster(data = ag_rast, aes(fill = nb)) +
-  scale_fill_viridis_c(name = "Nb") +
+  scale_fill_viridis_c(name = "Nb",  breaks = seq(0.5, 0.7, 0.1)) +
   #geom_sf(data = filter(coords, site == "Agriculture")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -211,7 +211,7 @@ sr <- ggplot() +
 
 dem <- ggplot() +
   tidyterra::geom_spatraster(data = ag_rast, aes(fill = elevation)) +
-  scale_fill_viridis_c(name = "Elevation", option = "inferno", limits = c(309, 312)) +
+  scale_fill_viridis_c(name = "Elev.", option = "inferno", limits = c(309, 312)) +
   #geom_sf(data = filter(coords, site == "Agriculture")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -248,9 +248,13 @@ scale_p <- ggplot() +
 #| fig-width: 14
 #| fig-asp: 2
 #| label: fig-ag_map
-#| fig-cap: Kriged maps of select colour and geochemical properties and elevtion across the agricultural site.
+#| fig-cap: Kriged maps of select colour and geochemical properties and elevation across the agricultural site.
  
-ca + co + cs + fe + li + la + nb + ni + rb + sr + a_col + b_col + c_col + h_col + x_col + dem + scale_p + plot_layout(ncol = 3) 
+p_ag <- ca + co + cs + fe + li + la + nb + ni + rb + sr + a_col + b_col + c_col + h_col + x_col + dem + plot_layout(ncol = 4) 
+
+p_ag
+
+#ggsave(filename = "../Submission/Figure 2.png", plot = p_ag,  height = 240, width = 190, units = "mm", dpi = 600)
 ```
 
 
@@ -275,7 +279,7 @@ h_col_forest <- ggplot() +
 
 ca_forest <- ggplot() +
   tidyterra::geom_spatraster(data = forest_rast, aes(fill = ca)) +
-  scale_fill_viridis_c(name = "Ca") +
+  scale_fill_viridis_c(name = "Ca", breaks = seq(1, 3, 1)) +
   #geom_sf(data = filter(coords, site == "Agriculture")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -320,7 +324,7 @@ li_forest <- ggplot() +
 
 nb_forest <- ggplot() +
   tidyterra::geom_spatraster(data = forest_rast, aes(fill = nb)) +
-  scale_fill_viridis_c(name = "Nb") +
+  scale_fill_viridis_c(name = "Nb", breaks = c(0.3, 0.35, 0.4)) +
   #geom_sf(data = filter(coords, site == "Forest")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -329,7 +333,7 @@ nb_forest <- ggplot() +
 
 ni_forest <- ggplot() +
   tidyterra::geom_spatraster(data = forest_rast, aes(fill = ni)) +
-  scale_fill_viridis_c(name = "Ni") +
+  scale_fill_viridis_c(name = "Ni", breaks = seq(15, 23, 2)) +
   #geom_sf(data = filter(coords, site == "Forest")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -352,7 +356,7 @@ sr_forest <- ggplot() +
 
 dem_forest <- ggplot() +
   tidyterra::geom_spatraster(data = forest_rast, aes(fill = elevation)) +
-  scale_fill_viridis_c(name = "Elevation", option = "inferno") +
+  scale_fill_viridis_c(name = "Elev.", option = "inferno") +
   #geom_sf(data = filter(coords, site == "Agriculture")) +
   theme_minimal(base_size = 12) +
   theme_bottom +
@@ -391,9 +395,11 @@ scale_p_forest <- ggplot() +
 #| label: fig-forest_map
 #| fig-cap: Kriged map of select colour and geochemical properties and elevation across the forested site.
  
-ca_forest + co_forest + cs_forest + la_forest + li_forest + nb_forest + ni_forest + sr_forest + h_col_forest + dem_forest + scale_p_forest +
-  plot_layout(ncol = 3) 
+p_for <- ca_forest + co_forest + cs_forest + la_forest + li_forest + nb_forest + ni_forest + sr_forest + h_col_forest + dem_forest +
+  plot_layout(ncol = 4) 
+p_for
 
+#ggsave(filename = "../Submission/Figure 3.png", plot = p_for,  height = 175, width = 190, units = "mm", dpi = 600)
 ```
 
 

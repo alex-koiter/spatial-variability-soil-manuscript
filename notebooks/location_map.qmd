@@ -208,5 +208,5 @@ p3 <- ggplot() +
 p6 <- p1 + guide_area() + p2 + p3 + plot_layout(ncol = 2, guides = "collect") + plot_annotation(tag_levels = 'a', tag_suffix = ')')
 p6
 
-#ggsave(filename = "Figures/Maps.png", plot = p6, height = 80*1.5, width = 100*1.5, units = "mm", dpi = 800)
+#ggsave(filename = "../Submission/Figure 1.png", plot = p6, height = 130, width = 140, units = "mm", dpi = 600)
 ```

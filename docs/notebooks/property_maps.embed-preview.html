@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.39">
+    <meta name="generator" content="quarto-1.6.40">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -128,7 +128,7 @@
             // if location was not changed in 100 ms, then there is no history back
             if(currentUrl === window.location.href){              
                 // redirect to site root
-                window.location.href = "../index.html";
+                window.location.href = "...html";
             }
         }, 100);
       }
@@ -152,10 +152,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bb3eb020369cb14e268a6b18491f71f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a1ff8711b79ae3724c050874b28d9907.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -224,7 +224,7 @@
        <p>Alex Koiter</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="6ff4460c-22ff-4d37-b83b-cbc49a50c5e9" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="6deea094-f14f-41d0-b3d6-177f403373b4" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>suppressPackageStartupMessages({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  library(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  library(terra)</span>
@@ -232,19 +232,19 @@
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  library(sf)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'terra' was built under R version 4.4.3Warning: package 'patchwork' was built under R version 4.4.2</code></pre>
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3Warning: package 'terra' was built under R version 4.4.3Warning: package 'patchwork' was built under R version 4.4.2</code></pre>
 </div>
 </div></div>
 </section>
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="f82d124d-f3b2-46ed-8715-4f224ce75556" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="15c2f3c8-2e43-40a6-808f-bb1a37ba0068" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ag_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/ag_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>forest_data <span class="op">&lt;-</span> read_csv(here::here(<span class="st">"./notebooks/forest_terrain_data.csv"</span>), show_col_types <span class="op">=</span> FALSE) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="1c23c115-d2eb-488d-ba6a-7eeba9dfcb7a" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="b4568d20-1e85-4aec-ad36-a156243a189e" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>theme_right <span class="op">&lt;-</span>  theme(axis.title <span class="op">=</span> element_blank(),</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        axis.text <span class="op">=</span> element_blank(),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        axis.ticks <span class="op">=</span> element_blank(),</span>
@@ -278,7 +278,7 @@
 <h2 class="anchored" data-anchor-id="agricultural-soil-properties">Agricultural soil properties</h2>
 <section id="geochemisty-and-colour" class="level3">
 <h3 class="anchored" data-anchor-id="geochemisty-and-colour">Geochemisty and colour</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="646efeaa-ec59-4f8c-81d0-8d4eb831095b" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="ed5e0ba7-9e2b-4a2d-ab7e-0410df328bfc" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ag_rast <span class="op">&lt;-</span> rast(ag_data)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>crs(x <span class="op">=</span> ag_rast, warn<span class="op">=</span>FALSE) <span class="op">&lt;-</span> <span class="st">"epsg:26914"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -388,7 +388,7 @@
 <span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>nb <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> ag_rast, aes(fill <span class="op">=</span> nb)) <span class="op">+</span></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Nb"</span>) <span class="op">+</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Nb"</span>,  breaks <span class="op">=</span> seq(<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.1</span>)) <span class="op">+</span></span>
 <span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Agriculture")) +</span></span>
 <span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -425,10 +425,10 @@
 </section>
 <section id="grain-size-om-elevation" class="level3">
 <h3 class="anchored" data-anchor-id="grain-size-om-elevation">Grain size, OM, elevation</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="39228832-569d-42ce-b74c-4a29c63bdb9b" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="bc4a326b-fd38-461a-bac5-88e97c3c6648" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dem <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> ag_rast, aes(fill <span class="op">=</span> elevation)) <span class="op">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elevation"</span>, option <span class="op">=</span> <span class="st">"inferno"</span>, limits <span class="op">=</span> c(<span class="dv">309</span>, <span class="dv">312</span>)) <span class="op">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elev."</span>, option <span class="op">=</span> <span class="st">"inferno"</span>, limits <span class="op">=</span> c(<span class="dv">309</span>, <span class="dv">312</span>)) <span class="op">+</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Agriculture")) +</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -460,15 +460,19 @@
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  ggspatial::annotation_north_arrow(location <span class="op">=</span> <span class="st">"bl"</span>, pad_y  <span class="op">=</span> unit(<span class="dv">2</span>, <span class="st">"cm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-fig-ag_map" class="cell" data-fig-width="14" data-fig-asp="2">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ca <span class="op">+</span> co <span class="op">+</span> cs <span class="op">+</span> fe <span class="op">+</span> li <span class="op">+</span> la <span class="op">+</span> nb <span class="op">+</span> ni <span class="op">+</span> rb <span class="op">+</span> sr <span class="op">+</span> a_col <span class="op">+</span> b_col <span class="op">+</span> c_col <span class="op">+</span> h_col <span class="op">+</span> x_col <span class="op">+</span> dem <span class="op">+</span> scale_p <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_ag <span class="op">&lt;-</span> ca <span class="op">+</span> co <span class="op">+</span> cs <span class="op">+</span> fe <span class="op">+</span> li <span class="op">+</span> la <span class="op">+</span> nb <span class="op">+</span> ni <span class="op">+</span> rb <span class="op">+</span> sr <span class="op">+</span> a_col <span class="op">+</span> b_col <span class="op">+</span> c_col <span class="op">+</span> h_col <span class="op">+</span> x_col <span class="op">+</span> dem <span class="op">+</span> plot_layout(ncol <span class="op">=</span> <span class="dv">4</span>) </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p_ag</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave(filename = "../Submission/Figure 2.png", plot = p_ag,  height = 240, width = 190, units = "mm", dpi = 600)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-ag_map" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ag_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="property_maps.embed_files/figure-html/fig-ag_map-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevtion across the agricultural site."><img src="property_maps.embed_files/figure-html/fig-ag_map-output-1.png" class="img-fluid figure-img"></a>
+<a href="property_maps.embed_files/figure-html/fig-ag_map-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevation across the agricultural site."><img src="property_maps.embed_files/figure-html/fig-ag_map-output-1.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ag_map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevtion across the agricultural site.
+Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevation across the agricultural site.
 </figcaption>
 </figure>
 </div>
@@ -480,7 +484,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <h2 class="anchored" data-anchor-id="forest-soil-properties">Forest soil properties</h2>
 <section id="geochemisty-and-colour-1" class="level3">
 <h3 class="anchored" data-anchor-id="geochemisty-and-colour-1">Geochemisty and colour</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="3abc7e7c-3e30-4e52-9935-1bfd4800f683" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="1f6072bb-a23c-4664-8485-18959882c10c" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>forest_rast <span class="op">&lt;-</span> rast(forest_data)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>crs(x <span class="op">=</span> forest_rast, warn<span class="op">=</span>FALSE) <span class="op">&lt;-</span> <span class="st">"epsg:26914"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -495,7 +499,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>ca_forest <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> forest_rast, aes(fill <span class="op">=</span> ca)) <span class="op">+</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Ca"</span>) <span class="op">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Ca"</span>, breaks <span class="op">=</span> seq(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)) <span class="op">+</span></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Agriculture")) +</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -540,7 +544,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>nb_forest <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> forest_rast, aes(fill <span class="op">=</span> nb)) <span class="op">+</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Nb"</span>) <span class="op">+</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Nb"</span>, breaks <span class="op">=</span> c(<span class="fl">0.3</span>, <span class="fl">0.35</span>, <span class="fl">0.4</span>)) <span class="op">+</span></span>
 <span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Forest")) +</span></span>
 <span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -549,7 +553,7 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>ni_forest <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> forest_rast, aes(fill <span class="op">=</span> ni)) <span class="op">+</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Ni"</span>) <span class="op">+</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Ni"</span>, breaks <span class="op">=</span> seq(<span class="dv">15</span>, <span class="dv">23</span>, <span class="dv">2</span>)) <span class="op">+</span></span>
 <span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Forest")) +</span></span>
 <span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -568,10 +572,10 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 </section>
 <section id="grain-size-om-elevation-1" class="level3">
 <h3 class="anchored" data-anchor-id="grain-size-om-elevation-1">Grain size, OM, elevation</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="87384c48-a39b-4fe4-bf12-0c44e100f87e" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="9ea972bb-0a1e-4787-ad49-6f756473fac2" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dem_forest <span class="op">&lt;-</span> ggplot() <span class="op">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  tidyterra::geom_spatraster(data <span class="op">=</span> forest_rast, aes(fill <span class="op">=</span> elevation)) <span class="op">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elevation"</span>, option <span class="op">=</span> <span class="st">"inferno"</span>) <span class="op">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  scale_fill_viridis_c(name <span class="op">=</span> <span class="st">"Elev."</span>, option <span class="op">=</span> <span class="st">"inferno"</span>) <span class="op">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_sf(data = filter(coords, site == "Agriculture")) +</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  theme_minimal(base_size <span class="op">=</span> <span class="dv">12</span>) <span class="op">+</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  theme_bottom <span class="op">+</span></span>
@@ -603,8 +607,11 @@ Figure&nbsp;1: Kriged maps of select colour and geochemical properties and elevt
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  ggspatial::annotation_north_arrow(location <span class="op">=</span> <span class="st">"bl"</span>, pad_y  <span class="op">=</span> unit(<span class="dv">2</span>, <span class="st">"cm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-fig-forest_map" class="cell" data-fig-width="12" data-fig-asp="1.3">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ca_forest <span class="op">+</span> co_forest <span class="op">+</span> cs_forest <span class="op">+</span> la_forest <span class="op">+</span> li_forest <span class="op">+</span> nb_forest <span class="op">+</span> ni_forest <span class="op">+</span> sr_forest <span class="op">+</span> h_col_forest <span class="op">+</span> dem_forest <span class="op">+</span> scale_p_forest <span class="op">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  plot_layout(ncol <span class="op">=</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p_for <span class="op">&lt;-</span> ca_forest <span class="op">+</span> co_forest <span class="op">+</span> cs_forest <span class="op">+</span> la_forest <span class="op">+</span> li_forest <span class="op">+</span> nb_forest <span class="op">+</span> ni_forest <span class="op">+</span> sr_forest <span class="op">+</span> h_col_forest <span class="op">+</span> dem_forest <span class="op">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  plot_layout(ncol <span class="op">=</span> <span class="dv">4</span>) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>p_for</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave(filename = "../Submission/Figure 3.png", plot = p_for,  height = 175, width = 190, units = "mm", dpi = 600)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-forest_map" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
